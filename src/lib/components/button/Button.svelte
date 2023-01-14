@@ -43,7 +43,8 @@
 					true: 'hover:-translate-y-0.5'
 				},
 				size: {
-					sm: 'btn-sm'
+					sm: 'btn-sm',
+					full: 'w-full'
 				}
 			},
 			defaultVariants: {

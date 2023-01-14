@@ -27,7 +27,9 @@
       "description": "Por favor, escolha um provedor para entrar ou digite seu e-mail e senha.",
       "or-continue": "ou continue com",
       "email-placeholder": "Seu endereço de e-mail",
-      "email-label": "Endereço de e-mail"
+      "email-label": "Endereço de e-mail",
+      "password-label": "Senha",
+      "password-placeholder": "Sua senha"
     }
   },
   "validations": {

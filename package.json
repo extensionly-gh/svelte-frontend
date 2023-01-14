@@ -13,6 +13,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@felte/validator-zod": "^1.0.13",
 		"@iconify/json": "^2.2.6",
 		"@playwright/test": "^1.28.1",
 		"@rgossiaux/svelte-headlessui": "^1.0.2",
@@ -28,6 +29,7 @@
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"felte": "^1.2.7",
 		"postcss": "^8.4.21",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",

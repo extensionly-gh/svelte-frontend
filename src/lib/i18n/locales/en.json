@@ -27,7 +27,9 @@
       "description": "Please choose a provider to sign in, or enter your email and password.",
       "or-continue": "or continue with",
       "email-placeholder": "Your e-mail address",
-      "email-label": "E-mail address"
+      "email-label": "E-mail address",
+      "password-label": "Password",
+      "password-placeholder": "Your password"
     }
   },
   "validations": {

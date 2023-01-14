@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@felte/validator-zod': ^1.0.13
   '@iconify/json': ^2.2.6
   '@playwright/test': ^1.28.1
   '@rgossiaux/svelte-headlessui': ^1.0.2
@@ -16,6 +17,7 @@ specifiers:
   eslint: ^8.28.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
+  felte: ^1.2.7
   postcss: ^8.4.21
   prettier: ^2.8.0
   prettier-plugin-svelte: ^2.8.1
@@ -30,6 +32,7 @@ specifiers:
   zod: ^3.20.2
 
 devDependencies:
+  '@felte/validator-zod': 1.0.13_zod@3.20.2
   '@iconify/json': 2.2.6
   '@playwright/test': 1.29.2
   '@rgossiaux/svelte-headlessui': 1.0.2_svelte@3.55.1
@@ -45,6 +48,7 @@ devDependencies:
   eslint: 8.31.0
   eslint-config-prettier: 8.6.0_eslint@8.31.0
   eslint-plugin-svelte3: 4.0.0_btuntbn75dxkba3nofpps2nvzm
+  felte: 1.2.7_svelte@3.55.1
   postcss: 8.4.21
   prettier: 2.8.2
   prettier-plugin-svelte: 2.9.0_y74x4qymbshr6ujrzcfe2sydsa
@@ -284,6 +288,28 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@felte/common/1.1.4:
+    resolution: {integrity: sha512-4jNB4EwRpaGZppwV/YqbGF7SVRwehWw+hyTGmw2N+pL86LuqVTTSrgVOGXwPaLTju1BxAptcoAXjxZbBf0XB4Q==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: true
+
+  /@felte/core/1.3.7:
+    resolution: {integrity: sha512-/AkIEZu/Yg/K+YEdnup5c3Bb0xyr9ONdZnS0us6V/b9DgfiEqbcm1xgglD/mtwh+IH7KOhIuQecjBdPQfpNViQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      '@felte/common': 1.1.4
+    dev: true
+
+  /@felte/validator-zod/1.0.13_zod@3.20.2:
+    resolution: {integrity: sha512-qrKUbXm/zqZq+307VwGvhSZlps/Pbx3mpdEg8PVR6RDGpgg0sSOOuPZc5d6C2kJszlmSkA98uHWiIcw3U9O8CQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    peerDependencies:
+      zod: ^3.2.0
+    dependencies:
+      '@felte/common': 1.1.4
+      zod: 3.20.2
     dev: true
 
   /@formatjs/ecma402-abstract/1.11.4:
@@ -1284,6 +1310,16 @@ packages:
     resolution: {integrity: sha512-wBrocU2LCXXa+lWBt8RoIRD89Fi8OdABODa/kEnyeyjS5aZO5/GNvI5sEINADqP/h8M29UHTHUb53sUu5Ihqdw==}
     dependencies:
       reusify: 1.0.4
+    dev: true
+
+  /felte/1.2.7_svelte@3.55.1:
+    resolution: {integrity: sha512-VfCkYBODReCUrYeRMmJ9lRs7O/pC4PYKMTT7E2K6m9UzmTGpm3Ql3C518J3gUVVG5ZeEeSEifUaqmrAcaWB89w==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    peerDependencies:
+      svelte: ^3.31.0
+    dependencies:
+      '@felte/core': 1.3.7
+      svelte: 3.55.1
     dev: true
 
   /file-entry-cache/6.0.1:
