@@ -46,9 +46,13 @@
 				placeholder={$_('dialog.signin.password-placeholder')}
 				type="password"
 			/>
-			<Button variants={{ intent: 'primary', size: 'full' }} disabled={!$isValid} type="submit"
-				>Sign in</Button
+			<Button
+				variants={{ intent: 'primary', size: 'full' }}
+				disabled={!$isValid || $data.password == ''}
+				type="submit"
 			>
+				{$_('terms.sign-in')}
+			</Button>
 		</form>
 	</div>
 </Dialog>

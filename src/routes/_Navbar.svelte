@@ -6,7 +6,7 @@
 	import IconHouse from '~icons/ph/house-fill';
 	import IconBackspace from '~icons/ph/backspace';
 	import IconSignOut from '~icons/ph/sign-out';
-	import SigninDialog from './_SigninDialog.svelte';
+	import AuthDialog from './_AuthDialog.svelte';
 
 	let searchQuery: string = $page.url.searchParams.get('q') || '';
 	let searchInput: HTMLInputElement | null = null;
@@ -14,8 +14,7 @@
 	let debounceTimer: any;
 	let user = false;
 
-	// SignIn Dialog
-	let isOpen = false;
+	let isDialogOpen = false;
 
 	function handleSearchReset() {
 		searchQuery = '';
@@ -88,8 +87,8 @@
 					<IconSignOut width="28px" height="28px" />
 				</Button>
 			{:else}
-				<SigninDialog bind:isOpen />
-				<Button on:click={() => (isOpen = true)} variants={{ animated: true }}>
+				<AuthDialog bind:isOpen={isDialogOpen} />
+				<Button on:click={() => (isDialogOpen = true)} variants={{ animated: true }}>
 					{$_('terms.sign-in')}
 				</Button>
 			{/if}
