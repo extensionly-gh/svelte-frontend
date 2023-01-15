@@ -1,6 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@auth/core': ^0.2.5
+  '@auth/sveltekit': ^0.1.12
   '@felte/validator-zod': ^1.0.13
   '@iconify/json': ^2.2.6
   '@playwright/test': ^1.28.1
@@ -32,6 +34,8 @@ specifiers:
   zod: ^3.20.2
 
 devDependencies:
+  '@auth/core': 0.2.5
+  '@auth/sveltekit': 0.1.12_thimyv3kjqfhigbmh77wxxwk2y
   '@felte/validator-zod': 1.0.13_zod@3.20.2
   '@iconify/json': 2.2.6
   '@playwright/test': 1.29.2
@@ -73,6 +77,35 @@ packages:
 
   /@antfu/utils/0.7.2:
     resolution: {integrity: sha512-vy9fM3pIxZmX07dL+VX1aZe7ynZ+YyB0jY+jE6r3hOK6GNY2t6W8rzpFC4tgpbXUYABkFQwgJq2XYXlxbXAI0g==}
+    dev: true
+
+  /@auth/core/0.2.5:
+    resolution: {integrity: sha512-e9jQOW6kSnxa0gfeR5neqLIDAUvZtyGTh3YpO2eN5F/5gBybE582M5e34rXlJKj+/tAgf+oYBJAY5CUxGTY9tw==}
+    peerDependencies:
+      nodemailer: 6.8.0
+    peerDependenciesMeta:
+      nodemailer:
+        optional: true
+    dependencies:
+      '@panva/hkdf': 1.0.2
+      cookie: 0.5.0
+      jose: 4.11.2
+      oauth4webapi: 2.0.6
+      preact: 10.11.3
+      preact-render-to-string: 5.2.3_preact@10.11.3
+    dev: true
+
+  /@auth/sveltekit/0.1.12_thimyv3kjqfhigbmh77wxxwk2y:
+    resolution: {integrity: sha512-nQyOXOaVRl+70XSIsgQCpU0BFkOb52DqsRmfNUOIm4/EtGTERLLsKVCRaPXXCYp6t22I2pu4E2gD79r74gPyZA==}
+    peerDependencies:
+      '@sveltejs/kit': ^1.0.0
+      svelte: ^3.54.0
+    dependencies:
+      '@auth/core': 0.2.5
+      '@sveltejs/kit': 1.0.11_svelte@3.55.1+vite@4.0.4
+      svelte: 3.55.1
+    transitivePeerDependencies:
+      - nodemailer
     dev: true
 
   /@esbuild/android-arm/0.16.17:
@@ -425,6 +458,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: true
+
+  /@panva/hkdf/1.0.2:
+    resolution: {integrity: sha512-MSAs9t3Go7GUkMhpKC44T58DJ5KGk2vBo+h1cqQeqlMfdGkxaVB78ZWpv9gYi/g2fa4sopag9gJsNvS8XGgWJA==}
     dev: true
 
   /@playwright/test/1.29.2:
@@ -1552,6 +1589,10 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
+  /jose/4.11.2:
+    resolution: {integrity: sha512-njj0VL2TsIxCtgzhO+9RRobBvws4oYyCM8TpvoUQwl/MbIM3NFJRR9+e6x0sS5xXaP1t6OCBkaBME98OV9zU5A==}
+    dev: true
+
   /js-sdsl/4.2.0:
     resolution: {integrity: sha512-dyBIzQBDkCqCu+0upx25Y2jGdbTGxE9fshMsCdK0ViOongpV+n5tXRcZY9v7CaVQ79AGS9KA1KHtojxiM7aXSQ==}
     dev: true
@@ -1759,6 +1800,10 @@ packages:
       path-key: 3.1.1
     dev: true
 
+  /oauth4webapi/2.0.6:
+    resolution: {integrity: sha512-smacvTzkfgWxXTTfjZeKeCwtiZ7/HIgM+PWcgTltAmEbfmJQRfl/nbWktA9tnzSjezvWNg9N96PJomuMi0zkxQ==}
+    dev: true
+
   /object-hash/3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
     engines: {node: '>= 6'}
@@ -1936,6 +1981,19 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
+  /preact-render-to-string/5.2.3_preact@10.11.3:
+    resolution: {integrity: sha512-aPDxUn5o3GhWdtJtW0svRC2SS/l8D9MAgo2+AWml+BhDImb27ALf04Q2d+AHqUUOc6RdSXFIBVa2gxzgMKgtZA==}
+    peerDependencies:
+      preact: '>=10'
+    dependencies:
+      preact: 10.11.3
+      pretty-format: 3.8.0
+    dev: true
+
+  /preact/10.11.3:
+    resolution: {integrity: sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==}
+    dev: true
+
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -1955,6 +2013,10 @@ packages:
     resolution: {integrity: sha512-BtRV9BcncDyI2tsuS19zzhzoxD8Dh8LiCx7j7tHzrkz8GFXAexeWFdi22mjE1d16dftH2qNaytVxqiRTGlMfpw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+    dev: true
+
+  /pretty-format/3.8.0:
+    resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
     dev: true
 
   /punycode/2.2.0:
