@@ -4,6 +4,7 @@
 	import CookieBanner from './_CookieBanner.svelte';
 	import Navbar from './_Navbar.svelte';
 	import { SvelteToast } from '@zerodevx/svelte-toast';
+	import Footer from './_Footer.svelte';
 
 	export const prerender = true;
 </script>
@@ -16,4 +17,5 @@
 		<Navbar />
 		<slot />
 	</main>
+	<Footer />
 </div>
