@@ -9,10 +9,10 @@
 	import { toastError } from '$lib/components/toast';
 
 	const { form, data, errors, isValid, isSubmitting } = createForm<z.infer<typeof signinSchema>>({
-		onSubmit: async (values) => {
+		onSubmit: async ({ email, password }) => {
 			const response = await signIn('credentials', {
-				email: values.email,
-				password: values.password,
+				email,
+				password,
 				redirect: false
 			});
 			// If the request fails, SveltekitAuth returns an object with a URL

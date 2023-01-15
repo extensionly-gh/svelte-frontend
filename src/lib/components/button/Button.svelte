@@ -27,6 +27,11 @@
 					danger: 'btn btn-error hover:bg-red-300 hover:border-red-300',
 					provider: 'btn normal-case hover:opacity-70 text-[0.95rem] w-full'
 				},
+				case: {
+					normal: 'normal-case',
+					upper: 'uppercase',
+					lower: 'lowercase'
+				},
 				provider: {
 					google: 'bg-white text-black hover:bg-white'
 				},
@@ -43,7 +48,7 @@
 					true: 'hover:-translate-y-0.5'
 				},
 				size: {
-					sm: 'btn-sm h-[1.5rem] min-h-[1.5rem]',
+					sm: 'btn-sm h-[1.5rem] min-h-[1.5rem] px-2',
 					full: 'w-full'
 				}
 			},

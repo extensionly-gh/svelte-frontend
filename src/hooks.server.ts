@@ -13,10 +13,25 @@ const setLanguage: Handle = async ({ event, resolve }) => {
 	return resolve(event)
 }
 
+declare module '@auth/core/types' {
+	interface Session {
+		user: Pick<import('@prisma/client').User, 'id' | 'name' | 'email'>;
+	}
+}
+
 const setAuth: Handle = SvelteKitAuth({
 	pages: {
 		signIn: '/',
 		error: '/'
+	},
+	session: {
+
+	},
+	callbacks: {
+		async session(params) {
+			params.session.user.id = params.token!.sub!
+			return params.session
+		}
 	},
 	// @ts-expect-error SvelteKitAuth is still in experimental
 	providers: [CredentialsProvider({
@@ -25,7 +40,6 @@ const setAuth: Handle = SvelteKitAuth({
 				where: {
 					email: cred?.email,
 				},
-				include: { Verification: { select: { type: true, isVerified: true, liftCooldownAt: true } } },
 			});
 
 			if (!user) {

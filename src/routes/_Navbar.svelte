@@ -76,11 +76,14 @@
 		data-testid="nav-right-div"
 	>
 		<div class="hidden sm:flex items-center gap-2">
-			{#if $page.data.session}
-				<Button data-testid="nav-account-btn" variants={{ intent: 'no-style' }} to="/account">
-					<Avatar name={'user.name'} size="sm" />
-				</Button>
-				<Button class="btn-circle" variants={{ intent: 'ghost' }} on:click={signOut}>
+			{#if $page.data.session?.user}
+				<div class="bg-base-200 p-2 flex items-center rounded-md gap-2">
+					<Avatar seed={$page.data.session.user?.id} size="sm" />
+					<Button variants={{ intent: 'ghost', case: 'normal', size: 'sm' }}>
+						<p class="text-sm font-semibold">{$page.data.session.user.name}</p>
+					</Button>
+				</div>
+				<Button variants={{ intent: 'ghost' }} on:click={signOut}>
 					<IconSignOut width="28px" height="28px" />
 				</Button>
 			{:else}
