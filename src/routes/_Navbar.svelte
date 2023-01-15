@@ -89,7 +89,7 @@
 			{:else}
 				<AuthDialog bind:isOpen={isDialogOpen} />
 				<Button on:click={() => (isDialogOpen = true)} variants={{ animated: true }}>
-					{$_('terms.sign-in')}
+					{$_('terms.signin')}
 				</Button>
 			{/if}
 		</div>

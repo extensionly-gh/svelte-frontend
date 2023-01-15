@@ -1,40 +1,51 @@
 {
-  "cookies-notice": {
-    "more-info": "Mais informações em",
-    "subtitle": "Usamos apenas cookies essenciais para oferecer nossos serviços.",
-    "title": "Declaração de Cookies"
-  },
-  "terms": {
-    "cookies-policy": "Política de Cookies",
-    "dismiss": "Dispensar",
-    "search": "Pesquisar atividades",
-    "sign-in": "Entrar",
-    "sign-up": "Cadastrar",
-    "email": "E-mail"
-  },
-  "pages": {
-    "home": {
-      "title-1": "Ações de extensão",
-      "title-2": "na palma da sua mão",
-      "subtitle": "Se inscreva em eventos, palestras, workshops, projetos e programas de extensão ofertados pela sua universidade. Crie e submeta propostas de novas ações de extensão diretamente pela plataforma.",
-      "signup-now": "Crie sua conta agora!",
-      "browse-activities": "Descubra atividades"
-    }
-  },
-  "dialog": {
-    "signin": {
-      "title": "Entre ou crie uma conta",
-      "description": "Por favor, escolha um provedor para entrar ou digite seu e-mail e senha.",
-      "or-continue": "ou continue com",
-      "email-placeholder": "Seu endereço de e-mail",
-      "email-label": "Endereço de e-mail",
-      "password-label": "Senha",
-      "password-placeholder": "Sua senha"
-    }
-  },
-  "validations": {
-    "email": {
-      "invalid": "O endereço de e-mail parece inválido"
-    }
-  }
+	"cookies-notice": {
+		"more-info": "Mais informações em",
+		"subtitle": "Usamos apenas cookies essenciais para oferecer nossos serviços.",
+		"title": "Declaração de Cookies"
+	},
+	"terms": {
+		"cookies-policy": "Política de Cookies",
+		"dismiss": "Dispensar",
+		"search": "Pesquisar atividades",
+		"email": "E-mail",
+		"signin": "Entrar",
+		"signup": "Cadastrar",
+		"forgotpw": "Enviar instruções"
+	},
+	"pages": {
+		"home": {
+			"title-1": "Ações de extensão",
+			"title-2": "na palma da sua mão",
+			"subtitle": "Se inscreva em eventos, palestras, workshops, projetos e programas de extensão ofertados pela sua universidade. Crie e submeta propostas de novas ações de extensão diretamente pela plataforma.",
+			"signup-now": "Crie sua conta agora!",
+			"browse-activities": "Descubra atividades"
+		}
+	},
+	"dialog": {
+		"auth": {
+			"content": {
+				"forgotpw-btn": "Voltar para fazer login",
+				"signin-btn": "Não tem uma conta? Cadastre-se",
+				"signup-btn": "Já tem uma conta? Entrar"
+			},
+			"description": "Por favor, escolha um provedor para entrar ou digite seu e-mail e senha.",
+			"email-label": "Endereço de e-mail",
+			"email-placeholder": "Seu endereço de e-mail",
+			"forgot-password": "Esqueceu sua senha?",
+			"or-continue": "ou continue com",
+			"password-label": "Senha",
+			"password-placeholder": "Sua senha",
+			"title": "Entre ou crie uma conta"
+		}
+	},
+	"validations": {
+		"email": {
+			"invalid": "O endereço de e-mail parece inválido"
+		},
+		"password": {
+			"min": "Deve ter pelo menos 8 caracteres",
+			"mismatch": "As senhas não conferem"
+		}
+	}
 }

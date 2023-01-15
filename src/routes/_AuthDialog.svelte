@@ -1,58 +1,67 @@
 <script lang="ts">
-	import { Button, Dialog, TextInput } from '$lib/components';
-	import { signinSchema } from '$lib/schemas';
+	import { Button, Dialog } from '$lib/components';
 	import { _ } from 'svelte-i18n';
-	import type { z } from 'zod';
-	import { createForm } from 'felte';
-	import { validateSchema } from '@felte/validator-zod';
 	import IconGoogle from '~icons/logos/google-icon';
+	import SigninForm from './_SigninForm.svelte';
+	import SignupForm from './_SignupForm.svelte';
+	import ForgotpwForm from './_ForgotpwForm.svelte';
 
 	export let isOpen = false;
 
-	const { form, data, errors, isValid } = createForm<z.infer<typeof signinSchema>>({
-		validate: validateSchema(signinSchema)
-	});
+	let authContext: 'signin' | 'signup' | 'forgotpw' = 'signin';
+	$: providerBtnString = authContext === 'signup' ? 'signup' : 'signin';
+
+	function handleSwitchContext() {
+		switch (authContext) {
+			case 'signin':
+				authContext = 'signup';
+				break;
+			case 'signup':
+				authContext = 'signin';
+				break;
+			case 'forgotpw':
+				authContext = 'signin';
+				break;
+		}
+	}
 </script>
 
 <Dialog
 	size="xs"
-	description={$_('dialog.signin.description')}
-	title={$_('dialog.signin.title')}
+	description={$_('dialog.auth.description')}
+	title={$_('dialog.auth.title')}
 	bind:isOpen
 >
-	<div class="px-2 flex justify-center items-center flex-col my-4">
+	<div class="px-2 flex justify-center items-center flex-col my-2">
 		<Button variants={{ intent: 'provider', provider: 'google' }}>
 			<IconGoogle width="18px" height="18px" />
-			<p class="flex-1">Sign in with Google</p>
+			<p class="flex-1">{$_(`terms.${providerBtnString}`)} with Google</p>
 		</Button>
 		<div class="relative flex py-4 items-center w-full">
 			<div class="flex-grow border-t border-base-content" />
-			<span class="flex-shrink mx-4 text-sm text-base-content"
-				>{$_('dialog.signin.or-continue')}</span
+			<span class="flex-shrink mx-4 text-sm text-base-content">{$_('dialog.auth.or-continue')}</span
 			>
 			<div class="flex-grow border-t border-base-content" />
 		</div>
-		<form use:form class="w-full">
-			<TextInput
-				error={$errors.email?.[0]}
-				id="email"
-				label={$_('dialog.signin.email-label')}
-				placeholder={$_('dialog.signin.email-placeholder')}
-				type="email"
-			/>
-			<TextInput
-				id="password"
-				label={$_('dialog.signin.password-label')}
-				placeholder={$_('dialog.signin.password-placeholder')}
-				type="password"
-			/>
-			<Button
-				variants={{ intent: 'primary', size: 'full' }}
-				disabled={!$isValid || $data.password == ''}
-				type="submit"
-			>
-				{$_('terms.sign-in')}
+		{#if authContext == 'signin'}
+			<SigninForm />
+		{:else if authContext == 'signup'}
+			<SignupForm />
+		{:else if authContext == 'forgotpw'}
+			<ForgotpwForm />
+		{/if}
+		<div class="flex flex-col gap-3 my-4 items-center justify-center">
+			<Button on:click={handleSwitchContext} variants={{ intent: 'text-base', size: 'sm' }}>
+				{$_(`dialog.auth.content.${authContext}-btn`)}
 			</Button>
-		</form>
+			{#if authContext == 'signin'}
+				<Button
+					on:click={() => (authContext = 'forgotpw')}
+					variants={{ intent: 'text-base', size: 'sm' }}
+				>
+					{$_('dialog.auth.forgot-password')}
+				</Button>
+			{/if}
+		</div>
 	</div>
 </Dialog>

@@ -33,7 +33,9 @@
 		name={id}
 		{...$$restProps}
 	/>
-	<span class="text-error text-xs mt-1 h-2" data-testid={`${id}-error`}>
-		{error ? $_(error) : ' '}
-	</span>
+	{#if !!error}
+		<span class="text-error text-xs my-2 h-2" data-testid={`${id}-error`}>
+			{$_(error)}
+		</span>
+	{/if}
 </label>

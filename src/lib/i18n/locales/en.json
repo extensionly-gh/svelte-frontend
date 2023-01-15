@@ -1,40 +1,52 @@
 {
-  "cookies-notice": {
-    "more-info": "More info at",
-    "subtitle": "We only use essential cookies to provide our services.",
-    "title": "Cookies Notice"
-  },
-  "terms": {
-    "cookies-policy": "Cookies Policy",
-    "dismiss": "Dismiss",
-    "search": "Search for activities",
-    "sign-in": "Sign in",
-    "sign-up": "Sign up",
-    "email": "E-mail"
-  },
-  "pages": {
-    "home": {
-      "title-1": "Extension actions",
-      "title-2": "in the palm of your hands",
-      "subtitle": "Sign up for events, lectures, workshops, outreach projects and programs offered by your university. Create and submit proposals for new extension actions directly through the platform.",
-      "signup-now": "Create your account now!",
-      "browse-activities": "Browse activities"
-    }
-  },
-  "dialog": {
-    "signin": {
-      "title": "Log in or create an account",
-      "description": "Please choose a provider to sign in, or enter your email and password.",
-      "or-continue": "or continue with",
-      "email-placeholder": "Your e-mail address",
-      "email-label": "E-mail address",
-      "password-label": "Password",
-      "password-placeholder": "Your password"
-    }
-  },
-  "validations": {
-    "email": {
-      "invalid": "Email address looks invalid"
-    }
-  }
+	"cookies-notice": {
+		"more-info": "More info at",
+		"subtitle": "We only use essential cookies to provide our services.",
+		"title": "Cookies Notice"
+	},
+	"terms": {
+		"cookies-policy": "Cookies Policy",
+		"dismiss": "Dismiss",
+		"search": "Search for activities",
+		"email": "E-mail",
+		"signin": "Sign in",
+		"signup": "Sign up",
+		"forgotpw": "Send instructions"
+	},
+	"pages": {
+		"home": {
+			"title-1": "Extension actions",
+			"title-2": "in the palm of your hands",
+			"subtitle": "Sign up for events, lectures, workshops, outreach projects and programs offered by your university. Create and submit proposals for new extension actions directly through the platform.",
+			"signup-now": "Create your account now!",
+			"browse-activities": "Browse activities"
+		}
+	},
+	"dialog": {
+		"auth": {
+			"content": {
+				"forgotpw-btn": "Go back to sign in",
+				"signin-btn": "Don't have an account? Sign up",
+				"signup-btn": "Already have an account? Sign in"
+			},
+			"cpassword-label": "Confirm password",
+			"description": "Please choose a provider to sign in, or enter your email and password.",
+			"email-label": "E-mail address",
+			"email-placeholder": "Your e-mail address",
+			"forgot-password": "Forgot your password?",
+			"or-continue": "or continue with",
+			"password-label": "Password",
+			"password-placeholder": "Your password",
+			"title": "Log in or create an account"
+		}
+	},
+	"validations": {
+		"email": {
+			"invalid": "E-mail address looks invalid"
+		},
+		"password": {
+			"min": "Must be at least 8 characters",
+			"mismatch": "Passwords do not match"
+		}
+	}
 }
