@@ -79,7 +79,7 @@
 		<div class="hidden sm:flex items-center gap-2">
 			{#if $page.data.session?.user}
 				<div class="bg-base-200 p-2 flex items-center rounded-md gap-2">
-					<Avatar seed={$page.data.session.user?.id} size="sm" />
+					<Avatar name={$page.data.session.user?.name} size="sm" />
 					<Menu
 						trigger={$page.data.session.user.name}
 						items={[
