@@ -4,6 +4,7 @@ import { SvelteKitAuth } from '@auth/sveltekit'
 import CredentialsProvider from '@auth/core/providers/credentials'
 import { sequence } from '@sveltejs/kit/hooks'
 import { prisma } from '$lib/server/singletons'
+import { comparePassword } from '$lib/server/utils'
 
 const setLanguage: Handle = async ({ event, resolve }) => {
 	const lang = event.request.headers.get('accept-language')?.split(',')[0]
@@ -24,11 +25,9 @@ const setAuth: Handle = SvelteKitAuth({
 		signIn: '/',
 		error: '/'
 	},
-	session: {
-
-	},
 	callbacks: {
 		async session(params) {
+			// Add user id to session object which is sent to the client
 			params.session.user.id = params.token!.sub!
 			return params.session
 		}
@@ -42,7 +41,7 @@ const setAuth: Handle = SvelteKitAuth({
 				},
 			});
 
-			if (!user) {
+			if (!user || !(await comparePassword(cred!.password, user.password))) {
 				throw new Error('exceptions.users.user-not-found');
 			}
 
