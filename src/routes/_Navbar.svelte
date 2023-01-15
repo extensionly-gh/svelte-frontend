@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { Avatar, Button, Dialog, Menu } from '$lib/components';
+	import { Avatar, Button, Menu } from '$lib/components';
 	import { _ } from 'svelte-i18n';
 	import IconHouse from '~icons/ph/house-fill';
 	import IconBackspace from '~icons/ph/backspace';
 	import IconSignOut from '~icons/ph/sign-out';
+	import IconUser from '~icons/ph/user';
 	import { authDialog } from '$lib/stores';
 	import { signOut } from '@auth/sveltekit/client';
 
@@ -79,13 +80,14 @@
 			{#if $page.data.session?.user}
 				<div class="bg-base-200 p-2 flex items-center rounded-md gap-2">
 					<Avatar seed={$page.data.session.user?.id} size="sm" />
-					<Button variants={{ intent: 'ghost', case: 'normal', size: 'sm' }}>
-						<p class="text-sm font-semibold">{$page.data.session.user.name}</p>
-					</Button>
+					<Menu
+						trigger={$page.data.session.user.name}
+						items={[
+							{ text: 'Account Settings', icon: IconUser, to: '/account' },
+							{ text: 'Sign Out', classes: 'text-error', action: signOut, icon: IconSignOut }
+						]}
+					/>
 				</div>
-				<Button variants={{ intent: 'ghost' }} on:click={signOut}>
-					<IconSignOut width="28px" height="28px" />
-				</Button>
 			{:else}
 				<Button
 					on:click={() => authDialog.update(() => ({ isOpen: true }))}
