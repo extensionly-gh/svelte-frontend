@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Button } from '$lib/components';
 	import { _ } from 'svelte-i18n';
+	import { authDialog } from '$lib/stores';
 </script>
 
 <img
@@ -18,7 +19,9 @@
 		</h1>
 		<p class="my-8 sm:mb-12 text-xl max-w-4xl">{$_('pages.home.subtitle')}</p>
 		<div class="flex gap-2 flex-col sm:flex-row">
-			<Button to={'/signup'}>{$_('pages.home.signup-now')}</Button>
+			<Button on:click={() => authDialog.update(() => ({ isOpen: true, context: 'signup' }))}
+				>{$_('pages.home.signup-now')}</Button
+			>
 			<Button variants={{ intent: 'secondary' }} to={'/activities'}>
 				{$_('pages.home.browse-activities')}
 			</Button>

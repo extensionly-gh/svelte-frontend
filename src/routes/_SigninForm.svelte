@@ -11,7 +11,7 @@
 	});
 </script>
 
-<form use:form class="flex flex-col w-full gap-1">
+<form use:form class="flex flex-col w-full gap-4">
 	<TextInput
 		error={$errors.email?.[0]}
 		id="email"
