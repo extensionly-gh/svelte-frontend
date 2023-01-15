@@ -7,6 +7,7 @@
 	import IconBackspace from '~icons/ph/backspace';
 	import IconSignOut from '~icons/ph/sign-out';
 	import { authDialog } from '$lib/stores';
+	import { signOut } from '@auth/sveltekit/client';
 
 	let searchQuery: string = $page.url.searchParams.get('q') || '';
 	let searchInput: HTMLInputElement | null = null;
@@ -26,8 +27,6 @@
 			goto(`/activities?q=${searchQuery}`);
 		}, 250);
 	};
-
-	function handleSignOut() {}
 </script>
 
 <div
@@ -77,11 +76,11 @@
 		data-testid="nav-right-div"
 	>
 		<div class="hidden sm:flex items-center gap-2">
-			{#if user}
+			{#if $page.data.session}
 				<Button data-testid="nav-account-btn" variants={{ intent: 'no-style' }} to="/account">
 					<Avatar name={'user.name'} size="sm" />
 				</Button>
-				<Button class="btn-circle" variants={{ intent: 'ghost' }} on:click={handleSignOut}>
+				<Button class="btn-circle" variants={{ intent: 'ghost' }} on:click={signOut}>
 					<IconSignOut width="28px" height="28px" />
 				</Button>
 			{:else}

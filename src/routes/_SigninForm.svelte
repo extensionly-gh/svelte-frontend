@@ -5,8 +5,24 @@
 	import { createForm } from 'felte';
 	import { validateSchema } from '@felte/validator-zod';
 	import { Button, TextInput } from '$lib/components';
+	import { signIn } from '@auth/sveltekit/client';
+	import { toastError } from '$lib/components/toast';
 
-	const { form, data, errors, isValid } = createForm<z.infer<typeof signinSchema>>({
+	const { form, data, errors, isValid, isSubmitting } = createForm<z.infer<typeof signinSchema>>({
+		onSubmit: async (values) => {
+			const response = await signIn('credentials', {
+				email: values.email,
+				password: values.password,
+				redirect: false
+			});
+			// If the request fails, SveltekitAuth returns an object with a URL
+			// which has the error thrown as a query parameter.
+			try {
+				const { url } = await response?.json();
+				const errorMessage = url?.split('error=')[1];
+				toastError($_(errorMessage));
+			} catch (e) {}
+		},
 		validate: validateSchema(signinSchema)
 	});
 </script>
@@ -28,6 +44,7 @@
 	<Button
 		variants={{ intent: 'primary', size: 'full' }}
 		disabled={!$isValid || $data.password == ''}
+		isLoading={$isSubmitting}
 		type="submit"
 	>
 		{$_('terms.signin')}

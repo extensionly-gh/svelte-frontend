@@ -1,0 +1,197 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity", "fullTextSearch", "fullTextIndex"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+// TODO: [EX-63] Make some fields optional so accept pre-registrations
+model User {
+  id                String            @id @default(uuid())
+  name              String
+  email             String            @unique
+  password          String
+  phone             String            @unique
+  isPreRegistration Boolean           @default(false) // When the user gets invited to be an instructor but do not have registration on the tool 
+  role              Role              @default(USER)
+  isTermsAccepted   Boolean           @default(false)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  Verification      Verification[]
+  UserEnrollments   UserEnrollments[]
+  Activity          Activity[]
+  UserInstructor    UserInstructor[]
+
+  @@fulltext([name])
+}
+
+model Verification {
+  id             String           @id @default(uuid())
+  user           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId         String
+  token          String?
+  type           VerificationType
+  isVerified     Boolean          @default(false)
+  liftCooldownAt DateTime
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  @@index([userId])
+}
+
+model UserEnrollments {
+  id         String           @id @default(uuid())
+  User       User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  Activity   Activity         @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  activityId String
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+  status     EnrollmentStatus @default(CREATED)
+
+  @@index([userId])
+  @@index([activityId])
+}
+
+model Program {
+  id         String          @id @unique @default(uuid())
+  name       String
+  faculty    String
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+  visibility EventVisibility @default(PUBLIC)
+  Project    Project[]
+}
+
+model Project {
+  id                      String          @id @unique @default(uuid())
+  name                    String
+  programId               String?
+  faculty                 String
+  acceptStudentsProposals Boolean
+  createdAt               DateTime        @default(now())
+  updatedAt               DateTime        @updatedAt
+  visibility              EventVisibility @default(PUBLIC)
+  Activity                Activity[]
+  Program                 Program?        @relation(fields: [programId], references: [id])
+
+  @@index([programId])
+}
+
+model Activity {
+  id              String            @id @default(uuid())
+  title           String
+  description     String
+  category        String?
+  location        String?
+  prerequisites   String?
+  startDate       DateTime
+  endDate         DateTime
+  enrollmentStart DateTime
+  enrollmentEnd   DateTime
+  contact         String?
+  faculty         String
+  targetAudience  TargetAudience
+  visibility      EventVisibility
+  status          ActivityStatus    @default(CREATED)
+  modality        Modality?         @default(REMOTE)
+  proponentId     String
+  projectId       String
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  UserEnrollments UserEnrollments[]
+  SubActivity     SubActivity[]
+  User            User              @relation(fields: [proponentId], references: [id])
+  Project         Project           @relation(fields: [projectId], references: [id])
+
+  @@index([proponentId])
+  @@index([projectId])
+  @@fulltext([title])
+  @@fulltext([description])
+  @@fulltext([location])
+  @@fulltext([title, description])
+  @@fulltext([title, location])
+  @@fulltext([location, description])
+  @@fulltext([title, location, description])
+}
+
+model SubActivity {
+  id             String           @id @unique @default(uuid())
+  name           String
+  description    String
+  startDate      DateTime
+  endDate        DateTime
+  location       String
+  visibility     EventVisibility  @default(PUBLIC)
+  modality       Modality         @default(REMOTE)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  activityId     String
+  Activity       Activity         @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  UserInstructor UserInstructor[]
+
+  @@index([activityId])
+}
+
+model UserInstructor {
+  id               String                   @id @unique @default(uuid())
+  userId           String
+  subActivityId    String
+  createdAt        DateTime                 @default(now())
+  updatedAt        DateTime                 @updatedAt
+  invitationStatus StructorInvitationStatus @default(INVITED)
+  User             User                     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  SubActivity      SubActivity              @relation(fields: [subActivityId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([subActivityId])
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum VerificationType {
+  VALIDATE_EMAIL
+  VALIDATE_PHONE
+  RESET_PASSWORD
+}
+
+enum EnrollmentStatus {
+  CREATED
+  ACCEPTED
+}
+
+enum ActivityStatus {
+  CREATED
+  ACCEPTED
+  REJECTED
+}
+
+enum StructorInvitationStatus {
+  INVITED // When the user already have registration on the tool
+  PRE_REGISTRATION // When we create a simple registration, just with the email, waiting for them to join in the tool to complete it.
+  ACCEPTED
+}
+
+enum TargetAudience {
+  STUDENT
+  PROFESSOR
+  ADMINISTRATIVE_TECHNICIAN
+  EXTERNAL
+}
+
+enum Modality {
+  PRESENTIAL
+  REMOTE
+}
+
+enum EventVisibility {
+  PUBLIC // For all institutions to see
+  PRIVATE // Just for the creator institution
+}
