@@ -3,6 +3,7 @@
 	import { _ } from 'svelte-i18n';
 	import { authDialog } from '$lib/stores';
 	import { page } from '$app/stores';
+	import AuthDialog from './_AuthDialog.svelte';
 </script>
 
 <img
@@ -31,3 +32,4 @@
 		</div>
 	</div>
 </div>
+<AuthDialog />
