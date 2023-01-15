@@ -13,7 +13,13 @@
     "signup": "Sign up",
     "forgotpw": "Send instructions",
     "privacy-policy": "Privacy Policy",
-    "terms-and-conditions": "Terms and Conditions"
+    "terms-and-conditions": "Terms and Conditions",
+    "light": "Light",
+    "dark": "Dark",
+    "theme": "Theme",
+    "language": "Language",
+    "signout": "Sign Out",
+    "my-account": "My account"
   },
   "pages": {
     "home": {

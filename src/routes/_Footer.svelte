@@ -1,6 +1,10 @@
 <script lang="ts">
-	import { Button } from '$lib/components';
-	import { _ } from 'svelte-i18n';
+	import { Button, Menu } from '$lib/components';
+	import { _, locale } from 'svelte-i18n';
+	import IconSun from '~icons/ph/sun';
+	import IconMoon from '~icons/ph/moon';
+	import IconBrazil from '~icons/twemoji/flag-brazil';
+	import IconUnitedStates from '~icons/twemoji/flag-united-states';
 </script>
 
 <footer
@@ -45,12 +49,24 @@
 		</div>
 	</div>
 	<div
-		class="bg-base-300 brightness-[.7] bg-opacity-30 flex flex-col sm:flex-row justify-center sm:justify-evenly items-center p-2 px-4 gap-4"
+		class="bg-base-300 bg-opacity-30 flex flex-col sm:flex-row justify-center sm:justify-evenly items-center p-2 px-4 gap-4"
 	>
 		<span class="text-sm text-center">{$_('footer.reserved')}</span>
 		<div class="flex gap-6">
-			<!-- <LanguageSwitch />
-			<ThemeSwitch /> -->
+			<Menu
+				trigger={$_('terms.language')}
+				items={[
+					{ text: 'Português', icon: IconBrazil, action: () => locale.set('pt-BR') },
+					{ text: 'English', icon: IconUnitedStates, action: () => locale.set('en') }
+				]}
+			/>
+			<Menu
+				trigger={$_('terms.theme')}
+				items={[
+					{ text: $_('terms.light'), icon: IconSun },
+					{ text: $_('terms.dark'), icon: IconMoon }
+				]}
+			/>
 		</div>
 	</div>
 </footer>

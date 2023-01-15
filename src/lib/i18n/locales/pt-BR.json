@@ -13,7 +13,13 @@
     "signup": "Cadastrar",
     "forgotpw": "Enviar instruções",
     "privacy-policy": "Política de Privacidade",
-    "terms-and-conditions": "Termos e Condições"
+    "terms-and-conditions": "Termos e Condições",
+    "light": "Claro",
+    "dark": "Escuro",
+    "theme": "Tema",
+    "language": "Idioma",
+    "signout": "Sair",
+    "my-account": "Minha conta"
   },
   "pages": {
     "home": {

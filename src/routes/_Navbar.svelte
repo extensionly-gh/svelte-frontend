@@ -83,8 +83,13 @@
 					<Menu
 						trigger={$page.data.session.user.name}
 						items={[
-							{ text: 'Account Settings', icon: IconUser, to: '/account' },
-							{ text: 'Sign Out', classes: 'text-error', action: signOut, icon: IconSignOut }
+							{ text: $_('terms.my-account'), icon: IconUser, to: '/account' },
+							{
+								text: $_('terms.signout'),
+								classes: 'text-error',
+								action: signOut,
+								icon: IconSignOut
+							}
 						]}
 					/>
 				</div>
