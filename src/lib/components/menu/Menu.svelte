@@ -16,7 +16,7 @@
 <Menu class="relative">
 	<MenuButton>
 		<Button variants={{ intent: 'ghost', case: 'normal', size: 'sm' }}>
-			<p class="text-sm font-semibold">{trigger}</p>
+			<p class="text-sm font-semibold truncate max-w-[7rem]">{trigger}</p>
 			<IconArrowDown width="20px" height="20px" />
 		</Button>
 	</MenuButton>
@@ -30,9 +30,9 @@
 				<Button
 					class="p-2 items-center justify-center whitespace-nowrap font-semibold text-sm"
 					variants={{ intent: 'no-style' }}
-					to={item.to}
+					to={item.to ?? ''}
 					on:click={() => {
-						if (item.action && !item.to) {
+						if (item.action) {
 							item.action();
 						}
 					}}
