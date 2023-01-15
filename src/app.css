@@ -20,6 +20,47 @@
   #theme-container {
     flex-grow: 1;
   }
+
+  /* svelte-toast */
+  progress {
+    --toastBarHeight: 4px;
+  }
+}
+
+@layer components {
+  /* svelte-toast */
+  .toast-success {
+    --toastBackground: rgb(7, 188, 12);
+    --toastBarBackground: rgb(181, 235, 183);
+  }
+  .toast-success-dark {
+    --toastBackground: rgb(7, 188, 12, 0.6);
+    --toastBarBackground: rgb(181, 235, 183, 0.6);
+  }
+  .toast-info {
+    --toastBackground: rgb(52, 152, 219);
+    --toastBarBackground: rgb(194, 224, 244);
+  }
+  .toast-info-dark {
+    --toastBackground: rgba(52, 152, 219, 0.6);
+    --toastBarBackground: rgba(194, 224, 244, 0.6);
+  }
+  .toast-warning {
+    --toastBackground: rgb(241, 196, 15);
+    --toastBarBackground: rgb(251, 237, 183);
+  }
+  .toast-warning-dark {
+    --toastBackground: rgba(241, 196, 15, 0.6);
+    --toastBarBackground: rgba(251, 237, 183, 0.6);
+  }
+  .toast-error {
+    --toastBackground: rgb(231, 76, 60);
+    --toastBarBackground: rgb(248, 202, 197);
+  }
+  .toast-error-dark {
+    --toastBackground: rgba(231, 76, 60, 0.6);
+    --toastBarBackground: rgb(248, 202, 197, 0.6);
+  }
 }
 
 * {
@@ -38,35 +79,3 @@
 *::-webkit-scrollbar-thumb {
   background-color: hsl(var(--p));
 }
-
-/* #__next {
-  @apply flex flex-col h-[100vh]
-}
-
-.Toastify__toast-theme--colored {
-  @apply dark:text-[#e8e6e3]
-}
-
-.Toastify__progress-bar-theme--colored.Toastify__progress-bar--error, .Toastify__progress-bar-theme--colored.Toastify__progress-bar--info, .Toastify__progress-bar-theme--colored.Toastify__progress-bar--success, .Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning {
-  @apply dark:bg-[#181a1b]/50
-}
-
-.Toastify__toast-theme--colored.Toastify__toast--warning {
-  @apply dark:bg-[#907508]
-}
-
-.Toastify__toast-theme--colored.Toastify__toast--error {
-  @apply dark:bg-[#a22114]
-}
-
-.Toastify__toast-theme--colored.Toastify__toast--success {
-  @apply dark:bg-[#06960a]
-}
-
-.Toastify__toast-theme--colored.Toastify__toast--info {
-  @apply dark:bg-[#1d6fa5]
-}
-
-.Toastify__toast-theme--colored.Toastify__toast--default {
-  @apply dark:bg-[#181a1b]
-} */
