@@ -26,7 +26,8 @@
 					>{$_('pages.home.signup-now')}</Button
 				>
 			{/if}
-			<Button variants={{ intent: 'secondary' }} to={'/activities'}>
+			<!-- <Button variants={{ intent: 'secondary' }} to={'/activities'}> -->
+			<Button variants={{ intent: 'secondary' }} to={'/'}>
 				{$_('pages.home.browse-activities')}
 			</Button>
 		</div>

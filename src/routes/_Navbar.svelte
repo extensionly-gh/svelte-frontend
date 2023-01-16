@@ -25,7 +25,7 @@
 		clearTimeout(debounceTimer);
 		debounceTimer = setTimeout(() => {
 			searchQuery = v;
-			goto(`/activities?q=${searchQuery}`);
+			// goto(`/activities?q=${searchQuery}`);
 		}, 250);
 	};
 </script>
