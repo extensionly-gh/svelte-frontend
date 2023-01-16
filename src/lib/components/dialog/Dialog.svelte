@@ -5,12 +5,14 @@
 		DialogTitle,
 		DialogDescription
 	} from '@rgossiaux/svelte-headlessui';
+	import { createEventDispatcher } from 'svelte';
 	import IconX from '~icons/ph/x';
 
 	export let isOpen = false;
 	export let title: string;
 	export let description: string;
 	export let size: 'xs' | 'sm' | 'md' | 'lg' = 'sm';
+	export let close: () => void;
 
 	const sizes = {
 		xs: '20rem',
@@ -20,7 +22,7 @@
 	};
 </script>
 
-<Dialog open={isOpen} on:close={() => (isOpen = false)}>
+<Dialog open={isOpen} on:close={() => close()}>
 	<DialogOverlay class="fixed animate-slide-down inset-0 z-20 bg-black/70" />
 
 	<div
@@ -30,10 +32,7 @@
 	>
 		<div class="flex justify-between mb-4">
 			<div class="flex-1" />
-			<button
-				on:click={() => (isOpen = false)}
-				class="brightness-75  hover:brightness-100 transition-all"
-			>
+			<button on:click={() => close()} class="brightness-75  hover:brightness-100 transition-all">
 				<IconX width="28px" height="28px" />
 			</button>
 		</div>

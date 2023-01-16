@@ -1,0 +1,93 @@
+{
+	"cookiep": {
+		"intro": {
+			"title": "Política de Cookies",
+			"last-updated": "Última atualização: 13 de novembro de 2022",
+			"par-1": "Esta política de Cookies explica o que são Cookies e como Nós os usamos. Você deve ler esta política para entender que tipo de Cookies usamos ou as informações que coletamos usando Cookies e como essas informações são usadas.",
+			"par-2": "Os Cookies normalmente não contêm nenhuma informação que identifique pessoalmente um usuário e nenhuma informação pessoal que armazenamos sobre Você está vinculada às informações armazenadas e obtidas de Cookies. Para obter mais informações sobre como usamos, armazenamos e mantemos seus dados pessoais seguros, consulte nossa Política de Privacidade.",
+			"par-3": "Não armazenamos informações pessoais sensíveis, como endereços de email, senhas de conta etc. nos Cookies que Nós usamos. A única informação que armazenamos nos Cookies que usamos é a sua permissão de acesso temporário, encriptada e com expiração de rápida, para usar a plataforma sem fazer login após atualizar a página."
+		},
+		"interpretation": {
+			"title": "Interpretação e Definições",
+			"subtitle": "Interpretação",
+			"description": "As palavras das quais a letra inicial é capitalizada têm significados definidos nas seguintes condições. As seguintes definições devem ter o mesmo significado, independentemente de aparecer no singular ou no plural.",
+			"definitions": {
+				"title": "Definições",
+				"description": "Para os propósitos desta Política de Cookies:",
+				"li-1": {
+					"bold": "Empresa",
+					"text": "(referido como qualquer \"a Empresa\", \"Nós\", or \"Nossa\" nesta Política de Cookies) refere-se à Extensionly, Av. Tiaraju, 810 - Ibirapuitã, Alegrete - RS, 97546-550"
+				},
+				"li-2": {
+					"bold": "Cookies",
+					"text": "significa pequenos arquivos que são colocados no seu computador, dispositivo móvel ou qualquer outro dispositivo por um site, contendo detalhes do Seu histórico de navegação nesse site entre seus muitos usos."
+				},
+				"li-3": {
+					"bold": "Website",
+					"text": "refere-se à Extensionly, acessível em",
+					"link": "https://extensionly.app"
+				},
+				"li-4": {
+					"bold": "Você",
+					"text": "significa o indivíduo acessando ou usando o site, ou uma empresa ou qualquer entidade legal em nome do qual esse indivíduo está acessando ou usando o site, conforme aplicável."
+				}
+			}
+		},
+		"use-of-cookies": {
+			"title": "O Uso dos Cookies",
+			"type-of-cookies": {
+				"subtitle": "Tipos de Cookies que Nós usamos",
+				"description": {
+					"par-1": "Cookies podem ser \"Persistentes\" ou de \"Sessão\". Os Cookies persistentes permanecem no seu computador pessoal ou dispositivo móvel quando você fica offline, enquanto os Cookies de Sessão são excluídos assim que Você fecha o navegador da web ou depois de alguns dias.",
+					"par-2": "Usamos apenas Cookies de sessão para os propósitos definidos abaixo:"
+				},
+				"li-1": {
+					"bold": "Cookies Necessários / Essenciais",
+					"type": "Tipo: Cookies de Sessão",
+					"administered-by": "Administrado por: Nós",
+					"purpose": "Objetivo: Esses Cookies são essenciais para fornecer serviços disponíveis no site e permitir que você use alguns de seus recursos. Eles ajudam a autenticar usuários e impedir o uso fraudulento das contas de usuário. Sem esses Cookies, os serviços que você pediu não podem ser fornecidos e usamos apenas esses cookies para fornecer esses serviços."
+				}
+			},
+			"your-choices": {
+				"subtitle": "Suas escolhas sobre Cookies",
+				"description": {
+					"par-1": "Se Você preferir evitar o uso de Cookies no site, primeiro Você deve desativar o uso de cookies no navegador e excluir os Cookies salvos no seu navegador associados a este site. Você pode usar esta opção para impedir o uso de cookies a qualquer momento.",
+					"par-2": "Se Você não aceitar nossos Cookies, poderá experimentar algum inconveniente no uso do site e alguns recursos podem não funcionar corretamente.",
+					"par-3": "Se Você quiser excluir Cookies ou instruir seu navegador da web a excluir ou recusar Cookies, visite as páginas de ajuda do seu navegador da web."
+				},
+				"li-1": {
+					"text": "Para o navegador da Web Chrome, visite esta página do Google:",
+					"link": "https://support.google.com/accounts/answer/32050?hl=pt-BR"
+				},
+				"li-2": {
+					"text": "Para o navegador da Web Internet Explorer, visite esta página da Microsoft:",
+					"link": "https://support.microsoft.com/pt-br/topic/como-excluir-arquivos-de-cookie-no-internet-explorer-bca9446f-d873-78de-77ba-d42645fa52fc"
+				},
+				"li-3": {
+					"text": "Para o navegador da Web do Firefox, visite esta página de Mozilla:",
+					"link": "https://support.mozilla.org/pt-BR/kb/delete-cookies-remove-info-websites-stored"
+				},
+				"li-4": {
+					"text": "Para o navegador da Web Safari, visite esta página da Apple:",
+					"link": "https://support.apple.com/pt-br/guide/safari/sfri11471/mac"
+				},
+				"footer": "Para qualquer outro navegador da web, visite as páginas oficiais do seu navegador da web."
+			}
+		},
+		"more-info": {
+			"subtitle": "Mais informações sobre Cookies",
+			"description": "Você pode aprender mais sobre Cookies:",
+			"link-text": "O que são Cookies?",
+			"link": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies"
+		},
+		"contact": {
+			"title": "Contate-nos",
+			"description": "Se você tiver alguma dúvida sobre esta política de Cookies, Você pode entrar em contato Conosco:",
+			"li-1": {
+				"text": "Por email:",
+				"link-text": "cookies@extensionly.app",
+				"link": "mailto:cookies@extensionly.app"
+			}
+		}
+	}
+}

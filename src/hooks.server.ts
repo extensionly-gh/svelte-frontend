@@ -7,7 +7,7 @@ import { prisma } from '$lib/server/singletons'
 import { comparePassword } from '$lib/server/utils'
 
 const setLanguage: Handle = async ({ event, resolve }) => {
-	const lang = event.request.headers.get('accept-language')?.split(',')[0]
+	const lang = event.cookies.get('lang')
 	if (lang) {
 		locale.set(lang)
 	}

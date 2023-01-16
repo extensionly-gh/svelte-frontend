@@ -3,16 +3,16 @@
 	import { onMount } from 'svelte';
 	import { _ } from 'svelte-i18n';
 
-	const LS_COOKIE_NOTICE = '@extensionly:cookieNotice-1.0.0';
+	const LS_COOKIE_CONSENT = '@extensionly:cookie-consent-1.0.0';
 	let shouldShowBanner = false;
 
 	function handleDismissBanner() {
-		localStorage.setItem(LS_COOKIE_NOTICE, 'DISMISSED');
+		localStorage.setItem(LS_COOKIE_CONSENT, 'true');
 		shouldShowBanner = false;
 	}
 
 	onMount(() => {
-		const cookieNotice = localStorage.getItem(LS_COOKIE_NOTICE);
+		const cookieNotice = localStorage.getItem(LS_COOKIE_CONSENT);
 		if (!cookieNotice) {
 			shouldShowBanner = true;
 		}

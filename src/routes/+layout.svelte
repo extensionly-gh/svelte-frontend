@@ -6,7 +6,7 @@
 	import Footer from './_Footer.svelte';
 </script>
 
-<div id="theme-container" data-theme="night" class="bg-base-300">
+<div id="theme-container" data-theme="night">
 	<main class="lg:max-w-7xl flex m-auto flex-1 flex-col items-center justify-start w-[90%]">
 		<SvelteToast />
 		<CookieBanner />

@@ -37,6 +37,7 @@
 	description={$_('dialog.auth.description')}
 	title={$_('dialog.auth.title')}
 	bind:isOpen
+	close={() => authDialog.update(() => ({ isOpen: false }))}
 >
 	<div class="px-2 flex justify-center items-center flex-col mt-8">
 		<Button variants={{ intent: 'provider', provider: 'google' }}>

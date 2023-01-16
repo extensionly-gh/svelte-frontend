@@ -5,6 +5,14 @@
 	import IconMoon from '~icons/ph/moon';
 	import IconBrazil from '~icons/twemoji/flag-brazil';
 	import IconUnitedStates from '~icons/twemoji/flag-united-states';
+
+	function handleSaveLocale(lang: string) {
+		fetch('/api/locale', {
+			method: 'PUT',
+			body: JSON.stringify({ lang })
+		});
+		locale.set(lang);
+	}
 </script>
 
 <footer
@@ -56,8 +64,8 @@
 			<Menu
 				trigger={$_('terms.language')}
 				items={[
-					{ text: 'Português', icon: IconBrazil, action: () => locale.set('pt-BR') },
-					{ text: 'English', icon: IconUnitedStates, action: () => locale.set('en') }
+					{ text: 'Português', icon: IconBrazil, action: () => handleSaveLocale('pt-BR') },
+					{ text: 'English', icon: IconUnitedStates, action: () => handleSaveLocale('en') }
 				]}
 			/>
 			<Menu
