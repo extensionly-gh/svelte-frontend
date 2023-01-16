@@ -4,8 +4,6 @@
 	import Navbar from './_Navbar.svelte';
 	import { SvelteToast } from '@zerodevx/svelte-toast';
 	import Footer from './_Footer.svelte';
-
-	export const prerender = true;
 </script>
 
 <div id="theme-container" data-theme="night" class="bg-base-300">
