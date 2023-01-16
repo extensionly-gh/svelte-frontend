@@ -44,7 +44,8 @@
       "or-continue": "ou continue com",
       "password-label": "Senha",
       "password-placeholder": "Sua senha",
-      "title": "Entre ou crie uma conta"
+      "title": "Entre ou crie uma conta",
+      "cpassword-label": "Confirme a senha"
     }
   },
   "validations": {

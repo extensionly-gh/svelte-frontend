@@ -1,6 +1,6 @@
 {
 	"editor.formatOnSave": true,
-	"i18n-ally.localesPaths": ["src/lib/i18n", "src/lib/i18n/locales"],
+	"i18n-ally.localesPaths": ["src/lib/i18n/locales"],
 	"i18n-ally.keystyle": "nested",
 	"typescript.tsdk": "node_modules\\typescript\\lib"
 }

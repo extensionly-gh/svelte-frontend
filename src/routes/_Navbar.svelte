@@ -31,7 +31,7 @@
 </script>
 
 <div
-	class="navbar sticky flex justify-between top-2 shadow-md bg-base-300/70 m-2 mt-2 rounded-box mb-20 z-10"
+	class="navbar sticky flex justify-between top-2 shadow-md bg-base-300 m-2 mt-2 rounded-box mb-20 z-10"
 >
 	<Button
 		class={`${isSearchFocused ? 'hidden md:flex' : ''}`}
