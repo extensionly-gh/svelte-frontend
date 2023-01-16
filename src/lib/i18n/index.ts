@@ -5,10 +5,12 @@ const defaultLocale = 'pt-BR'
 
 register('pt-BR', () => import('./locales/pt-BR/default.json'))
 register('pt-BR', () => import('./locales/pt-BR/cookies.json'))
+register('pt-BR', () => import('./locales/pt-BR/privacy.json'))
+register('pt-BR', () => import('./locales/pt-BR/terms.json'))
 register('en', () => import('./locales/en/default.json'))
 register('en', () => import('./locales/en/cookies.json'))
-
-
+register('en', () => import('./locales/en/privacy.json'))
+register('en', () => import('./locales/en/terms.json'))
 
 function getLang() {
 	if (browser) {

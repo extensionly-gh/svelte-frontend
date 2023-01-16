@@ -48,11 +48,11 @@
 				{$_('terms.cookies-policy')}
 			</Button>
 			<!-- {/* https://www.privacypolicies.com/live/4a9e0e1b-9515-4987-8b7a-de0316c0b09a */} -->
-			<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/'}>
+			<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/legal/privacy'}>
 				{$_('terms.privacy-policy')}
 			</Button>
 			<!-- {/* https://www.termsandconditionsgenerator.com/live.php?token=Ob89qlaVSUUa8FhUBBCsJ5uYczADSFKG */} -->
-			<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/'}>
+			<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/legal/terms'}>
 				{$_('terms.terms-and-conditions')}
 			</Button>
 		</div>

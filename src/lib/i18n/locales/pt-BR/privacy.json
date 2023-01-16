@@ -1,0 +1,190 @@
+{
+	"privacyp": {
+		"intro": {
+			"title": "Política de Privacidade",
+			"last-updated": "Última atualização: 4 de dezembro de 2022",
+			"par-1": "Esta Política de Privacidade descreve nossas políticas e procedimentos sobre a coleção, uso e divulgação de suas informações quando Você usa o serviço e fala sobre seus direitos de privacidade e como a lei o protege.",
+			"par-2": "Usamos seus Dados Pessoais para fornecer e melhorar o Serviço. Ao usar o Serviço, Você concorda com a coleta e o uso de informações de acordo com esta Política de Privacidade."
+		},
+		"interpretation": {
+			"title": "Interpretação e Definições",
+			"subtitle": "Interpretação",
+			"description": "As palavras das quais a letra inicial é capitalizada têm significados definidos nas seguintes condições. As seguintes definições devem ter o mesmo significado, independentemente de aparecer no singular ou no plural.",
+			"definitions": {
+				"title": "Definições",
+				"description": "Para os propósitos desta Política de Privacidade:",
+				"li-1": {
+					"bold": "Conta",
+					"text": "significa uma conta exclusiva criada para Você acessar nosso Serviço ou partes do nosso Serviço."
+				},
+				"li-2": {
+					"bold": "Empresa",
+					"text": "(referido como qualquer \"a Empresa\", \"Nós\", or \"Nossa\" nesta Política de Privacidade) refere-se à Extensionly, Av. Tiaraju, 810 - Ibirapuitã, Alegrete - RS, 97546-550"
+				},
+				"li-3": {
+					"bold": "Cookies",
+					"text": "significa pequenos arquivos que são colocados no seu computador, dispositivo móvel ou qualquer outro dispositivo por um site, contendo detalhes do seu histórico de navegação nesse site entre seus muitos usos."
+				},
+				"li-4": {
+					"bold": "País",
+					"text": "refere-se a: Brasil"
+				},
+				"li-5": {
+					"bold": "Dispositivo",
+					"text": "significa qualquer dispositivo que possa acessar o Serviço, como um computador, um celular ou um tablet digital."
+				},
+				"li-6": {
+					"bold": "Dados Pessoais",
+					"text": "é qualquer informação relacionada a um indivíduo identificado ou identificável."
+				},
+				"li-7": {
+					"bold": "Serviço",
+					"text": "refere-se ao Site."
+				},
+				"li-8": {
+					"bold": "Dados de Uso",
+					"text": "refere-se aos dados coletados automaticamente, gerados pelo uso do Serviço ou pela própria infraestrutura de Serviço (por exemplo, a duração de uma visita à página)."
+				},
+				"li-9": {
+					"bold": "Site",
+					"text": "refere-se à Extensionly, acessível a partir de",
+					"link": "https://extensionly.app"
+				},
+				"li-10": {
+					"bold": "Você",
+					"text": "significa o indivíduo acessando ou usando o Site, ou uma empresa ou qualquer entidade legal em nome do qual esse indivíduo está acessando ou usando o Site, conforme aplicável."
+				},
+				"li-11": {
+					"bold": "Plausible Analytics",
+					"text": "é um projeto de código aberto dedicado a tornar a análise da Web mais amiga da privacidade. Sua missão é reduzir a vigilância corporativa, fornecendo uma ferramenta alternativa de análise da Web que não vem do mundo da AdTech."
+				}
+			}
+		},
+		"section-1": {
+			"title": "Coletando e Usando seus Dados Pessoais",
+			"subsection-1": {
+				"title": "Tipos de Dados Coletados",
+				"item-1": {
+					"title": "Dados Pessoais",
+					"description": "Ao usar nosso Serviço, podemos solicitar que você nos forneça certas informações de identificação pessoal que podem ser usadas para entrar em contato ou identificá-lo. Informações pessoalmente identificáveis podem incluir, mas não se limitam a:",
+					"li-1": "Endereço de email",
+					"li-2": "Primeiro nome e sobrenome",
+					"li-3": "Número de telefone",
+					"li-4": "Dados de uso"
+				},
+				"item-2": {
+					"title": "Dados de uso",
+					"description": {
+						"par-1": "Os dados de uso são coletados automaticamente ao usar o Serviço.",
+						"par-2": "Os dados de uso podem incluir informações como seu país, seu tipo de dispositivo (por exemplo, desktop, laptop, celular ou tablet), as páginas do nosso Serviço que você visita, a hora e a data da sua visita e o tempo gasto nessas páginas.",
+						"par-3": "Todas essas informações são completamente anônimas e podem ser visualizadas publicamente por qualquer visitante do nosso site por meio de nosso painel público do Plausible Analytics através do seguinte link:",
+						"par-3-link": "https://plausible.extensionly.app/extensionly.app",
+						"par-4": "Não podemos identificá-lo pessoalmente com os dados de uso que coletamos."
+					}
+				},
+				"item-3": {
+					"title": "Informações de Serviços de Mídia Social de Terceiros",
+					"description": {
+						"par-1": "Não fornecemos o login de contas por meio de fornecedores de terceiros e não temos integração com esses serviços."
+					}
+				},
+				"item-4": {
+					"title": "Tecnologias de Rastreamento e Cookies",
+					"description": {
+						"par-1": "Nós rastreamos apenas o uso do site anônimo por meio do Plausible Analytics. Consulte o site deles para saber mais:",
+						"par-1-link": "https://plausible.io/",
+						"par-2": "Cookies podem ser \"Persistentes\" ou de \"Sessão\". Os Cookies persistentes permanecem no seu computador pessoal ou dispositivo móvel quando você fica offline, enquanto os Cookies de Sessão são excluídos assim que Você fecha o navegador da web ou depois de alguns dias.",
+						"par-3": "Usamos apenas Cookies de sessão para os propósitos definidos abaixo:",
+						"li-1": {
+							"bold": "Cookies Necessários / Essenciais",
+							"type": "Tipo: Cookies de Sessão",
+							"administered-by": "Administrado por: Nós",
+							"purpose": "Objetivo: Esses Cookies são essenciais para fornecer serviços disponíveis no site e permitir que você use alguns de seus recursos. Eles ajudam a autenticar usuários e impedir o uso fraudulento das contas de usuário. Sem esses Cookies, os serviços que você pediu não podem ser fornecidos e usamos apenas esses cookies para fornecer esses serviços."
+						},
+						"par-4": "Para obter mais informações sobre os cookies que usamos e suas opções sobre cookies, visite nossa política de cookies ou a seção de cookies de nossa política de privacidade.",
+						"par-4-link": {
+							"text": "Política de Cookies",
+							"link": "/legal/cookies"
+						}
+					}
+				}
+			},
+			"subsection-2": {
+				"title": "Uso de seus Dados Pessoais",
+				"description": "A Empresa pode usar dados pessoais para os seguintes fins:",
+				"li-1": {
+					"bold": "Para fornecer e manter nosso Serviço",
+					"text": ", inclusive para monitorar o uso de nosso Serviço."
+				},
+				"li-2": {
+					"bold": "Para gerenciar sua conta: ",
+					"text": "para gerenciar seu registro como usuário do Serviço. Os dados pessoais que você fornece podem fornecer acesso a diferentes funcionalidades do serviço que estão disponíveis como usuário registrado."
+				},
+				"li-3": {
+					"bold": "Para entrar em contato com você: ",
+					"text": "Para entrar em contato com você por e-mail, telefonemas, SMS ou outras formas equivalentes de comunicação eletrônica, como as notificações de push de um aplicativo móvel sobre atualizações ou comunicações informativas relacionadas às funcionalidades, produtos ou serviços contratados, incluindo as atualizações de segurança, quando necessário ou razoável para sua implementação."
+				},
+				"li-4": {
+					"bold": "Para gerenciar seus pedidos: ",
+					"text": "Para participar e gerenciar seus pedidos para Nós."
+				},
+				"footer": "Não compartilhamos suas informações pessoais."
+			},
+			"subsection-3": {
+				"title": "Retenção de seus Dados Pessoais",
+				"description": "A Empresa manterá Seus dados pessoais apenas pelo tempo necessário para os fins estabelecidos nesta Política de Privacidade. Manteremos e usaremos seus dados pessoais na medida necessária para cumprir nossas obrigações legais (por exemplo, se formos obrigados a manter seus dados para cumprir as leis aplicáveis), resolver disputas e fazer cumprir nossos acordos e políticas legais."
+			},
+			"subsection-4": {
+				"title": "Transferência de seus Dados Pessoais",
+				"par-1": "Suas informações, incluindo dados pessoais, são processadas nos escritórios operacionais da empresa e em outros locais onde estão localizadas as partes envolvidas no processamento. Isso significa que essas informações podem ser transferidas para - e mantidas em computadores localizados fora do seu estado, província, país ou outra jurisdição governamental, onde as leis de proteção de dados podem diferir do que as de sua jurisdição.",
+				"par-2": "Seu consentimento para esta Política de Privacidade, seguida pelo seu envio de tais informações, representa seu contrato a essa transferência.",
+				"par-3": "A empresa tomará todas as medidas razoavelmente necessárias para garantir que seus dados sejam tratados com segurança e de acordo com esta política de privacidade. Nenhuma transferência de seus dados pessoais ocorrerá para uma organização ou país, a menos que haja controles adequados, incluindo a segurança de Seus dados e outras informações pessoais."
+			},
+			"subsection-5": {
+				"title": "Divulgação de seus Dados Pessoais",
+				"item-1": {
+					"title": "Aplicação da lei",
+					"description": "Sob certas circunstâncias, a Empresa pode ser obrigada a divulgar seus dados pessoais, se necessário, por lei ou em resposta a solicitações válidas por autoridades públicas (por exemplo, um tribunal ou uma agência governamental)."
+				},
+				"item-2": {
+					"title": "Outros requisitos legais",
+					"description": "A empresa pode divulgar seus dados pessoais na crença de boa fé de que essa ação é necessária para:",
+					"li-1": "Cumprir uma obrigação legal",
+					"li-2": "Proteger e defender os direitos ou propriedade da Empresa",
+					"li-3": "Prevenir ou investigar possíveis transgressões em conexão com o Serviço",
+					"li-4": "Proteger a segurança pessoal dos usuários do serviço ou do público",
+					"li-5": "Proteger contra responsabilidade legal"
+				}
+			},
+			"subsection-6": {
+				"title": "Segurança de seus Dados Pessoais",
+				"description": "A segurança de seus dados pessoais é importante para nós, mas lembre-se de que nenhum método de transmissão pela Internet ou método de armazenamento eletrônico é 100% seguro. Enquanto nos esforçamos para usar meios comercialmente aceitáveis para proteger seus dados pessoais, não podemos garantir sua segurança absoluta."
+			}
+		},
+		"section-2": {
+			"title": "Privacidade das Crianças",
+			"par-1": "Nosso serviço não aborda ninguém com menos de 13 anos. Não coletamos conscientemente informações de identificação pessoal de ninguém com menos de 13 anos. Se você é pai ou responsável e sabe que seu filho nos forneceu dados pessoais, por favor, contate-nos. Se percebermos que coletamos dados pessoais de qualquer pessoa com menos de 13 anos sem verificação do consentimento dos pais, tomamos medidas para remover essas informações de nossos servidores.",
+			"par-2": "Se precisarmos confiar no consentimento como base legal para o processamento de suas informações e seu país exige o consentimento dos pais, podemos exigir o consentimento de seus pais antes de coletar e usar essas informações."
+		},
+		"section-3": {
+			"title": "Links para Outros Sites",
+			"par-1": "Nosso serviço pode conter links para outros sites que não são operados por Nós. Se você clicar em um link de terceiro, será direcionado para o site desse terceiro. Aconselhamos fortemente que você revise a política de privacidade de todos os sites que você visita.",
+			"par-2": "Não temos controle e não assumimos nenhuma responsabilidade pelo conteúdo, políticas de privacidade ou práticas de sites ou serviços de terceiros."
+		},
+		"section-4": {
+			"title": "Mudanças nesta Política de Privacidade",
+			"par-1": "Podemos atualizar nossa política de privacidade de tempos em tempos. Notificaremos você sobre quaisquer alterações publicando a nova política de privacidade nesta página.",
+			"par-2": "Avisaremos por e-mail e/ou um aviso proeminente em nosso serviço, antes da alteração se tornar eficaz e atualizar a data \"Última atualização\" no topo desta Política de Privacidade.",
+			"par-3": "Você é aconselhado a revisar esta política de privacidade periodicamente para quaisquer alterações.Alterações nesta Política de Privacidade entram em efeito quando são publicadas nesta página."
+		},
+		"section-5": {
+			"title": "Contate-Nos",
+			"description": "Se Você tiver alguma dúvida sobre esta Política de Privacidade, entre em contato conosco:",
+			"li-1": {
+				"text": "Por email:",
+				"link-text": "privacy@extensionly.app",
+				"link": "mailto:privacy@extensionly.app"
+			}
+		}
+	}
+}
