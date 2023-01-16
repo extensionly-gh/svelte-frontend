@@ -16,5 +16,3 @@ export const load = (async () => {
 	}
 	await waitLocale()
 })
-
-export const prerender = true
