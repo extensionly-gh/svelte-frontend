@@ -10,7 +10,7 @@
 	import { authDialog } from '$lib/stores';
 	import { signOut } from '@auth/sveltekit/client';
 
-	let searchQuery: string = $page.url.searchParams.get('q') || '';
+	let searchQuery: string = '';
 	let searchInput: HTMLInputElement | null = null;
 	let isSearchFocused: boolean = false;
 	let debounceTimer: any;
