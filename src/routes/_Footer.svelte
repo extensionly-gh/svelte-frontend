@@ -24,7 +24,8 @@
 				>Extensionly</Button
 			>
 			<div class="flex-none flex-col gap-1 flex">
-				<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/about'}>
+				<!-- <Button variants={{ intent: 'text-base', size: 'sm' }} to={'/about'}> -->
+				<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/'}>
 					{$_('footer.about-us')}
 				</Button>
 				<Button
@@ -47,11 +48,11 @@
 				{$_('terms.cookies-policy')}
 			</Button>
 			<!-- {/* https://www.privacypolicies.com/live/4a9e0e1b-9515-4987-8b7a-de0316c0b09a */} -->
-			<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/legal/privacy'}>
+			<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/'}>
 				{$_('terms.privacy-policy')}
 			</Button>
 			<!-- {/* https://www.termsandconditionsgenerator.com/live.php?token=Ob89qlaVSUUa8FhUBBCsJ5uYczADSFKG */} -->
-			<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/legal/terms'}>
+			<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/'}>
 				{$_('terms.terms-and-conditions')}
 			</Button>
 		</div>
