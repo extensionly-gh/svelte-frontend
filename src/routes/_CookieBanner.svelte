@@ -29,7 +29,7 @@
 			<p>{$_('cookies-notice.subtitle')}</p>
 			<p>
 				{$_('cookies-notice.more-info')}
-				<Button variants={{ intent: 'text-base' }} to={'/legal/cookie-policy'}>
+				<Button variants={{ intent: 'text-base' }} to={'/legal/cookies'}>
 					{$_('terms.cookies-policy')}.
 				</Button>
 			</p>
