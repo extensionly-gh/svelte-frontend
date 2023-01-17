@@ -16,5 +16,5 @@ export const load: LayoutLoad = (async ({ data }) => {
 			})
 		}
 	}
-	await waitLocale(data.lang || window.navigator.language)
+	await waitLocale(data.lang)
 }) 
