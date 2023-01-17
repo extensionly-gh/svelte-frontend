@@ -14,8 +14,9 @@ model User {
   id                String            @id @default(uuid())
   name              String
   email             String            @unique
-  password          String
-  phone             String            @unique
+  password          String?
+  phone             String?           @unique
+  picture           String?
   isPreRegistration Boolean           @default(false) // When the user gets invited to be an instructor but do not have registration on the tool 
   role              Role              @default(USER)
   isTermsAccepted   Boolean           @default(false)

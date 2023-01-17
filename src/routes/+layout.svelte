@@ -5,8 +5,19 @@
 	import { SvelteToast } from '@zerodevx/svelte-toast';
 	import Footer from './_Footer.svelte';
 	import { theme } from '$lib/stores';
+	import { dev } from '$app/environment';
 </script>
 
+<svelte:head>
+	<!-- Google Auth -->
+	{#if dev}
+		<meta name="referrer" content="no-referrer-when-downgrade" />
+	{/if}
+	<meta
+		httpequiv="Content-Security-Policy"
+		content="script-src https://accounts.google.com/gsi/client; frame-src https://accounts.google.com/gsi/; connect-src https://accounts.google.com/gsi/;"
+	/>
+</svelte:head>
 <div id="theme-container" data-theme={$theme} class="dark:bg-base-300/70">
 	<main class="lg:max-w-7xl flex m-auto flex-1 flex-col items-center justify-start w-[90%]">
 		<SvelteToast />
