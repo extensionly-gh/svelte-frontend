@@ -5,12 +5,15 @@ import CredentialsProvider from '@auth/core/providers/credentials'
 import { sequence } from '@sveltejs/kit/hooks'
 import { prisma } from '$lib/server/singletons'
 import { comparePassword } from '$lib/server/utils'
+import { theme } from '$lib/stores'
 
-const setLanguage: Handle = async ({ event, resolve }) => {
+const handleCookies: Handle = async ({ event, resolve }) => {
 	const lang = event.cookies.get('lang')
+	const userTheme = event.cookies.get('theme') as 'winter' | 'night' | undefined | null
 	if (lang) {
 		locale.set(lang)
 	}
+	theme.set(userTheme || 'winter')
 	return resolve(event)
 }
 
@@ -50,4 +53,4 @@ const setAuth: Handle = SvelteKitAuth({
 	})],
 })
 
-export const handle = sequence(setLanguage, setAuth)
+export const handle = sequence(handleCookies, setAuth)

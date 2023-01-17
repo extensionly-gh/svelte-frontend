@@ -19,7 +19,10 @@
     "theme": "Theme",
     "language": "Language",
     "signout": "Sign Out",
-    "my-account": "My account"
+    "my-account": "My account",
+    "system": "System",
+    "winter": "Winter",
+    "night": "Night"
   },
   "pages": {
     "home": {

@@ -1,17 +1,29 @@
 <script lang="ts">
 	import { Button, Menu } from '$lib/components';
 	import { _, locale } from 'svelte-i18n';
-	import IconSun from '~icons/ph/sun';
-	import IconMoon from '~icons/ph/moon';
+	import IconSnow from '~icons/ion/snow';
+	import IconMoon from '~icons/ph/moon-fill';
+	import IconCircleHalf from '~icons/ph/circle-half-fill';
 	import IconBrazil from '~icons/twemoji/flag-brazil';
 	import IconUnitedStates from '~icons/twemoji/flag-united-states';
+	import { theme, type Theme } from '$lib/stores/theme.store';
 
 	function handleSaveLocale(lang: string) {
 		fetch('/api/locale', {
 			method: 'PUT',
 			body: JSON.stringify({ lang })
 		});
+
 		locale.set(lang);
+	}
+
+	function handleSaveTheme(newTheme: Theme) {
+		fetch('/api/theme', {
+			method: 'PUT',
+			body: JSON.stringify({ theme: newTheme })
+		});
+
+		theme.set(newTheme);
 	}
 </script>
 
@@ -72,8 +84,9 @@
 			<Menu
 				trigger={$_('terms.theme')}
 				items={[
-					{ text: $_('terms.light'), icon: IconSun },
-					{ text: $_('terms.dark'), icon: IconMoon }
+					{ text: $_('terms.winter'), icon: IconSnow, action: () => handleSaveTheme('winter') },
+					{ text: $_('terms.night'), icon: IconMoon, action: () => handleSaveTheme('night') },
+					{ text: $_('terms.system'), icon: IconCircleHalf }
 				]}
 			/>
 		</div>

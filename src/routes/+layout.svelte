@@ -4,9 +4,10 @@
 	import Navbar from './_Navbar.svelte';
 	import { SvelteToast } from '@zerodevx/svelte-toast';
 	import Footer from './_Footer.svelte';
+	import { theme } from '$lib/stores';
 </script>
 
-<div id="theme-container" data-theme="night" class="bg-base-300/70">
+<div id="theme-container" data-theme={$theme} class="dark:bg-base-300/70">
 	<main class="lg:max-w-7xl flex m-auto flex-1 flex-col items-center justify-start w-[90%]">
 		<SvelteToast />
 		<CookieBanner />

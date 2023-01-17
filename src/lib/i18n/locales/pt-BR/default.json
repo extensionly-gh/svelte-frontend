@@ -19,7 +19,10 @@
     "theme": "Tema",
     "language": "Idioma",
     "signout": "Sair",
-    "my-account": "Minha conta"
+    "my-account": "Minha conta",
+    "system": "Sistema",
+    "winter": "Inverno",
+    "night": "Noite"
   },
   "pages": {
     "home": {
