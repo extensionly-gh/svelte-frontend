@@ -4,9 +4,14 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-			rel="stylesheet"
+			rel="preload"
+			href="/fonts/Montserrat-ExtraBold.woff2"
+			as="font"
+			crossorigin="anonymous"
 		/>
+		<link rel="preload" href="/fonts/Montserrat-Medium.woff2" as="font" crossorigin="anonymous" />
+		<link rel="preload" href="/fonts/Montserrat-Regular.woff2" as="font" crossorigin="anonymous" />
+		<link rel="preload" href="/fonts/Montserrat-SemiBold.woff2" as="font" crossorigin="anonymous" />
 		<meta name="viewport" content="width=device-width" />
 		%sveltekit.head%
 	</head>

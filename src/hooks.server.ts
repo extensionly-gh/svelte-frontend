@@ -7,12 +7,16 @@ import { prisma } from '$lib/server/singletons'
 import { comparePassword } from '$lib/server/utils'
 import { theme } from '$lib/stores'
 
-const handleCookies: Handle = async ({ event, resolve }) => {
+const handleLocale: Handle = async ({ event, resolve }) => {
 	const lang = event.cookies.get('lang')
-	const userTheme = event.cookies.get('theme') as 'winter' | 'night' | undefined | null
 	if (lang) {
 		locale.set(lang)
 	}
+	return resolve(event)
+}
+
+const handleTheme: Handle = async ({ event, resolve }) => {
+	const userTheme = event.cookies.get('theme') as 'winter' | 'night' | undefined | null
 	theme.set(userTheme || 'winter')
 	return resolve(event)
 }
@@ -53,4 +57,4 @@ const setAuth: Handle = SvelteKitAuth({
 	})],
 })
 
-export const handle = sequence(handleCookies, setAuth)
+export const handle = sequence(handleLocale, handleTheme, setAuth)

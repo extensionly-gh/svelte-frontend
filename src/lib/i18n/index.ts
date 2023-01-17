@@ -1,13 +1,17 @@
 import { browser } from '$app/environment'
-import { init, register } from 'svelte-i18n'
+import { addMessages, init, register } from 'svelte-i18n'
+import defaultPtBR from './locales/pt-BR/default.json'
+import defaultEn from './locales/en/default.json'
 
 const defaultLocale = 'pt-BR'
 
-register('pt-BR', () => import('./locales/pt-BR/default.json'))
+// Synchronous
+addMessages('pt-BR', defaultPtBR)
+addMessages('en', defaultEn)
+// Asynchronous 
 register('pt-BR', () => import('./locales/pt-BR/cookies.json'))
 register('pt-BR', () => import('./locales/pt-BR/privacy.json'))
 register('pt-BR', () => import('./locales/pt-BR/terms.json'))
-register('en', () => import('./locales/en/default.json'))
 register('en', () => import('./locales/en/cookies.json'))
 register('en', () => import('./locales/en/privacy.json'))
 register('en', () => import('./locales/en/terms.json'))
