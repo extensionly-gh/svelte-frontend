@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { theme } from '$lib/stores';
 	import {
 		Dialog,
 		DialogOverlay,
@@ -26,7 +27,7 @@
 	<DialogOverlay class="fixed animate-slide-down inset-0 z-20 bg-black/70" />
 
 	<div
-		data-theme="night"
+		data-theme={$theme}
 		style="max-width: {sizes[size]};"
 		class={`fixed z-50 w-[95vw] rounded-lg p-4 md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-base-300 flex flex-col text-base-content`}
 	>
