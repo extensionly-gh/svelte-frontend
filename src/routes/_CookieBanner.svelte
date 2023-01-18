@@ -27,11 +27,11 @@
 		<div class="card-body">
 			<h2 class="card-title">{$_('cookies-notice.title')}</h2>
 			<p>{$_('cookies-notice.subtitle')}</p>
-			<p>
+			<p class="text-sm">
 				{$_('cookies-notice.more-info')}
-				<Button variants={{ intent: 'text-base' }} to={'/legal/cookies'}>
+				<a class="transition-opacity hover:opacity-75 font-semibold"  href={'/legal/cookies'}>
 					{$_('terms.cookies-policy')}.
-				</Button>
+				</a>
 			</p>
 			<div class="card-actions justify-end">
 				<Button
