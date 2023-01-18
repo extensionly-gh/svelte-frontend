@@ -21,7 +21,7 @@
 
 {#if shouldShowBanner}
 	<div
-		class="fixed z-50 w-96 bottom-8 right-8 card bg-base-300 shadow-xl"
+		class="fixed z-50 sm:w-96 bottom-8 right-8 ml-8 card bg-base-300 shadow-xl"
 		data-testid="cookie-banner"
 	>
 		<div class="card-body">
