@@ -5,7 +5,8 @@
 	import { SvelteToast } from '@zerodevx/svelte-toast';
 	import Footer from './_Footer.svelte';
 	import { theme } from '$lib/stores';
-	import { browser, dev } from '$app/environment';
+	import { dev } from '$app/environment';
+	import AuthDialog from './_AuthDialog.svelte';
 </script>
 
 <svelte:head>
@@ -19,6 +20,7 @@
 	/>
 </svelte:head>
 <div id="theme-container" data-theme={$theme} class="dark:bg-base-300/70">
+	<AuthDialog />
 	<main class="lg:max-w-7xl flex m-auto flex-1 flex-col items-center justify-start w-[90%]">
 		<SvelteToast />
 		<CookieBanner />
