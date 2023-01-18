@@ -83,7 +83,7 @@
 		"users": {
 			"user-already-exists": "User already exists",
 			"user-not-found": "User not found",
-			"password-not-set": "Set a password in your account settings first",
+			"password-not-set": "Log in with your provider and set a password in your account settings first",
 			"verifications": {
 				"invalid-token": "Invalid verification token",
 				"expired-token": "Verification token expired",

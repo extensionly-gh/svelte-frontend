@@ -84,7 +84,7 @@
 		"users": {
 			"user-already-exists": "Usuário já existe",
 			"user-not-found": "Usuário não encontrado",
-			"password-not-set": "Defina uma senha nas configurações da sua conta primeiro",
+			"password-not-set": "Entre com o seu provedor e defina uma senha nas configurações da sua conta primeiro",
 			"verifications": {
 				"invalid-token": "Token de verificação inválido",
 				"expired-token": "Token de verificação expirado",
