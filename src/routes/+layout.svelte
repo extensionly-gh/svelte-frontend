@@ -25,7 +25,5 @@
 		<Navbar />
 		<slot />
 	</main>
-	{#if browser && !window.location.pathname.includes('auth/google')}
-		<Footer />
-	{/if}
+	<Footer />
 </div>
