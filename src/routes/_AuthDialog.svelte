@@ -39,33 +39,37 @@
 
 <Dialog
 	size="xs"
-	description={$_('dialog.auth.description')}
-	title={$_('dialog.auth.title')}
+	description={$_(`dialog.auth.description.${context}`)}
+	title={$_(`dialog.auth.title.${context}`)}
 	bind:isOpen
 	close={() => authDialog.update(() => ({ isOpen: false }))}
 >
 	<div class="px-2 flex justify-center items-center flex-col mt-4">
-		<Button on:click={handleSigninWithGoogle} variants={{ intent: 'provider', provider: 'google' }}>
-			<IconGoogle width="18px" height="18px" />
-			<p class="flex-1">{$_(`terms.${providerBtnString}`)} {$_('terms.with')} Google</p>
-		</Button>
-		<p class="text-xs text-center font-medium mt-2">
-			{$_('dialog.auth.terms-agreement.1')}
-			<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/privacy">
-				{$_('terms.privacy-policy')}
-			</a>
-			{$_('dialog.auth.terms-agreement.2')}
-			<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/terms">
-				{$_('terms.terms-and-conditions')}.
-			</a>
-		</p>
-		<div class="relative flex py-4 items-center w-full">
-			<div class="flex-grow border-t border-base-content" />
-			<span class="flex-shrink mx-4 text-sm text-base-content">{$_('dialog.auth.or-continue')}</span
-			>
-			<div class="flex-grow border-t border-base-content" />
-		</div>
 		{#if context == 'signin'}
+			<Button
+				on:click={handleSigninWithGoogle}
+				variants={{ intent: 'provider', provider: 'google' }}
+			>
+				<IconGoogle width="18px" height="18px" />
+				<p class="flex-1">{$_(`terms.${providerBtnString}`)} {$_('terms.with')} Google</p>
+			</Button>
+			<p class="text-xs text-center font-medium mt-2">
+				{$_('dialog.auth.terms-agreement.1')}
+				<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/privacy">
+					{$_('terms.privacy-policy')}
+				</a>
+				{$_('dialog.auth.terms-agreement.2')}
+				<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/terms">
+					{$_('terms.terms-and-conditions')}.
+				</a>
+			</p>
+			<div class="relative flex py-4 items-center w-full">
+				<div class="flex-grow border-t border-base-content" />
+				<span class="flex-shrink mx-4 text-sm text-base-content"
+					>{$_('dialog.auth.or-continue')}</span
+				>
+				<div class="flex-grow border-t border-base-content" />
+			</div>
 			<SigninForm />
 		{:else if context == 'signup'}
 			<SignupForm />
