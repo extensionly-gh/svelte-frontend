@@ -25,7 +25,7 @@ const handleTheme: Handle = async ({ event, resolve }) => {
 
 declare module '@auth/core/types' {
 	interface Session {
-		user: Pick<import('@prisma/client').User, 'id' | 'name' | 'email'>;
+		user: Pick<import('@prisma/client').User, 'id' | 'name' | 'email' | 'image'>;
 	}
 }
 
@@ -38,6 +38,7 @@ const setAuth: Handle = SvelteKitAuth({
 		async session(params) {
 			// Add user id to session object which is sent to the client
 			params.session.user.id = params.token!.sub!
+
 			return params.session
 		}
 	},
@@ -47,7 +48,14 @@ const setAuth: Handle = SvelteKitAuth({
 		GoogleProvider({
 			clientId: env.GOOGLE_WEB_CLIENT_ID,
 			clientSecret: env.GOOGLE_WEB_CLIENT_SECRET,
-			async profile(profile) {
+			authorization: {
+				params: {
+					prompt: "consent",
+					access_type: "offline",
+					response_type: "code"
+				}
+			},
+			async profile(profile, tokens) {
 				let user = await prisma.user.findUnique({
 					where: {
 						email: profile.email,
@@ -59,21 +67,12 @@ const setAuth: Handle = SvelteKitAuth({
 						data: {
 							email: profile.email,
 							name: profile.name,
-							picture: profile.picture,
+							image: profile.picture,
 							isTermsAccepted: true,
 						}
 					})
 				}
 
-				// if (profile.locale) {
-				// 	locale.set(profile.locale)
-				// 	fetch('/api/locale', {
-				// 		method: 'PUT',
-				// 		body: JSON.stringify({ lang: profile.locale })
-				// 	})
-				// }
-
-				console.log(user)
 
 				return user
 			}
@@ -87,7 +86,16 @@ const setAuth: Handle = SvelteKitAuth({
 					},
 				});
 
-				if (!user || !(await comparePassword(cred!.password, user.password!))) {
+				if (!user) {
+					throw new Error('exceptions.users.user-not-found');
+				}
+
+				// Happens if the user created an account with a social provider
+				if (!user.password) {
+					throw new Error('exceptions.users.password-not-set');
+				}
+
+				if (!(await comparePassword(cred!.password, user.password))) {
 					throw new Error('exceptions.users.user-not-found');
 				}
 

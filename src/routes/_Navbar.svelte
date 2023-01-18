@@ -14,7 +14,6 @@
 	let searchInput: HTMLInputElement | null = null;
 	let isSearchFocused: boolean = false;
 	let debounceTimer: any;
-	let user = false;
 
 	function handleSearchReset() {
 		searchQuery = '';
@@ -79,7 +78,7 @@
 		<div class="hidden sm:flex items-center gap-2">
 			{#if $page.data.session?.user}
 				<div class="bg-base-200 p-2 flex items-center rounded-md gap-2">
-					<Avatar name={$page.data.session.user?.name} size="sm" />
+					<Avatar src={$page.data.session.user?.image || $page.data.session.user?.name} size="sm" />
 					<Menu
 						trigger={$page.data.session.user.name}
 						items={[

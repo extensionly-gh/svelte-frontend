@@ -22,7 +22,9 @@
     "my-account": "Minha conta",
     "system": "Sistema",
     "winter": "Inverno",
-    "night": "Noite"
+    "night": "Noite",
+    "please-wait": "Por favor, aguarde",
+    "with": "com"
   },
   "pages": {
     "home": {
@@ -48,7 +50,11 @@
       "password-label": "Senha",
       "password-placeholder": "Sua senha",
       "title": "Entre ou crie uma conta",
-      "cpassword-label": "Confirme a senha"
+      "cpassword-label": "Confirme a senha",
+      "terms-agreement": {
+        "1": "Ao fazer login por meio de um provedor terceirizado, você concorda com a nossa ",
+        "2": " e os "
+      }
     }
   },
   "validations": {
@@ -70,6 +76,7 @@
     "users": {
       "user-already-exists": "Usuário já existe",
       "user-not-found": "Usuário não encontrado",
+      "password-not-set": "Defina uma senha nas configurações da sua conta primeiro",
       "verifications": {
         "invalid-token": "Token de verificação inválido",
         "expired-token": "Token de verificação expirado",

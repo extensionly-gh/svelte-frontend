@@ -22,7 +22,9 @@
     "my-account": "My account",
     "system": "System",
     "winter": "Winter",
-    "night": "Night"
+    "night": "Night",
+    "please-wait": "Please wait",
+    "with": "with"
   },
   "pages": {
     "home": {
@@ -48,7 +50,11 @@
       "or-continue": "or continue with",
       "password-label": "Password",
       "password-placeholder": "Your password",
-      "title": "Log in or create an account"
+      "title": "Log in or create an account",
+      "terms-agreement": {
+        "1": "By signing in through a third party provider, you agree to our ",
+        "2": " and the "
+      }
     }
   },
   "validations": {
@@ -69,6 +75,7 @@
     "users": {
       "user-already-exists": "User already exists",
       "user-not-found": "User not found",
+      "password-not-set": "Set a password in your account settings first",
       "verifications": {
         "invalid-token": "Invalid verification token",
         "expired-token": "Verification token expired",

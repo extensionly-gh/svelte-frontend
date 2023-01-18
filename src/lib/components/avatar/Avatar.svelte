@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let name: string;
+	export let src: string;
 	export let size: 'sm' | 'md' | 'lg' = 'md';
 
 	const sizes = {
@@ -13,6 +13,11 @@
 	alt=""
 	class="rounded-sm"
 	height={sizes[size]}
-	src="https://avatars.dicebear.com/api/initials/{name}.svg?fontWeight=800"
+	referrerpolicy="no-referrer"
+	src={`${
+		/^https?:\/\//g.test(src)
+			? src
+			: `https://avatars.dicebear.com/api/initials/${src}.svg?fontWeight=800}`
+	}`}
 	width={sizes[size]}
 />

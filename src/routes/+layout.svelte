@@ -5,7 +5,7 @@
 	import { SvelteToast } from '@zerodevx/svelte-toast';
 	import Footer from './_Footer.svelte';
 	import { theme } from '$lib/stores';
-	import { dev } from '$app/environment';
+	import { browser, dev } from '$app/environment';
 </script>
 
 <svelte:head>
@@ -25,5 +25,7 @@
 		<Navbar />
 		<slot />
 	</main>
-	<Footer />
+	{#if browser && !window.location.pathname.includes('auth/google')}
+		<Footer />
+	{/if}
 </div>

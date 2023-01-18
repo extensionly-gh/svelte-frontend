@@ -5,7 +5,7 @@ import { theme } from '$lib/stores'
 import type { LayoutLoad } from './$types'
 import { getThemeFromCookie } from '$lib/stores/theme.store'
 
-export const load: LayoutLoad = (async ({ data }) => {
+export const load: LayoutLoad = (async ({ data, fetch }) => {
 	if (browser) {
 		// data.theme will be undefined if the page is prerendered. In that case, we get the theme from the cookie.
 		if (!data.theme) {
