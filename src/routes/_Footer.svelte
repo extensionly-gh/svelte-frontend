@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Button, Menu } from '$lib/components';
 	import { _, locale } from 'svelte-i18n';
-	import IconSnow from '~icons/ion/snow';
+	import IconSun from '~icons/ph/sun-fill';
 	import IconMoon from '~icons/ph/moon-fill';
 	import IconCircleHalf from '~icons/ph/circle-half-fill';
 	import IconBrazil from '~icons/twemoji/flag-brazil';
@@ -84,8 +84,8 @@
 			<Menu
 				trigger={$_('terms.theme')}
 				items={[
-					{ text: $_('terms.winter'), icon: IconSnow, action: () => handleSaveTheme('winter') },
-					{ text: $_('terms.night'), icon: IconMoon, action: () => handleSaveTheme('night') },
+					{ text: $_('terms.light'), icon: IconSun, action: () => handleSaveTheme('winter') },
+					{ text: $_('terms.dark'), icon: IconMoon, action: () => handleSaveTheme('night') },
 					{ text: $_('terms.system'), icon: IconCircleHalf }
 				]}
 			/>

@@ -24,7 +24,7 @@
 	);
 </script>
 
-<label class="flex flex-col items-start gap-1" for={id}>
+<label class="flex flex-col items-start gap-1 w-full" for={id}>
 	<span class="label-text">{label}</span>
 	<input
 		class={inputStyles({ intent: !!error ? 'error' : variants.intent })}

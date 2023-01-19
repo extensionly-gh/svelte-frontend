@@ -1,9 +1,4 @@
 {
-	"cookies-notice": {
-		"more-info": "Mais informações em",
-		"subtitle": "Usamos apenas cookies essenciais para oferecer nossos serviços.",
-		"title": "Declaração de Cookies"
-	},
 	"terms": {
 		"cookies-policy": "Política de Cookies",
 		"dismiss": "Dispensar",
@@ -24,7 +19,13 @@
 		"winter": "Inverno",
 		"night": "Noite",
 		"please-wait": "Por favor, aguarde",
-		"with": "com"
+		"with": "com",
+		"cookies-notice": {
+			"more-info": "Mais informações em",
+			"subtitle": "Usamos apenas cookies essenciais para oferecer nossos serviços.",
+			"title": "Declaração de Cookies"
+		},
+		"save": "Salvar"
 	},
 	"pages": {
 		"home": {
@@ -33,9 +34,37 @@
 			"subtitle": "Se inscreva em eventos, palestras, workshops, projetos e programas de extensão ofertados pela sua universidade. Crie e submeta propostas de novas ações de extensão diretamente pela plataforma.",
 			"signup-now": "Crie sua conta agora!",
 			"browse-activities": "Descubra atividades"
+		},
+		"account": {
+			"avatar": {
+				"description": "Clique no avatar para enviar um novo de seus arquivos.",
+				"info": "Um avatar é opcional, mas altamente recomendado.",
+				"title": "Seu Avatar"
+			},
+			"delete": {
+				"description": "Exclua permanentemente sua conta pessoal e todo o seu conteúdo da plataforma Extensionly.",
+				"dialog": {
+					"confirm": "Excluir minha conta",
+					"description": "Por favor, confirme a exclusão digitando seu email.",
+					"title": "Confirme Exclusão da Conta",
+					"trigger": "Excluir"
+				},
+				"info": "Cuidado com suas ações! Isso não é reversível.",
+				"success": "Usuário excluído com sucesso.",
+				"title": "Excluir Conta Pessoal"
+			},
+			"email": {
+				"description": "Digite o endereço de e-mail que deseja usar para fazer login com a Extensionly.",
+				"info": "Enviaremos um e-mail para você para validar a alteração.",
+				"title": "Seu Email"
+			},
+			"name": {
+				"description": "Por favor, digite seu nome completo.",
+				"title": "Seu Nome"
+			}
 		}
 	},
-	"dialog": {
+	"dialogs": {
 		"auth": {
 			"title": {
 				"signin": "Entre ou crie uma conta",
@@ -66,6 +95,10 @@
 		}
 	},
 	"validations": {
+		"string": {
+			"min": "Deve ser mais longo",
+			"max": "Deve ser mais curto"
+		},
 		"email": {
 			"invalid": "O endereço de e-mail parece inválido"
 		},

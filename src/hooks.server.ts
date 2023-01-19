@@ -38,7 +38,6 @@ const setAuth: Handle = SvelteKitAuth({
 		async session(params) {
 			// Add user id to session object which is sent to the client
 			params.session.user.id = params.token!.sub!
-
 			return params.session
 		}
 	},

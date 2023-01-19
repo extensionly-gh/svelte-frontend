@@ -15,8 +15,8 @@
 	<TextInput
 		error={$errors.email?.[0]}
 		id="email"
-		label={$_('dialog.auth.email-label')}
-		placeholder={$_('dialog.auth.email-placeholder')}
+		label={$_('dialogs.auth.email-label')}
+		placeholder={$_('dialogs.auth.email-placeholder')}
 		type="email"
 	/>
 	<Button variants={{ intent: 'primary', size: 'full' }} disabled={!$isValid} type="submit">

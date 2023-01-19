@@ -39,8 +39,8 @@
 
 <Dialog
 	size="xs"
-	description={$_(`dialog.auth.description.${context}`)}
-	title={$_(`dialog.auth.title.${context}`)}
+	description={$_(`dialogs.auth.description.${context}`)}
+	title={$_(`dialogs.auth.title.${context}`)}
 	bind:isOpen
 	close={() => authDialog.update(() => ({ isOpen: false }))}
 >
@@ -54,11 +54,11 @@
 				<p class="flex-1">{$_(`terms.${providerBtnString}`)} {$_('terms.with')} Google</p>
 			</Button>
 			<p class="text-xs text-center font-medium mt-2">
-				{$_('dialog.auth.terms-agreement.1')}
+				{$_('dialogs.auth.terms-agreement.1')}
 				<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/privacy">
 					{$_('terms.privacy-policy')}
 				</a>
-				{$_('dialog.auth.terms-agreement.2')}
+				{$_('dialogs.auth.terms-agreement.2')}
 				<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/terms">
 					{$_('terms.terms-and-conditions')}.
 				</a>
@@ -66,7 +66,7 @@
 			<div class="relative flex py-4 items-center w-full">
 				<div class="flex-grow border-t border-base-content" />
 				<span class="flex-shrink mx-4 text-sm text-base-content"
-					>{$_('dialog.auth.or-continue')}</span
+					>{$_('dialogs.auth.or-continue')}</span
 				>
 				<div class="flex-grow border-t border-base-content" />
 			</div>
@@ -78,14 +78,14 @@
 		{/if}
 		<div class="flex flex-col gap-3 my-4 items-center justify-center">
 			<Button on:click={handleSwitchContext} variants={{ intent: 'text-base', size: 'sm' }}>
-				{$_(`dialog.auth.content.${context}-btn`)}
+				{$_(`dialogs.auth.content.${context}-btn`)}
 			</Button>
 			{#if context == 'signin'}
 				<Button
 					on:click={() => (context = 'forgotpw')}
 					variants={{ intent: 'text-base', size: 'sm' }}
 				>
-					{$_('dialog.auth.forgot-password')}
+					{$_('dialogs.auth.forgot-password')}
 				</Button>
 			{/if}
 		</div>

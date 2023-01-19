@@ -25,11 +25,11 @@
 		data-testid="cookie-banner"
 	>
 		<div class="card-body">
-			<h2 class="card-title">{$_('cookies-notice.title')}</h2>
-			<p>{$_('cookies-notice.subtitle')}</p>
+			<h2 class="card-title">{$_('terms.cookies-notice.title')}</h2>
+			<p>{$_('terms.cookies-notice.subtitle')}</p>
 			<p class="text-sm">
-				{$_('cookies-notice.more-info')}
-				<a class="transition-opacity hover:opacity-75 font-semibold"  href={'/legal/cookies'}>
+				{$_('terms.cookies-notice.more-info')}
+				<a class="transition-opacity hover:opacity-75 font-semibold" href={'/legal/cookies'}>
 					{$_('terms.cookies-policy')}.
 				</a>
 			</p>

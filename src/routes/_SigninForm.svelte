@@ -31,14 +31,14 @@
 	<TextInput
 		error={$errors.email?.[0]}
 		id="email"
-		label={$_('dialog.auth.email-label')}
-		placeholder={$_('dialog.auth.email-placeholder')}
+		label={$_('dialogs.auth.email-label')}
+		placeholder={$_('dialogs.auth.email-placeholder')}
 		type="email"
 	/>
 	<TextInput
 		id="password"
-		label={$_('dialog.auth.password-label')}
-		placeholder={$_('dialog.auth.password-placeholder')}
+		label={$_('dialogs.auth.password-label')}
+		placeholder={$_('dialogs.auth.password-placeholder')}
 		type="password"
 	/>
 	<Button
