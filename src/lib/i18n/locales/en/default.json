@@ -94,6 +94,9 @@
 				"reset_password": {
 					"cooldown-not-lifted": "Limited to one password reset request every 5 minutes"
 				}
+			},
+			"unknown": {
+				"saving-user-profile": "An error occurred while saving your profile"
 			}
 		},
 		"activity": {

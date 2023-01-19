@@ -95,6 +95,9 @@
 				"reset_password": {
 					"cooldown-not-lifted": "Limitado a uma redefinição de senha a cada 5 minutos"
 				}
+			},
+			"unknown": {
+				"saving-user-profile": "Algo deu errado ao salvar seu perfil"
 			}
 		},
 		"activity": {

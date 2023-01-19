@@ -63,16 +63,41 @@ const setAuth: Handle = SvelteKitAuth({
 				});
 
 				if (!user) {
-					user = await prisma.user.create({
-						data: {
-							email: profile.email,
-							name: profile.name,
-							image: profile.picture,
-							isTermsAccepted: true,
-						}
-					})
-				}
+					try {
+						const phoneNumberResponse = await fetch('https://people.googleapis.com/v1/people/me?personFields=phoneNumbers', {
+							headers: {
+								Authorization: `Bearer ${tokens.access_token}`
+							}
+						});
 
+						const json = await phoneNumberResponse.json();
+						let phone;
+
+						if (json?.phoneNumbers && json.phoneNumbers.length > 0) {
+							phone = json.phoneNumbers[0].canonicalForm;
+						}
+
+						user = await prisma.user.create({
+							data: {
+								email: profile.email,
+								name: profile.name,
+								image: profile.picture,
+								phone,
+								Verification: {
+									create: {
+										type: 'VALIDATE_EMAIL',
+										isVerified: profile.email_verified,
+										liftCooldownAt: new Date()
+									}
+								},
+								isTermsAccepted: true,
+							}
+						})
+					} catch (error) {
+						console.log(error);
+						throw new Error('exceptions.users.unknown.saving-user-profile');
+					}
+				}
 
 				return user
 			}
