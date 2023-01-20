@@ -1,13 +1,13 @@
 import { z } from 'zod';
 
 export const signinSchema = z.object({
-  email: z.string().email({ message: 'validations.email.invalid' }),
+  email: z.string().email('validations.email.invalid'),
   password: z.string(),
 });
 
 export const signupSchema = z.object({
-  email: z.string().email({ message: 'validations.email.invalid' }),
-  password: z.string().min(8, { message: 'validations.password.min' }),
+  email: z.string().email('validations.email.invalid'),
+  password: z.string().min(8, 'validations.password.min'),
   cpassword: z.string()
 }).superRefine(({ cpassword, password }, ctx) => {
   if (cpassword !== password) {
@@ -20,5 +20,5 @@ export const signupSchema = z.object({
 });
 
 export const forgotpwSchema = z.object({
-  email: z.string().email({ message: 'validations.email.invalid' }),
+  email: z.string().email('validations.email.invalid'),
 });
