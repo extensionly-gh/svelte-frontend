@@ -1,4 +1,4 @@
-import type { Handle } from '@sveltejs/kit'
+import { redirect, type Handle } from '@sveltejs/kit'
 import { locale } from 'svelte-i18n'
 import { SvelteKitAuth } from '@auth/sveltekit'
 import CredentialsProvider from '@auth/core/providers/credentials'
@@ -8,6 +8,9 @@ import { prisma } from '$lib/server/singletons'
 import { comparePassword } from '$lib/server/utils'
 import { theme } from '$lib/stores'
 import { env } from '$env/dynamic/private'
+import { createTRPCHandle } from 'trpc-sveltekit';
+import { router } from '$lib/trpc/router'
+import { createContext } from '$lib/trpc/context'
 
 const handleLocale: Handle = async ({ event, resolve }) => {
 	const lang = event.cookies.get('lang')
@@ -23,13 +26,26 @@ const handleTheme: Handle = async ({ event, resolve }) => {
 	return resolve(event)
 }
 
+export const handleTRPC: Handle = createTRPCHandle({ router, createContext });
+
 declare module '@auth/core/types' {
 	interface Session {
 		user: Pick<import('@prisma/client').User, 'id' | 'name' | 'email' | 'image'>;
 	}
 }
 
-const setAuth: Handle = SvelteKitAuth({
+// Handle protected routes
+const handleAuthorization: Handle = async ({ event, resolve }) => {
+	if (event.url.pathname.includes('/account')) {
+		const session = await event.locals.getSession();
+		if (!session) {
+			throw redirect(303, '/?error=exceptions.route-not-authorized');
+		}
+	}
+	return resolve(event)
+}
+
+const handleSvelteKitAuth: Handle = SvelteKitAuth({
 	pages: {
 		signIn: '/',
 		error: '/'
@@ -129,4 +145,4 @@ const setAuth: Handle = SvelteKitAuth({
 	],
 })
 
-export const handle = sequence(handleLocale, handleTheme, setAuth)
+export const handle = sequence(handleSvelteKitAuth, handleLocale, handleTheme, handleTRPC, handleAuthorization)

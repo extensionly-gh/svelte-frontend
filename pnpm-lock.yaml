@@ -14,6 +14,8 @@ specifiers:
   '@sveltejs/kit': ^1.0.0
   '@tailwindcss/line-clamp': ^0.4.2
   '@tailwindcss/typography': ^0.5.9
+  '@trpc/client': ^10.9.0
+  '@trpc/server': ^10.9.0
   '@types/bcrypt': ^5.0.0
   '@types/luxon': ^3.2.0
   '@types/node': ^18.11.18
@@ -38,6 +40,7 @@ specifiers:
   svelte-i18n: ^3.6.0
   svelte-popperjs: ^1.3.2
   tailwindcss: ^3.2.4
+  trpc-sveltekit: ^3.2.4
   ts-node: ^10.9.1
   tslib: ^2.4.1
   typescript: ^4.9.3
@@ -62,6 +65,8 @@ devDependencies:
   '@sveltejs/kit': 1.0.11_svelte@3.55.1+vite@4.0.4
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.4
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.4
+  '@trpc/client': 10.9.0_@trpc+server@10.9.0
+  '@trpc/server': 10.9.0
   '@types/bcrypt': 5.0.0
   '@types/luxon': 3.2.0
   '@types/node': 18.11.18
@@ -85,6 +90,7 @@ devDependencies:
   svelte-i18n: 3.6.0_svelte@3.55.1
   svelte-popperjs: 1.3.2_u2a26nokcckqacvdxkzji6ia64
   tailwindcss: 3.2.4_aesdjsunmf4wiehhujt67my7tu
+  trpc-sveltekit: 3.2.4
   ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
   tslib: 2.4.1
   typescript: 4.9.4
@@ -664,6 +670,18 @@ packages:
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.2.4_aesdjsunmf4wiehhujt67my7tu
+    dev: true
+
+  /@trpc/client/10.9.0_@trpc+server@10.9.0:
+    resolution: {integrity: sha512-id6318qpgqllNOuBp7nuciXFPXCe+zae5d4r1hze6Eyp5fFFNO58TqA+4Q44KIcHgpfWyW2egs6iPeql3PrdKA==}
+    peerDependencies:
+      '@trpc/server': 10.9.0
+    dependencies:
+      '@trpc/server': 10.9.0
+    dev: true
+
+  /@trpc/server/10.9.0:
+    resolution: {integrity: sha512-5psyZgbvy29pJND32hwkWTMbv6s86IbsPOeDopsgNF0VegZT6Dsijmb7Ub/TDhuJVQVq5u4u5briMXi3SxmBkw==}
     dev: true
 
   /@tsconfig/node10/1.0.9:
@@ -2804,6 +2822,13 @@ packages:
 
   /tr46/0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+
+  /trpc-sveltekit/3.2.4:
+    resolution: {integrity: sha512-m7nU+pEfJNna/++yc6kuwe2GUbgRAuxl8PY8jTV9zKKbWhgOfpvjhRP0QgbbhnBXN9rKkQhTJZBDrBwZSszjqQ==}
+    dependencies:
+      '@trpc/client': 10.9.0_@trpc+server@10.9.0
+      '@trpc/server': 10.9.0
+    dev: true
 
   /ts-node/10.9.1_awa2wsr5thmg3i7jqycphctjfq:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
