@@ -1,8 +1,8 @@
-import { VerificationCreateOneSchema } from "$lib/schemas";
 import { prisma } from "$lib/server/singletons";
 import { TRPCError } from "@trpc/server";
 import { DateTime } from "luxon";
 import { authProcedure, router } from "$lib/trpc/t";
+import { VerificationCreateOneSchema } from "$lib/server/schemas";
 
 export const userRouter = router({
   createVerification: authProcedure.input(VerificationCreateOneSchema).mutation(async ({ ctx, input }) => {

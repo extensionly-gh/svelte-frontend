@@ -9,7 +9,7 @@ import { comparePassword } from '$lib/server/utils'
 import { theme } from '$lib/stores'
 import { env } from '$env/dynamic/private'
 import { createTRPCHandle } from 'trpc-sveltekit';
-import { router } from '$lib/trpc/router'
+import { appRouter } from '$lib/trpc/router'
 import { createContext } from '$lib/trpc/context'
 
 const handleLocale: Handle = async ({ event, resolve }) => {
@@ -26,7 +26,7 @@ const handleTheme: Handle = async ({ event, resolve }) => {
 	return resolve(event)
 }
 
-export const handleTRPC: Handle = createTRPCHandle({ router, createContext });
+export const handleTRPC: Handle = createTRPCHandle({ router: appRouter, createContext });
 
 declare module '@auth/core/types' {
 	interface Session {
@@ -46,6 +46,7 @@ const handleAuthorization: Handle = async ({ event, resolve }) => {
 }
 
 const handleSvelteKitAuth: Handle = SvelteKitAuth({
+	trustHost: true,
 	pages: {
 		signIn: '/',
 		error: '/'
@@ -57,7 +58,6 @@ const handleSvelteKitAuth: Handle = SvelteKitAuth({
 			return params.session
 		}
 	},
-
 	providers: [
 		// @ts-expect-error SvelteKitAuth is still in experimental
 		GoogleProvider({

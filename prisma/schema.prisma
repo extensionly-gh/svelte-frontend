@@ -5,7 +5,7 @@ generator client {
 
 generator zod {
   provider = "prisma-zod-generator"
-  output   = "../src/lib/schemas/generated"
+  output   = "../src/lib/server/schemas"
 }
 
 datasource db {
