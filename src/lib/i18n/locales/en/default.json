@@ -56,11 +56,20 @@
 			"email": {
 				"description": "Please enter the email address you want to use to log in with Extensionly.",
 				"info": "We will email you to verify the change.",
-				"title": "Your Email"
+				"title": "Your Email",
+				"email-verified": "Your email is verified!",
+				"failed-description": "Verification failed. Try again later.",
+				"not-yet-verified": "Your email is not yet verified.",
+				"please-verify": "Please, verify by clicking",
+				"resend-email": "Resend Email Verification",
+				"sent-success": "Email sent successfully!",
+				"success": "Email verified successfully!",
+				"success-description": "Verified! You can close this page now."
 			},
 			"name": {
 				"description": "Please enter your full name.",
-				"title": "Your Name"
+				"title": "Your Name",
+				"success": "Name updated! Please re-login to see the change."
 			}
 		}
 	},

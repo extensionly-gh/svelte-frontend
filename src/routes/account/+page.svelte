@@ -5,12 +5,38 @@
 	import { page } from '$app/stores';
 	import { createForm } from 'felte';
 	import type { z } from 'zod';
-	import { userWithNameSchema } from '$lib/schemas';
+	import { userWithEmailSchema, userWithNameSchema } from '$lib/schemas';
 	import { validateSchema } from '@felte/validator-zod';
+	import { toastSuccess } from '$lib/components/toast';
+	import IconCircleWavyWarning from '~icons/ph/circle-wavy-warning-fill';
 
-	const { form: nameForm, errors: nameErrors } = createForm<z.infer<typeof userWithNameSchema>>({
+	const _prefix = 'pages.account';
+
+	const {
+		form: nameForm,
+		errors: nameErrors,
+		isSubmitting: nameIsSubmitting
+	} = createForm<z.infer<typeof userWithNameSchema>>({
+		onSuccess() {
+			sendSuccessToast('name');
+		},
 		validate: validateSchema(userWithNameSchema)
 	});
+
+	const {
+		form: emailForm,
+		errors: emailErrors,
+		isSubmitting: emailIsSubmitting
+	} = createForm<z.infer<typeof userWithEmailSchema>>({
+		onSuccess() {
+			sendSuccessToast('email');
+		},
+		validate: validateSchema(userWithEmailSchema)
+	});
+
+	function sendSuccessToast(fieldId: string) {
+		toastSuccess($_(`pages.account.${fieldId}.success`));
+	}
 </script>
 
 <div class="flex flex-col gap-6">
@@ -27,42 +53,31 @@
 				id="name"
 				label={$_('pages.account.name.description')}
 			/>
-			<Button type="submit" class="h-full">{$_('terms.save')}</Button>
+			<Button isLoading={$nameIsSubmitting} type="submit" class="h-full">{$_('terms.save')}</Button>
 		</SettingsCard>
 	</form>
-	<!-- <Formik
-		initialValues={{ email: '' }}
-		onSubmit={() => {
-			return;
-		}}
-	>
-		<SettingsCard info={$_('pages.account.email.info')} title={$_('pages.account.email.title')}>
-			<TextInput
-				label={$_('pages.account.email.description')}
-				name="email"
-				type="email"
-				value={user?.email}
-			/>
-
-			{#if pendingEmailVerification}
+	<form action="">
+		<SettingsCard title={$_('pages.account.email.title')}>
+			{#if true}
 				<div class="flex gap-2 items-center text-error dark:brightness-75">
-					<CircleWavyWarning size={32} weight="fill" />
+					<IconCircleWavyWarning width="32px" height="32px" />
 					<span class="font-semibold">{$_('verification.email.not-yet-verified')}</span>
 				</div>
-				<ResendEmailButton
+				<!-- <ResendEmailButton
 					endTime={pendingEmailVerification.liftCooldownAt}
 					onSubmit={() => handleVerifyEmail()}
 				>
 					{$_('verification.email.resend-email')}
-				</ResendEmailButton>
+				</ResendEmailButton> -->
 			{:else}
 				<div class="flex gap-2 items-center text-success dark:brightness-75">
-					<CircleWavyCheck size={32} weight="fill" />
+					<CircleWavyCheck width="32px" height="32px" />
 					<span class="font-semibold">{$_('verification.email.email-verified')}</span>
 				</div>
 			{/if}
 		</SettingsCard>
-	</Formik>
+	</form>
+	<!--
 	<Formik
 		initialValues={{ avatar: '' }}
 		onSubmit={() => {
