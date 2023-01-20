@@ -63,7 +63,7 @@
 	<a
 		{...$$restProps}
 		href={to}
-		class={`${buttonStyles(variants)}  ${$$props.class}`}
+		class={buttonStyles({ ...variants, class: $$props.class })}
 		target={isExternal ? '_blank' : ''}
 	>
 		<slot />
@@ -76,12 +76,13 @@
 		{...$$restProps}
 		{type}
 		disabled={disabled || isLoading}
-		class={`${buttonStyles({ ...variants, disabled: disabled || isLoading })} ${$$props.class}`}
+		class={buttonStyles({ ...variants, disabled: disabled || isLoading, class: $$props.class })}
 		on:click
 	>
-		<slot />
 		{#if isLoading}
 			<IconLoading width="20px" height="20px" />
+		{:else}
+			<slot />
 		{/if}
 	</button>
 {/if}

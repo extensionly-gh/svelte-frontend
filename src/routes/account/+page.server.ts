@@ -1,5 +1,13 @@
 import { prisma } from '$lib/server/singletons';
-import type { Actions } from './$types';
+import { createContext } from '$lib/trpc/context';
+import { router } from '$lib/trpc/router';
+import type { Actions, PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async (event) => {
+  return {
+    verifications: (await router.createCaller(await createContext(event)).user.verifications())
+  }
+}
 
 export const actions: Actions = {
   updateName: async (event) => {

@@ -28,7 +28,7 @@
 </script>
 
 <footer
-	class={`flex z-[5] flex-col bg-base-100 bg-opacity-40 text-base-content rounded-t-2xl mt-20`}
+	class={`flex z-[5] flex-col bg-base-200 bg-opacity-40 text-base-content rounded-t-2xl mt-20`}
 >
 	<div class="flex items-start justify-around flex-col sm:flex-row gap-12 p-8">
 		<div class="flex flex-col justify-between h-36">

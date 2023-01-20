@@ -26,13 +26,16 @@
 
 <label class="flex flex-col items-start gap-1 w-full" for={id}>
 	<span class="label-text">{label}</span>
-	<input
-		class={inputStyles({ intent: !!error ? 'error' : variants.intent })}
-		data-testid={`${id}-input`}
-		{id}
-		name={id}
-		{...$$restProps}
-	/>
+	<div class="w-full flex gap-2">
+		<input
+			class={inputStyles({ intent: !!error ? 'error' : variants.intent })}
+			data-testid={`${id}-input`}
+			{id}
+			name={id}
+			{...$$restProps}
+		/>
+		<slot name="right" />
+	</div>
 	{#if !!error}
 		<span class="text-error font-bold text-xs my-2 h-2" data-testid={`${id}-error`}>
 			{$_(error)}

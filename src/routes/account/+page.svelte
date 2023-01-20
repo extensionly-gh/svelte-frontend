@@ -9,14 +9,29 @@
 	import { validateSchema } from '@felte/validator-zod';
 	import { toastSuccess } from '$lib/components/toast';
 	import IconCircleWavyWarning from '~icons/ph/circle-wavy-warning-fill';
+	import IconCircleWavyCheck from '~icons/ph/circle-wavy-check-fill';
+	import type { Verification } from '@prisma/client';
+	import { ButtonWithTimer } from '$lib/components/button';
+	import { DateTime } from 'luxon';
+	import type { PageData } from './$types';
 
-	const _prefix = 'pages.account';
+	let date = DateTime.now().toISO();
+
+	export let data: PageData;
+
+	const emailVerification = data.verifications?.find(
+		(verification: Verification) => verification.type === 'VALIDATE_EMAIL'
+	);
 
 	const {
 		form: nameForm,
 		errors: nameErrors,
-		isSubmitting: nameIsSubmitting
+		isSubmitting: nameIsSubmitting,
+		data: nameData
 	} = createForm<z.infer<typeof userWithNameSchema>>({
+		initialValues: {
+			name: $page.data.session?.user?.name || ''
+		},
 		onSuccess() {
 			sendSuccessToast('name');
 		},
@@ -37,6 +52,11 @@
 	function sendSuccessToast(fieldId: string) {
 		toastSuccess($_(`pages.account.${fieldId}.success`));
 	}
+
+	function handleVerifyEmail() {
+		console.log('handleVerifyEmail');
+		date = DateTime.now().plus({ seconds: 5 }).toISO();
+	}
 </script>
 
 <div class="flex flex-col gap-6">
@@ -52,27 +72,31 @@
 				maxlength="255"
 				id="name"
 				label={$_('pages.account.name.description')}
-			/>
-			<Button isLoading={$nameIsSubmitting} type="submit" class="h-full">{$_('terms.save')}</Button>
+			>
+				<Button
+					slot="right"
+					disabled={$nameData.name === $page.data.session?.user.name}
+					isLoading={$nameIsSubmitting}
+					type="submit"
+					class="h-full">{$_('terms.save')}</Button
+				>
+			</TextInput>
 		</SettingsCard>
 	</form>
 	<form action="">
 		<SettingsCard title={$_('pages.account.email.title')}>
-			{#if true}
-				<div class="flex gap-2 items-center text-error dark:brightness-75">
+			{#if !emailVerification?.isVerified}
+				<div class="flex gap-2 items-center text-error dark:brightness-75 flex-grow">
 					<IconCircleWavyWarning width="32px" height="32px" />
-					<span class="font-semibold">{$_('verification.email.not-yet-verified')}</span>
+					<span class="font-semibold">{$_('pages.account.email.not-yet-verified')}</span>
 				</div>
-				<!-- <ResendEmailButton
-					endTime={pendingEmailVerification.liftCooldownAt}
-					onSubmit={() => handleVerifyEmail()}
-				>
-					{$_('verification.email.resend-email')}
-				</ResendEmailButton> -->
+				<ButtonWithTimer class="min-w-[5.5rem]" endTime={date} onSubmit={() => handleVerifyEmail()}>
+					{$_('pages.account.email.resend-email')}
+				</ButtonWithTimer>
 			{:else}
-				<div class="flex gap-2 items-center text-success dark:brightness-75">
-					<CircleWavyCheck width="32px" height="32px" />
-					<span class="font-semibold">{$_('verification.email.email-verified')}</span>
+				<div class="flex gap-2 items-center w-full text-success dark:brightness-75">
+					<IconCircleWavyCheck width="32px" height="32px" />
+					<span class="font-semibold">{$_('pages.account.email.email-verified')}</span>
 				</div>
 			{/if}
 		</SettingsCard>

@@ -61,7 +61,7 @@
 				"failed-description": "Validação falhou. Tente novamente mais tarde.",
 				"not-yet-verified": "Seu email ainda não foi validado.",
 				"please-verify": "Por favor, valide clicando em",
-				"resend-email": "Reenviar Verificação de Email",
+				"resend-email": "Validar",
 				"sent-success": "Email enviado com sucesso!",
 				"success": "Email validado com sucesso!",
 				"success-description": "Validado! Você pode fechar esta página agora."
@@ -117,6 +117,7 @@
 		}
 	},
 	"exceptions": {
+		"route-not-authorized": "Você não tem permissão para acessar esta página",
 		"internal-server-error": "Erro interno do servidor",
 		"bad-request-error": "Erro de solicitação inválida",
 		"missing-required-parameter-error": "Parâmetro obrigatório faltando: {key}",

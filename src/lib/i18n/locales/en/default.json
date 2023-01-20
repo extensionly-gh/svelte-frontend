@@ -61,7 +61,7 @@
 				"failed-description": "Verification failed. Try again later.",
 				"not-yet-verified": "Your email is not yet verified.",
 				"please-verify": "Please, verify by clicking",
-				"resend-email": "Resend Email Verification",
+				"resend-email": "Verify",
 				"sent-success": "Email sent successfully!",
 				"success": "Email verified successfully!",
 				"success-description": "Verified! You can close this page now."
@@ -117,6 +117,7 @@
 		}
 	},
 	"exceptions": {
+		"route-not-authorized": "You are not authorized to access this page",
 		"internal-server-error": "Internal server error",
 		"bad-request-error": "Bad request error",
 		"auth": {

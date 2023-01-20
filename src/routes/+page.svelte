@@ -3,6 +3,16 @@
 	import { _ } from 'svelte-i18n';
 	import { authDialog } from '$lib/stores';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import { toastError } from '$lib/components/toast';
+
+	onMount(() => {
+		const error = new URLSearchParams(window.location.search).get('error');
+		if (error) {
+			window.history.replaceState({}, document.title, '/');
+			toastError($_(error));
+		}
+	});
 </script>
 
 <img
