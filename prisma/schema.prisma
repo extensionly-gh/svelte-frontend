@@ -3,6 +3,11 @@ generator client {
   previewFeatures = ["referentialIntegrity", "fullTextSearch", "fullTextIndex"]
 }
 
+generator zod {
+  provider = "prisma-zod-generator"
+  output   = "../src/lib/schemas/generated"
+}
+
 datasource db {
   provider             = "mysql"
   url                  = env("DATABASE_URL")
