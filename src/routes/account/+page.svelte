@@ -38,17 +38,6 @@
 		validate: validateSchema(userWithNameSchema)
 	});
 
-	const {
-		form: emailForm,
-		errors: emailErrors,
-		isSubmitting: emailIsSubmitting
-	} = createForm<z.infer<typeof userWithEmailSchema>>({
-		onSuccess() {
-			sendSuccessToast('email');
-		},
-		validate: validateSchema(userWithEmailSchema)
-	});
-
 	function sendSuccessToast(fieldId: string) {
 		toastSuccess($_(`pages.account.${fieldId}.success`));
 	}

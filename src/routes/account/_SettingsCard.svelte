@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { cva, type VariantProps } from 'class-variance-authority';
 
+	export let title: string;
+	export let variants: VariantProps<typeof settingsCardStyles> = {};
+
 	const settingsCardStyles = cva('flex flex-col shadow-md rounded-md p-4 gap-4', {
 		variants: {
 			intent: {
@@ -12,9 +15,6 @@
 			intent: 'primary'
 		}
 	});
-
-	export let title: string;
-	export let variants: VariantProps<typeof settingsCardStyles> = {};
 </script>
 
 <div class={`${settingsCardStyles(variants)} md:w-[36rem]`}>
