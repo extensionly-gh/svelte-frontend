@@ -1,0 +1,18 @@
+{
+	"zod": {
+		"url": {
+			"invalid": "A URL parece inválida"
+		},
+		"string": {
+			"min": "Deve ser mais longo",
+			"max": "Deve ser mais curto"
+		},
+		"email": {
+			"invalid": "O endereço de e-mail parece inválido"
+		},
+		"password": {
+			"min": "Deve ter pelo menos 8 caracteres",
+			"mismatch": "As senhas não conferem"
+		}
+	}
+}
