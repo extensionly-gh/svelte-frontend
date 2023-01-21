@@ -47,9 +47,12 @@
 				animated: {
 					true: 'hover:-translate-y-0.5'
 				},
+				width: {
+					full: 'w-full',
+					short: 'w-[6rem]'
+				},
 				size: {
-					sm: 'btn-sm h-[1.5rem] min-h-[1.5rem] px-2',
-					full: 'w-full'
+					sm: 'btn-sm h-[1.5rem] min-h-[1.5rem] px-2'
 				}
 			},
 			defaultVariants: {

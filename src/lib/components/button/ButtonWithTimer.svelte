@@ -33,7 +33,7 @@
 
 <form use:form class={`${seconds > 0 || $isSubmitting ? 'cursor-not-allowed' : ''}`}>
 	<Button
-		class={$$props.class}
+		{...$$restProps}
 		disabled={seconds > 0 || $isSubmitting}
 		isLoading={$isSubmitting}
 		type="submit"

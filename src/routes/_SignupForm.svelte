@@ -33,7 +33,7 @@
 		placeholder={$_('dialogs.auth.password-placeholder')}
 		type="password"
 	/>
-	<Button variants={{ intent: 'primary', size: 'full' }} disabled={!$isValid} type="submit">
+	<Button variants={{ intent: 'primary', width: 'full' }} disabled={!$isValid} type="submit">
 		{$_('terms.signup')}
 	</Button>
 </form>

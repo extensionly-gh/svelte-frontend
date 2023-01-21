@@ -42,7 +42,7 @@
 		type="password"
 	/>
 	<Button
-		variants={{ intent: 'primary', size: 'full' }}
+		variants={{ intent: 'primary', width: 'full' }}
 		disabled={!$isValid || $data.password == ''}
 		isLoading={$isSubmitting}
 		type="submit"
