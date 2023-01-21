@@ -51,6 +51,7 @@
 		"prettier-plugin-svelte": "^2.8.1",
 		"prisma": "4.5.0",
 		"prisma-zod-generator": "^0.8.11",
+		"sib-api-v3-sdk": "^8.5.0",
 		"svelte": "^3.54.0",
 		"svelte-check": "^2.9.2",
 		"svelte-i18n": "^3.6.0",
