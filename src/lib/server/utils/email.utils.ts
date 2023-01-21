@@ -1,6 +1,6 @@
-import { buildSmtpEmail } from '../singletons';
-import { get } from 'svelte/store';
 import { _ } from 'svelte-i18n';
+import { get } from 'svelte/store';
+import { buildSmtpEmail } from '../singletons';
 
 export const buildEmail = (params: EmailParams): any => {
 	buildSmtpEmail.subject = `${get(_)(`emails.type.${params.type}.subject`)}`;
@@ -11,7 +11,9 @@ export const buildEmail = (params: EmailParams): any => {
     <div>
       <p>${params.recipientName}, ${get(_)(`emails.type.${params.type}.title`)}</p>
       <p>${get(_)(`emails.type.${params.type}.subtitle`)}</p>
-      <a style="margin-top: 4rem; margin-bottom: 4rem;" target="_blank" href="">
+      <a style="margin-top: 4rem; margin-bottom: 4rem;" target="_blank" href="${
+				params.url
+			}/account/reset-password/${params.token}">
       Botão Teste
       </a>
       <p>
@@ -31,4 +33,6 @@ export interface EmailParams {
 	type: string;
 	recipientName: string;
 	toEmail: string;
+	url: string;
+	token: string;
 }

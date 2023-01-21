@@ -1,30 +1,27 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { Button, TextInput } from '$lib/components';
 	import { forgotpwSchema } from '$lib/schemas';
+	import { trpc } from '$lib/trpc/client';
 	import { validateSchema } from '@felte/validator-zod';
-	import { createForm, FelteSubmitError } from 'felte';
+	import { createForm } from 'felte';
+	import { onMount } from 'svelte';
 	import { _ } from 'svelte-i18n';
 	import type { z } from 'zod';
 
 	const { form, errors, isValid } = createForm<z.infer<typeof forgotpwSchema>>({
-		validate: validateSchema(forgotpwSchema),
-		onError: async (errors) => {
-			console.log(errors);
-			if (errors instanceof FelteSubmitError) {
-				console.log(errors);
-				console.log(errors.response);
-			}
-		}
+		onSubmit: async (values, event) => {
+			console.log(values);
+			await trpc($page)?.user.sendForgotPasswordEmail.mutate({
+				email: values.email,
+				url: $page.url.toString()
+			});
+		},
+		validate: validateSchema(forgotpwSchema)
 	});
 </script>
 
-<form
-	use:form
-	class="flex flex-col w-full gap-4"
-	action="?/forgotPw"
-	method="POST"
-	enctype="application/x-www-form-urlencoded"
->
+<form use:form class="flex flex-col w-full gap-4">
 	<TextInput
 		error={$errors.email?.[0]}
 		id="email"

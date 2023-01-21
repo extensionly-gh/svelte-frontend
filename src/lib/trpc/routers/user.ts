@@ -1,8 +1,10 @@
-import { prisma } from '$lib/server/singletons';
+import { prisma, sendInBlueApi } from '$lib/server/singletons';
+import { buildEmail } from '$lib/server/utils/email.utils';
+import { authProcedure, publicProcedure, router } from '$lib/trpc/t';
 import { TRPCError } from '@trpc/server';
 import { DateTime } from 'luxon';
-import { authProcedure, publicProcedure, router } from '$lib/trpc/t';
 import { z } from 'zod';
+import { appRouter } from '../router';
 
 export const userRouter = router({
 	update: authProcedure
@@ -25,16 +27,21 @@ export const userRouter = router({
 
 			return user;
 		}),
-	createVerification: authProcedure
+	createVerification: publicProcedure
 		.input(
 			z.object({
-				type: z.enum(['VALIDATE_EMAIL', 'VALIDATE_PHONE', 'RESET_PASSWORD'])
+				type: z.enum(['VALIDATE_EMAIL', 'VALIDATE_PHONE', 'RESET_PASSWORD']),
+				email: z.string().email('validations.email.invalid')
 			})
 		)
 		.mutation(async ({ ctx, input }) => {
+			const user = await prisma.user.findUniqueOrThrow({
+				where: { email: input.email }
+			});
+
 			const verifications = await prisma.verification.findMany({
 				where: {
-					userId: ctx.session.user.id,
+					userId: user.id,
 					type: input.type
 				}
 			});
@@ -55,7 +62,7 @@ export const userRouter = router({
 			if (verifications.length > 0 && expired.length > 0) {
 				await prisma.verification.deleteMany({
 					where: {
-						userId: ctx.session.user.id,
+						userId: user.id,
 						type: input.type,
 						isVerified: false,
 						createdAt: {
@@ -93,7 +100,7 @@ export const userRouter = router({
 
 			const verification = await prisma.verification.create({
 				data: {
-					userId: ctx.session.user.id,
+					userId: user.id,
 					type: input.type,
 					liftCooldownAt
 				}
@@ -113,24 +120,63 @@ export const userRouter = router({
 
 		return user?.Verification;
 	}),
-	userExists: publicProcedure
+	checkVerification: publicProcedure
 		.input(
 			z.object({
-				email: z.string().email('validations.email.invalid')
+				id: z.string()
 			})
 		)
 		.query(async ({ input }) => {
+			const verification = await prisma.verification.findUniqueOrThrow({
+				where: { id: input.id }
+			});
+
+			const user = await prisma.user.findUnique({
+				where: { email: verification.userId }
+			});
+
+			return user;
+		}),
+	sendForgotPasswordEmail: publicProcedure
+		.input(
+			z.object({
+				email: z.string().email('validations.email.invalid'),
+				url: z.string()
+			})
+		)
+		.mutation(async ({ ctx, input }) => {
 			const user = await prisma.user.findUnique({
 				where: { email: input.email }
 			});
 
-			if (!user) {
+			if (user) {
+				const verification = await appRouter.createCaller(ctx).user.createVerification({
+					type: 'RESET_PASSWORD',
+					email: input.email
+				});
+
+				const builtEmail = buildEmail({
+					type: 'reset_password',
+					toEmail: input.email,
+					recipientName: user.name,
+					url: input.url,
+					token: verification.id
+				});
+				console.log(builtEmail);
+
+				sendInBlueApi.sendTransacEmail(builtEmail).then(
+					function (data: any) {
+						console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+					},
+					function (error: any) {
+						console.error(error);
+					}
+				);
+			} else {
 				throw new TRPCError({
-					message: `teste`,
+					message: `TESTE`,
 					code: 'BAD_REQUEST'
 				});
 			}
-
-			return true;
 		})
 });
