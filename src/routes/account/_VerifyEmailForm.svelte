@@ -19,7 +19,7 @@
 
 <form action="">
 	<SettingsCard title={$_('r-acc.email.title')}>
-		{#if verification.isVerified}
+		{#if !verification.isVerified}
 			<Notice variants={{ intent: 'warning' }} text={$_('r-acc.email.not-yet-verified')} />
 			<ButtonWithTimer
 				variants={{ width: 'short' }}
