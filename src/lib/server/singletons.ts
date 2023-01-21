@@ -22,6 +22,8 @@ apiKey.apiKey = env.SENDINBLUE_API_KEY;
 export const sendInBlueApi =
 	singletonsGlobal.sendInBlueApi || new SibApiV3Sdk.TransactionalEmailsApi();
 
+export const buildSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+
 if (env.NODE_ENV !== 'production') {
 	singletonsGlobal.prisma = prisma;
 	singletonsGlobal.sendInBlueApi = sendInBlueApi;

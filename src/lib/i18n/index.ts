@@ -12,9 +12,11 @@ addMessages('en', defaultEn);
 register('pt-BR', () => import('./locales/pt-BR/cookies.json'));
 register('pt-BR', () => import('./locales/pt-BR/privacy.json'));
 register('pt-BR', () => import('./locales/pt-BR/terms.json'));
+register('pt-BR', () => import('./locales/pt-BR/emails.json'));
 register('en', () => import('./locales/en/cookies.json'));
 register('en', () => import('./locales/en/privacy.json'));
 register('en', () => import('./locales/en/terms.json'));
+register('en', () => import('./locales/en/emails.json'));
 
 function getLang() {
 	if (browser) {

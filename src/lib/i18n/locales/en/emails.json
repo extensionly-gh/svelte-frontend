@@ -1,0 +1,21 @@
+{
+	"emails": {
+		"footer": {
+			"best-wishes": "Best wishes,",
+			"team": "Extensionly Team",
+			"address": "Av. Tiarajú, Alegrete, Rio Grande do Sul, Brazil"
+		},
+		"type": {
+			"validate_email": {
+				"subject": "📧 Verify your email",
+				"title": "thanks for signing up for Extensionly! We're excited to have you as an early user.",
+				"subtitle": "Verify your email address by clicking on the following link:"
+			},
+			"reset_password": {
+				"subject": "🔒 Reset your password",
+				"title": "a password reset was requested on your behalf.",
+				"subtitle": "If you do not recognize this activity, please ignore this email. Otherwise, reset your password by clicking in the following link:"
+			}
+		}
+	}
+}
