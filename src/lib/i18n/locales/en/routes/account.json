@@ -9,13 +9,14 @@
       "description": "Permanently remove your Personal Account and all of its contents from the Extensionly platform.",
       "dialog": {
         "confirm": "Delete my account",
-        "description": "Please confirm deletion by typing your email.",
-        "title": "Confirm Account Deletion",
-        "trigger": "Delete"
+        "description": "Type your email to confirm",
+        "title": "Confirm account deletion",
+        "trigger": "Delete",
+        "subtitle": "All your data will be erased, including enrollments and created extension activities."
       },
-      "info": "Be careful with your actions! This is not reversible.",
-      "success": "User deleted successfully.",
-      "title": "Delete Personal Account"
+      "success": "Your account was deleted successfully.",
+      "title": "Delete Personal Account",
+      "info-short": "You are about to delete your Extensionly account. This action cannot be undone."
     },
     "email": {
       "description": "Please enter the email address you want to use to log in with Extensionly.",

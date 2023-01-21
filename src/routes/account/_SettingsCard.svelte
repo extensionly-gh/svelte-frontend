@@ -8,7 +8,7 @@
 		variants: {
 			intent: {
 				primary: 'bg-base-300',
-				danger: 'shadow-red-200 dark:shadow-none text-error-content dark:text-red-300'
+				danger: 'dark:bg-[#140004] bg-[#6d0000] text-error'
 			}
 		},
 		defaultVariants: {

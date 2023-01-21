@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import type { PageData } from './$types';
+	import DeleteAccount from './_DeleteAccount.svelte';
 	import UpdateAccountForm from './_UpdateAccountForm.svelte';
 	import VerifyEmailForm from './_VerifyEmailForm.svelte';
 
@@ -16,6 +17,7 @@
 	{#if emailVerification}
 		<VerifyEmailForm verification={emailVerification} />
 	{/if}
+	<DeleteAccount />
 	<!-- <SettingsCard
     action={
       <Dialog
@@ -54,7 +56,7 @@
         </Formik>
       </Dialog>
     }
-    info={$_('r-acc.delete.info')}
+    info={$_('r-acc.delete.info-short')}
     intent="danger"
     title={$_('r-acc.delete.title')}
   >

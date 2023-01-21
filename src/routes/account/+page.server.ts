@@ -1,5 +1,6 @@
 import { createContext } from '$lib/trpc/context';
 import { appRouter, type AppRouterInput } from '$lib/trpc/router';
+import { signOut } from '@auth/sveltekit/client';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
@@ -12,7 +13,14 @@ export const load: PageServerLoad = async (event) => {
 export const actions: Actions = {
 	update: async (event) => {
 		const data = await event.request.formData();
-		const formDataAsObject = Object.fromEntries(data.entries()) as AppRouterInput['user']['setUpdatableProperties'];
-		await appRouter.createCaller(await createContext(event)).user.setUpdatableProperties(formDataAsObject);
+		const formDataAsObject = Object.fromEntries(
+			data.entries()
+		) as AppRouterInput['user']['setUpdatableProperties'];
+		await appRouter
+			.createCaller(await createContext(event))
+			.user.setUpdatableProperties(formDataAsObject);
+	},
+	deleteAccount: async (event) => {
+		await appRouter.createCaller(await createContext(event)).user.deleteMyAccount();
 	}
 };

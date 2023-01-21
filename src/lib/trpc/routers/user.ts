@@ -6,6 +6,10 @@ import { z } from 'zod';
 import { userUpdateSchema } from '$lib/schemas';
 
 export const userRouter = router({
+	deleteMyAccount: authProcedure.mutation(async ({ ctx }) => {
+		const { id } = ctx.session.user;
+		await prisma.user.delete({ where: { id } });
+	}),
 	getUpdatableProperties: authProcedure.query(async ({ ctx }) => {
 		const { id } = ctx.session.user;
 
@@ -21,18 +25,16 @@ export const userRouter = router({
 
 		return user;
 	}),
-	setUpdatableProperties: authProcedure
-		.input(userUpdateSchema)
-		.mutation(async ({ ctx, input }) => {
-			const { id } = ctx.session.user;
+	setUpdatableProperties: authProcedure.input(userUpdateSchema).mutation(async ({ ctx, input }) => {
+		const { id } = ctx.session.user;
 
-			const user = await prisma.user.update({
-				where: { id },
-				data: input
-			});
+		const user = await prisma.user.update({
+			where: { id },
+			data: input
+		});
 
-			return user;
-		}),
+		return user;
+	}),
 	createVerification: authProcedure
 		.input(
 			z.object({

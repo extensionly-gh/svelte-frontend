@@ -33,8 +33,10 @@
 				<img class="rounded-md" width="64px" src={$data.image} alt="Your profile avatar" />
 			{/if}
 		</div>
-		<div class="flex gap-2 items-center w-full">
-			<Notice text={$_('r-acc.details.info')} />
+		<div class="flex gap-2 items-center w-full justify-end">
+			{#if $isDirty}
+				<Notice text={$_('r-acc.details.info')} />
+			{/if}
 			<Button variants={{ width: 'short' }} isLoading={$isSubmitting} type="submit">
 				{$_('terms.save')}
 			</Button>

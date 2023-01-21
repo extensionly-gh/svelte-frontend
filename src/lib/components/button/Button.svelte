@@ -24,7 +24,7 @@
 					text: 'hover:opacity-70 text-neutral-content',
 					'text-base': 'hover:opacity-70 text-base-content',
 					'no-style': 'hover:scale-95',
-					danger: 'btn btn-error hover:bg-red-300 hover:border-red-300',
+					danger: 'btn btn-error hover:bg-error/80 hover:border-error/80',
 					provider: 'btn normal-case hover:opacity-70 text-[0.95rem] w-full border-0'
 				},
 				case: {

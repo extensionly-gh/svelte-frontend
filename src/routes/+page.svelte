@@ -4,13 +4,18 @@
 	import { authDialog } from '$lib/stores';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
-	import { toastError } from '$lib/components/toast';
+	import { toastError, toastSuccess } from '$lib/components/toast';
 
 	onMount(() => {
-		const error = new URLSearchParams(window.location.search).get('error');
-		if (error) {
+		const params = Object.fromEntries(new URLSearchParams(window.location.search));
+
+		if (Object.keys(params).length !== 0) {
 			window.history.replaceState({}, document.title, '/');
-			toastError($_(error));
+			if (params.error) {
+				toastError($_(params.error));
+			} else if (params.success) {
+				toastSuccess($_(params.success));
+			}
 		}
 	});
 </script>
