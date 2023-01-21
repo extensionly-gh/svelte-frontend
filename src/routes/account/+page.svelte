@@ -10,10 +10,11 @@
 	import { toastSuccess } from '$lib/components/toast';
 	import IconCircleWavyWarning from '~icons/ph/circle-wavy-warning-fill';
 	import IconCircleWavyCheck from '~icons/ph/circle-wavy-check-fill';
-	import type { Verification } from '@prisma/client';
+	import type { Prisma, Verification } from '@prisma/client';
 	import { ButtonWithTimer } from '$lib/components/button';
 	import { DateTime } from 'luxon';
 	import type { PageData } from './$types';
+	import { UserUpdateInputObjectSchema } from '$lib/schemas/generated/schemas/objects/UserUpdateInput.schema';
 
 	let date = DateTime.now().toISO();
 
@@ -23,19 +24,19 @@
 		(verification: Verification) => verification.type === 'VALIDATE_EMAIL'
 	);
 
-	const {
-		form: nameForm,
-		errors: nameErrors,
-		isSubmitting: nameIsSubmitting,
-		data: nameData
-	} = createForm<z.infer<typeof userWithNameSchema>>({
+	export const {
+		form,
+		errors,
+		isSubmitting,
+		data: formData
+	} = createForm({
 		initialValues: {
 			name: $page.data.session?.user?.name || ''
 		},
 		onSuccess() {
 			sendSuccessToast('name');
 		},
-		validate: validateSchema(userWithNameSchema)
+		validate: validateSchema(UserUpdateInputObjectSchema)
 	});
 
 	function sendSuccessToast(fieldId: string) {
@@ -50,22 +51,22 @@
 
 <div class="flex flex-col gap-6">
 	<form
-		use:nameForm
+		use:form
 		method="POST"
 		action="/account?/updateName"
 		enctype="application/x-www-form-urlencoded"
 	>
 		<SettingsCard title={$_('pages.account.name.title')}>
 			<TextInput
-				error={$nameErrors.name?.[0]}
+				error={$errors.name?.[0]}
 				maxlength="255"
 				id="name"
 				label={$_('pages.account.name.description')}
 			>
 				<Button
 					slot="right"
-					disabled={$nameData.name === $page.data.session?.user.name}
-					isLoading={$nameIsSubmitting}
+					disabled={$formData.name === $page.data.session?.user.name}
+					isLoading={$isSubmitting}
 					type="submit"
 					class="h-full">{$_('terms.save')}</Button
 				>

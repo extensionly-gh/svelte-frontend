@@ -1,1 +1,1 @@
-export * from './bcrypt.utils'
+export * from './bcrypt.utils';

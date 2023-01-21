@@ -1,1 +1,1 @@
-export { default } from './Dialog.svelte'
+export { default } from './Dialog.svelte';

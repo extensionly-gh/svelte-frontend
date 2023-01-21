@@ -1,30 +1,30 @@
-import { redirect, type Handle } from '@sveltejs/kit'
-import { locale } from 'svelte-i18n'
-import { SvelteKitAuth } from '@auth/sveltekit'
-import CredentialsProvider from '@auth/core/providers/credentials'
-import GoogleProvider from '@auth/core/providers/google'
-import { sequence } from '@sveltejs/kit/hooks'
-import { prisma } from '$lib/server/singletons'
-import { comparePassword } from '$lib/server/utils'
-import { theme } from '$lib/stores'
-import { env } from '$env/dynamic/private'
+import { redirect, type Handle } from '@sveltejs/kit';
+import { locale } from 'svelte-i18n';
+import { SvelteKitAuth } from '@auth/sveltekit';
+import CredentialsProvider from '@auth/core/providers/credentials';
+import GoogleProvider from '@auth/core/providers/google';
+import { sequence } from '@sveltejs/kit/hooks';
+import { prisma } from '$lib/server/singletons';
+import { comparePassword } from '$lib/server/utils';
+import { theme } from '$lib/stores';
+import { env } from '$env/dynamic/private';
 import { createTRPCHandle } from 'trpc-sveltekit';
-import { appRouter } from '$lib/trpc/router'
-import { createContext } from '$lib/trpc/context'
+import { appRouter } from '$lib/trpc/router';
+import { createContext } from '$lib/trpc/context';
 
 const handleLocale: Handle = async ({ event, resolve }) => {
-	const lang = event.cookies.get('lang')
+	const lang = event.cookies.get('lang');
 	if (lang) {
-		locale.set(lang)
+		locale.set(lang);
 	}
-	return resolve(event)
-}
+	return resolve(event);
+};
 
 const handleTheme: Handle = async ({ event, resolve }) => {
-	const userTheme = event.cookies.get('theme') as 'winter' | 'night' | undefined | null
-	theme.set(userTheme || 'winter')
-	return resolve(event)
-}
+	const userTheme = event.cookies.get('theme') as 'winter' | 'night' | undefined | null;
+	theme.set(userTheme || 'winter');
+	return resolve(event);
+};
 
 export const handleTRPC: Handle = createTRPCHandle({ router: appRouter, createContext });
 
@@ -42,8 +42,8 @@ const handleAuthorization: Handle = async ({ event, resolve }) => {
 			throw redirect(303, '/?error=exceptions.route-not-authorized');
 		}
 	}
-	return resolve(event)
-}
+	return resolve(event);
+};
 
 const handleSvelteKitAuth: Handle = SvelteKitAuth({
 	trustHost: true,
@@ -54,8 +54,8 @@ const handleSvelteKitAuth: Handle = SvelteKitAuth({
 	callbacks: {
 		async session(params) {
 			// Add user id to session object which is sent to the client
-			params.session.user.id = params.token!.sub!
-			return params.session
+			params.session.user.id = params.token!.sub!;
+			return params.session;
 		}
 	},
 	providers: [
@@ -65,25 +65,28 @@ const handleSvelteKitAuth: Handle = SvelteKitAuth({
 			clientSecret: env.GOOGLE_WEB_CLIENT_SECRET,
 			authorization: {
 				params: {
-					prompt: "consent",
-					access_type: "offline",
-					response_type: "code"
+					prompt: 'consent',
+					access_type: 'offline',
+					response_type: 'code'
 				}
 			},
 			async profile(profile, tokens) {
 				let user = await prisma.user.findUnique({
 					where: {
-						email: profile.email,
+						email: profile.email
 					}
 				});
 
 				if (!user) {
 					try {
-						const phoneNumberResponse = await fetch('https://people.googleapis.com/v1/people/me?personFields=phoneNumbers', {
-							headers: {
-								Authorization: `Bearer ${tokens.access_token}`
+						const phoneNumberResponse = await fetch(
+							'https://people.googleapis.com/v1/people/me?personFields=phoneNumbers',
+							{
+								headers: {
+									Authorization: `Bearer ${tokens.access_token}`
+								}
 							}
-						});
+						);
 
 						const json = await phoneNumberResponse.json();
 						let phone;
@@ -105,16 +108,16 @@ const handleSvelteKitAuth: Handle = SvelteKitAuth({
 										liftCooldownAt: new Date()
 									}
 								},
-								isTermsAccepted: true,
+								isTermsAccepted: true
 							}
-						})
+						});
 					} catch (error) {
 						console.log(error);
 						throw new Error('exceptions.users.unknown.saving-user-profile');
 					}
 				}
 
-				return user
+				return user;
 			}
 		}),
 		// @ts-expect-error SvelteKitAuth is still in experimental
@@ -122,8 +125,8 @@ const handleSvelteKitAuth: Handle = SvelteKitAuth({
 			async authorize(cred) {
 				const user = await prisma.user.findUnique({
 					where: {
-						email: cred?.email,
-					},
+						email: cred?.email
+					}
 				});
 
 				if (!user) {
@@ -142,7 +145,13 @@ const handleSvelteKitAuth: Handle = SvelteKitAuth({
 				return user;
 			}
 		})
-	],
-})
+	]
+});
 
-export const handle = sequence(handleSvelteKitAuth, handleLocale, handleTheme, handleTRPC, handleAuthorization)
+export const handle = sequence(
+	handleSvelteKitAuth,
+	handleLocale,
+	handleTheme,
+	handleTRPC,
+	handleAuthorization
+);
