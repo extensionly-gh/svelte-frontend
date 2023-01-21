@@ -68,7 +68,7 @@
 	},
 	"validations": {
 		"url": {
-			"invalid": "O URL parece inválido"
+			"invalid": "A URL parece inválida"
 		},
 		"string": {
 			"min": "Deve ser mais longo",
@@ -83,7 +83,7 @@
 		}
 	},
 	"exceptions": {
-		"route-not-authorized": "Você não tem permissão para acessar esta página",
+		"route-not-authorized": "Você não tem permissão para acessar aquela página",
 		"internal-server-error": "Erro interno do servidor",
 		"bad-request-error": "Erro de solicitação inválida",
 		"missing-required-parameter-error": "Parâmetro obrigatório faltando: {key}",

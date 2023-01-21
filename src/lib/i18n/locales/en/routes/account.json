@@ -36,10 +36,21 @@
 		"details": {
 			"name": {
 				"title": "Your Name",
-				"description": "Please enter your full name."
+				"label": "This is your full name"
+			},
+			"email": {
+				"title": "Your Email",
+				"label": "This is the email address you want to use to log in with Extensionly"
 			},
 			"title": "Edit your account details",
-			"success": "Details updated successfully!"
+			"success": "Details updated successfully!",
+			"phone": {
+				"label": "Your new phone number"
+			},
+			"image": {
+				"label": "The URL for your new profile picture"
+			},
+			"info": "In order for the changes to reflect in your current session, please re-login in the platform."
 		}
 	}
 }

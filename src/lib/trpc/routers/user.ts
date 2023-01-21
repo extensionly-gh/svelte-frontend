@@ -3,6 +3,7 @@ import { TRPCError } from '@trpc/server';
 import { DateTime } from 'luxon';
 import { authProcedure, router } from '$lib/trpc/t';
 import { z } from 'zod';
+import { userUpdateSchema } from '$lib/schemas';
 
 export const userRouter = router({
 	getUpdatableProperties: authProcedure.query(async ({ ctx }) => {
@@ -18,28 +19,16 @@ export const userRouter = router({
 			}
 		});
 
-		return {
-			...user,
-			image: user.image || '',
-			phone: user.phone || ''
-		};
+		return user;
 	}),
-	update: authProcedure
-		.input(
-			z.object({
-				name: z.string().min(3, 'validations.string.min').max(255, 'validations.string.max'),
-				email: z.string().email('validations.email.invalid'),
-				phone: z.string().min(10, 'validations.string.min').max(10, 'validations.string.max')
-			})
-		)
+	setUpdatableProperties: authProcedure
+		.input(userUpdateSchema)
 		.mutation(async ({ ctx, input }) => {
 			const { id } = ctx.session.user;
 
 			const user = await prisma.user.update({
 				where: { id },
-				data: {
-					...input
-				}
+				data: input
 			});
 
 			return user;

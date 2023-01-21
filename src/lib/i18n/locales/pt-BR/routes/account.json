@@ -35,14 +35,21 @@
 		"details": {
 			"name": {
 				"title": "Seu Nome",
-				"description": "Por favor, digite seu nome completo."
+				"label": "Seu nome completo"
 			},
 			"email": {
 				"title": "Seu Email",
-				"description": "O endereço de e-mail que deseja usar para fazer login com a Extensionly."
+				"label": "Esse é o e-mail que deseja usar para fazer login com a Extensionly"
 			},
 			"title": "Edite os detalhes da sua conta",
-			"success": "Detalhes atualizados com sucesso!"
+			"success": "Detalhes atualizados com sucesso!",
+			"phone": {
+				"label": "Seu novo número de telefone"
+			},
+			"image": {
+				"label": "A URL da sua nova foto de perfil"
+			},
+			"info": "Para que as alterações sejam refletidas em sua sessão atual, por favor, faça login novamente na plataforma."
 		}
 	}
 }

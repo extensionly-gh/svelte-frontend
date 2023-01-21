@@ -19,7 +19,7 @@
 
 <div class={`${settingsCardStyles(variants)} md:w-[32rem]`}>
 	<h3 class="text-xl font-semibold">{title}</h3>
-	<div class="flex gap-2 items-end justify-center flex-col">
+	<div class="flex gap-4 items-end justify-center flex-col">
 		<slot />
 	</div>
 </div>

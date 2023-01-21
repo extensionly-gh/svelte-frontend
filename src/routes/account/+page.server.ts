@@ -1,6 +1,5 @@
-import { prisma } from '$lib/server/singletons';
 import { createContext } from '$lib/trpc/context';
-import { appRouter } from '$lib/trpc/router';
+import { appRouter, type AppRouterInput } from '$lib/trpc/router';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
@@ -11,17 +10,9 @@ export const load: PageServerLoad = async (event) => {
 };
 
 export const actions: Actions = {
-	updateName: async (event) => {
-		const userId = (await event.locals.getSession())?.user.id;
-		if (userId) {
-			const data = await event.request.formData();
-			const name = data.get('name') as string;
-			if (name) {
-				await prisma.user.update({
-					where: { id: userId },
-					data: { name }
-				});
-			}
-		}
+	update: async (event) => {
+		const data = await event.request.formData();
+		const formDataAsObject = Object.fromEntries(data.entries()) as AppRouterInput['user']['setUpdatableProperties'];
+		await appRouter.createCaller(await createContext(event)).user.setUpdatableProperties(formDataAsObject);
 	}
 };

@@ -1,0 +1,1 @@
+export { default as InfoNotice } from './Info.svelte';
