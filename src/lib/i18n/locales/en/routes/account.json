@@ -61,7 +61,9 @@
       "cpw": {
         "label": "Confirm your new password"
       },
-      "title": "Edit your account password"
-    }
+      "title": "Edit your account password",
+      "info": "You do not have a password set. Setting a password will allow you to login without a third party provider."
+    },
+    "danger-zone": "Danger Zone"
   }
 }

@@ -60,7 +60,9 @@
       "cpw": {
         "label": "Confirme sua nova senha"
       },
-      "title": "Edite a senha da sua conta"
-    }
+      "title": "Edite a senha da sua conta",
+      "info": "Você não tem uma senha definida. Definir uma senha permitirá que você faça login sem um provedor terceiro."
+    },
+    "danger-zone": "Zona de Perigo"
   }
 }

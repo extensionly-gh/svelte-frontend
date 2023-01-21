@@ -5,7 +5,11 @@
 		},
 		"string": {
 			"min": "Must be longer",
-			"max": "Must be shorter"
+			"max": "Must be shorter",
+			"uppercase": "Must have at least one uppercase letter",
+			"lowercase": "Must have at least one lowercase letter",
+			"numeric": "Must have at least one number",
+			"symbol": "Must have at least one symbol"
 		},
 		"email": {
 			"invalid": "E-mail address looks invalid"
