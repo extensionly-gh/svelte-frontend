@@ -3,79 +3,79 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: 'Montserrat', sans-serif;
-    height: 100%;
-    -webkit-font-smoothing: antialiased;
-  }
+	html {
+		font-family: 'Montserrat', sans-serif;
+		height: 100%;
+		-webkit-font-smoothing: antialiased;
+	}
 
-  html,
-  body,
-  #theme-container {
-    display: flex;
-    flex-direction: column;
-  }
+	html,
+	body,
+	#theme-container {
+		display: flex;
+		flex-direction: column;
+	}
 
-  body,
-  #theme-container {
-    flex-grow: 1;
-  }
+	body,
+	#theme-container {
+		flex-grow: 1;
+	}
 
-  /* svelte-toast */
-  progress {
-    --toastBarHeight: 4px;
-  }
+	/* svelte-toast */
+	progress {
+		--toastBarHeight: 4px;
+	}
 }
 
 @layer components {
-  /* svelte-toast */
-  .toast-success {
-    --toastBackground: rgb(7, 188, 12);
-    --toastBarBackground: rgb(181, 235, 183);
-  }
-  .toast-success-dark {
-    --toastBackground: rgb(7, 188, 12, 0.6);
-    --toastBarBackground: rgb(181, 235, 183, 0.6);
-  }
-  .toast-info {
-    --toastBackground: rgb(52, 152, 219);
-    --toastBarBackground: rgb(194, 224, 244);
-  }
-  .toast-info-dark {
-    --toastBackground: rgba(52, 152, 219, 0.6);
-    --toastBarBackground: rgba(194, 224, 244, 0.6);
-  }
-  .toast-warning {
-    --toastBackground: rgb(241, 196, 15);
-    --toastBarBackground: rgb(251, 237, 183);
-  }
-  .toast-warning-dark {
-    --toastBackground: rgba(241, 196, 15, 0.6);
-    --toastBarBackground: rgba(251, 237, 183, 0.6);
-  }
-  .toast-error {
-    --toastBackground: rgb(231, 76, 60);
-    --toastBarBackground: rgb(248, 202, 197);
-  }
-  .toast-error-dark {
-    --toastBackground: rgba(231, 76, 60, 0.6);
-    --toastBarBackground: rgb(248, 202, 197, 0.6);
-  }
+	/* svelte-toast */
+	.toast-success {
+		--toastBackground: rgb(7, 188, 12);
+		--toastBarBackground: rgb(181, 235, 183);
+	}
+	.toast-success-dark {
+		--toastBackground: rgb(7, 188, 12, 0.6);
+		--toastBarBackground: rgb(181, 235, 183, 0.6);
+	}
+	.toast-info {
+		--toastBackground: rgb(52, 152, 219);
+		--toastBarBackground: rgb(194, 224, 244);
+	}
+	.toast-info-dark {
+		--toastBackground: rgba(52, 152, 219, 0.6);
+		--toastBarBackground: rgba(194, 224, 244, 0.6);
+	}
+	.toast-warning {
+		--toastBackground: rgb(241, 196, 15);
+		--toastBarBackground: rgb(251, 237, 183);
+	}
+	.toast-warning-dark {
+		--toastBackground: rgba(241, 196, 15, 0.6);
+		--toastBarBackground: rgba(251, 237, 183, 0.6);
+	}
+	.toast-error {
+		--toastBackground: rgb(231, 76, 60);
+		--toastBarBackground: rgb(248, 202, 197);
+	}
+	.toast-error-dark {
+		--toastBackground: rgba(231, 76, 60, 0.6);
+		--toastBarBackground: rgb(248, 202, 197, 0.6);
+	}
 }
 
 * {
-  scrollbar-width: thin;
-  scrollbar-color: hsl(var(--p)) hsl(var(--b3));
+	scrollbar-width: thin;
+	scrollbar-color: hsl(var(--p)) hsl(var(--b3));
 }
 
 *::-webkit-scrollbar {
-  width: 6px;
+	width: 6px;
 }
 
 *::-webkit-scrollbar-track {
-  background: hsl(var(--b3));
+	background: hsl(var(--b3));
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--p));
+	background-color: hsl(var(--p));
 }

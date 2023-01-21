@@ -1,2 +1,2 @@
 export { authDialog } from './auth-dialog.store';
-export { theme } from './theme.store'
+export { theme } from './theme.store';

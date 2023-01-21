@@ -1,90 +1,116 @@
-import { prisma } from "$lib/server/singletons";
-import { TRPCError } from "@trpc/server";
-import { DateTime } from "luxon";
-import { authProcedure, router } from "$lib/trpc/t";
-import { VerificationCreateOneSchema } from "$lib/server/schemas/schemas/createOneVerification.schema";
+import { prisma } from '$lib/server/singletons';
+import { TRPCError } from '@trpc/server';
+import { DateTime } from 'luxon';
+import { authProcedure, router } from '$lib/trpc/t';
+import { z } from 'zod';
 
 export const userRouter = router({
-  createVerification: authProcedure.input(VerificationCreateOneSchema).mutation(async ({ ctx, input }) => {
-    const verifications = await prisma.verification.findMany({
-      where: {
-        userId: ctx.session.user.id,
-        type: input.data.type,
-      },
-    });
+	update: authProcedure
+		.input(
+			z.object({
+				name: z.string().min(3, 'validations.string.min').max(255, 'validations.string.max'),
+				email: z.string().email('validations.email.invalid'),
+				phone: z.string().min(10, 'validations.string.min').max(10, 'validations.string.max')
+			})
+		)
+		.mutation(async ({ ctx, input }) => {
+			const { id } = ctx.session.user;
 
-    if (verifications.find((v) => v.isVerified)) {
-      throw new TRPCError({
-        message: `exceptions.users.verifications.${input.data.type.toLowerCase()}.already-verified`,
-        code: 'BAD_REQUEST'
-      });
-    }
+			const user = await prisma.user.update({
+				where: { id },
+				data: {
+					...input
+				}
+			});
 
-    const nowMinusFifteenMinutes = DateTime.now().minus({ minutes: 15 }).toJSDate();
+			return user;
+		}),
+	createVerification: authProcedure
+		.input(
+			z.object({
+				type: z.enum(['VALIDATE_EMAIL', 'VALIDATE_PHONE', 'RESET_PASSWORD'])
+			})
+		)
+		.mutation(async ({ ctx, input }) => {
+			const verifications = await prisma.verification.findMany({
+				where: {
+					userId: ctx.session.user.id,
+					type: input.type
+				}
+			});
 
-    const expired = verifications.filter((v) => {
-      return v.createdAt <= nowMinusFifteenMinutes;
-    });
+			if (verifications.find((v) => v.isVerified)) {
+				throw new TRPCError({
+					message: `exceptions.users.verifications.${input.type.toLowerCase()}.already-verified`,
+					code: 'BAD_REQUEST'
+				});
+			}
 
-    if (verifications.length > 0 && expired.length > 0) {
-      await prisma.verification.deleteMany({
-        where: {
-          userId: ctx.session.user.id,
-          type: input.data.type,
-          isVerified: false,
-          createdAt: {
-            lte: nowMinusFifteenMinutes,
-          },
-        },
-      });
-    }
+			const nowMinusFifteenMinutes = DateTime.now().minus({ minutes: 15 }).toJSDate();
 
-    const pendingVerification = verifications.find((v) => v.createdAt > nowMinusFifteenMinutes);
-    const liftCooldownAt = DateTime.now().plus({ minutes: 5 }).toJSDate();
+			const expired = verifications.filter((v) => {
+				return v.createdAt <= nowMinusFifteenMinutes;
+			});
 
-    if (pendingVerification) {
-      const isCooldownLifted =
-        DateTime.fromJSDate(pendingVerification.liftCooldownAt).diffNow('minutes').minutes <= 0;
+			if (verifications.length > 0 && expired.length > 0) {
+				await prisma.verification.deleteMany({
+					where: {
+						userId: ctx.session.user.id,
+						type: input.type,
+						isVerified: false,
+						createdAt: {
+							lte: nowMinusFifteenMinutes
+						}
+					}
+				});
+			}
 
-      if (!isCooldownLifted) {
-        throw new TRPCError({
-          message: `exceptions.users.verifications.${input.data.type.toLowerCase()}.cooldown-not-lifted`,
-          code: 'BAD_REQUEST'
-        });
-      }
+			const pendingVerification = verifications.find((v) => v.createdAt > nowMinusFifteenMinutes);
+			const liftCooldownAt = DateTime.now().plus({ minutes: 5 }).toJSDate();
 
-      await prisma.verification.update({
-        data: {
-          liftCooldownAt,
-        },
-        where: {
-          id: pendingVerification.id,
-        },
-      });
+			if (pendingVerification) {
+				const isCooldownLifted =
+					DateTime.fromJSDate(pendingVerification.liftCooldownAt).diffNow('minutes').minutes <= 0;
 
-      return pendingVerification;
-    }
+				if (!isCooldownLifted) {
+					throw new TRPCError({
+						message: `exceptions.users.verifications.${input.type.toLowerCase()}.cooldown-not-lifted`,
+						code: 'BAD_REQUEST'
+					});
+				}
 
-    const verification = await prisma.verification.create({
-      data: {
-        userId: ctx.session.user.id,
-        type: input.data.type,
-        liftCooldownAt,
-      },
-    });
+				await prisma.verification.update({
+					data: {
+						liftCooldownAt
+					},
+					where: {
+						id: pendingVerification.id
+					}
+				});
 
-    return verification;
-  }),
-  getVerifications: authProcedure.query(async ({ ctx }) => {
-    const user = await prisma.user.findUnique({
-      where: {
-        id: ctx.session.user.id
-      },
-      select: {
-        Verification: true
-      }
-    });
+				return pendingVerification;
+			}
 
-    return user?.Verification
-  })
-})
+			const verification = await prisma.verification.create({
+				data: {
+					userId: ctx.session.user.id,
+					type: input.type,
+					liftCooldownAt
+				}
+			});
+
+			return verification;
+		}),
+	getVerifications: authProcedure.query(async ({ ctx }) => {
+		const user = await prisma.user.findUnique({
+			where: {
+				id: ctx.session.user.id
+			},
+			select: {
+				Verification: true
+			}
+		});
+
+		return user?.Verification;
+	})
+});

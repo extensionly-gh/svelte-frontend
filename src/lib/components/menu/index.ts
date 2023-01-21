@@ -1,1 +1,1 @@
-export { default } from "./Menu.svelte";
+export { default } from './Menu.svelte';
