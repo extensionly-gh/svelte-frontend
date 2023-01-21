@@ -5,6 +5,25 @@ import { authProcedure, router } from '$lib/trpc/t';
 import { z } from 'zod';
 
 export const userRouter = router({
+	getUpdatableProperties: authProcedure.query(async ({ ctx }) => {
+		const { id } = ctx.session.user;
+
+		const user = await prisma.user.findUniqueOrThrow({
+			where: { id },
+			select: {
+				name: true,
+				email: true,
+				phone: true,
+				image: true
+			}
+		});
+
+		return {
+			...user,
+			image: user.image || '',
+			phone: user.phone || ''
+		};
+	}),
 	update: authProcedure
 		.input(
 			z.object({
