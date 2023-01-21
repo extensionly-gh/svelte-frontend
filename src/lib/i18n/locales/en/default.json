@@ -1,67 +1,68 @@
 {
-	"terms": {
-		"cookies-policy": "Cookies Policy",
-		"dismiss": "Dismiss",
-		"search": "Search for activities",
-		"email": "E-mail",
-		"signin": "Sign in",
-		"signup": "Sign up",
-		"forgotpw": "Send instructions",
-		"privacy-policy": "Privacy Policy",
-		"terms-and-conditions": "Terms and Conditions",
-		"light": "Light",
-		"dark": "Dark",
-		"theme": "Theme",
-		"language": "Language",
-		"signout": "Sign Out",
-		"my-account": "My account",
-		"system": "System",
-		"winter": "Winter",
-		"night": "Night",
-		"please-wait": "Please wait",
-		"with": "with",
-		"cookies-notice": {
-			"more-info": "More info at",
-			"subtitle": "We only use essential cookies to provide our services.",
-			"title": "Cookies Notice"
-		},
-		"save": "Save"
-	},
-	"dialogs": {
-		"auth": {
-			"title": {
-				"signin": "Log in or create an account",
-				"signup": "Create an account",
-				"forgotpw": "Recover your password"
-			},
-			"description": {
-				"signin": "Please choose a provider to sign in, or enter your email and password.",
-				"signup": "Create an account to get started with Extensionly.",
-				"forgotpw": "We will send you instructions on how to reset your password."
-			},
-			"content": {
-				"forgotpw-btn": "Go back to sign in",
-				"signin-btn": "Don't have an account? Sign up",
-				"signup-btn": "Already have an account? Sign in"
-			},
-			"cpassword-label": "Confirm password",
-			"email-label": "E-mail address",
-			"email-placeholder": "Your e-mail address",
-			"forgot-password": "Forgot your password?",
-			"or-continue": "or continue with",
-			"password-label": "Password",
-			"password-placeholder": "Your password",
-			"terms-agreement": {
-				"1": "By signing in through a third party provider, you agree to our ",
-				"2": " and the "
-			}
-		}
-	},
-	"footer": {
-		"about-us": "About us",
-		"open-source": "Open source",
-		"public-analytics": "Public analytics",
-		"legal": "Legal",
-		"reserved": "© 2022-PRESENT The Extensionly contributors. All rights reserved."
-	}
+  "terms": {
+    "cookies-policy": "Cookies Policy",
+    "dismiss": "Dismiss",
+    "search": "Search for activities",
+    "email": "E-mail",
+    "signin": "Sign in",
+    "signup": "Sign up",
+    "forgotpw": "Send instructions",
+    "privacy-policy": "Privacy Policy",
+    "terms-and-conditions": "Terms and Conditions",
+    "light": "Light",
+    "dark": "Dark",
+    "theme": "Theme",
+    "language": "Language",
+    "signout": "Sign Out",
+    "my-account": "My account",
+    "system": "System",
+    "winter": "Winter",
+    "night": "Night",
+    "please-wait": "Please wait",
+    "with": "with",
+    "cookies-notice": {
+      "more-info": "More info at",
+      "subtitle": "We only use essential cookies to provide our services.",
+      "title": "Cookies Notice"
+    },
+    "save": "Save",
+    "delete": "Delete"
+  },
+  "dialogs": {
+    "auth": {
+      "title": {
+        "signin": "Log in or create an account",
+        "signup": "Create an account",
+        "forgotpw": "Recover your password"
+      },
+      "description": {
+        "signin": "Please choose a provider to sign in, or enter your email and password.",
+        "signup": "Create an account to get started with Extensionly.",
+        "forgotpw": "We will send you instructions on how to reset your password."
+      },
+      "content": {
+        "forgotpw-btn": "Go back to sign in",
+        "signin-btn": "Don't have an account? Sign up",
+        "signup-btn": "Already have an account? Sign in"
+      },
+      "cpassword-label": "Confirm password",
+      "email-label": "E-mail address",
+      "email-placeholder": "Your e-mail address",
+      "forgot-password": "Forgot your password?",
+      "or-continue": "or continue with",
+      "password-label": "Password",
+      "password-placeholder": "Your password",
+      "terms-agreement": {
+        "1": "By signing in through a third party provider, you agree to our ",
+        "2": " and the "
+      }
+    }
+  },
+  "footer": {
+    "about-us": "About us",
+    "open-source": "Open source",
+    "public-analytics": "Public analytics",
+    "legal": "Legal",
+    "reserved": "© 2022-PRESENT The Extensionly contributors. All rights reserved."
+  }
 }

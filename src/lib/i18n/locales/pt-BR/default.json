@@ -1,67 +1,68 @@
 {
-	"terms": {
-		"cookies-policy": "Política de Cookies",
-		"dismiss": "Dispensar",
-		"search": "Pesquisar atividades",
-		"email": "E-mail",
-		"signin": "Entrar",
-		"signup": "Cadastrar",
-		"forgotpw": "Enviar instruções",
-		"privacy-policy": "Política de Privacidade",
-		"terms-and-conditions": "Termos e Condições",
-		"light": "Claro",
-		"dark": "Escuro",
-		"theme": "Tema",
-		"language": "Idioma",
-		"signout": "Sair",
-		"my-account": "Minha conta",
-		"system": "Sistema",
-		"winter": "Inverno",
-		"night": "Noite",
-		"please-wait": "Por favor, aguarde",
-		"with": "com",
-		"cookies-notice": {
-			"more-info": "Mais informações em",
-			"subtitle": "Usamos apenas cookies essenciais para oferecer nossos serviços.",
-			"title": "Declaração de Cookies"
-		},
-		"save": "Salvar"
-	},
-	"dialogs": {
-		"auth": {
-			"title": {
-				"signin": "Entre ou crie uma conta",
-				"signup": "Crie uma conta",
-				"forgotpw": "Recupere sua senha"
-			},
-			"description": {
-				"signin": "Por favor, escolha um provedor para entrar ou digite seu e-mail e senha.",
-				"signup": "Crie uma conta para começar a usar a plataforma.",
-				"forgotpw": "Enviaremos instruções para você recuperar sua senha."
-			},
-			"content": {
-				"forgotpw-btn": "Voltar para fazer login",
-				"signin-btn": "Não tem uma conta? Cadastre-se",
-				"signup-btn": "Já tem uma conta? Entrar"
-			},
-			"email-label": "Endereço de e-mail",
-			"email-placeholder": "Seu endereço de e-mail",
-			"forgot-password": "Esqueceu sua senha?",
-			"or-continue": "ou continue com",
-			"password-label": "Senha",
-			"password-placeholder": "Sua senha",
-			"cpassword-label": "Confirme a senha",
-			"terms-agreement": {
-				"1": "Ao fazer login por meio de um provedor terceirizado, você concorda com a nossa ",
-				"2": " e os "
-			}
-		}
-	},
-	"footer": {
-		"about-us": "Sobre nós",
-		"open-source": "Código aberto",
-		"public-analytics": "Estatísticas públicas",
-		"legal": "Jurídico",
-		"reserved": "© 2022-PRESENTE Os contribuidores da Extensionly. Todos os direitos reservados."
-	}
+  "terms": {
+    "cookies-policy": "Política de Cookies",
+    "dismiss": "Dispensar",
+    "search": "Pesquisar atividades",
+    "email": "E-mail",
+    "signin": "Entrar",
+    "signup": "Cadastrar",
+    "forgotpw": "Enviar instruções",
+    "privacy-policy": "Política de Privacidade",
+    "terms-and-conditions": "Termos e Condições",
+    "light": "Claro",
+    "dark": "Escuro",
+    "theme": "Tema",
+    "language": "Idioma",
+    "signout": "Sair",
+    "my-account": "Minha conta",
+    "system": "Sistema",
+    "winter": "Inverno",
+    "night": "Noite",
+    "please-wait": "Por favor, aguarde",
+    "with": "com",
+    "cookies-notice": {
+      "more-info": "Mais informações em",
+      "subtitle": "Usamos apenas cookies essenciais para oferecer nossos serviços.",
+      "title": "Declaração de Cookies"
+    },
+    "save": "Salvar",
+    "delete": "Excluir"
+  },
+  "dialogs": {
+    "auth": {
+      "title": {
+        "signin": "Entre ou crie uma conta",
+        "signup": "Crie uma conta",
+        "forgotpw": "Recupere sua senha"
+      },
+      "description": {
+        "signin": "Por favor, escolha um provedor para entrar ou digite seu e-mail e senha.",
+        "signup": "Crie uma conta para começar a usar a plataforma.",
+        "forgotpw": "Enviaremos instruções para você recuperar sua senha."
+      },
+      "content": {
+        "forgotpw-btn": "Voltar para fazer login",
+        "signin-btn": "Não tem uma conta? Cadastre-se",
+        "signup-btn": "Já tem uma conta? Entrar"
+      },
+      "email-label": "Endereço de e-mail",
+      "email-placeholder": "Seu endereço de e-mail",
+      "forgot-password": "Esqueceu sua senha?",
+      "or-continue": "ou continue com",
+      "password-label": "Senha",
+      "password-placeholder": "Sua senha",
+      "cpassword-label": "Confirme a senha",
+      "terms-agreement": {
+        "1": "Ao fazer login por meio de um provedor terceirizado, você concorda com a nossa ",
+        "2": " e os "
+      }
+    }
+  },
+  "footer": {
+    "about-us": "Sobre nós",
+    "open-source": "Código aberto",
+    "public-analytics": "Estatísticas públicas",
+    "legal": "Jurídico",
+    "reserved": "© 2022-PRESENTE Os contribuidores da Extensionly. Todos os direitos reservados."
+  }
 }
