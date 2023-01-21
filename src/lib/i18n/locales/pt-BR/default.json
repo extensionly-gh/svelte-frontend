@@ -54,7 +54,6 @@
 				"title": "Excluir Conta Pessoal"
 			},
 			"email": {
-				"description": "Digite o endereço de e-mail que deseja usar para fazer login com a Extensionly.",
 				"info": "Enviaremos um e-mail para você para validar a alteração.",
 				"title": "Seu Email",
 				"email-verified": "Seu email foi validado!",
@@ -67,9 +66,19 @@
 				"success-description": "Validado! Você pode fechar esta página agora."
 			},
 			"name": {
-				"description": "Por favor, digite seu nome completo.",
-				"title": "Seu Nome",
 				"success": "Nome atualizado! Por favor, entre novamente para ver a mudança."
+			},
+			"details": {
+				"name": {
+					"title": "Seu Nome",
+					"description": "Por favor, digite seu nome completo."
+				},
+				"email": {
+					"title": "Seu Email",
+					"description": "O endereço de e-mail que deseja usar para fazer login com a Extensionly."
+				},
+				"title": "Edite os detalhes da sua conta",
+				"success": "Detalhes atualizados com sucesso!"
 			}
 		}
 	},
@@ -104,6 +113,9 @@
 		}
 	},
 	"validations": {
+		"url": {
+			"invalid": "O URL parece inválido"
+		},
 		"string": {
 			"min": "Deve ser mais longo",
 			"max": "Deve ser mais curto"
