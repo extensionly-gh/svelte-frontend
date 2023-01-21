@@ -19,10 +19,10 @@
 		},
 		"email": {
 			"info": "Enviaremos um e-mail para você para validar a alteração.",
-			"title": "Seu Email",
-			"email-verified": "Seu email foi validado!",
+			"title": "Seu status de validação do e-mail",
+			"email-verified": "Seu e-mail foi validado! Agora você pode se inscrever e criar ações de extensão.",
 			"failed-description": "Validação falhou. Tente novamente mais tarde.",
-			"not-yet-verified": "Seu email ainda não foi validado.",
+			"not-yet-verified": "Para criar e se inscrever em ações de extensão, valide seu e-mail.",
 			"please-verify": "Por favor, valide clicando em",
 			"resend-email": "Validar",
 			"sent-success": "Email enviado com sucesso!",
@@ -49,7 +49,7 @@
 			"image": {
 				"label": "A URL da sua nova foto de perfil"
 			},
-			"info": "Para que as alterações sejam refletidas em sua sessão atual, por favor, faça login novamente na plataforma."
+			"info": "Para ver as alterações em sua sessão atual, faça login novamente."
 		}
 	}
 }

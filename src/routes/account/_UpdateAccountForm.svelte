@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button, TextInput } from '$lib/components';
-	import { InfoNotice } from '$lib/components/notices';
+	import { Notice } from '$lib/components/notice';
 	import { toastSuccess } from '$lib/components/toast';
 	import { userUpdateSchema } from '$lib/schemas';
 	import { validateSchema } from '@felte/validator-zod';
@@ -33,11 +33,11 @@
 				<img class="rounded-md" width="64px" src={$data.image} alt="Your profile avatar" />
 			{/if}
 		</div>
-		{#if $isDirty}
-			<InfoNotice text={$_('r-acc.details.info')} />
-		{/if}
-		<Button variants={{ width: 'short' }} isLoading={$isSubmitting} type="submit" class="h-full">
-			{$_('terms.save')}
-		</Button>
+		<div class="flex gap-2 items-center w-full">
+			<Notice text={$_('r-acc.details.info')} />
+			<Button variants={{ width: 'short' }} isLoading={$isSubmitting} type="submit">
+				{$_('terms.save')}
+			</Button>
+		</div>
 	</SettingsCard>
 </form>
