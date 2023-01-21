@@ -3,166 +3,166 @@
 </script>
 
 <article class="prose prose-slate">
-	<h1>{$_('privacyp.intro.title')}</h1>
-	<p>{$_('privacyp.intro.last-updated')}</p>
-	<p>{$_('privacyp.intro.par-1')}</p>
-	<p>{$_('privacyp.intro.par-2')}</p>
-	<h2>{$_('privacyp.interpretation.title')}</h2>
-	<h3>{$_('privacyp.interpretation.subtitle')}</h3>
-	<p>{$_('privacyp.interpretation.description')}</p>
-	<h3>{$_('privacyp.interpretation.definitions.title')}</h3>
-	<p>{$_('privacyp.interpretation.definitions.description')}</p>
+	<h1>{$_('l-p.intro.title')}</h1>
+	<p>{$_('l-p.intro.last-updated')}</p>
+	<p>{$_('l-p.intro.par-1')}</p>
+	<p>{$_('l-p.intro.par-2')}</p>
+	<h2>{$_('l-p.interpretation.title')}</h2>
+	<h3>{$_('l-p.interpretation.subtitle')}</h3>
+	<p>{$_('l-p.interpretation.description')}</p>
+	<h3>{$_('l-p.interpretation.definitions.title')}</h3>
+	<p>{$_('l-p.interpretation.definitions.description')}</p>
 	<ul>
 		<li>
-			<b>{$_('privacyp.interpretation.definitions.li-1.bold')}</b>
-			{$_('privacyp.interpretation.definitions.li-1.text')}
+			<b>{$_('l-p.interpretation.definitions.li-1.bold')}</b>
+			{$_('l-p.interpretation.definitions.li-1.text')}
 		</li>
 		<li>
-			<b>{$_('privacyp.interpretation.definitions.li-2.bold')}</b>
-			{$_('privacyp.interpretation.definitions.li-2.text')}
+			<b>{$_('l-p.interpretation.definitions.li-2.bold')}</b>
+			{$_('l-p.interpretation.definitions.li-2.text')}
 		</li>
 		<li>
-			<b>{$_('privacyp.interpretation.definitions.li-3.bold')}</b>
-			{$_('privacyp.interpretation.definitions.li-3.text')}
+			<b>{$_('l-p.interpretation.definitions.li-3.bold')}</b>
+			{$_('l-p.interpretation.definitions.li-3.text')}
 		</li>
 		<li>
-			<b>{$_('privacyp.interpretation.definitions.li-4.bold')}</b>
-			{$_('privacyp.interpretation.definitions.li-4.text')}
+			<b>{$_('l-p.interpretation.definitions.li-4.bold')}</b>
+			{$_('l-p.interpretation.definitions.li-4.text')}
 		</li>
 		<li>
-			<b>{$_('privacyp.interpretation.definitions.li-5.bold')}</b>
-			{$_('privacyp.interpretation.definitions.li-5.text')}
+			<b>{$_('l-p.interpretation.definitions.li-5.bold')}</b>
+			{$_('l-p.interpretation.definitions.li-5.text')}
 		</li>
 		<li>
-			<b>{$_('privacyp.interpretation.definitions.li-6.bold')}</b>
-			{$_('privacyp.interpretation.definitions.li-6.text')}
+			<b>{$_('l-p.interpretation.definitions.li-6.bold')}</b>
+			{$_('l-p.interpretation.definitions.li-6.text')}
 		</li>
 		<li>
-			<b>{$_('privacyp.interpretation.definitions.li-7.bold')}</b>
-			{$_('privacyp.interpretation.definitions.li-7.text')}
+			<b>{$_('l-p.interpretation.definitions.li-7.bold')}</b>
+			{$_('l-p.interpretation.definitions.li-7.text')}
 		</li>
 		<li>
-			<b>{$_('privacyp.interpretation.definitions.li-8.bold')}</b>
-			{$_('privacyp.interpretation.definitions.li-8.text')}
+			<b>{$_('l-p.interpretation.definitions.li-8.bold')}</b>
+			{$_('l-p.interpretation.definitions.li-8.text')}
 		</li>
 		<li>
-			<b>{$_('privacyp.interpretation.definitions.li-9.bold')}</b>
-			{$_('privacyp.interpretation.definitions.li-9.text')}{' '}
-			<a href={$_('privacyp.interpretation.definitions.li-9.link')}
-				>{$_('privacyp.interpretation.definitions.li-9.link')}</a
+			<b>{$_('l-p.interpretation.definitions.li-9.bold')}</b>
+			{$_('l-p.interpretation.definitions.li-9.text')}{' '}
+			<a href={$_('l-p.interpretation.definitions.li-9.link')}
+				>{$_('l-p.interpretation.definitions.li-9.link')}</a
 			>
 		</li>
 		<li>
-			<b>{$_('privacyp.interpretation.definitions.li-10.bold')}</b>
-			{$_('privacyp.interpretation.definitions.li-10.text')}
+			<b>{$_('l-p.interpretation.definitions.li-10.bold')}</b>
+			{$_('l-p.interpretation.definitions.li-10.text')}
 		</li>
 		<li>
-			<b>{$_('privacyp.interpretation.definitions.li-11.bold')}</b>
-			{$_('privacyp.interpretation.definitions.li-11.text')}
+			<b>{$_('l-p.interpretation.definitions.li-11.bold')}</b>
+			{$_('l-p.interpretation.definitions.li-11.text')}
 		</li>
 	</ul>
-	<h2>{$_('privacyp.section-1.title')}</h2>
-	<h3>{$_('privacyp.section-1.subsection-1.item-1.title')}</h3>
-	<p>{$_('privacyp.section-1.subsection-1.item-1.description')}</p>
+	<h2>{$_('l-p.section-1.title')}</h2>
+	<h3>{$_('l-p.section-1.subsection-1.item-1.title')}</h3>
+	<p>{$_('l-p.section-1.subsection-1.item-1.description')}</p>
 	<ul>
-		<li>{$_('privacyp.section-1.subsection-1.item-1.li-1')}</li>
+		<li>{$_('l-p.section-1.subsection-1.item-1.li-1')}</li>
 		<li>
-			<p>{$_('privacyp.section-1.subsection-1.item-1.li-2')}</p>
+			<p>{$_('l-p.section-1.subsection-1.item-1.li-2')}</p>
 		</li>
 		<li>
-			<p>{$_('privacyp.section-1.subsection-1.item-1.li-3')}</p>
+			<p>{$_('l-p.section-1.subsection-1.item-1.li-3')}</p>
 		</li>
 		<li>
-			<p>{$_('privacyp.section-1.subsection-1.item-1.li-4')}</p>
+			<p>{$_('l-p.section-1.subsection-1.item-1.li-4')}</p>
 		</li>
 	</ul>
-	<h3>{$_('privacyp.section-1.subsection-1.item-2.title')}</h3>
-	<p>{$_('privacyp.section-1.subsection-1.item-2.description.par-1')}</p>
-	<p>{$_('privacyp.section-1.subsection-1.item-2.description.par-2')}</p>
-	<p>{$_('privacyp.section-1.subsection-1.item-2.description.par-3')}</p>
-	<a href={$_('privacyp.section-1.subsection-1.item-2.description.par-3-link')}>
-		{$_('privacyp.section-1.subsection-1.item-2.description.par-3-link')}
+	<h3>{$_('l-p.section-1.subsection-1.item-2.title')}</h3>
+	<p>{$_('l-p.section-1.subsection-1.item-2.description.par-1')}</p>
+	<p>{$_('l-p.section-1.subsection-1.item-2.description.par-2')}</p>
+	<p>{$_('l-p.section-1.subsection-1.item-2.description.par-3')}</p>
+	<a href={$_('l-p.section-1.subsection-1.item-2.description.par-3-link')}>
+		{$_('l-p.section-1.subsection-1.item-2.description.par-3-link')}
 	</a>
-	<p>{$_('privacyp.section-1.subsection-1.item-2.description.par-4')}</p>
-	<h3>{$_('privacyp.section-1.subsection-1.item-3.title')}</h3>
-	<p>{$_('privacyp.section-1.subsection-1.item-3.description.par-1')}</p>
-	<h3>{$_('privacyp.section-1.subsection-1.item-4.title')}</h3>
-	<p>{$_('privacyp.section-1.subsection-1.item-4.description.par-1')}</p>
-	<a href={$_('privacyp.section-1.subsection-1.item-4.description.par-1-link')}>
-		{$_('privacyp.section-1.subsection-1.item-4.description.par-1-link')}
+	<p>{$_('l-p.section-1.subsection-1.item-2.description.par-4')}</p>
+	<h3>{$_('l-p.section-1.subsection-1.item-3.title')}</h3>
+	<p>{$_('l-p.section-1.subsection-1.item-3.description.par-1')}</p>
+	<h3>{$_('l-p.section-1.subsection-1.item-4.title')}</h3>
+	<p>{$_('l-p.section-1.subsection-1.item-4.description.par-1')}</p>
+	<a href={$_('l-p.section-1.subsection-1.item-4.description.par-1-link')}>
+		{$_('l-p.section-1.subsection-1.item-4.description.par-1-link')}
 	</a>
-	<p>{$_('privacyp.section-1.subsection-1.item-4.description.par-2')}</p>
-	<p>{$_('privacyp.section-1.subsection-1.item-4.description.par-3')}</p>
+	<p>{$_('l-p.section-1.subsection-1.item-4.description.par-2')}</p>
+	<p>{$_('l-p.section-1.subsection-1.item-4.description.par-3')}</p>
 	<ul>
 		<li>
-			<b>{$_('privacyp.section-1.subsection-1.item-4.description.li-1.bold')}</b>
-			<p>{$_('privacyp.section-1.subsection-1.item-4.description.li-1.type')}</p>
-			<p>{$_('privacyp.section-1.subsection-1.item-4.description.li-1.administered-by')}</p>
-			<p>{$_('privacyp.section-1.subsection-1.item-4.description.li-1.purpose')}</p>
+			<b>{$_('l-p.section-1.subsection-1.item-4.description.li-1.bold')}</b>
+			<p>{$_('l-p.section-1.subsection-1.item-4.description.li-1.type')}</p>
+			<p>{$_('l-p.section-1.subsection-1.item-4.description.li-1.administered-by')}</p>
+			<p>{$_('l-p.section-1.subsection-1.item-4.description.li-1.purpose')}</p>
 		</li>
 	</ul>
-	<p>{$_('privacyp.section-1.subsection-1.item-4.description.par-4')}</p>
-	<a href={$_('privacyp.section-1.subsection-1.item-4.description.par-4-link.link')}>
-		{$_('privacyp.section-1.subsection-1.item-4.description.par-4-link.text')}
+	<p>{$_('l-p.section-1.subsection-1.item-4.description.par-4')}</p>
+	<a href={$_('l-p.section-1.subsection-1.item-4.description.par-4-link.link')}>
+		{$_('l-p.section-1.subsection-1.item-4.description.par-4-link.text')}
 	</a>
-	<h3>{$_('privacyp.section-1.subsection-2.title')}</h3>
-	<p>{$_('privacyp.section-1.subsection-2.description')}</p>
+	<h3>{$_('l-p.section-1.subsection-2.title')}</h3>
+	<p>{$_('l-p.section-1.subsection-2.description')}</p>
 	<ul>
 		<li>
-			<b>{$_('privacyp.section-1.subsection-2.li-1.bold')}</b>
-			{$_('privacyp.section-1.subsection-2.li-1.text')}
+			<b>{$_('l-p.section-1.subsection-2.li-1.bold')}</b>
+			{$_('l-p.section-1.subsection-2.li-1.text')}
 		</li>
 		<li>
-			<b>{$_('privacyp.section-1.subsection-2.li-2.bold')}</b>
-			{$_('privacyp.section-1.subsection-2.li-2.text')}
+			<b>{$_('l-p.section-1.subsection-2.li-2.bold')}</b>
+			{$_('l-p.section-1.subsection-2.li-2.text')}
 		</li>
 		<li>
-			<b>{$_('privacyp.section-1.subsection-2.li-3.bold')}</b>
-			{$_('privacyp.section-1.subsection-2.li-3.text')}
+			<b>{$_('l-p.section-1.subsection-2.li-3.bold')}</b>
+			{$_('l-p.section-1.subsection-2.li-3.text')}
 		</li>
 		<li>
-			<b>{$_('privacyp.section-1.subsection-2.li-4.bold')}</b>
-			{$_('privacyp.section-1.subsection-2.li-4.text')}
+			<b>{$_('l-p.section-1.subsection-2.li-4.bold')}</b>
+			{$_('l-p.section-1.subsection-2.li-4.text')}
 		</li>
 	</ul>
-	<p>{$_('privacyp.section-1.subsection-2.footer')}</p>
-	<h3>{$_('privacyp.section-1.subsection-3.title')}</h3>
-	<p>{$_('privacyp.section-1.subsection-3.description')}</p>
-	<h3>{$_('privacyp.section-1.subsection-4.title')}</h3>
-	<p>{$_('privacyp.section-1.subsection-4.par-1')}</p>
-	<p>{$_('privacyp.section-1.subsection-4.par-2')}</p>
-	<p>{$_('privacyp.section-1.subsection-4.par-3')}</p>
-	<h3>{$_('privacyp.section-1.subsection-5.title')}</h3>
-	<h4>{$_('privacyp.section-1.subsection-5.item-1.title')}</h4>
-	<p>{$_('privacyp.section-1.subsection-5.item-1.description')}</p>
-	<h4>{$_('privacyp.section-1.subsection-5.item-2.title')}</h4>
-	<p>{$_('privacyp.section-1.subsection-5.item-2.description')}</p>
+	<p>{$_('l-p.section-1.subsection-2.footer')}</p>
+	<h3>{$_('l-p.section-1.subsection-3.title')}</h3>
+	<p>{$_('l-p.section-1.subsection-3.description')}</p>
+	<h3>{$_('l-p.section-1.subsection-4.title')}</h3>
+	<p>{$_('l-p.section-1.subsection-4.par-1')}</p>
+	<p>{$_('l-p.section-1.subsection-4.par-2')}</p>
+	<p>{$_('l-p.section-1.subsection-4.par-3')}</p>
+	<h3>{$_('l-p.section-1.subsection-5.title')}</h3>
+	<h4>{$_('l-p.section-1.subsection-5.item-1.title')}</h4>
+	<p>{$_('l-p.section-1.subsection-5.item-1.description')}</p>
+	<h4>{$_('l-p.section-1.subsection-5.item-2.title')}</h4>
+	<p>{$_('l-p.section-1.subsection-5.item-2.description')}</p>
 	<ul>
-		<li>{$_('privacyp.section-1.subsection-5.item-2.li-1')}</li>
-		<li>{$_('privacyp.section-1.subsection-5.item-2.li-2')}</li>
-		<li>{$_('privacyp.section-1.subsection-5.item-2.li-3')}</li>
-		<li>{$_('privacyp.section-1.subsection-5.item-2.li-4')}</li>
-		<li>{$_('privacyp.section-1.subsection-5.item-2.li-5')}</li>
+		<li>{$_('l-p.section-1.subsection-5.item-2.li-1')}</li>
+		<li>{$_('l-p.section-1.subsection-5.item-2.li-2')}</li>
+		<li>{$_('l-p.section-1.subsection-5.item-2.li-3')}</li>
+		<li>{$_('l-p.section-1.subsection-5.item-2.li-4')}</li>
+		<li>{$_('l-p.section-1.subsection-5.item-2.li-5')}</li>
 	</ul>
-	<h3>{$_('privacyp.section-1.subsection-6.title')}</h3>
-	<p>{$_('privacyp.section-1.subsection-6.description')}</p>
-	<h2>{$_('privacyp.section-2.title')}</h2>
-	<p>{$_('privacyp.section-2.par-1')}</p>
-	<p>{$_('privacyp.section-2.par-2')}</p>
-	<h2>{$_('privacyp.section-3.title')}</h2>
-	<p>{$_('privacyp.section-3.par-1')}</p>
-	<p>{$_('privacyp.section-3.par-2')}</p>
-	<h2>{$_('privacyp.section-4.title')}</h2>
-	<p>{$_('privacyp.section-4.par-1')}</p>
-	<p>{$_('privacyp.section-4.par-2')}</p>
-	<p>{$_('privacyp.section-4.par-3')}</p>
-	<h2>{$_('privacyp.section-5.title')}</h2>
-	<p>{$_('privacyp.section-5.description')}</p>
+	<h3>{$_('l-p.section-1.subsection-6.title')}</h3>
+	<p>{$_('l-p.section-1.subsection-6.description')}</p>
+	<h2>{$_('l-p.section-2.title')}</h2>
+	<p>{$_('l-p.section-2.par-1')}</p>
+	<p>{$_('l-p.section-2.par-2')}</p>
+	<h2>{$_('l-p.section-3.title')}</h2>
+	<p>{$_('l-p.section-3.par-1')}</p>
+	<p>{$_('l-p.section-3.par-2')}</p>
+	<h2>{$_('l-p.section-4.title')}</h2>
+	<p>{$_('l-p.section-4.par-1')}</p>
+	<p>{$_('l-p.section-4.par-2')}</p>
+	<p>{$_('l-p.section-4.par-3')}</p>
+	<h2>{$_('l-p.section-5.title')}</h2>
+	<p>{$_('l-p.section-5.description')}</p>
 	<ul>
 		<li>
-			<p>{$_('privacyp.section-5.li-1.text')}</p>
-			<a href={$_('privacyp.section-5.li-1.link')} rel="noreferrer" target="_blank">
-				{$_('privacyp.section-5.li-1.link-text')}
+			<p>{$_('l-p.section-5.li-1.text')}</p>
+			<a href={$_('l-p.section-5.li-1.link')} rel="noreferrer" target="_blank">
+				{$_('l-p.section-5.li-1.link-text')}
 			</a>
 		</li>
 	</ul>

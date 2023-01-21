@@ -1,0 +1,69 @@
+{
+  "r-acc": {
+    "avatar": {
+      "description": "Click on the avatar to upload a custom one from your files.",
+      "info": "An avatar is optional but strongly recommended.",
+      "title": "Your Avatar"
+    },
+    "delete": {
+      "description": "Permanently remove your Personal Account and all of its contents from the Extensionly platform.",
+      "dialog": {
+        "confirm": "Delete my account",
+        "description": "Type your email to confirm",
+        "title": "Confirm account deletion",
+        "trigger": "Delete",
+        "subtitle": "All your data will be erased, including enrollments and created extension activities."
+      },
+      "success": "Your account was deleted successfully.",
+      "title": "Delete Personal Account",
+      "info-short": "You are about to delete your Extensionly account. This action cannot be undone."
+    },
+    "email": {
+      "description": "Please enter the email address you want to use to log in with Extensionly.",
+      "info": "We will email you to verify the change.",
+      "title": "Your email verification status",
+      "email-verified": "Your email is verified! You are now able to enroll and create extension actions.",
+      "failed-description": "Verification failed. Try again later.",
+      "not-yet-verified": "To create and enroll in extension actions, please verify your email.",
+      "please-verify": "Please, verify by clicking",
+      "resend-email": "Verify",
+      "sent-success": "Email sent successfully!",
+      "success": "Email verified successfully!",
+      "success-description": "Verified! You can close this page now."
+    },
+    "name": {
+      "success": "Name updated! Please re-login to see the change."
+    },
+    "details": {
+      "name": {
+        "title": "Your Name",
+        "label": "This is your full name"
+      },
+      "email": {
+        "title": "Your Email",
+        "label": "This is the email address you want to use to log in with Extensionly"
+      },
+      "title": "Edit your account details",
+      "success": "Details updated successfully!",
+      "phone": {
+        "label": "Your new phone number"
+      },
+      "image": {
+        "label": "The URL for your new profile picture"
+      },
+      "info": "To see the changes in your current session, re-login in the platform."
+    },
+    "password": {
+      "success": "Password updated successfully!",
+      "pw": {
+        "label": "Your new password"
+      },
+      "cpw": {
+        "label": "Confirm your new password"
+      },
+      "title": "Edit your account password",
+      "info": "You do not have a password set. Setting a password will allow you to login without a third party provider."
+    },
+    "danger-zone": "Danger Zone"
+  }
+}

@@ -29,7 +29,7 @@
 		placeholder={$_('dialogs.auth.email-placeholder')}
 		type="email"
 	/>
-	<Button variants={{ intent: 'primary', size: 'full' }} disabled={!$isValid} type="submit">
+	<Button variants={{ intent: 'primary', width: 'full' }} disabled={!$isValid} type="submit">
 		{$_('terms.forgotpw')}
 	</Button>
 </form>

@@ -1,0 +1,22 @@
+{
+	"zod": {
+		"url": {
+			"invalid": "URL looks invalid"
+		},
+		"string": {
+			"min": "Must be longer",
+			"max": "Must be shorter",
+			"uppercase": "Must have at least one uppercase letter",
+			"lowercase": "Must have at least one lowercase letter",
+			"numeric": "Must have at least one number",
+			"symbol": "Must have at least one symbol"
+		},
+		"email": {
+			"invalid": "E-mail address looks invalid"
+		},
+		"password": {
+			"min": "Must be at least 8 characters",
+			"mismatch": "Passwords do not match"
+		}
+	}
+}

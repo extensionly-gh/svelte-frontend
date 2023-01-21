@@ -3,115 +3,115 @@
 </script>
 
 <article class="prose prose-slate">
-	<h1>{$_('termsand.intro.title')}</h1>
-	<p>{$_('termsand.intro.last-updated')}</p>
-	<p>{$_('termsand.intro.par-1')}</p>
-	<p>{$_('termsand.intro.par-2')}</p>
-	<p>{$_('termsand.intro.par-3')}</p>
-	<h2>{$_('termsand.section-1.title')}</h2>
-	<p>{$_('termsand.section-1.par-1')}</p>
-	<p>{$_('termsand.section-1.par-2')}</p>
-	<h2>{$_('termsand.section-2.title')}</h2>
-	<p>{$_('termsand.section-2.par-1')}</p>
-	<p>{$_('termsand.section-2.par-2')}</p>
+	<h1>{$_('l-t.intro.title')}</h1>
+	<p>{$_('l-t.intro.last-updated')}</p>
+	<p>{$_('l-t.intro.par-1')}</p>
+	<p>{$_('l-t.intro.par-2')}</p>
+	<p>{$_('l-t.intro.par-3')}</p>
+	<h2>{$_('l-t.section-1.title')}</h2>
+	<p>{$_('l-t.section-1.par-1')}</p>
+	<p>{$_('l-t.section-1.par-2')}</p>
+	<h2>{$_('l-t.section-2.title')}</h2>
+	<p>{$_('l-t.section-2.par-1')}</p>
+	<p>{$_('l-t.section-2.par-2')}</p>
 	<ul>
 		<li>
-			<p>{$_('termsand.section-2.li-1.1')}</p>
+			<p>{$_('l-t.section-2.li-1.1')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-2.li-1.2')}</p>
+			<p>{$_('l-t.section-2.li-1.2')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-2.li-1.3')}</p>
+			<p>{$_('l-t.section-2.li-1.3')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-2.li-1.4')}</p>
+			<p>{$_('l-t.section-2.li-1.4')}</p>
 		</li>
 	</ul>
-	<p>{$_('termsand.section-2.par-3')}</p>
-	<p>{$_('termsand.section-2.par-4')}</p>
-	<p>{$_('termsand.section-2.par-5')}</p>
-	<p>{$_('termsand.section-2.par-6')}</p>
+	<p>{$_('l-t.section-2.par-3')}</p>
+	<p>{$_('l-t.section-2.par-4')}</p>
+	<p>{$_('l-t.section-2.par-5')}</p>
+	<p>{$_('l-t.section-2.par-6')}</p>
 	<ul>
 		<li>
-			<p>{$_('termsand.section-2.li-2.1')}</p>
+			<p>{$_('l-t.section-2.li-2.1')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-2.li-2.2')}</p>
+			<p>{$_('l-t.section-2.li-2.2')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-2.li-2.3')}</p>
+			<p>{$_('l-t.section-2.li-2.3')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-2.li-2.4')}</p>
+			<p>{$_('l-t.section-2.li-2.4')}</p>
 		</li>
 	</ul>
-	<p>{$_('termsand.section-2.par-7')}</p>
-	<h2>{$_('termsand.section-3.title')}</h2>
-	<p>{$_('termsand.section-3.par-1')}</p>
+	<p>{$_('l-t.section-2.par-7')}</p>
+	<h2>{$_('l-t.section-3.title')}</h2>
+	<p>{$_('l-t.section-3.par-1')}</p>
 	<ul>
 		<li>
-			<p>{$_('termsand.section-3.li-1.1')}</p>
+			<p>{$_('l-t.section-3.li-1.1')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-3.li-1.2')}</p>
+			<p>{$_('l-t.section-3.li-1.2')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-3.li-1.3')}</p>
+			<p>{$_('l-t.section-3.li-1.3')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-3.li-1.4')}</p>
+			<p>{$_('l-t.section-3.li-1.4')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-3.li-1.5')}</p>
+			<p>{$_('l-t.section-3.li-1.5')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-3.li-1.6')}</p>
+			<p>{$_('l-t.section-3.li-1.6')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-3.li-1.7')}</p>
+			<p>{$_('l-t.section-3.li-1.7')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-3.li-1.8')}</p>
+			<p>{$_('l-t.section-3.li-1.8')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-3.li-1.9')}</p>
+			<p>{$_('l-t.section-3.li-1.9')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-3.li-1.10')}</p>
+			<p>{$_('l-t.section-3.li-1.10')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-3.li-1.11')}</p>
+			<p>{$_('l-t.section-3.li-1.11')}</p>
 		</li>
 	</ul>
-	<p>{$_('termsand.section-3.par-2')}</p>
-	<h2>{$_('termsand.section-4.title')}</h2>
-	<p>{$_('termsand.section-4.par-1')}</p>
-	<h2>{$_('termsand.section-5.title')}</h2>
-	<a href={$_('termsand.section-5.link.to')}>
-		<p>{$_('termsand.section-5.link.text')}</p>
+	<p>{$_('l-t.section-3.par-2')}</p>
+	<h2>{$_('l-t.section-4.title')}</h2>
+	<p>{$_('l-t.section-4.par-1')}</p>
+	<h2>{$_('l-t.section-5.title')}</h2>
+	<a href={$_('l-t.section-5.link.to')}>
+		<p>{$_('l-t.section-5.link.text')}</p>
 	</a>
-	<h2>{$_('termsand.section-6.title')}</h2>
-	<p>{$_('termsand.section-6.par-1')}</p>
-	<h2>{$_('termsand.section-7.title')}</h2>
-	<p>{$_('termsand.section-7.par-1')}</p>
-	<p>{$_('termsand.section-7.par-2')}</p>
-	<h2>{$_('termsand.section-8.title')}</h2>
-	<p>{$_('termsand.section-8.par-1')}</p>
+	<h2>{$_('l-t.section-6.title')}</h2>
+	<p>{$_('l-t.section-6.par-1')}</p>
+	<h2>{$_('l-t.section-7.title')}</h2>
+	<p>{$_('l-t.section-7.par-1')}</p>
+	<p>{$_('l-t.section-7.par-2')}</p>
+	<h2>{$_('l-t.section-8.title')}</h2>
+	<p>{$_('l-t.section-8.par-1')}</p>
 	<ul>
 		<li>
-			<p>{$_('termsand.section-8.li.1')}</p>
+			<p>{$_('l-t.section-8.li.1')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-8.li.2')}</p>
+			<p>{$_('l-t.section-8.li.2')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-8.li.3')}</p>
+			<p>{$_('l-t.section-8.li.3')}</p>
 		</li>
 		<li>
-			<p>{$_('termsand.section-8.li.4')}</p>
+			<p>{$_('l-t.section-8.li.4')}</p>
 		</li>
 	</ul>
-	<p>{$_('termsand.section-8.par-2')}</p>
-	<p>{$_('termsand.section-8.par-3')}</p>
+	<p>{$_('l-t.section-8.par-2')}</p>
+	<p>{$_('l-t.section-8.par-3')}</p>
 </article>

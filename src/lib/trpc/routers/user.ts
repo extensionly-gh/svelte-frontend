@@ -5,28 +5,63 @@ import { TRPCError } from '@trpc/server';
 import { DateTime } from 'luxon';
 import { z } from 'zod';
 import { appRouter } from '../router';
+import { userUpdateSchema } from '$lib/schemas';
+import { hashPassword } from '$lib/server/utils';
 
 export const userRouter = router({
-	update: authProcedure
-		.input(
-			z.object({
-				name: z.string().min(3, 'validations.string.min').max(255, 'validations.string.max'),
-				email: z.string().email('validations.email.invalid'),
-				phone: z.string().min(10, 'validations.string.min').max(10, 'validations.string.max')
-			})
-		)
-		.mutation(async ({ ctx, input }) => {
-			const { id } = ctx.session.user;
+	deleteMyAccount: authProcedure.mutation(async ({ ctx }) => {
+		const { id } = ctx.session.user;
+		await prisma.user.delete({ where: { id } });
+	}),
+	getAccountData: authProcedure.query(async ({ ctx }) => {
+		const { id } = ctx.session.user;
 
-			const user = await prisma.user.update({
-				where: { id },
-				data: {
-					...input
+		const user = await prisma.user.findUniqueOrThrow({
+			where: { id },
+			select: {
+				name: true,
+				email: true,
+				phone: true,
+				image: true,
+				password: true,
+				Verification: {
+					select: {
+						type: true,
+						isVerified: true,
+						liftCooldownAt: true
+					}
 				}
-			});
+			}
+		});
+		const isPasswordEmpty = user.password === null;
+		// @ts-expect-error - we don't want to send the password to the client
+		delete user.password;
 
-			return user;
-		}),
+		return {
+			...user,
+			isPasswordEmpty
+		};
+	}),
+	updatePassword: authProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
+		const { id } = ctx.session.user;
+
+		await prisma.user.update({
+			where: { id },
+			data: {
+				password: await hashPassword(input)
+			}
+		});
+	}),
+	updateUser: authProcedure.input(userUpdateSchema).mutation(async ({ ctx, input }) => {
+		const { id } = ctx.session.user;
+
+		const user = await prisma.user.update({
+			where: { id },
+			data: input
+		});
+
+		return user;
+	}),
 	createVerification: publicProcedure
 		.input(
 			z.object({

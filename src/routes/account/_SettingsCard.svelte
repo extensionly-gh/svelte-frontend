@@ -8,7 +8,7 @@
 		variants: {
 			intent: {
 				primary: 'bg-base-300',
-				danger: 'shadow-red-200 dark:shadow-none text-error-content dark:text-red-300'
+				danger: 'dark:bg-[#140004] bg-[#6d0000] text-error'
 			}
 		},
 		defaultVariants: {
@@ -17,9 +17,9 @@
 	});
 </script>
 
-<div class={`${settingsCardStyles(variants)} md:w-[36rem]`}>
+<div class={`${settingsCardStyles(variants)} w-[24rem] lg:w-[28rem]`}>
 	<h3 class="text-xl font-semibold">{title}</h3>
-	<div class="flex gap-2 items-center justify-center">
+	<div class="flex gap-4 items-end justify-center flex-col">
 		<slot />
 	</div>
 </div>

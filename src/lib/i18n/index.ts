@@ -1,22 +1,17 @@
 import { browser } from '$app/environment';
-import { addMessages, init, register } from 'svelte-i18n';
-import defaultPtBR from './locales/pt-BR/default.json';
-import defaultEn from './locales/en/default.json';
+import { init, register } from 'svelte-i18n';
 
 const defaultLocale = 'pt-BR';
 
-// Synchronous
-addMessages('pt-BR', defaultPtBR);
-addMessages('en', defaultEn);
-// Asynchronous
-register('pt-BR', () => import('./locales/pt-BR/cookies.json'));
-register('pt-BR', () => import('./locales/pt-BR/privacy.json'));
-register('pt-BR', () => import('./locales/pt-BR/terms.json'));
-register('pt-BR', () => import('./locales/pt-BR/emails.json'));
-register('en', () => import('./locales/en/cookies.json'));
-register('en', () => import('./locales/en/privacy.json'));
-register('en', () => import('./locales/en/terms.json'));
-register('en', () => import('./locales/en/emails.json'));
+const modulesPtBr = import.meta.glob(`./locales/pt-BR/**/*.json`);
+for (const path in modulesPtBr) {
+	register('pt-BR', modulesPtBr[path]);
+}
+
+const modulesEn = import.meta.glob(`./locales/en/**/*.json`);
+for (const path in modulesEn) {
+	register('en', modulesEn[path]);
+}
 
 function getLang() {
 	if (browser) {
