@@ -1,7 +1,7 @@
 import { prisma } from '$lib/server/singletons';
 import { TRPCError } from '@trpc/server';
 import { DateTime } from 'luxon';
-import { authProcedure, router } from '$lib/trpc/t';
+import { authProcedure, publicProcedure, router } from '$lib/trpc/t';
 import { z } from 'zod';
 
 export const userRouter = router({
@@ -112,5 +112,25 @@ export const userRouter = router({
 		});
 
 		return user?.Verification;
-	})
+	}),
+	userExists: publicProcedure
+		.input(
+			z.object({
+				email: z.string().email('validations.email.invalid')
+			})
+		)
+		.query(async ({ input }) => {
+			const user = await prisma.user.findUnique({
+				where: { email: input.email }
+			});
+
+			if (!user) {
+				throw new TRPCError({
+					message: `teste`,
+					code: 'BAD_REQUEST'
+				});
+			}
+
+			return true;
+		})
 });
