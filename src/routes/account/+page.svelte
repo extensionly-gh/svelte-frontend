@@ -14,7 +14,6 @@
 	import { ButtonWithTimer } from '$lib/components/button';
 	import { DateTime } from 'luxon';
 	import type { PageData } from './$types';
-	import { UserUpdateInputObjectSchema } from '$lib/schemas/generated/schemas/objects/UserUpdateInput.schema';
 
 	let date = DateTime.now().toISO();
 
@@ -36,7 +35,7 @@
 		onSuccess() {
 			sendSuccessToast('name');
 		},
-		validate: validateSchema(UserUpdateInputObjectSchema)
+		validate: validateSchema(userWithNameSchema)
 	});
 
 	function sendSuccessToast(fieldId: string) {
