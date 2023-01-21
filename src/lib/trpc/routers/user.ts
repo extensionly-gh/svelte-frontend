@@ -4,6 +4,7 @@ import { DateTime } from 'luxon';
 import { authProcedure, router } from '$lib/trpc/t';
 import { z } from 'zod';
 import { userUpdateSchema } from '$lib/schemas';
+import { hashPassword } from '$lib/server/utils';
 
 export const userRouter = router({
 	deleteMyAccount: authProcedure.mutation(async ({ ctx }) => {
@@ -38,6 +39,16 @@ export const userRouter = router({
 			...user,
 			isPasswordEmpty
 		};
+	}),
+	updatePassword: authProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
+		const { id } = ctx.session.user;
+
+		await prisma.user.update({
+			where: { id },
+			data: {
+				password: await hashPassword(input)
+			}
+		});
 	}),
 	updateUser: authProcedure.input(userUpdateSchema).mutation(async ({ ctx, input }) => {
 		const { id } = ctx.session.user;

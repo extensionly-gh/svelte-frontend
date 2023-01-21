@@ -21,7 +21,12 @@
 	});
 </script>
 
-<form use:form method="POST" action="/account?/update" enctype="application/x-www-form-urlencoded">
+<form
+	use:form
+	method="POST"
+	action="/account?/updatePassword"
+	enctype="application/x-www-form-urlencoded"
+>
 	<SettingsCard title={$_('r-acc.password.title')}>
 		<TextInput
 			type="password"

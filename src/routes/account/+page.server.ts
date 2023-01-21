@@ -18,5 +18,10 @@ export const actions: Actions = {
 	},
 	deleteAccount: async (event) => {
 		await appRouter.createCaller(await createContext(event)).user.deleteMyAccount();
+	},
+	updatePassword: async (event) => {
+		const data = await event.request.formData();
+		const password = data.get('password') as string;
+		await appRouter.createCaller(await createContext(event)).user.updatePassword(password);
 	}
 };
