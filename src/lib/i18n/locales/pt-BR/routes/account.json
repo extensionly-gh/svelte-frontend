@@ -1,3 +1,48 @@
 {
-	"test": "test message"
+	"r-acc": {
+		"avatar": {
+			"description": "Clique no avatar para enviar um novo de seus arquivos.",
+			"info": "Um avatar é opcional, mas altamente recomendado.",
+			"title": "Seu Avatar"
+		},
+		"delete": {
+			"description": "Exclua permanentemente sua conta pessoal e todo o seu conteúdo da plataforma Extensionly.",
+			"dialog": {
+				"confirm": "Excluir minha conta",
+				"description": "Por favor, confirme a exclusão digitando seu email.",
+				"title": "Confirme Exclusão da Conta",
+				"trigger": "Excluir"
+			},
+			"info": "Cuidado com suas ações! Isso não é reversível.",
+			"success": "Usuário excluído com sucesso.",
+			"title": "Excluir Conta Pessoal"
+		},
+		"email": {
+			"info": "Enviaremos um e-mail para você para validar a alteração.",
+			"title": "Seu Email",
+			"email-verified": "Seu email foi validado!",
+			"failed-description": "Validação falhou. Tente novamente mais tarde.",
+			"not-yet-verified": "Seu email ainda não foi validado.",
+			"please-verify": "Por favor, valide clicando em",
+			"resend-email": "Validar",
+			"sent-success": "Email enviado com sucesso!",
+			"success": "Email validado com sucesso!",
+			"success-description": "Validado! Você pode fechar esta página agora."
+		},
+		"name": {
+			"success": "Nome atualizado! Por favor, entre novamente para ver a mudança."
+		},
+		"details": {
+			"name": {
+				"title": "Seu Nome",
+				"description": "Por favor, digite seu nome completo."
+			},
+			"email": {
+				"title": "Seu Email",
+				"description": "O endereço de e-mail que deseja usar para fazer login com a Extensionly."
+			},
+			"title": "Edite os detalhes da sua conta",
+			"success": "Detalhes atualizados com sucesso!"
+		}
+	}
 }

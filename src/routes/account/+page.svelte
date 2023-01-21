@@ -1,46 +1,20 @@
 <script lang="ts">
-	import { Button, TextInput } from '$lib/components';
 	import { _ } from 'svelte-i18n';
 	import SettingsCard from './_SettingsCard.svelte';
-	import { page } from '$app/stores';
-	import { createForm } from 'felte';
-	import type { z } from 'zod';
-	import { userWithEmailSchema, userWithNameSchema } from '$lib/schemas';
-	import { validateSchema } from '@felte/validator-zod';
-	import { toastSuccess } from '$lib/components/toast';
 	import IconCircleWavyWarning from '~icons/ph/circle-wavy-warning-fill';
 	import IconCircleWavyCheck from '~icons/ph/circle-wavy-check-fill';
-	import type { Prisma, Verification } from '@prisma/client';
 	import { ButtonWithTimer } from '$lib/components/button';
 	import { DateTime } from 'luxon';
 	import type { PageData } from './$types';
-
-	let date = DateTime.now().toISO();
+	import UpdateAccountForm from './_UpdateAccountForm.svelte';
 
 	export let data: PageData;
 
+	let date = DateTime.now().toISO();
+
 	const emailVerification = data.verifications?.find(
-		(verification: Verification) => verification.type === 'VALIDATE_EMAIL'
+		(verification) => verification.type === 'VALIDATE_EMAIL'
 	);
-
-	export const {
-		form,
-		errors,
-		isSubmitting,
-		data: formData
-	} = createForm({
-		initialValues: {
-			name: $page.data.session?.user?.name || ''
-		},
-		onSuccess() {
-			sendSuccessToast('name');
-		},
-		validate: validateSchema(userWithNameSchema)
-	});
-
-	function sendSuccessToast(fieldId: string) {
-		toastSuccess($_(`pages.account.${fieldId}.success`));
-	}
 
 	function handleVerifyEmail() {
 		console.log('handleVerifyEmail');
@@ -49,43 +23,25 @@
 </script>
 
 <div class="flex flex-col gap-6">
-	<form
-		use:form
-		method="POST"
-		action="/account?/updateName"
-		enctype="application/x-www-form-urlencoded"
-	>
-		<SettingsCard title={$_('pages.account.name.title')}>
-			<TextInput
-				error={$errors.name?.[0]}
-				maxlength="255"
-				id="name"
-				label={$_('pages.account.name.description')}
-			>
-				<Button
-					slot="right"
-					disabled={$formData.name === $page.data.session?.user.name}
-					isLoading={$isSubmitting}
-					type="submit"
-					class="h-full">{$_('terms.save')}</Button
-				>
-			</TextInput>
-		</SettingsCard>
-	</form>
+	<UpdateAccountForm initialValues={data.user} />
 	<form action="">
-		<SettingsCard title={$_('pages.account.email.title')}>
+		<SettingsCard title={$_('r-acc.email.title')}>
 			{#if !emailVerification?.isVerified}
-				<div class="flex gap-2 items-center text-error dark:brightness-75 flex-grow">
+				<div class="flex gap-2 items-center w-full text-error ">
 					<IconCircleWavyWarning width="32px" height="32px" />
-					<span class="font-semibold">{$_('pages.account.email.not-yet-verified')}</span>
+					<span class="font-semibold flex-grow">{$_('r-acc.email.not-yet-verified')}</span>
+					<ButtonWithTimer
+						variants={{ width: 'short' }}
+						endTime={date}
+						onSubmit={() => handleVerifyEmail()}
+					>
+						{$_('r-acc.email.resend-email')}
+					</ButtonWithTimer>
 				</div>
-				<ButtonWithTimer class="min-w-[5.5rem]" endTime={date} onSubmit={() => handleVerifyEmail()}>
-					{$_('pages.account.email.resend-email')}
-				</ButtonWithTimer>
 			{:else}
 				<div class="flex gap-2 items-center w-full text-success dark:brightness-75">
 					<IconCircleWavyCheck width="32px" height="32px" />
-					<span class="font-semibold">{$_('pages.account.email.email-verified')}</span>
+					<span class="font-semibold">{$_('r-acc.email.email-verified')}</span>
 				</div>
 			{/if}
 		</SettingsCard>
@@ -97,8 +53,8 @@
 			return;
 		}}
 	>
-		<SettingsCard info={$_('pages.account.avatar.info')} title={$_('pages.account.avatar.title')}>
-			<p>{$_('pages.account.avatar.description')}</p>
+		<SettingsCard info={$_('r-acc.avatar.info')} title={$_('r-acc.avatar.title')}>
+			<p>{$_('r-acc.avatar.description')}</p>
 			<div class="w-full flex items-center justify-center">
 				<Button class="btn-circle btn-lg" intent="ghost" onClick={handleAvatarClick}>
 					<UserCirclePlus size={64} weight="fill" />
@@ -117,11 +73,11 @@
 	<!-- <SettingsCard
     action={
       <Dialog
-        description={$_('pages.account.delete.dialog.description')}
-        title={$_('pages.account.delete.dialog.title')}
+        description={$_('r-acc.delete.dialog.description')}
+        title={$_('r-acc.delete.dialog.title')}
         trigger={
           <Button data-testid="delete-account-dialog-trigger" intent="danger" size="sm">
-            {$_('pages.account.delete.dialog.trigger')}
+            {$_('r-acc.delete.dialog.trigger')}
           </Button>
         }
       >
@@ -145,17 +101,17 @@
                 size="sm"
                 type="submit"
               >
-                {$_('pages.account.delete.dialog.confirm')}
+                {$_('r-acc.delete.dialog.confirm')}
               </Button>
             </Form>
           )}
         </Formik>
       </Dialog>
     }
-    info={$_('pages.account.delete.info')}
+    info={$_('r-acc.delete.info')}
     intent="danger"
-    title={$_('pages.account.delete.title')}
+    title={$_('r-acc.delete.title')}
   >
-    <p>{$_('pages.account.delete.description')}</p>
+    <p>{$_('r-acc.delete.description')}</p>
   </SettingsCard> -->
 </div>

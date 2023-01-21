@@ -1,3 +1,45 @@
 {
-	"test": "test message"
+	"r-acc": {
+		"avatar": {
+			"description": "Click on the avatar to upload a custom one from your files.",
+			"info": "An avatar is optional but strongly recommended.",
+			"title": "Your Avatar"
+		},
+		"delete": {
+			"description": "Permanently remove your Personal Account and all of its contents from the Extensionly platform.",
+			"dialog": {
+				"confirm": "Delete my account",
+				"description": "Please confirm deletion by typing your email.",
+				"title": "Confirm Account Deletion",
+				"trigger": "Delete"
+			},
+			"info": "Be careful with your actions! This is not reversible.",
+			"success": "User deleted successfully.",
+			"title": "Delete Personal Account"
+		},
+		"email": {
+			"description": "Please enter the email address you want to use to log in with Extensionly.",
+			"info": "We will email you to verify the change.",
+			"title": "Your Email",
+			"email-verified": "Your email is verified!",
+			"failed-description": "Verification failed. Try again later.",
+			"not-yet-verified": "Your email is not yet verified.",
+			"please-verify": "Please, verify by clicking",
+			"resend-email": "Verify",
+			"sent-success": "Email sent successfully!",
+			"success": "Email verified successfully!",
+			"success-description": "Verified! You can close this page now."
+		},
+		"name": {
+			"success": "Name updated! Please re-login to see the change."
+		},
+		"details": {
+			"name": {
+				"title": "Your Name",
+				"description": "Please enter your full name."
+			},
+			"title": "Edit your account details",
+			"success": "Details updated successfully!"
+		}
+	}
 }

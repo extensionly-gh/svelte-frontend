@@ -5,6 +5,7 @@ import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	return {
+		user: await appRouter.createCaller(await createContext(event)).user.getUpdatableProperties(),
 		verifications: await appRouter.createCaller(await createContext(event)).user.getVerifications()
 	};
 };

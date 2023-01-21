@@ -1,176 +1,133 @@
 {
-  "terms": {
-    "cookies-policy": "Cookies Policy",
-    "dismiss": "Dismiss",
-    "search": "Search for activities",
-    "email": "E-mail",
-    "signin": "Sign in",
-    "signup": "Sign up",
-    "forgotpw": "Send instructions",
-    "privacy-policy": "Privacy Policy",
-    "terms-and-conditions": "Terms and Conditions",
-    "light": "Light",
-    "dark": "Dark",
-    "theme": "Theme",
-    "language": "Language",
-    "signout": "Sign Out",
-    "my-account": "My account",
-    "system": "System",
-    "winter": "Winter",
-    "night": "Night",
-    "please-wait": "Please wait",
-    "with": "with",
-    "cookies-notice": {
-      "more-info": "More info at",
-      "subtitle": "We only use essential cookies to provide our services.",
-      "title": "Cookies Notice"
-    },
-    "save": "Save"
-  },
-  "pages": {
-    "home": {
-      "title-1": "Extension actions",
-      "title-2": "in the palm of your hands",
-      "subtitle": "Sign up for events, lectures, workshops, outreach projects and programs offered by your university. Create and submit proposals for new extension actions directly through the platform.",
-      "signup-now": "Create your account now!",
-      "browse-activities": "Browse activities"
-    },
-    "account": {
-      "avatar": {
-        "description": "Click on the avatar to upload a custom one from your files.",
-        "info": "An avatar is optional but strongly recommended.",
-        "title": "Your Avatar"
-      },
-      "delete": {
-        "description": "Permanently remove your Personal Account and all of its contents from the Extensionly platform.",
-        "dialog": {
-          "confirm": "Delete my account",
-          "description": "Please confirm deletion by typing your email.",
-          "title": "Confirm Account Deletion",
-          "trigger": "Delete"
-        },
-        "info": "Be careful with your actions! This is not reversible.",
-        "success": "User deleted successfully.",
-        "title": "Delete Personal Account"
-      },
-      "email": {
-        "description": "Please enter the email address you want to use to log in with Extensionly.",
-        "info": "We will email you to verify the change.",
-        "title": "Your Email",
-        "email-verified": "Your email is verified!",
-        "failed-description": "Verification failed. Try again later.",
-        "not-yet-verified": "Your email is not yet verified.",
-        "please-verify": "Please, verify by clicking",
-        "resend-email": "Verify",
-        "sent-success": "Email sent successfully!",
-        "success": "Email verified successfully!",
-        "success-description": "Verified! You can close this page now."
-      },
-      "name": {
-        "success": "Name updated! Please re-login to see the change."
-      },
-      "details": {
-        "name": {
-          "title": "Your Name",
-          "description": "Please enter your full name."
-        },
-        "title": "Edit your account details",
-        "success": "Details updated successfully!"
-      }
-    }
-  },
-  "dialogs": {
-    "auth": {
-      "title": {
-        "signin": "Log in or create an account",
-        "signup": "Create an account",
-        "forgotpw": "Recover your password"
-      },
-      "description": {
-        "signin": "Please choose a provider to sign in, or enter your email and password.",
-        "signup": "Create an account to get started with Extensionly.",
-        "forgotpw": "We will send you instructions on how to reset your password."
-      },
-      "content": {
-        "forgotpw-btn": "Go back to sign in",
-        "signin-btn": "Don't have an account? Sign up",
-        "signup-btn": "Already have an account? Sign in"
-      },
-      "cpassword-label": "Confirm password",
-      "email-label": "E-mail address",
-      "email-placeholder": "Your e-mail address",
-      "forgot-password": "Forgot your password?",
-      "or-continue": "or continue with",
-      "password-label": "Password",
-      "password-placeholder": "Your password",
-      "terms-agreement": {
-        "1": "By signing in through a third party provider, you agree to our ",
-        "2": " and the "
-      }
-    }
-  },
-  "validations": {
-    "url": {
-      "invalid": "URL looks invalid"
-    },
-    "string": {
-      "min": "Must be longer",
-      "max": "Must be shorter"
-    },
-    "email": {
-      "invalid": "E-mail address looks invalid"
-    },
-    "password": {
-      "min": "Must be at least 8 characters",
-      "mismatch": "Passwords do not match"
-    }
-  },
-  "exceptions": {
-    "route-not-authorized": "You are not authorized to access this page",
-    "internal-server-error": "Internal server error",
-    "bad-request-error": "Bad request error",
-    "auth": {
-      "passwords-not-match": "Invalid password"
-    },
-    "users": {
-      "user-already-exists": "User already exists",
-      "user-not-found": "User not found",
-      "password-not-set": "Log in with your provider and set a password in your account settings first",
-      "verifications": {
-        "invalid-token": "Invalid verification token",
-        "expired-token": "Verification token expired",
-        "validate_email": {
-          "already-verified": "Email is already verified",
-          "cooldown-not-lifted": "Limited to one verification email every 5 minutes"
-        },
-        "reset_password": {
-          "cooldown-not-lifted": "Limited to one password reset request every 5 minutes"
-        }
-      },
-      "unknown": {
-        "saving-user-profile": "An error occurred while saving your profile"
-      }
-    },
-    "activity": {
-      "activity-not-found": "Activity not found",
-      "missing-required-parameter-error": "Missing required query param: projectId"
-    },
-    "program": {
-      "program-not-found": "Program not found"
-    },
-    "project": {
-      "project-not-found": "Project not found"
-    },
-    "subActivity": {
-      "subActivity-not-found": "Sub Activity not found",
-      "missing-required-parameter-error": "Missing required query param: activityId"
-    }
-  },
-  "footer": {
-    "about-us": "About us",
-    "open-source": "Open source",
-    "public-analytics": "Public analytics",
-    "legal": "Legal",
-    "reserved": "© 2022-PRESENT The Extensionly contributors. All rights reserved."
-  }
+	"terms": {
+		"cookies-policy": "Cookies Policy",
+		"dismiss": "Dismiss",
+		"search": "Search for activities",
+		"email": "E-mail",
+		"signin": "Sign in",
+		"signup": "Sign up",
+		"forgotpw": "Send instructions",
+		"privacy-policy": "Privacy Policy",
+		"terms-and-conditions": "Terms and Conditions",
+		"light": "Light",
+		"dark": "Dark",
+		"theme": "Theme",
+		"language": "Language",
+		"signout": "Sign Out",
+		"my-account": "My account",
+		"system": "System",
+		"winter": "Winter",
+		"night": "Night",
+		"please-wait": "Please wait",
+		"with": "with",
+		"cookies-notice": {
+			"more-info": "More info at",
+			"subtitle": "We only use essential cookies to provide our services.",
+			"title": "Cookies Notice"
+		},
+		"save": "Save"
+	},
+	"pages": {
+		"home": {
+			"title-1": "Extension actions",
+			"title-2": "in the palm of your hands",
+			"subtitle": "Sign up for events, lectures, workshops, outreach projects and programs offered by your university. Create and submit proposals for new extension actions directly through the platform.",
+			"signup-now": "Create your account now!",
+			"browse-activities": "Browse activities"
+		}
+	},
+	"dialogs": {
+		"auth": {
+			"title": {
+				"signin": "Log in or create an account",
+				"signup": "Create an account",
+				"forgotpw": "Recover your password"
+			},
+			"description": {
+				"signin": "Please choose a provider to sign in, or enter your email and password.",
+				"signup": "Create an account to get started with Extensionly.",
+				"forgotpw": "We will send you instructions on how to reset your password."
+			},
+			"content": {
+				"forgotpw-btn": "Go back to sign in",
+				"signin-btn": "Don't have an account? Sign up",
+				"signup-btn": "Already have an account? Sign in"
+			},
+			"cpassword-label": "Confirm password",
+			"email-label": "E-mail address",
+			"email-placeholder": "Your e-mail address",
+			"forgot-password": "Forgot your password?",
+			"or-continue": "or continue with",
+			"password-label": "Password",
+			"password-placeholder": "Your password",
+			"terms-agreement": {
+				"1": "By signing in through a third party provider, you agree to our ",
+				"2": " and the "
+			}
+		}
+	},
+	"validations": {
+		"url": {
+			"invalid": "URL looks invalid"
+		},
+		"string": {
+			"min": "Must be longer",
+			"max": "Must be shorter"
+		},
+		"email": {
+			"invalid": "E-mail address looks invalid"
+		},
+		"password": {
+			"min": "Must be at least 8 characters",
+			"mismatch": "Passwords do not match"
+		}
+	},
+	"exceptions": {
+		"route-not-authorized": "You are not authorized to access this page",
+		"internal-server-error": "Internal server error",
+		"bad-request-error": "Bad request error",
+		"auth": {
+			"passwords-not-match": "Invalid password"
+		},
+		"users": {
+			"user-already-exists": "User already exists",
+			"user-not-found": "User not found",
+			"password-not-set": "Log in with your provider and set a password in your account settings first",
+			"verifications": {
+				"invalid-token": "Invalid verification token",
+				"expired-token": "Verification token expired",
+				"validate_email": {
+					"already-verified": "Email is already verified",
+					"cooldown-not-lifted": "Limited to one verification email every 5 minutes"
+				},
+				"reset_password": {
+					"cooldown-not-lifted": "Limited to one password reset request every 5 minutes"
+				}
+			},
+			"unknown": {
+				"saving-user-profile": "An error occurred while saving your profile"
+			}
+		},
+		"activity": {
+			"activity-not-found": "Activity not found",
+			"missing-required-parameter-error": "Missing required query param: projectId"
+		},
+		"program": {
+			"program-not-found": "Program not found"
+		},
+		"project": {
+			"project-not-found": "Project not found"
+		},
+		"subActivity": {
+			"subActivity-not-found": "Sub Activity not found",
+			"missing-required-parameter-error": "Missing required query param: activityId"
+		}
+	},
+	"footer": {
+		"about-us": "About us",
+		"open-source": "Open source",
+		"public-analytics": "Public analytics",
+		"legal": "Legal",
+		"reserved": "© 2022-PRESENT The Extensionly contributors. All rights reserved."
+	}
 }
