@@ -5,8 +5,9 @@
 	import { _ } from 'svelte-i18n';
 	import { DateTime } from 'luxon';
 	import { Notice } from '$lib/components/notice';
+	import type { AppRouterOutput } from '$lib/trpc/router';
 
-	export let verification: Verification;
+	export let verification: AppRouterOutput['user']['getAccountData']['Verification'][0];
 
 	let date = DateTime.now().toISO();
 
@@ -18,17 +19,15 @@
 
 <form action="">
 	<SettingsCard title={$_('r-acc.email.title')}>
-		{#if !verification.isVerified}
-			<div class="flex gap-2 items-center w-full">
-				<Notice variants={{ intent: 'warning' }} text={$_('r-acc.email.not-yet-verified')} />
-				<ButtonWithTimer
-					variants={{ width: 'short' }}
-					endTime={date}
-					onSubmit={() => handleVerifyEmail()}
-				>
-					{$_('r-acc.email.resend-email')}
-				</ButtonWithTimer>
-			</div>
+		{#if verification.isVerified}
+			<Notice variants={{ intent: 'warning' }} text={$_('r-acc.email.not-yet-verified')} />
+			<ButtonWithTimer
+				variants={{ width: 'short' }}
+				endTime={date}
+				onSubmit={() => handleVerifyEmail()}
+			>
+				{$_('r-acc.email.resend-email')}
+			</ButtonWithTimer>
 		{:else}
 			<Notice variants={{ intent: 'success' }} text={$_('r-acc.email.email-verified')} />
 		{/if}

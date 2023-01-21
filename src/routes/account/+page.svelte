@@ -8,14 +8,16 @@
 
 	export let data: PageData;
 
-	const emailVerification = data.verifications?.find(
+	const emailVerification = data.user.Verification?.find(
 		(verification) => verification.type === 'VALIDATE_EMAIL'
 	);
 </script>
 
 <div class="flex flex-col gap-6">
-	<UpdateAccountForm initialValues={data.user} />
-	<UpdatePasswordForm />
+	<div class="flex flex-col lg:flex-row gap-6">
+		<UpdateAccountForm initialValues={data.user} />
+		<UpdatePasswordForm isPasswordEmpty={data.user.isPasswordEmpty} />
+	</div>
 	{#if emailVerification}
 		<VerifyEmailForm verification={emailVerification} />
 	{/if}

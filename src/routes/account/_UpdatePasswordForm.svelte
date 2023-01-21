@@ -9,6 +9,8 @@
 	import type { z } from 'zod';
 	import SettingsCard from './_SettingsCard.svelte';
 
+	export let isPasswordEmpty: boolean;
+
 	const { form, errors, isSubmitting, data, isDirty } = createForm<
 		z.infer<typeof passwordUpdateSchema>
 	>({
@@ -21,13 +23,27 @@
 
 <form use:form method="POST" action="/account?/update" enctype="application/x-www-form-urlencoded">
 	<SettingsCard title={$_('r-acc.password.title')}>
-		<TextInput error={$errors.password?.[0]} id="password" label={$_('r-acc.password.pw.label')} />
 		<TextInput
+			type="password"
+			error={$errors.password?.[0]}
+			id="password"
+			label={$_('r-acc.password.pw.label')}
+		/>
+		<TextInput
+			type="password"
 			error={$errors.cpassword?.[0]}
 			id="cpassword"
 			label={$_('r-acc.password.cpw.label')}
 		/>
-		<Button variants={{ width: 'short' }} isLoading={$isSubmitting} type="submit">
+		{#if isPasswordEmpty}
+			<Notice text={$_('r-acc.password.info')} />
+		{/if}
+		<Button
+			disabled={!$isDirty}
+			variants={{ width: 'short' }}
+			isLoading={$isSubmitting}
+			type="submit"
+		>
 			{$_('terms.save')}
 		</Button>
 	</SettingsCard>

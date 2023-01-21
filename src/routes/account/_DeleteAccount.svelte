@@ -24,12 +24,10 @@
 </script>
 
 <SettingsCard variants={{ intent: 'danger' }} title={$_('r-acc.delete.title')}>
-	<div class="flex gap-2 items-center w-full">
-		<Notice variants={{ intent: 'danger' }} text={$_('r-acc.delete.info-short')} />
-		<Button variants={{ width: 'short', intent: 'danger' }} on:click={() => (isOpen = true)}>
-			{$_('terms.delete')}
-		</Button>
-	</div>
+	<Notice variants={{ intent: 'danger' }} text={$_('r-acc.delete.info-short')} />
+	<Button variants={{ width: 'short', intent: 'danger' }} on:click={() => (isOpen = true)}>
+		{$_('terms.delete')}
+	</Button>
 </SettingsCard>
 
 <Dialog
