@@ -3,7 +3,7 @@ import { init, register } from 'svelte-i18n';
 
 const defaultLocale = 'pt-BR';
 
-const modulesPtBr = import.meta.glob(`./locales/pt-BR/**/*.json`)
+const modulesPtBr = import.meta.glob(`./locales/pt-BR/**/*.json`);
 for (const path in modulesPtBr) {
 	register('pt-BR', modulesPtBr[path]);
 }

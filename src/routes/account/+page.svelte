@@ -3,6 +3,7 @@
 	import type { PageData } from './$types';
 	import DeleteAccount from './_DeleteAccount.svelte';
 	import UpdateAccountForm from './_UpdateAccountForm.svelte';
+	import UpdatePasswordForm from './_UpdatePasswordForm.svelte';
 	import VerifyEmailForm from './_VerifyEmailForm.svelte';
 
 	export let data: PageData;
@@ -14,6 +15,7 @@
 
 <div class="flex flex-col gap-6">
 	<UpdateAccountForm initialValues={data.user} />
+	<UpdatePasswordForm />
 	{#if emailVerification}
 		<VerifyEmailForm verification={emailVerification} />
 	{/if}

@@ -52,6 +52,16 @@
         "label": "The URL for your new profile picture"
       },
       "info": "To see the changes in your current session, re-login in the platform."
+    },
+    "password": {
+      "success": "Password updated successfully!",
+      "pw": {
+        "label": "Your new password"
+      },
+      "cpw": {
+        "label": "Confirm your new password"
+      },
+      "title": "Edit your account password"
     }
   }
 }

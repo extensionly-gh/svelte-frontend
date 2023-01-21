@@ -8,7 +8,7 @@ export const signinSchema = z.object({
 export const signupSchema = z
 	.object({
 		email: z.string().email('zod.email.invalid'),
-		password: z.string().min(8, 'zod.password.min'),
+		password: z.string().min(8, 'zod.password.min').max(255, 'zod.string.max'),
 		cpassword: z.string()
 	})
 	.superRefine(({ cpassword, password }, ctx) => {
