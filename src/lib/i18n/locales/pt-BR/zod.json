@@ -1,22 +1,25 @@
 {
-	"zod": {
-		"url": {
-			"invalid": "A URL parece inválida"
-		},
-		"string": {
-			"min": "Deve ser mais longo",
-			"max": "Deve ser mais curto",
-			"uppercase": "Deve ter ao menos uma letra maiúscula",
-			"lowercase": "Deve ter ao menos uma letra minúscula",
-			"numeric": "Deve ter ao menos um número",
-			"symbol": "Deve ter ao menos um símbolo"
-		},
-		"email": {
-			"invalid": "O endereço de e-mail parece inválido"
-		},
-		"password": {
-			"min": "Deve ter pelo menos 8 caracteres",
-			"mismatch": "As senhas não conferem"
-		}
-	}
+  "zod": {
+    "url": {
+      "invalid": "A URL parece inválida"
+    },
+    "string": {
+      "min": "Deve ser mais longo",
+      "max": "Deve ser mais curto",
+      "uppercase": "Deve ter ao menos uma letra maiúscula",
+      "lowercase": "Deve ter ao menos uma letra minúscula",
+      "numeric": "Deve ter ao menos um número",
+      "symbol": "Deve ter ao menos um símbolo"
+    },
+    "email": {
+      "invalid": "O endereço de e-mail parece inválido"
+    },
+    "password": {
+      "min": "Deve ter pelo menos 8 caracteres",
+      "mismatch": "As senhas não conferem"
+    },
+    "phone": {
+      "invalid": "O número de telefone parece inválido"
+    }
+  }
 }

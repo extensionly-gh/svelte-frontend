@@ -20,8 +20,8 @@
 	let searchText = '';
 	let selected: CountryCode;
 	export let id: string;
-	export let placeholder: string;
 	export let label: string;
+	export let touched: boolean;
 	export let clickOutside = true;
 	export let closeOnClick = true;
 	export let disabled = false;
@@ -98,6 +98,7 @@
 			id="states-button"
 			data-dropdown-toggle="dropdown-states"
 			variants={{ intent: 'ghost' }}
+			class="p-2"
 			on:click={toggleDropDown}
 		>
 			{#if selected && selected !== null}
@@ -157,14 +158,22 @@
 
 		<TelInput
 			{id}
-			{placeholder}
+			{...$$restProps}
+			maxlength={20}
+			on:blur={() => (touched = true)}
 			bind:country={selected}
 			bind:parsedTelInput
 			bind:value
-			class="border-b border-t border-r bg-base-200 focus:border-base-content/40 focus:outline-none input p-2 h-[2.5rem] rounded-md placeholder:text-base-content/40 placeholder:text-sm w-full text-sm {isValid
-				? ``
-				: ``} text-sm rounded-r-md block w-full p-2.5 
+			class="border bg-base-200 focus:outline-none input p-2 h-[2.5rem] rounded-md placeholder:text-base-content/40 placeholder:text-sm w-full text-sm {!isValid &&
+			touched
+				? `border-error border-2`
+				: `focus:border-base-content/40`} text-sm rounded-r-md block w-full p-2.5 
              focus:outline-none"
 		/>
 	</div>
+	{#if !isValid && touched}
+		<span class="text-error font-bold text-xs my-2 h-2" data-testid={`${id}-error`}>
+			{$_('zod.phone.invalid')}
+		</span>
+	{/if}
 </label>

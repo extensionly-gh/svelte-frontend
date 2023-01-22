@@ -6,9 +6,25 @@
 	import { validateSchema } from '@felte/validator-zod';
 	import { Button, TextInput } from '$lib/components';
 	import { PhoneInput } from '$lib/components/form';
+	import type { NormalizedTelNumber } from 'svelte-tel-input/types';
 
-	const { form, errors, isValid } = createForm<z.infer<typeof signupSchema>>({
-		validate: validateSchema(signupSchema)
+	let parsedTelInput: NormalizedTelNumber;
+
+	const { form, errors, isValid, data, touched } = createForm<z.infer<typeof signupSchema>>({
+		onSubmit(values) {
+			console.log(values);
+			console.log($touched);
+		},
+		validate: [
+			validateSchema(signupSchema),
+			() => {
+				if (!parsedTelInput?.isValid) {
+					return {
+						phone: 'zod.phone.invalid'
+					};
+				}
+			}
+		]
 	});
 </script>
 
@@ -27,16 +43,20 @@
 		type="email"
 	/>
 	<PhoneInput
-		value={''}
+		bind:touched={$touched.phone}
+		bind:value={$data.phone}
+		bind:parsedTelInput
 		id="phone"
 		label={$_('dialogs.auth.phone-label')}
 		placeholder={$_('dialogs.auth.phone-placeholder')}
+		autocomplete="tel"
 	/>
 	<TextInput
 		error={$errors.password?.[0]}
 		id="password"
 		label={$_('dialogs.auth.password-label')}
 		placeholder={$_('dialogs.auth.password-placeholder')}
+		autocomplete="new-password"
 		type="password"
 	/>
 	<TextInput
@@ -44,6 +64,7 @@
 		id="cpassword"
 		label={$_('dialogs.auth.cpassword-label')}
 		placeholder={$_('dialogs.auth.password-placeholder')}
+		autocomplete="new-password"
 		type="password"
 	/>
 	<Button variants={{ intent: 'primary', width: 'full' }} disabled={!$isValid} type="submit">
