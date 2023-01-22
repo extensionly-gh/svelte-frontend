@@ -6,10 +6,26 @@
 	import { validateSchema } from '@felte/validator-zod';
 	import { Button, TextInput } from '$lib/components';
 	import { PhoneInput } from '$lib/components/form';
+	import { toastError, toastSuccess } from '$lib/components/toast';
+	import { trpc } from '$lib/trpc/client';
+	import { TRPCClientError } from '@trpc/client';
 
 	let isPhoneValid: boolean = false;
 
-	const { form, errors, isValid, touched, data } = createForm<z.infer<typeof signupSchema>>({
+	const { form, errors, isValid, touched, data, isSubmitting } = createForm<
+		z.infer<typeof signupSchema>
+	>({
+		onSubmit: async (values) => {
+			try {
+				await trpc().user.createUser.mutate(values);
+				toastSuccess($_('dialogs.auth.signup-success'));
+			} catch (error) {
+				if (error instanceof TRPCClientError) {
+					return toastError($_(error.message));
+				}
+				toastError($_('exceptions.generic'));
+			}
+		},
 		validate: [
 			validateSchema(signupSchema),
 			() => {
@@ -23,13 +39,7 @@
 	});
 </script>
 
-<form
-	use:form
-	action="?/signUp"
-	method="post"
-	enctype="application/x-www-form-urlencoded"
-	class="flex flex-col w-full gap-4"
->
+<form use:form class="flex flex-col w-full gap-4">
 	<TextInput
 		error={$errors.name?.[0]}
 		id="name"
@@ -68,7 +78,12 @@
 		autocomplete="new-password"
 		type="password"
 	/>
-	<Button variants={{ intent: 'primary', width: 'full' }} disabled={!$isValid} type="submit">
+	<Button
+		variants={{ intent: 'primary', width: 'full' }}
+		isLoading={$isSubmitting}
+		disabled={!$isValid}
+		type="submit"
+	>
 		{$_('terms.signup')}
 	</Button>
 </form>

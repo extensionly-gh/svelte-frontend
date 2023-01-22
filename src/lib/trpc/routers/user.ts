@@ -1,10 +1,11 @@
 import { prisma } from '$lib/server/singletons';
 import { TRPCError } from '@trpc/server';
 import { DateTime } from 'luxon';
-import { authProcedure, router } from '$lib/trpc/t';
+import { authProcedure, publicProcedure, router } from '$lib/trpc/t';
 import { z } from 'zod';
-import { userUpdateSchema } from '$lib/schemas';
+import { createUserSchema, userUpdateSchema } from '$lib/schemas';
 import { hashPassword } from '$lib/server/utils';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 
 export const userRouter = router({
 	deleteMyAccount: authProcedure.mutation(async ({ ctx }) => {
@@ -49,6 +50,26 @@ export const userRouter = router({
 				password: await hashPassword(input)
 			}
 		});
+	}),
+	createUser: publicProcedure.input(createUserSchema).mutation(async ({ input }) => {
+		try {
+			await prisma.user.create({
+				data: {
+					...input,
+					password: await hashPassword(input.password)
+				}
+			});
+		} catch (error) {
+			if (error instanceof PrismaClientKnownRequestError) {
+				// P2002 is the error code for unique constraint violations
+				if (error.code === 'P2002') {
+					throw new TRPCError({
+						message: 'exceptions.users.email-already-in-use',
+						code: 'BAD_REQUEST'
+					});
+				}
+			}
+		}
 	}),
 	updateUser: authProcedure.input(userUpdateSchema).mutation(async ({ ctx, input }) => {
 		const { id } = ctx.session.user;

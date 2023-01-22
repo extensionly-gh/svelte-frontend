@@ -1,5 +1,6 @@
 {
 	"exceptions": {
+		"generic": "Algo deu errado, tente novamente mais tarde",
 		"route-not-authorized": "Você não tem permissão para acessar aquela página",
 		"internal-server-error": "Erro interno do servidor",
 		"bad-request-error": "Erro de solicitação inválida",
@@ -8,7 +9,7 @@
 			"passwords-not-match": "Senha inválida"
 		},
 		"users": {
-			"user-already-exists": "Usuário já existe",
+			"email-already-in-use": "Este email ou número de telefone já está em uso",
 			"user-not-found": "Usuário não encontrado",
 			"password-not-set": "Entre com o seu provedor e defina uma senha nas configurações da sua conta primeiro",
 			"verifications": {

@@ -60,7 +60,8 @@
       "name-label": "Name",
       "name-placeholder": "Your full name",
       "phone-placeholder": "Your phone number",
-      "phone-label": "Phone number"
+      "phone-label": "Phone number",
+      "signup-success": "Account created successfully!"
     }
   },
   "footer": {

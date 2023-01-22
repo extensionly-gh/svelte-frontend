@@ -1,8 +1,9 @@
 import { z } from 'zod';
+import { name, email, password } from './strings';
 
 export const userUpdateSchema = z.object({
-	name: z.string().min(3, 'zod.string.min').max(255, 'zod.string.max'),
-	email: z.string().email('zod.email.invalid'),
+	name,
+	email,
 	phone: z
 		.string()
 		.min(10, 'zod.string.min')
@@ -14,14 +15,7 @@ export const userUpdateSchema = z.object({
 
 export const passwordUpdateSchema = z
 	.object({
-		password: z
-			.string()
-			.min(8, 'zod.password.min')
-			.max(255, 'zod.string.max')
-			.refine((v) => /[A-Z]/.test(v), 'zod.string.uppercase')
-			.refine((v) => /[a-z]/.test(v), 'zod.string.lowercase')
-			.refine((v) => /[0-9]/.test(v), 'zod.string.numeric')
-			.refine((v) => /[^A-Za-z0-9]/.test(v), 'zod.string.symbol'),
+		password,
 		cpassword: z.string()
 	})
 	.superRefine(({ cpassword, password }, ctx) => {

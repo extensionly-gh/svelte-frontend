@@ -1,5 +1,6 @@
 {
 	"exceptions": {
+		"generic": "An error occurred, please try again later",
 		"route-not-authorized": "You are not authorized to access that page",
 		"internal-server-error": "Internal server error",
 		"bad-request-error": "Bad request error",
@@ -7,7 +8,7 @@
 			"passwords-not-match": "Invalid password"
 		},
 		"users": {
-			"user-already-exists": "User already exists",
+			"email-already-in-use": "This email or phone number is already in use",
 			"user-not-found": "User not found",
 			"password-not-set": "Log in with your provider and set a password in your account settings first",
 			"verifications": {
