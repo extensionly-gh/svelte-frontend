@@ -28,12 +28,12 @@
 	<div
 		data-theme={$theme}
 		style="max-width: {sizes[size]};"
-		class={`fixed z-50 w-[95vw] rounded-lg px-12 md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-transparent flex flex-col text-base-content`}
+		class={`fixed z-50 w-[95vw] px-12 md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-transparent flex flex-col text-base-content`}
 	>
-		<div class="bg-base-300 px-2">
+		<div class="bg-base-300 p-4 rounded-lg">
 			<div class="flex justify-between mb-4">
 				<div class="flex-1" />
-				<button on:click={() => close()} class="brightness-75  hover:brightness-100 transition-all">
+				<button on:click={() => close()} class="opacity-75  hover:opacity-100 transition-all">
 					<IconX width="28px" height="28px" />
 				</button>
 			</div>

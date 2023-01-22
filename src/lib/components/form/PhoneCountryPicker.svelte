@@ -7,9 +7,9 @@
 	import IconLoading from '~icons/eos-icons/loading';
 
 	export let selected: CountryCode;
+	export let isOpen = false;
 
 	let searchText = '';
-	let isOpen = false;
 	let disabled = false;
 	let searchInput: HTMLInputElement | null = null;
 
@@ -73,10 +73,10 @@
 		<IconLoading width="24px" height="24px" />
 	{/if}
 </Button>
+
 {#if isOpen}
 	<div
 		id="dropdown-countries"
-		use:clickOutsideAction={() => closeDropdown()}
 		class="z-10 max-w-fit bg-base-100 rounded divide-y divide-gray-100 absolute translate-y-11 overflow-hidden"
 		data-popper-reference-hidden=""
 		data-popper-escaped=""

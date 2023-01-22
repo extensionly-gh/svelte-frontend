@@ -1,12 +1,10 @@
 <script lang="ts">
 	import '$lib/styles/flags.css';
-	import TelInput, { getCurrentCountry } from 'svelte-tel-input';
+	import TelInput, { clickOutsideAction, getCurrentCountry } from 'svelte-tel-input';
 	import { onMount } from 'svelte';
 	import type { CountryCode, E164Number, NormalizedTelNumber } from 'svelte-tel-input/types';
 	import { _ } from 'svelte-i18n';
 	import PhoneCountryPicker from './PhoneCountryPicker.svelte';
-
-	let selected: CountryCode;
 
 	export let id: string;
 	export let label: string;
@@ -16,6 +14,9 @@
 
 	export let parsedTelInput: NormalizedTelNumber | null = null;
 	export let value: E164Number | null = '';
+
+	let selected: CountryCode;
+	let isOpen = false;
 
 	$: isValid = parsedTelInput?.isValid ?? false;
 
@@ -35,8 +36,8 @@
 
 <label class="flex flex-col items-start gap-1 w-full" for={id + '-shell'}>
 	<span class="label-text">{label}</span>
-	<div class="flex rounded-md gap-2 w-full">
-		<PhoneCountryPicker bind:selected />
+	<div class="flex rounded-md gap-2 w-full" use:clickOutsideAction={() => (isOpen = false)}>
+		<PhoneCountryPicker bind:selected bind:isOpen />
 
 		<TelInput
 			maxlength={20}
