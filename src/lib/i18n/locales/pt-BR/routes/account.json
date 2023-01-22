@@ -61,7 +61,10 @@
         "label": "Confirme sua nova senha"
       },
       "title": "Edite a senha da sua conta",
-      "info": "Você não tem uma senha definida. Definir uma senha permitirá que você faça login sem um provedor terceiro."
+      "info": "Você não tem uma senha definida. Definir uma senha permitirá que você faça login sem um provedor terceiro.",
+      "currpw": {
+        "label": "Sua senha atual"
+      }
     },
     "danger-zone": "Zona de Perigo"
   }

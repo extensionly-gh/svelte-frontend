@@ -3,8 +3,8 @@ import { TRPCError } from '@trpc/server';
 import { DateTime } from 'luxon';
 import { authProcedure, publicProcedure, router } from '$lib/trpc/t';
 import { z } from 'zod';
-import { createUserSchema, userUpdateSchema } from '$lib/schemas';
-import { hashPassword } from '$lib/server/utils';
+import { createUserSchema, passwordUpdateSchema, userUpdateSchema } from '$lib/schemas';
+import { comparePassword, hashPassword } from '$lib/server/utils';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 
 export const userRouter = router({
@@ -41,13 +41,34 @@ export const userRouter = router({
 			isPasswordEmpty
 		};
 	}),
-	updatePassword: authProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
+	updatePassword: authProcedure.input(passwordUpdateSchema).mutation(async ({ ctx, input }) => {
 		const { id } = ctx.session.user;
+
+		const { password: hashedPwd } = await prisma.user.findUniqueOrThrow({
+			where: { id },
+			select: {
+				password: true
+			}
+		});
+
+		if (!hashedPwd) {
+			throw new TRPCError({
+				message: 'exceptions.users.password.no-password',
+				code: 'BAD_REQUEST'
+			});
+		}
+
+		if (!(await comparePassword(input.currentPwd, hashedPwd))) {
+			throw new TRPCError({
+				message: 'exceptions.users.password.incorrect-current',
+				code: 'BAD_REQUEST'
+			});
+		}
 
 		await prisma.user.update({
 			where: { id },
 			data: {
-				password: await hashPassword(input)
+				password: await hashPassword(input.newPwd)
 			}
 		});
 	}),

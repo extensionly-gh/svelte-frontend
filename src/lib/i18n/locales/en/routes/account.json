@@ -62,7 +62,10 @@
         "label": "Confirm your new password"
       },
       "title": "Edit your account password",
-      "info": "You do not have a password set. Setting a password will allow you to login without a third party provider."
+      "info": "You do not have a password set. Setting a password will allow you to login without a third party provider.",
+      "currpw": {
+        "label": "Your current password"
+      }
     },
     "danger-zone": "Danger Zone"
   }

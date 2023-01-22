@@ -1,3 +1,5 @@
+export * from './client-exceptions.utils';
+
 interface PopupWindowOptions {
 	url: string;
 	w: number;

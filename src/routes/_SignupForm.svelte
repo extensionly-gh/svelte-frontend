@@ -6,10 +6,9 @@
 	import { validateSchema } from '@felte/validator-zod';
 	import { Button, TextInput } from '$lib/components';
 	import { PhoneInput } from '$lib/components/form';
-	import { toastError, toastSuccess } from '$lib/components/toast';
 	import { trpc } from '$lib/trpc/client';
-	import { TRPCClientError } from '@trpc/client';
 	import { signIn } from '@auth/sveltekit/client';
+	import { handleErrorInClient } from '$lib/utils';
 
 	let isPhoneValid: boolean = false;
 
@@ -25,10 +24,7 @@
 					callbackUrl: '/?success=dialogs.auth.signup-success'
 				});
 			} catch (error) {
-				if (error instanceof TRPCClientError) {
-					return toastError($_(error.message));
-				}
-				toastError($_('exceptions.generic'));
+				handleErrorInClient(error);
 			}
 		},
 		validate: [

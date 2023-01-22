@@ -3,6 +3,8 @@
 	import { Notice } from '$lib/components/notice';
 	import { toastSuccess } from '$lib/components/toast';
 	import { passwordUpdateSchema } from '$lib/schemas';
+	import { trpc } from '$lib/trpc/client';
+	import { handleErrorInClient } from '$lib/utils';
 	import { validateSchema } from '@felte/validator-zod';
 	import { createForm } from 'felte';
 	import { _ } from 'svelte-i18n';
@@ -14,8 +16,13 @@
 	const { form, errors, isSubmitting, data, isDirty } = createForm<
 		z.infer<typeof passwordUpdateSchema>
 	>({
-		onSuccess() {
-			toastSuccess($_(`r-acc.password.success`));
+		onSubmit: async (values) => {
+			try {
+				await trpc().user.updatePassword.mutate(values);
+				toastSuccess($_(`r-acc.password.success`));
+			} catch (error) {
+				handleErrorInClient(error);
+			}
 		},
 		validate: validateSchema(passwordUpdateSchema)
 	});
@@ -30,15 +37,24 @@
 	<SettingsCard title={$_('r-acc.password.title')}>
 		<TextInput
 			type="password"
-			error={$errors.password?.[0]}
-			id="password"
-			label={$_('r-acc.password.pw.label')}
+			error={$errors.currentPwd?.[0]}
+			id="currentPwd"
+			label={$_('r-acc.password.currpw.label')}
+			autocomplete="current-password"
 		/>
 		<TextInput
 			type="password"
-			error={$errors.cpassword?.[0]}
-			id="cpassword"
+			error={$errors.newPwd?.[0]}
+			id="newPwd"
+			label={$_('r-acc.password.pw.label')}
+			autocomplete="new-password"
+		/>
+		<TextInput
+			type="password"
+			error={$errors.confirmPwd?.[0]}
+			id="confirmPwd"
 			label={$_('r-acc.password.cpw.label')}
+			autocomplete="new-password"
 		/>
 		{#if isPasswordEmpty}
 			<Notice text={$_('r-acc.password.info')} />

@@ -10,14 +10,15 @@ export const userUpdateSchema = z.object({
 
 export const passwordUpdateSchema = z
 	.object({
-		password,
-		cpassword: z.string()
+		currentPwd: z.string(),
+		newPwd: password,
+		confirmPwd: z.string()
 	})
-	.superRefine(({ cpassword, password }, ctx) => {
-		if (cpassword !== password) {
+	.superRefine(({ confirmPwd, newPwd }, ctx) => {
+		if (confirmPwd !== newPwd) {
 			ctx.addIssue({
 				code: 'custom',
-				path: ['cpassword'],
+				path: ['confirmPwd'],
 				message: 'zod.password.mismatch'
 			});
 		}
