@@ -10,6 +10,7 @@ export function trpc(init?: TRPCClientInit) {
 
 	if (!browserClient) {
 		browserClient = createTRPCClient<AppRouter>();
-		return browserClient;
 	}
+
+	return browserClient;
 }
