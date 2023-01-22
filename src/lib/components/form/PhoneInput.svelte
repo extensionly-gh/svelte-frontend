@@ -91,6 +91,7 @@
 	};
 
 	function handleInputBlur(e: any) {
+		isTouched = true;
 		if (e.target.value === '') {
 			parsedTelInput = null;
 		}
@@ -103,7 +104,7 @@
 
 <label class="flex flex-col items-start gap-1 w-full" for={id + '-shell'}>
 	<span class="label-text">{label}</span>
-	<div class="flex rounded-md gap-2" use:clickOutsideAction={closeOnClickOutside}>
+	<div class="flex rounded-md gap-2 w-full" use:clickOutsideAction={closeOnClickOutside}>
 		<Button
 			id="states-button"
 			data-dropdown-toggle="dropdown-states"
@@ -183,7 +184,7 @@
 		<input {id} name={id} type="hidden" bind:value={parsedValue} />
 	</div>
 	{#if !isValid && isTouched}
-		<span class="text-error font-bold text-xs my-2 h-2" data-testid={`${id}-error`}>
+		<span class="text-error font-bold text-xs mb-1 h-2" data-testid={`${id}-error`}>
 			{$_('zod.phone.invalid')}
 		</span>
 	{/if}

@@ -10,6 +10,7 @@
 	export let id: string;
 	export let error: string = '';
 	export let type: string = 'text';
+	export let element: HTMLInputElement | null = null;
 
 	const isInitialTypePassword = type === 'password';
 
@@ -40,6 +41,7 @@
 	<span class="label-text">{label}</span>
 	<div class="w-full flex gap-2">
 		<input
+			bind:this={element}
 			maxlength="255"
 			class={inputStyles({ intent: !!error ? 'error' : variants.intent })}
 			data-testid={`${id}-input`}
@@ -60,7 +62,7 @@
 		<slot name="right" />
 	</div>
 	{#if !!error}
-		<span class="text-error font-bold text-xs my-2 h-2" data-testid={`${id}-error`}>
+		<span class="text-error font-bold text-xs mb-2 h-2" data-testid={`${id}-error`}>
 			{$_(error)}
 		</span>
 	{/if}
