@@ -37,8 +37,10 @@
 	);
 </script>
 
-<label class={`flex flex-col items-start gap-1 w-full ${$$props.class}`} for={id}>
-	<span class="label-text">{label}</span>
+<div class={`flex flex-col items-start gap-1 w-full ${$$props.class}`}>
+	<label for={id}>
+		<span class="label-text">{label}</span>
+	</label>
 	<div class="w-full flex gap-2">
 		<input
 			bind:this={element}
@@ -66,4 +68,4 @@
 			{$_(error)}
 		</span>
 	{/if}
-</label>
+</div>

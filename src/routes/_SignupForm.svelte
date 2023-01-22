@@ -10,13 +10,6 @@
 	let isPhoneValid: boolean = false;
 
 	const { form, errors, isValid, touched, data } = createForm<z.infer<typeof signupSchema>>({
-		initialValues: {
-			name: 'Lucas Test',
-			email: 'email@email.com',
-			phone: '',
-			password: 'StrongPassword1.',
-			cpassword: 'StrongPassword1.'
-		},
 		validate: [
 			validateSchema(signupSchema),
 			() => {
