@@ -22,7 +22,7 @@
 
 	$: parsedValue = (parsedTelInput?.e164 as string) ?? '';
 
-	function handleInputBlur(e: any) {
+	function handleInput(e: any) {
 		isTouched = true;
 		if (e.target.value === '') {
 			parsedTelInput = null;
@@ -43,7 +43,7 @@
 			maxlength={20}
 			id={id + '-shell'}
 			{...$$restProps}
-			on:blur={handleInputBlur}
+			on:input={handleInput}
 			bind:country={selected}
 			bind:parsedTelInput
 			bind:value

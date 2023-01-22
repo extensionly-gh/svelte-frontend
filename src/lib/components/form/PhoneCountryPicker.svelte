@@ -77,7 +77,7 @@
 {#if isOpen}
 	<div
 		id="dropdown-countries"
-		class="z-10 max-w-fit bg-base-100 rounded divide-y divide-gray-100 absolute translate-y-11 overflow-hidden"
+		class="z-10 max-w-xs bg-base-100 rounded divide-y divide-gray-100 absolute translate-y-11 overflow-hidden"
 		data-popper-reference-hidden=""
 		data-popper-escaped=""
 		data-popper-placement="bottom"

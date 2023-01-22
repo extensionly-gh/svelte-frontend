@@ -9,6 +9,7 @@
 	import { toastError, toastSuccess } from '$lib/components/toast';
 	import { trpc } from '$lib/trpc/client';
 	import { TRPCClientError } from '@trpc/client';
+	import { signIn } from '@auth/sveltekit/client';
 
 	let isPhoneValid: boolean = false;
 
@@ -18,7 +19,11 @@
 		onSubmit: async (values) => {
 			try {
 				await trpc().user.createUser.mutate(values);
-				toastSuccess($_('dialogs.auth.signup-success'));
+				await signIn('credentials', {
+					email: values.email,
+					password: values.password,
+					callbackUrl: '/?success=dialogs.auth.signup-success'
+				});
 			} catch (error) {
 				if (error instanceof TRPCClientError) {
 					return toastError($_(error.message));

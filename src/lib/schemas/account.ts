@@ -4,12 +4,7 @@ import { name, email, password } from './strings';
 export const userUpdateSchema = z.object({
 	name,
 	email,
-	phone: z
-		.string()
-		.min(10, 'zod.string.min')
-		.max(20, 'zod.string.max')
-		.nullable()
-		.or(z.literal('')),
+	phone: z.string(),
 	image: z.string().url('zod.url.invalid').nullable().or(z.literal(''))
 });
 
