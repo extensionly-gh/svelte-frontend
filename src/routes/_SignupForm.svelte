@@ -6,19 +6,21 @@
 	import { validateSchema } from '@felte/validator-zod';
 	import { Button, TextInput } from '$lib/components';
 	import { PhoneInput } from '$lib/components/form';
-	import type { NormalizedTelNumber } from 'svelte-tel-input/types';
 
-	let parsedTelInput: NormalizedTelNumber;
+	let isPhoneValid: boolean = false;
 
-	const { form, errors, isValid, data, touched } = createForm<z.infer<typeof signupSchema>>({
-		onSubmit(values) {
-			console.log(values);
-			console.log($touched);
+	const { form, errors, isValid, touched, data } = createForm<z.infer<typeof signupSchema>>({
+		initialValues: {
+			name: 'Lucas Test',
+			email: 'email@email.com',
+			phone: '',
+			password: 'StrongPassword1.',
+			cpassword: 'StrongPassword1.'
 		},
 		validate: [
 			validateSchema(signupSchema),
 			() => {
-				if (!parsedTelInput?.isValid) {
+				if (!isPhoneValid) {
 					return {
 						phone: 'zod.phone.invalid'
 					};
@@ -28,7 +30,13 @@
 	});
 </script>
 
-<form use:form class="flex flex-col w-full gap-4">
+<form
+	use:form
+	action="?/signUp"
+	method="post"
+	enctype="application/x-www-form-urlencoded"
+	class="flex flex-col w-full gap-4"
+>
 	<TextInput
 		error={$errors.name?.[0]}
 		id="name"
@@ -43,9 +51,9 @@
 		type="email"
 	/>
 	<PhoneInput
-		bind:touched={$touched.phone}
-		bind:value={$data.phone}
-		bind:parsedTelInput
+		bind:isTouched={$touched.phone}
+		bind:isValid={isPhoneValid}
+		bind:parsedValue={$data.phone}
 		id="phone"
 		label={$_('dialogs.auth.phone-label')}
 		placeholder={$_('dialogs.auth.phone-placeholder')}

@@ -21,12 +21,14 @@
 	let selected: CountryCode;
 	export let id: string;
 	export let label: string;
-	export let touched: boolean;
+	export let isValid: boolean;
+	export let isTouched: boolean;
+	export let parsedValue: string;
 	export let clickOutside = true;
 	export let closeOnClick = true;
 	export let disabled = false;
 	export let parsedTelInput: NormalizedTelNumber | null = null;
-	export let value: E164Number | null;
+	export let value: E164Number | null = '';
 
 	$: selectedCountryDialCode =
 		normalizedCountries.find((el) => el.iso2 === selected)?.dialCode || null;
@@ -34,6 +36,8 @@
 	let isOpen = false;
 
 	$: isValid = parsedTelInput?.isValid ?? false;
+
+	$: parsedValue = (parsedTelInput?.e164 as string) ?? '';
 
 	const toggleDropDown = (e: Event) => {
 		e.preventDefault();
@@ -86,12 +90,18 @@
 		dispatch('change', { option: selectedCountry });
 	};
 
+	function handleInputBlur(e: any) {
+		if (e.target.value === '') {
+			parsedTelInput = null;
+		}
+	}
+
 	onMount(async () => {
 		selected = ((await getCurrentCountry()) as CountryCode) || 'BR';
 	});
 </script>
 
-<label class="flex flex-col items-start gap-1 w-full" for={id}>
+<label class="flex flex-col items-start gap-1 w-full" for={id + '-shell'}>
 	<span class="label-text">{label}</span>
 	<div class="flex rounded-md gap-2" use:clickOutsideAction={closeOnClickOutside}>
 		<Button
@@ -157,21 +167,22 @@
 		{/if}
 
 		<TelInput
-			{id}
-			{...$$restProps}
 			maxlength={20}
-			on:blur={() => (touched = true)}
+			id={id + '-shell'}
+			{...$$restProps}
+			on:blur={handleInputBlur}
 			bind:country={selected}
 			bind:parsedTelInput
 			bind:value
 			class="border bg-base-200 focus:outline-none input p-2 h-[2.5rem] rounded-md placeholder:text-base-content/40 placeholder:text-sm w-full text-sm {!isValid &&
-			touched
+			isTouched
 				? `border-error border-2`
 				: `focus:border-base-content/40`} text-sm rounded-r-md block w-full p-2.5 
              focus:outline-none"
 		/>
+		<input {id} name={id} type="hidden" bind:value={parsedValue} />
 	</div>
-	{#if !isValid && touched}
+	{#if !isValid && isTouched}
 		<span class="text-error font-bold text-xs my-2 h-2" data-testid={`${id}-error`}>
 			{$_('zod.phone.invalid')}
 		</span>
