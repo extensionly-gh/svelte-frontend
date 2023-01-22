@@ -8,12 +8,26 @@ export const userUpdateSchema = z.object({
 	image: z.string().url('zod.url.invalid').nullable().or(z.literal(''))
 });
 
-export const passwordUpdateSchema = z
-	.object({
-		currentPwd: z.string(),
-		newPwd: password,
-		confirmPwd: z.string()
-	})
+const basePasswordSchema = z.object({
+	currentPwd: z.string(),
+	newPwd: password,
+	confirmPwd: z.string()
+});
+
+export const passwordUpdateSchema = basePasswordSchema.superRefine(
+	({ confirmPwd, newPwd }, ctx) => {
+		if (confirmPwd !== newPwd) {
+			ctx.addIssue({
+				code: 'custom',
+				path: ['confirmPwd'],
+				message: 'zod.password.mismatch'
+			});
+		}
+	}
+);
+
+export const passwordCreateSchema = basePasswordSchema
+	.omit({ currentPwd: true })
 	.superRefine(({ confirmPwd, newPwd }, ctx) => {
 		if (confirmPwd !== newPwd) {
 			ctx.addIssue({

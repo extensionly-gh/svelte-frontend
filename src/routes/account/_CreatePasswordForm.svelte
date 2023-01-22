@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { invalidateAll } from '$app/navigation';
 	import { Button, TextInput } from '$lib/components';
 	import { Notice } from '$lib/components/notice';
 	import { toastSuccess } from '$lib/components/toast';
-	import { passwordUpdateSchema } from '$lib/schemas';
+	import { passwordCreateSchema } from '$lib/schemas';
 	import { trpc } from '$lib/trpc/client';
 	import { handleErrorInClient } from '$lib/utils';
 	import { validateSchema } from '@felte/validator-zod';
@@ -12,34 +13,28 @@
 	import SettingsCard from './_SettingsCard.svelte';
 
 	const { form, errors, isSubmitting, data, isDirty } = createForm<
-		z.infer<typeof passwordUpdateSchema>
+		z.infer<typeof passwordCreateSchema>
 	>({
-		onSubmit: async (values) => {
+		onSubmit: async ({ newPwd }) => {
 			try {
-				await trpc().user.updatePassword.mutate(values);
-				toastSuccess($_(`r-acc.password.not-empty.success`));
+				await trpc().user.createPassword.mutate(newPwd);
+				toastSuccess($_(`r-acc.password.empty.success`));
+				await invalidateAll();
 			} catch (error) {
 				handleErrorInClient(error);
 			}
 		},
-		validate: validateSchema(passwordUpdateSchema)
+		validate: validateSchema(passwordCreateSchema)
 	});
 </script>
 
 <form
 	use:form
 	method="POST"
-	action="/account?/updatePassword"
+	action="/account?/createPassword"
 	enctype="application/x-www-form-urlencoded"
 >
-	<SettingsCard title={$_(`r-acc.password.not-empty.title`)}>
-		<TextInput
-			type="password"
-			error={$errors.currentPwd?.[0]}
-			id="currentPwd"
-			label={$_('r-acc.password.currpw.label')}
-			autocomplete="current-password"
-		/>
+	<SettingsCard title={$_(`r-acc.password.empty.title`)}>
 		<TextInput
 			type="password"
 			error={$errors.newPwd?.[0]}
@@ -54,6 +49,7 @@
 			label={$_('r-acc.password.cpw.label')}
 			autocomplete="new-password"
 		/>
+		<Notice text={$_('r-acc.password.info')} />
 		<Button
 			disabled={!$isDirty}
 			variants={{ width: 'short' }}

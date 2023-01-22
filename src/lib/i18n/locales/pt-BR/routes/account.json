@@ -64,6 +64,12 @@
       "info": "Você não tem uma senha definida. Definir uma senha permitirá que você faça login sem um provedor terceiro.",
       "currpw": {
         "label": "Sua senha atual"
+      },
+      "not-empty": {
+        "title": "Edite a senha da sua conta"
+      },
+      "empty": {
+        "success": "Senha criada com sucesso!"
       }
     },
     "danger-zone": "Zona de Perigo"

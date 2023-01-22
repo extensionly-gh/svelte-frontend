@@ -41,6 +41,16 @@ export const userRouter = router({
 			isPasswordEmpty
 		};
 	}),
+	createPassword: authProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
+		const { id } = ctx.session.user;
+
+		await prisma.user.update({
+			where: { id },
+			data: {
+				password: await hashPassword(input)
+			}
+		});
+	}),
 	updatePassword: authProcedure.input(passwordUpdateSchema).mutation(async ({ ctx, input }) => {
 		const { id } = ctx.session.user;
 
