@@ -11,13 +11,14 @@
 	import type { z } from 'zod';
 	import SettingsCard from './_SettingsCard.svelte';
 
-	const { form, errors, isSubmitting, data, isDirty } = createForm<
+	const { form, errors, isSubmitting, isDirty, reset } = createForm<
 		z.infer<typeof passwordUpdateSchema>
 	>({
 		onSubmit: async (values) => {
 			try {
 				await trpc().user.updatePassword.mutate(values);
 				toastSuccess($_(`r-acc.password.not-empty.success`));
+				reset();
 			} catch (error) {
 				handleErrorInClient(error);
 			}
@@ -37,21 +38,21 @@
 			type="password"
 			error={$errors.currentPwd?.[0]}
 			id="currentPwd"
-			label={$_('r-acc.password.currpw.label')}
+			label={$_('r-acc.password.currpw-label')}
 			autocomplete="current-password"
 		/>
 		<TextInput
 			type="password"
 			error={$errors.newPwd?.[0]}
 			id="newPwd"
-			label={$_('r-acc.password.pw.label')}
+			label={$_('r-acc.password.pw-label')}
 			autocomplete="new-password"
 		/>
 		<TextInput
 			type="password"
 			error={$errors.confirmPwd?.[0]}
 			id="confirmPwd"
-			label={$_('r-acc.password.cpw.label')}
+			label={$_('r-acc.password.cpw-label')}
 			autocomplete="new-password"
 		/>
 		<Button

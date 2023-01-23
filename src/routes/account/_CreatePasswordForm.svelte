@@ -39,14 +39,14 @@
 			type="password"
 			error={$errors.newPwd?.[0]}
 			id="newPwd"
-			label={$_('r-acc.password.pw.label')}
+			label={$_('r-acc.password.pw-label')}
 			autocomplete="new-password"
 		/>
 		<TextInput
 			type="password"
 			error={$errors.confirmPwd?.[0]}
 			id="confirmPwd"
-			label={$_('r-acc.password.cpw.label')}
+			label={$_('r-acc.password.cpw-label')}
 			autocomplete="new-password"
 		/>
 		<Notice text={$_('r-acc.password.info')} />

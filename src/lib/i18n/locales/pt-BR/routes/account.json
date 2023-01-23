@@ -53,24 +53,18 @@
       "info": "Para ver as alterações em sua sessão atual, faça login novamente."
     },
     "password": {
-      "success": "Senha atualizada com sucesso!",
-      "pw": {
-        "label": "Sua nova senha"
-      },
-      "cpw": {
-        "label": "Confirme sua nova senha"
-      },
-      "title": "Edite a senha da sua conta",
       "info": "Você não tem uma senha definida. Definir uma senha permitirá que você faça login sem um provedor terceiro.",
-      "currpw": {
-        "label": "Sua senha atual"
-      },
       "not-empty": {
-        "title": "Edite a senha da sua conta"
+        "title": "Edite a senha da sua conta",
+        "success": "Senha atualizada com sucesso!"
       },
       "empty": {
+        "title": "Crie uma senha para a sua conta",
         "success": "Senha criada com sucesso!"
-      }
+      },
+      "pw-label": "Sua nova senha",
+      "cpw-label": "Confirme sua nova senha",
+      "currpw-label": "Sua senha atual"
     },
     "danger-zone": "Zona de Perigo"
   }

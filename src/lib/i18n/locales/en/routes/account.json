@@ -62,16 +62,10 @@
         "title": "Set your account password",
         "success": "Password created successfully!"
       },
-      "pw": {
-        "label": "Your new password"
-      },
-      "cpw": {
-        "label": "Confirm your new password"
-      },
       "info": "You do not have a password set. Setting a password will allow you to login without a third party provider.",
-      "currpw": {
-        "label": "Your current password"
-      }
+      "pw-label": "Your new password",
+      "cpw-label": "Confirm your new password",
+      "currpw-label": "Your current password"
     },
     "danger-zone": "Danger Zone"
   }
