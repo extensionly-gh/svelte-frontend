@@ -32,14 +32,16 @@
 <div
 	class="navbar sticky flex justify-between top-2 shadow-md bg-base-300 m-2 mt-2 rounded-box mb-20 z-10"
 >
-	<Button
-		class={`${isSearchFocused ? 'hidden md:flex' : ''}`}
-		to="/"
-		variants={{ intent: 'ghost' }}
-		data-testid="nav-home-btn"
-	>
-		<IconHouse width="32px" height="32px" />
-	</Button>
+	<div class="w-52">
+		<Button
+			class={`${isSearchFocused ? 'hidden md:flex' : ''}`}
+			to="/"
+			variants={{ intent: 'ghost' }}
+			data-testid="nav-home-btn"
+		>
+			<IconHouse width="32px" height="32px" />
+		</Button>
+	</div>
 	<div class="flex-1 items-center justify-center text-lg gap-2">
 		<label
 			class={`bg-base-200 border brightness-70 flex gap-2 items-center p-2 rounded-lg cursor-text ${
@@ -71,10 +73,7 @@
 			</button>
 		</label>
 	</div>
-	<div
-		class={`${isSearchFocused ? 'hidden md:flex' : ''} flex-none gap-2`}
-		data-testid="nav-right-div"
-	>
+	<div class={`${isSearchFocused ? 'hidden md:flex' : ''} gap-2 w-52`} data-testid="nav-right-div">
 		<div class="hidden sm:flex items-center gap-2">
 			{#if $page.data.session?.user}
 				<div class="bg-base-200 p-2 flex items-center rounded-md gap-2">
