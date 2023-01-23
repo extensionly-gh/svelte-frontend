@@ -1,0 +1,19 @@
+{
+  "r-about": {
+    "cats": "Gatos",
+    "cooking": "Cozinhar",
+    "description-bernardino": "Se soubéssemos o que estamos fazendo, não se chamaria pesquisa, não é?",
+    "description-igor": "Em um futuro próximo, se você não souber programar, você mesmo será programado.",
+    "description-lucas": "Se você não tem um plano, você se torna parte do plano de outra pessoa.",
+    "microservices": "microsserviços",
+    "p1": "Essa aplicação é um projeto desenvolvido por dois alunos/amigos/colegas de quarto, para o Trabalho de Conclusão de Curso da graduação. A ideia surgiu a partir da necessidade por parte da instituição, de uma solução que centralizasse o processo de inscrição e submissão de ações extensionistas.",
+    "p2": "Somos alunos de graduação em Engenharia de Software na Universidade Federal do Pampa. Estamos na reta final do curso, atualmente no 7º semestre regular, de 9 semestres. Nós dois nascemos no Rio Grande do Sul, Brasil, e além da faculdade, trabalhamos integralmente como Fullstack Developers na",
+    "programming": "programação",
+    "reading": "leitura",
+    "software-engineering": "Engenharia de Software",
+    "teaching": "Ensinar",
+    "whoarewe": "Quem somos",
+    "yerbamate": "chimarrão",
+    "about-us": "Sobre nós"
+  }
+}

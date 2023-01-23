@@ -36,8 +36,7 @@
 				>Extensionly</Button
 			>
 			<div class="flex-none flex-col gap-1 flex">
-				<!-- <Button variants={{ intent: 'text-base', size: 'sm' }} to={'/about'}> -->
-				<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/'}>
+				<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/about'}>
 					{$_('footer.about-us')}
 				</Button>
 				<Button

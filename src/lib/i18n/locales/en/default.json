@@ -27,7 +27,8 @@
     },
     "save": "Save",
     "delete": "Delete",
-    "search-word": "Search"
+    "search-word": "Search",
+    "a": "The"
   },
   "dialogs": {
     "auth": {
