@@ -8,11 +8,12 @@ export const theme = writable<Theme>('winter', (set) => {
 
 	const preferredColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-	preferredColorScheme.addEventListener('change', (e) => {
-		const useSystemTheme = document.cookie
-			.split('; ')
-			.find((row) => row.startsWith('useSystemTheme='))
-			?.split('=')[1] as string;
+	const callback = (e: MediaQueryListEvent) => {
+		const useSystemTheme =
+			document.cookie
+				.split('; ')
+				.find((row) => row.startsWith('useSystemTheme='))
+				?.split('=')[1] ?? 'true';
 
 		if (useSystemTheme === 'true') {
 			const theme = e.matches ? 'night' : 'winter';
@@ -22,10 +23,14 @@ export const theme = writable<Theme>('winter', (set) => {
 				body: JSON.stringify({ theme })
 			});
 		}
-	});
+	};
+
+	// @ts-expect-error - we only care about the matches property
+	callback({ matches: preferredColorScheme.matches });
+	preferredColorScheme.addEventListener('change', callback);
 
 	return () => {
-		preferredColorScheme.removeEventListener('change', (e) => set(e.matches ? 'night' : 'winter'));
+		preferredColorScheme.removeEventListener('change', callback);
 	};
 });
 
