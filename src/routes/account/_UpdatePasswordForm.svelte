@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, TextInput } from '$lib/components';
+	import { Button, SettingsCard, TextInput } from '$lib/components';
 	import { Notice } from '$lib/components/notice';
 	import { toastSuccess } from '$lib/components/toast';
 	import { passwordUpdateSchema } from '$lib/schemas';
@@ -9,7 +9,6 @@
 	import { createForm } from 'felte';
 	import { _ } from 'svelte-i18n';
 	import type { z } from 'zod';
-	import SettingsCard from './_SettingsCard.svelte';
 
 	const { form, errors, isSubmitting, isDirty, reset } = createForm<
 		z.infer<typeof passwordUpdateSchema>

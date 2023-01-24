@@ -1,8 +1,7 @@
 <script lang="ts">
-	import SettingsCard from './_SettingsCard.svelte';
 	import { _ } from 'svelte-i18n';
 	import { Notice } from '$lib/components/notice';
-	import { Button, Dialog, TextInput } from '$lib/components';
+	import { Button, Dialog, SettingsCard, TextInput } from '$lib/components';
 	import { createForm } from 'felte';
 	import { page } from '$app/stores';
 	import { signOut } from '@auth/sveltekit/client';

@@ -1,11 +1,11 @@
 <script lang="ts">
-	import SettingsCard from './_SettingsCard.svelte';
 	import { ButtonWithTimer } from '$lib/components/button';
 	import type { Verification } from '@prisma/client';
 	import { _ } from 'svelte-i18n';
 	import { DateTime } from 'luxon';
 	import { Notice } from '$lib/components/notice';
 	import type { AppRouterOutput } from '$lib/trpc/router';
+	import { SettingsCard } from '$lib/components';
 
 	export let verification: AppRouterOutput['user']['getAccountData']['Verification'][0];
 
