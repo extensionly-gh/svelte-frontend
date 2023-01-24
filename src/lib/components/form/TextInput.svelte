@@ -6,7 +6,7 @@
 	import IconEyeOpened from '~icons/ph/eye';
 
 	export let variants: VariantProps<typeof inputStyles> = {};
-	export let label: string;
+	export let label: string = '';
 	export let id: string;
 	export let error: string = '';
 	export let type: string = 'text';
@@ -38,9 +38,11 @@
 </script>
 
 <div class={`flex flex-col items-start gap-1 w-full ${$$props.class}`}>
-	<label for={id}>
-		<span class="label-text">{label}</span>
-	</label>
+	{#if !!label}
+		<label for={id}>
+			<span class="label-text">{label}</span>
+		</label>
+	{/if}
 	<div class="w-full flex gap-2">
 		<input
 			bind:this={element}

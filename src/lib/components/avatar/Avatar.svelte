@@ -14,6 +14,7 @@
 	class="rounded-sm"
 	height={sizes[size]}
 	referrerpolicy="no-referrer"
+	{...$$restProps}
 	src={`${
 		/^https?:\/\//g.test(src)
 			? src

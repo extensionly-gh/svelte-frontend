@@ -17,7 +17,7 @@
 		]
 	});
 
-	export let trigger: string;
+	export let trigger: string | null = null;
 	export let items: {
 		text: string;
 		icon: any;
@@ -27,13 +27,17 @@
 	}[];
 </script>
 
-<Menu let:open>
+<Menu {...$$restProps} let:open>
 	<div use:popperRef>
 		<MenuButton>
-			<Button variants={{ intent: 'ghost', case: 'normal', size: 'sm' }}>
-				<p class="text-sm font-semibold truncate max-w-[7rem]">{trigger}</p>
-				<IconArrowDown width="20px" height="20px" />
-			</Button>
+			{#if trigger !== null}
+				<Button variants={{ intent: 'ghost', case: 'normal', size: 'sm' }}>
+					<p class="text-sm font-semibold truncate max-w-[7rem]">{trigger}</p>
+					<IconArrowDown width="20px" height="20px" />
+				</Button>
+			{:else}
+				<slot name="trigger" />
+			{/if}
 		</MenuButton>
 	</div>
 	{#if open}
