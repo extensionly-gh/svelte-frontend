@@ -1,97 +1,79 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { Avatar, Button, Menu } from '$lib/components';
+	import { Avatar, Button, Menu, TextInput } from '$lib/components';
 	import { _ } from 'svelte-i18n';
 	import IconHouse from '~icons/ph/house-fill';
 	import IconBackspace from '~icons/ph/backspace';
+	import IconMagnifyingGlass from '~icons/ph/magnifying-glass';
+	import IconList from '~icons/ph/list';
 	import IconSignOut from '~icons/ph/sign-out';
 	import IconUser from '~icons/ph/user';
 	import { authDialog } from '$lib/stores';
 	import { signOut } from '@auth/sveltekit/client';
+	import { createForm } from 'felte';
+	import type { z } from 'zod';
+	import { searchSchema } from '$lib/schemas';
+	import { validateSchema } from '@felte/validator-zod';
 
-	let searchQuery: string = '';
-	let searchInput: HTMLInputElement | null = null;
-	let isSearchFocused: boolean = false;
-	let debounceTimer: any;
+	const { form, data } = createForm<z.infer<typeof searchSchema>>({
+		onSubmit: ({ search }) => {
+			goto(`/activities?q=${search}`);
+		},
+		validate: validateSchema(searchSchema)
+	});
 
-	function handleSearchReset() {
-		searchQuery = '';
-		searchInput?.focus();
-	}
-
-	const debounceSearchKeyup = (v: string) => {
-		clearTimeout(debounceTimer);
-		debounceTimer = setTimeout(() => {
-			searchQuery = v;
-			// goto(`/activities?q=${searchQuery}`);
-		}, 250);
-	};
+	const userMenuItems = [
+		{ text: $_('terms.my-account'), icon: IconUser, to: '/account' },
+		{
+			text: $_('terms.signout'),
+			classes: 'text-error',
+			action: signOut,
+			icon: IconSignOut
+		}
+	];
 </script>
 
 <div
-	class="navbar sticky flex justify-between top-2 shadow-md bg-base-300 m-2 mt-2 rounded-box mb-20 z-10 gap-2"
+	class="navbar sticky flex justify-between top-2 shadow-md bg-base-300 m-2 rounded-box mb-20 z-10 gap-2"
 >
-	<div class="md:w-52">
+	<div class="lg:w-52">
 		<Button to="/" variants={{ intent: 'ghost' }} data-testid="nav-home-btn">
 			<IconHouse width="32px" height="32px" />
 		</Button>
 	</div>
-	<div class="flex-1 items-center justify-center text-lg gap-2">
-		<label
-			class={`bg-base-200 border brightness-70 flex gap-2 items-center p-2 rounded-lg cursor-text ${
-				isSearchFocused ? 'border-base-content/40' : 'border-transparent'
-			}`}
-		>
-			<input
-				class={`bg-transparent md:w-72 xl:w-96 placeholder:text-base-content/40 outline-none px-2 transition-all`}
-				data-testid="nav-search"
-				on:blur={() => (isSearchFocused = false)}
-				bind:value={searchQuery}
-				bind:this={searchInput}
-				on:focus={() => (isSearchFocused = true)}
-				placeholder={$_('terms.search')}
-				type="text"
-			/>
-			<button
-				class={searchQuery === '' ? 'invisible' : 'visible'}
-				on:click={handleSearchReset}
-				type="button"
-			>
-				<IconBackspace
-					class="hover:scale-90 hover:text-accent text-base-content/70 transition-all"
-					width="24px"
-					height="24px"
-				/>
-			</button>
-		</label>
-	</div>
-	<div class={`gap-2 md:w-52`} data-testid="nav-right-div">
-		<div class="hidden md:flex items-center gap-2">
-			{#if $page.data.session?.user}
-				<div class="bg-base-200 p-2 flex items-center rounded-md gap-2">
-					<Avatar src={$page.data.session.user?.image || $page.data.session.user?.name} size="sm" />
-					<Menu
-						trigger={$page.data.session.user.name}
-						items={[
-							{ text: $_('terms.my-account'), icon: IconUser, to: '/account' },
-							{
-								text: $_('terms.signout'),
-								classes: 'text-error',
-								action: signOut,
-								icon: IconSignOut
-							}
-						]}
-					/>
-				</div>
-			{:else}
-				<Button
-					on:click={() => authDialog.update(() => ({ isOpen: true }))}
-					variants={{ animated: true }}
-				>
-					{$_('terms.signin')}
+	<form use:form class="flex-grow items-center justify-center text-lg gap-2 max-w-md">
+		<Button type="submit" variants={{ intent: 'ghost', width: 'icon' }}>
+			<IconMagnifyingGlass width="24px" height="24px" />
+		</Button>
+		<TextInput id="search" placeholder={$_('terms.search')}>
+			<div slot="right">
+				{#if $data.search !== ''}
+					<Button type="reset" variants={{ intent: 'ghost', width: 'icon' }}>
+						<IconBackspace width="24px" height="24px" />
+					</Button>
+				{/if}
+			</div>
+		</TextInput>
+	</form>
+	<div class={`gap-2 lg:w-52 items-end justify-end flex`} data-testid="nav-right-div">
+		{#if $page.data.session?.user}
+			<div class="hidden sm:flex bg-base-200 p-2 items-center rounded-md gap-2">
+				<Avatar src={$page.data.session.user?.image || $page.data.session.user?.name} size="sm" />
+				<Menu trigger={$page.data.session.user.name} items={userMenuItems} />
+			</div>
+			<Menu class="flex sm:hidden" items={userMenuItems}>
+				<Button slot="trigger" variants={{ intent: 'ghost' }}>
+					<IconList width="32px" height="32px" />
 				</Button>
-			{/if}
-		</div>
+			</Menu>
+		{:else}
+			<Button
+				on:click={() => authDialog.update(() => ({ isOpen: true }))}
+				variants={{ animated: true }}
+			>
+				{$_('terms.signin')}
+			</Button>
+		{/if}
 	</div>
 </div>
