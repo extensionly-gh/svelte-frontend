@@ -16,8 +16,6 @@ export const theme = writable<Theme>('winter', (set) => {
 
 		if (useSystemTheme === 'true') {
 			const theme = e.matches ? 'night' : 'winter';
-			console.log('theme', theme);
-
 			set(theme);
 			fetch('/api/theme', {
 				method: 'PUT',
