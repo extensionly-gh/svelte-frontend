@@ -54,15 +54,18 @@
       "info": "To see the changes in your current session, re-login in the platform."
     },
     "password": {
-      "success": "Password updated successfully!",
-      "pw": {
-        "label": "Your new password"
+      "not-empty": {
+        "title": "Edit your account password",
+        "success": "Password updated successfully!"
       },
-      "cpw": {
-        "label": "Confirm your new password"
+      "empty": {
+        "title": "Set your account password",
+        "success": "Password created successfully!"
       },
-      "title": "Edit your account password",
-      "info": "You do not have a password set. Setting a password will allow you to login without a third party provider."
+      "info": "You do not have a password set. Setting a password will allow you to login without a third party provider.",
+      "pw-label": "Your new password",
+      "cpw-label": "Confirm your new password",
+      "currpw-label": "Your current password"
     },
     "danger-zone": "Danger Zone"
   }

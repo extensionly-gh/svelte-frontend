@@ -42,6 +42,7 @@ specifiers:
   svelte-check: ^2.9.2
   svelte-i18n: ^3.6.0
   svelte-popperjs: ^1.3.2
+  svelte-tel-input: ^1.1.2
   tailwindcss: ^3.2.4
   trpc-sveltekit: ^3.2.4
   ts-node: ^10.9.1
@@ -95,6 +96,7 @@ devDependencies:
   svelte-check: 2.10.3_pehl75e5jsy22vp33udjja4soi
   svelte-i18n: 3.6.0_svelte@3.55.1
   svelte-popperjs: 1.3.2_u2a26nokcckqacvdxkzji6ia64
+  svelte-tel-input: 1.1.2
   tailwindcss: 3.2.4_aesdjsunmf4wiehhujt67my7tu
   trpc-sveltekit: 3.2.4
   ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
@@ -2099,6 +2101,10 @@ packages:
       type-check: 0.4.0
     dev: true
 
+  /libphonenumber-js/1.10.18:
+    resolution: {integrity: sha512-NS4ZEgNhwbcPz1gfSXCGFnQm0xEiyTSPRthIuWytDzOiEG9xnZ2FbLyfJC4tI2BMAAXpoWbNxHYH75pa3Dq9og==}
+    dev: true
+
   /lilconfig/2.0.6:
     resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
     engines: {node: '>=10'}
@@ -3172,6 +3178,14 @@ packages:
       strip-indent: 3.0.0
       svelte: 3.55.1
       typescript: 4.9.4
+    dev: true
+
+  /svelte-tel-input/1.1.2:
+    resolution: {integrity: sha512-KJxV/4h2JJ6b2Gh6WfXwfukXcW02SHai65jZAfV6DuT3Mu0zhfZ7Lu4iyi9PAOaLQzEVQ3UpwBEBXH3B7YCIog==}
+    engines: {node: '>= 16', npm: '>= 7', pnpm: '>= 7', yarn: '>=2'}
+    dependencies:
+      libphonenumber-js: 1.10.18
+      svelte: 3.55.1
     dev: true
 
   /svelte/3.55.1:

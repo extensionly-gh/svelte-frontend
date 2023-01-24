@@ -26,7 +26,9 @@
       "title": "Cookies Notice"
     },
     "save": "Save",
-    "delete": "Delete"
+    "delete": "Delete",
+    "search-word": "Search",
+    "a": "The"
   },
   "dialogs": {
     "auth": {
@@ -55,7 +57,12 @@
       "terms-agreement": {
         "1": "By signing in through a third party provider, you agree to our ",
         "2": " and the "
-      }
+      },
+      "name-label": "Name",
+      "name-placeholder": "Your full name",
+      "phone-placeholder": "Your phone number",
+      "phone-label": "Phone number",
+      "signup-success": "Account created successfully!"
     }
   },
   "footer": {

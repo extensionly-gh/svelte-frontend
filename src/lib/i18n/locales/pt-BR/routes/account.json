@@ -16,7 +16,7 @@
       },
       "success": "Sua conta foi excluída com sucesso.",
       "title": "Excluir Conta Pessoal",
-      "info-short": "Você está prestes a excluir sua conta do Extensionly. Essa ação não pode ser desfeita."
+      "info-short": "Você está prestes a excluir sua conta da Extensionly. Essa ação não pode ser desfeita."
     },
     "email": {
       "info": "Enviaremos um e-mail para você para validar a alteração.",
@@ -53,15 +53,18 @@
       "info": "Para ver as alterações em sua sessão atual, faça login novamente."
     },
     "password": {
-      "success": "Senha atualizada com sucesso!",
-      "pw": {
-        "label": "Sua nova senha"
+      "info": "Você não tem uma senha definida. Definir uma senha permitirá que você faça login sem um provedor terceiro.",
+      "not-empty": {
+        "title": "Edite a senha da sua conta",
+        "success": "Senha atualizada com sucesso!"
       },
-      "cpw": {
-        "label": "Confirme sua nova senha"
+      "empty": {
+        "title": "Crie uma senha para a sua conta",
+        "success": "Senha criada com sucesso!"
       },
-      "title": "Edite a senha da sua conta",
-      "info": "Você não tem uma senha definida. Definir uma senha permitirá que você faça login sem um provedor terceiro."
+      "pw-label": "Sua nova senha",
+      "cpw-label": "Confirme sua nova senha",
+      "currpw-label": "Sua senha atual"
     },
     "danger-zone": "Zona de Perigo"
   }

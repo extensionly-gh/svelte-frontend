@@ -26,7 +26,9 @@
       "title": "Declaração de Cookies"
     },
     "save": "Salvar",
-    "delete": "Excluir"
+    "delete": "Excluir",
+    "search-word": "Procurar",
+    "a": "A"
   },
   "dialogs": {
     "auth": {
@@ -55,7 +57,12 @@
       "terms-agreement": {
         "1": "Ao fazer login por meio de um provedor terceirizado, você concorda com a nossa ",
         "2": " e os "
-      }
+      },
+      "name-label": "Nome",
+      "name-placeholder": "Seu nome completo",
+      "phone-placeholder": "Seu número de telefone",
+      "phone-label": "Número de telefone",
+      "signup-success": "Conta criada com sucesso!"
     }
   },
   "footer": {

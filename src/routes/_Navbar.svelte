@@ -30,16 +30,13 @@
 </script>
 
 <div
-	class="navbar sticky flex justify-between top-2 shadow-md bg-base-300 m-2 mt-2 rounded-box mb-20 z-10"
+	class="navbar sticky flex justify-between top-2 shadow-md bg-base-300 m-2 mt-2 rounded-box mb-20 z-10 gap-2"
 >
-	<Button
-		class={`${isSearchFocused ? 'hidden md:flex' : ''}`}
-		to="/"
-		variants={{ intent: 'ghost' }}
-		data-testid="nav-home-btn"
-	>
-		<IconHouse width="32px" height="32px" />
-	</Button>
+	<div class="md:w-52">
+		<Button to="/" variants={{ intent: 'ghost' }} data-testid="nav-home-btn">
+			<IconHouse width="32px" height="32px" />
+		</Button>
+	</div>
 	<div class="flex-1 items-center justify-center text-lg gap-2">
 		<label
 			class={`bg-base-200 border brightness-70 flex gap-2 items-center p-2 rounded-lg cursor-text ${
@@ -47,9 +44,7 @@
 			}`}
 		>
 			<input
-				class={`bg-transparent w-24 md:w-72 xl:w-96 placeholder:text-base-content/40 outline-none px-2 ${
-					isSearchFocused ? 'w-[22rem]' : ''
-				} transition-all`}
+				class={`bg-transparent md:w-72 xl:w-96 placeholder:text-base-content/40 outline-none px-2 transition-all`}
 				data-testid="nav-search"
 				on:blur={() => (isSearchFocused = false)}
 				bind:value={searchQuery}
@@ -71,11 +66,8 @@
 			</button>
 		</label>
 	</div>
-	<div
-		class={`${isSearchFocused ? 'hidden md:flex' : ''} flex-none gap-2`}
-		data-testid="nav-right-div"
-	>
-		<div class="hidden sm:flex items-center gap-2">
+	<div class={`gap-2 md:w-52`} data-testid="nav-right-div">
+		<div class="hidden md:flex items-center gap-2">
 			{#if $page.data.session?.user}
 				<div class="bg-base-200 p-2 flex items-center rounded-md gap-2">
 					<Avatar src={$page.data.session.user?.image || $page.data.session.user?.name} size="sm" />

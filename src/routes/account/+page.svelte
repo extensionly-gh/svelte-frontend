@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import type { PageData } from './$types';
+	import CreatePasswordForm from './_CreatePasswordForm.svelte';
 	import DeleteAccount from './_DeleteAccount.svelte';
 	import UpdateAccountForm from './_UpdateAccountForm.svelte';
 	import UpdatePasswordForm from './_UpdatePasswordForm.svelte';
@@ -15,55 +16,28 @@
 
 <div class="flex flex-col gap-6">
 	<div class="flex flex-col lg:flex-row gap-6">
-		<UpdateAccountForm initialValues={data.user} />
-		<UpdatePasswordForm isPasswordEmpty={data.user.isPasswordEmpty} />
+		<UpdateAccountForm
+			initialValues={{
+				email: data.user.email,
+				name: data.user.name,
+				phone: data.user.phone ?? '',
+				image: data.user.image
+			}}
+		/>
+		{#if data.user.isPasswordEmpty}
+			<CreatePasswordForm />
+		{:else}
+			<UpdatePasswordForm />
+		{/if}
 	</div>
 	{#if emailVerification}
-		<VerifyEmailForm verification={emailVerification} />
+		<VerifyEmailForm
+			verification={{
+				liftCooldownAt: emailVerification.liftCooldownAt.toISOString(),
+				isVerified: emailVerification.isVerified,
+				type: emailVerification.type
+			}}
+		/>
 	{/if}
 	<DeleteAccount />
-	<!-- <SettingsCard
-    action={
-      <Dialog
-        description={$_('r-acc.delete.dialog.description')}
-        title={$_('r-acc.delete.dialog.title')}
-        trigger={
-          <Button data-testid="delete-account-dialog-trigger" intent="danger" size="sm">
-            {$_('r-acc.delete.dialog.trigger')}
-          </Button>
-        }
-      >
-        <span class="font-semibold">{user?.email}</span>
-        <Formik
-          initialErrors={{ 'delete-email': 'required' }}
-          initialValues={{ 'delete-email': '' }}
-          onSubmit={() => handleDeleteAccount()}
-          validationSchema={yup.object().shape({
-            'delete-email': yup.string().required().equals([user?.email]),
-          })}
-        >
-          {({ isValid, isSubmitting }) => (
-            <Form class="flex flex-col">
-              <TextInput intent="darker" name="delete-email" showErrors={false} />
-              <Button
-                data-testid="delete-account-dialog-confirm-btn"
-                disabled={!isValid || isSubmitting}
-                intent="danger"
-                isLoading={isSubmitting}
-                size="sm"
-                type="submit"
-              >
-                {$_('r-acc.delete.dialog.confirm')}
-              </Button>
-            </Form>
-          )}
-        </Formik>
-      </Dialog>
-    }
-    info={$_('r-acc.delete.info-short')}
-    intent="danger"
-    title={$_('r-acc.delete.title')}
-  >
-    <p>{$_('r-acc.delete.description')}</p>
-  </SettingsCard> -->
 </div>

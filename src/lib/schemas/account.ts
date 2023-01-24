@@ -1,34 +1,38 @@
 import { z } from 'zod';
+import { name, email, password } from './strings';
 
 export const userUpdateSchema = z.object({
-	name: z.string().min(3, 'zod.string.min').max(255, 'zod.string.max'),
-	email: z.string().email('zod.email.invalid'),
-	phone: z
-		.string()
-		.min(10, 'zod.string.min')
-		.max(20, 'zod.string.max')
-		.nullable()
-		.or(z.literal('')),
+	name,
+	email,
+	phone: z.string(),
 	image: z.string().url('zod.url.invalid').nullable().or(z.literal(''))
 });
 
-export const passwordUpdateSchema = z
-	.object({
-		password: z
-			.string()
-			.min(8, 'zod.password.min')
-			.max(255, 'zod.string.max')
-			.refine((v) => /[A-Z]/.test(v), 'zod.string.uppercase')
-			.refine((v) => /[a-z]/.test(v), 'zod.string.lowercase')
-			.refine((v) => /[0-9]/.test(v), 'zod.string.numeric')
-			.refine((v) => /[^A-Za-z0-9]/.test(v), 'zod.string.symbol'),
-		cpassword: z.string()
-	})
-	.superRefine(({ cpassword, password }, ctx) => {
-		if (cpassword !== password) {
+const basePasswordSchema = z.object({
+	currentPwd: z.string(),
+	newPwd: password,
+	confirmPwd: z.string()
+});
+
+export const passwordUpdateSchema = basePasswordSchema.superRefine(
+	({ confirmPwd, newPwd }, ctx) => {
+		if (confirmPwd !== newPwd) {
 			ctx.addIssue({
 				code: 'custom',
-				path: ['cpassword'],
+				path: ['confirmPwd'],
+				message: 'zod.password.mismatch'
+			});
+		}
+	}
+);
+
+export const passwordCreateSchema = basePasswordSchema
+	.omit({ currentPwd: true })
+	.superRefine(({ confirmPwd, newPwd }, ctx) => {
+		if (confirmPwd !== newPwd) {
+			ctx.addIssue({
+				code: 'custom',
+				path: ['confirmPwd'],
 				message: 'zod.password.mismatch'
 			});
 		}
