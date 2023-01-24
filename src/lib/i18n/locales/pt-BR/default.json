@@ -27,7 +27,8 @@
     },
     "save": "Salvar",
     "delete": "Excluir",
-    "search-word": "Procurar"
+    "search-word": "Procurar",
+    "a": "A"
   },
   "dialogs": {
     "auth": {

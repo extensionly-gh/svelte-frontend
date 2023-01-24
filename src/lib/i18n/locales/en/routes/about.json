@@ -1,0 +1,19 @@
+{
+  "r-about": {
+    "cats": "Cats",
+    "cooking": "Cooking",
+    "description-bernardino": "If we knew what it was we were doing, it would not be called research, would it?",
+    "description-igor": "In a near future, if you don't know how to program, you will be programmed yourself.",
+    "description-lucas": "If you don't have a plan, you become part of somebody else's plan.",
+    "microservices": "microservices",
+    "p1": "This application is a project developed by two students/friends/roommates, for the Undergraduate Course Completion Work. The idea arose from the need on the part of the institution, for a solution that centralized the process of registration and submission of extension actions.",
+    "p2": "We are undergraduate students in Software Engineering at the Federal University of Pampa. We are in the final stretch of the course, currently in the 7th regular semester, of 9 semesters. We were both born in Rio Grande do Sul, Brazil, and in addition to college, we work fully as Fullstack Developers at",
+    "programming": "programming",
+    "reading": "reading",
+    "software-engineering": "Software Engineering",
+    "teaching": "Teaching",
+    "whoarewe": "Who we are",
+    "yerbamate": "yerba mate",
+    "about-us": "About us"
+  }
+}
