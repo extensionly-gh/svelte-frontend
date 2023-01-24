@@ -17,13 +17,31 @@
 		locale.set(lang);
 	}
 
-	function handleSaveTheme(newTheme: Theme) {
-		fetch('/api/theme', {
-			method: 'PUT',
-			body: JSON.stringify({ theme: newTheme })
-		});
-
-		theme.set(newTheme);
+	function handleSaveTheme(newTheme: Theme | 'system') {
+		if (newTheme === 'system') {
+			const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+				? 'night'
+				: 'winter';
+			theme.set(preferredTheme);
+			fetch('/api/theme', {
+				method: 'PUT',
+				body: JSON.stringify({ theme: preferredTheme })
+			});
+			fetch('/api/theme', {
+				method: 'PATCH',
+				body: JSON.stringify({ useSystemTheme: true })
+			});
+		} else {
+			theme.set(newTheme);
+			fetch('/api/theme', {
+				method: 'PUT',
+				body: JSON.stringify({ theme: newTheme })
+			});
+			fetch('/api/theme', {
+				method: 'PATCH',
+				body: JSON.stringify({ useSystemTheme: false })
+			});
+		}
 	}
 </script>
 
@@ -85,7 +103,11 @@
 				items={[
 					{ text: $_('terms.light'), icon: IconSun, action: () => handleSaveTheme('winter') },
 					{ text: $_('terms.dark'), icon: IconMoon, action: () => handleSaveTheme('night') },
-					{ text: $_('terms.system'), icon: IconCircleHalf }
+					{
+						text: $_('terms.system'),
+						icon: IconCircleHalf,
+						action: () => handleSaveTheme('system')
+					}
 				]}
 			/>
 		</div>
