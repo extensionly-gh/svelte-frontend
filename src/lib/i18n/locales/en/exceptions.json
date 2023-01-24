@@ -15,6 +15,8 @@
 				"incorrect-current": "The current password you entered is incorrect",
 				"no-password": "Create a password for you account first"
 			},
+			"email-not-found":"Email not found",
+			"error-sending-email":"Erro no envio do email",
 			"verifications": {
 				"invalid-token": "Invalid verification token",
 				"expired-token": "Verification token expired",

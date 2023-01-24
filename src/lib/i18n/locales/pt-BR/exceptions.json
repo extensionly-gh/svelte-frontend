@@ -16,6 +16,8 @@
 				"incorrect-current": "A senha atual que você enviou está incorreta",
 				"no-password": "Define uma senha para a sua conta primeiro"
 			},
+			"email-not-found":"Email não encontrado",
+			"error-sending-email":"Erro no envio do email",
 			"verifications": {
 				"invalid-token": "Token de verificação inválido",
 				"expired-token": "Token de verificação expirado",
@@ -24,6 +26,7 @@
 					"cooldown-not-lifted": "Limitado a um email de verificação a cada 5 minutos"
 				},
 				"reset_password": {
+					"already-verified": "Email já foi verificado",
 					"cooldown-not-lifted": "Limitado a uma redefinição de senha a cada 5 minutos"
 				}
 			},
