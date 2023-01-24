@@ -50,7 +50,7 @@
 				width: {
 					full: 'w-full',
 					short: 'w-[6rem]',
-					icon: 'w-[2rem]'
+					icon: 'w-[2rem] p-1'
 				},
 				size: {
 					sm: 'btn-sm h-[1.5rem] min-h-[1.5rem] px-2'
