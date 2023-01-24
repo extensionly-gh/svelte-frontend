@@ -216,7 +216,7 @@ export const userRouter = router({
 	}),
 	validateVerificationToken: publicProcedure
 		.input(validateVerificationTokenSchema)
-		.query(async ({ input }) => {
+		.mutation(async ({ input }) => {
 			const verificationWithUser = await prisma.verification.findUnique({
 				include: {
 					user: true
