@@ -216,7 +216,7 @@ export const userRouter = router({
 	}),
 	validateVerificationToken: publicProcedure
 		.input(validateVerificationTokenSchema)
-		.query(async ({ input }) => {
+		.mutation(async ({ input }) => {
 			const verificationWithUser = await prisma.verification.findUnique({
 				include: {
 					user: true
@@ -252,7 +252,7 @@ export const userRouter = router({
 			return verificationWithUser;
 		}),
 
-	resetPassword: publicProcedure.input(passwordResetSchema).query(async ({ ctx, input }) => {
+	resetPassword: publicProcedure.input(passwordResetSchema).mutation(async ({ ctx, input }) => {
 		const verificationWithUser = await appRouter.createCaller(ctx).user.validateVerificationToken({
 			type: 'RESET_PASSWORD',
 			token: input.token
@@ -271,7 +271,7 @@ export const userRouter = router({
 			}
 		});
 	}),
-	validateEmail: publicProcedure.input(validateEmailSchema).query(async ({ ctx, input }) => {
+	validateEmail: publicProcedure.input(validateEmailSchema).mutation(async ({ ctx, input }) => {
 		const verificationWithUser = await appRouter.createCaller(ctx).user.validateVerificationToken({
 			type: 'VALIDATE_EMAIL',
 			token: input.token
