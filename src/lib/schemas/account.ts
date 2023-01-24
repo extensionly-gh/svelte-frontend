@@ -20,6 +20,15 @@ export const passwordResetSchema = z.object({
 	confirmPwd: z.string()
 });
 
+export const validateEmailSchema = z.object({
+	token: z.string()
+});
+
+export const validateVerificationTokenSchema = z.object({
+	type: z.enum(['VALIDATE_EMAIL', 'VALIDATE_PHONE', 'RESET_PASSWORD']),
+	token: z.string()
+});
+
 export const passwordUpdateSchema = basePasswordSchema.superRefine(
 	({ confirmPwd, newPwd }, ctx) => {
 		if (confirmPwd !== newPwd) {

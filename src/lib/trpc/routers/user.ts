@@ -2,7 +2,9 @@ import {
 	createUserSchema,
 	passwordResetSchema,
 	passwordUpdateSchema,
-	userUpdateSchema
+	userUpdateSchema,
+	validateEmailSchema,
+	validateVerificationTokenSchema
 } from '$lib/schemas';
 import { prisma, sendInBlueApi } from '$lib/server/singletons';
 import { comparePassword, hashPassword } from '$lib/server/utils';
@@ -212,36 +214,52 @@ export const userRouter = router({
 
 		return user?.Verification;
 	}),
-	resetPassword: publicProcedure.input(passwordResetSchema).query(async ({ input }) => {
-		const verification = await prisma.verification.findUnique({
-			where: { id: input.token }
+	validateVerificationToken: publicProcedure
+		.input(validateVerificationTokenSchema)
+		.query(async ({ input }) => {
+			const verificationWithUser = await prisma.verification.findUnique({
+				include: {
+					user: true
+				},
+				where: { id: input.token }
+			});
+
+			if (!verificationWithUser) {
+				throw new TRPCError({
+					message: `v-password.invalid-token`,
+					code: 'BAD_REQUEST'
+				});
+			}
+
+			if (verificationWithUser.isVerified) {
+				throw new TRPCError({
+					message: `exceptions.users.verifications.${input.type.toLowerCase()}.already-verified`,
+					code: 'BAD_REQUEST'
+				});
+			}
+
+			const tokenCreationAndNowDiff = DateTime.fromJSDate(verificationWithUser.createdAt).diffNow(
+				'minutes'
+			);
+
+			if (tokenCreationAndNowDiff.minutes <= -15) {
+				throw new TRPCError({
+					message: `exceptions.users.verifications.expired-token`,
+					code: 'BAD_REQUEST'
+				});
+			}
+
+			return verificationWithUser;
+		}),
+
+	resetPassword: publicProcedure.input(passwordResetSchema).query(async ({ ctx, input }) => {
+		const verificationWithUser = await appRouter.createCaller(ctx).user.validateVerificationToken({
+			type: 'RESET_PASSWORD',
+			token: input.token
 		});
 
-		if (!verification) {
-			throw new TRPCError({
-				message: `v-password.invalid-token`,
-				code: 'BAD_REQUEST'
-			});
-		}
-
-		if (verification.isVerified) {
-			throw new TRPCError({
-				message: `exceptions.users.verifications.reset_password.already-verified`,
-				code: 'BAD_REQUEST'
-			});
-		}
-
-		const tokenCreationAndNowDiff = DateTime.fromJSDate(verification.createdAt).diffNow('minutes');
-
-		if (tokenCreationAndNowDiff.minutes <= -15) {
-			throw new TRPCError({
-				message: `exceptions.users.verifications.expired-token`,
-				code: 'BAD_REQUEST'
-			});
-		}
-
 		await prisma.user.update({
-			where: { id: verification.userId },
+			where: { id: verificationWithUser.userId },
 			data: {
 				password: await hashPassword(input.newPwd)
 			}
@@ -249,7 +267,22 @@ export const userRouter = router({
 
 		await prisma.verification.delete({
 			where: {
-				id: verification.id
+				id: verificationWithUser.id
+			}
+		});
+	}),
+	validateEmail: publicProcedure.input(validateEmailSchema).query(async ({ ctx, input }) => {
+		const verificationWithUser = await appRouter.createCaller(ctx).user.validateVerificationToken({
+			type: 'VALIDATE_EMAIL',
+			token: input.token
+		});
+
+		await prisma.verification.update({
+			data: {
+				isVerified: true
+			},
+			where: {
+				id: verificationWithUser.id
 			}
 		});
 	}),
