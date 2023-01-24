@@ -3,6 +3,7 @@ import { get } from 'svelte/store';
 import { buildSmtpEmail } from '../singletons';
 
 export const buildEmail = (params: EmailParams): any => {
+	const buttonUrl = `${params.url}verify/password/${params.token}`;
 	buildSmtpEmail.subject = `${get(_)(`emails.type.${params.type}.subject`)}`;
 	buildSmtpEmail.htmlContent = `
   <!DOCTYPE html>
@@ -11,10 +12,8 @@ export const buildEmail = (params: EmailParams): any => {
     <div>
       <p>${params.recipientName}, ${get(_)(`emails.type.${params.type}.title`)}</p>
       <p>${get(_)(`emails.type.${params.type}.subtitle`)}</p>
-      <a style="margin-top: 4rem; margin-bottom: 4rem;" target="_blank" href="${
-				params.url
-			}/account/reset-password/${params.token}">
-      Botão Teste
+      <a style="margin-top: 4rem; margin-bottom: 4rem;" target="_blank" href="${buttonUrl}">
+      ${buttonUrl}
       </a>
       <p>
         ${get(_)('emails.footer.best-wishes')}<br />
