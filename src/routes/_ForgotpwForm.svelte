@@ -14,7 +14,7 @@
 	const { form, errors, isValid, isSubmitting } = createForm<z.infer<typeof forgotpwSchema>>({
 		onSubmit: async ({ email }) => {
 			try {
-				await trpc().user.sendForgotPasswordEmail.mutate({ email, url: $page.url.toString() });
+				await trpc().user.sendForgotPasswordEmail.mutate({ email, url: $page.url.origin });
 				toastSuccess($_('v-password.sent-email'));
 				authDialog.update(() => ({ isOpen: false }));
 			} catch (error) {
