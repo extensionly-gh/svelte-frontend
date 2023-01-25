@@ -62,7 +62,7 @@
       "name-placeholder": "Your full name",
       "phone-placeholder": "Your phone number",
       "phone-label": "Phone number",
-      "signup-success": "Account created successfully!"
+      "signup-success": "Check your e-mail inbox to complete the registration!"
     }
   },
   "footer": {
