@@ -11,3 +11,14 @@ export const PUT = (async ({ request }) => {
 		}
 	});
 }) satisfies RequestHandler;
+
+export const PATCH = (async ({ request }) => {
+	const { useSystemTheme } = await request.json();
+
+	return new Response(null, {
+		status: 204,
+		headers: {
+			'Set-Cookie': `useSystemTheme=${useSystemTheme}; SameSite=Strict ; Secure ; Path=/ ; `
+		}
+	});
+}) satisfies RequestHandler;
