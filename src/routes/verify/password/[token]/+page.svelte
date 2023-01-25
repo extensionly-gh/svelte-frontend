@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { Button, SettingsCard, TextInput } from '$lib/components';
 	import { toastSuccess } from '$lib/components/toast';
-	import { formPasswordResetSchema, passwordResetSchema } from '$lib/schemas';
+	import { formPasswordResetSchema } from '$lib/schemas';
 	import { trpc } from '$lib/trpc/client';
 	import { handleErrorInClient } from '$lib/utils';
 	import { validateSchema } from '@felte/validator-zod';
@@ -18,7 +18,7 @@
 	>({
 		onSubmit: async ({ newPwd, confirmPwd }) => {
 			try {
-				await trpc().user.resetPassword.query({
+				await trpc().user.resetPassword.mutate({
 					token: data.token,
 					newPwd,
 					confirmPwd
