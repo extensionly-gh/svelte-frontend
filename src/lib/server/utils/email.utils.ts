@@ -4,19 +4,17 @@ import { get } from 'svelte/store';
 import type { SendSmtpEmail } from '../adapters/sendinblue/apiclient';
 
 const getHtmlContent = (params: EmailParams): string => {
-	const buttonUrl = `${params.frontendUrl}verify/${params.verificationType.toLowerCase()}/${
-		params.token
-	}`;
+	const parsedType = params.verificationType.toLowerCase().replaceAll('_', '-');
+
+	const buttonUrl = `${params.frontendUrl}/verify/${parsedType}/${params.token}`;
 
 	return `
     <!DOCTYPE html>
     <html>
       <body>
         <div>
-          <p>${params.recipientName}, ${get(_)(
-		`emails.verify_type.${params.verificationType.toLowerCase()}.title`
-	)}</p>
-          <p>${get(_)(`emails.verify_type.${params.verificationType.toLowerCase()}.subtitle`)}</p>
+          <p>${params.recipientName}, ${get(_)(`emails.type.${parsedType}.title`)}</p>
+          <p>${get(_)(`emails.type.${parsedType}.subtitle`)}</p>
           <a style="margin-top: 4rem; margin-bottom: 4rem;" target="_blank" href="${buttonUrl}">
           ${buttonUrl}
           </a>
@@ -31,12 +29,16 @@ const getHtmlContent = (params: EmailParams): string => {
   `.trim();
 };
 
-export const buildEmail = (params: EmailParams): SendSmtpEmail => ({
-	sender: { name: 'Extensionly', email: 'no-reply@extensionly.app' },
-	to: [{ email: params.recipientEmail }],
-	subject: get(_)(`emails.type.${params.verificationType.toLowerCase()}.subject`),
-	htmlContent: getHtmlContent(params)
-});
+export const buildEmail = (params: EmailParams): SendSmtpEmail => {
+	const parsedType = params.verificationType.toLowerCase().replaceAll('_', '-');
+
+	return {
+		sender: { name: 'Extensionly', email: 'no-reply@extensionly.app' },
+		to: [{ email: params.recipientEmail }],
+		subject: get(_)(`emails.type.${parsedType}.subject`),
+		htmlContent: getHtmlContent(params)
+	};
+};
 
 export interface EmailParams {
 	verificationType: VerificationType;

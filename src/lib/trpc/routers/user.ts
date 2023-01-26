@@ -298,33 +298,30 @@ export const userRouter = router({
 				where: { email: input.email }
 			});
 
-			if (user) {
-				const verification = await appRouter.createCaller(ctx).user.createVerification({
-					type: 'VALIDATE_EMAIL',
-					email: input.email
-				});
+			if (!user) return;
 
-				const builtEmail = buildEmail({
-					type: 'email',
-					toEmail: input.email,
-					recipientName: user.name,
-					url: input.url,
-					token: verification.id
-				});
+			const verification = await appRouter.createCaller(ctx).user.createVerification({
+				type: 'VALIDATE_EMAIL',
+				email: input.email
+			});
 
-				sendInBlueApi.sendTransacEmail(builtEmail).then(
-					function (data: any) {
-						console.log('API called successfully. Returned data: ' + JSON.stringify(data));
-					},
-					function (error: any) {
-						throw new TRPCError({
-							message: `exceptions.users.error-sending-email`,
-							code: 'BAD_REQUEST'
-						});
-					}
-				);
-			} else {
-				return;
+			const email = buildEmail({
+				verificationType: verification.type,
+				recipientEmail: input.email,
+				recipientName: user.name,
+				frontendUrl: input.url,
+				token: verification.id
+			});
+
+			try {
+				console.log('email', email);
+				// await sendInBlueApi.sendTransacEmail({ sendSmtpEmail: email });
+			} catch (error) {
+				console.log('error-sending-pw-recovery-email', error);
+				throw new TRPCError({
+					message: `exceptions.users.error-sending-email`,
+					code: 'BAD_REQUEST'
+				});
 			}
 		}),
 	sendForgotPasswordEmail: publicProcedure
@@ -355,7 +352,9 @@ export const userRouter = router({
 			});
 
 			try {
-				await sendInBlueApi.sendTransacEmail({ sendSmtpEmail: email });
+				console.log('email', email);
+
+				// await sendInBlueApi.sendTransacEmail({ sendSmtpEmail: email });
 			} catch (error) {
 				console.log('error-sending-pw-recovery-email', error);
 				throw new TRPCError({
