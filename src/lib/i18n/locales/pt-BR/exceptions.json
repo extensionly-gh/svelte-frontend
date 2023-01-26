@@ -1,7 +1,6 @@
 {
 	"exceptions": {
 		"generic": "Algo deu errado, tente novamente mais tarde",
-		"route-not-authorized": "Você não tem permissão para acessar aquela página",
 		"internal-server-error": "Erro interno do servidor",
 		"bad-request-error": "Erro de solicitação inválida",
 		"missing-required-parameter-error": "Parâmetro obrigatório faltando: {key}",
