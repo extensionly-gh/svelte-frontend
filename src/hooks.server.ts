@@ -39,7 +39,7 @@ const handleAuthorization: Handle = async ({ event, resolve }) => {
 	if (event.url.pathname.includes('/account')) {
 		const session = await event.locals.getSession();
 		if (!session) {
-			throw redirect(303, '/?error=exceptions.route-not-authorized');
+			throw redirect(303, '/');
 		}
 	}
 	return resolve(event);

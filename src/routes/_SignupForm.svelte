@@ -20,9 +20,10 @@
 		onSubmit: async (values) => {
 			try {
 				await trpc().user.createUser.mutate(values);
-				await trpc().user.sendVerificationEmail.mutate({
+				await trpc().user.sendEmail.mutate({
 					email: values.email,
-					url: $page.url.origin
+					url: $page.url.origin,
+					type: 'VALIDATE_EMAIL'
 				});
 				toastInfo($_('dialogs.auth.signup-success'), { initial: 0 });
 				authDialog.update(() => ({ isOpen: false }));
