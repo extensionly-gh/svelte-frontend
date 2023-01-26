@@ -17,7 +17,7 @@
 				"no-password": "Define uma senha para a sua conta primeiro"
 			},
 			"email-not-found":"Email não encontrado",
-			"error-sending-email":"Erro no envio do email",
+			"error-sending-email":"Um error desconhecido ocorreu ao enviar o email, por favor, tente novamente mais tarde",
 			"verifications": {
 				"invalid-token": "Token de verificação inválido",
 				"expired-token": "Token de verificação expirado",

@@ -3,7 +3,7 @@
 		"footer": {
 			"best-wishes": "Best wishes,",
 			"team": "Extensionly Team",
-			"address": "Av. Tiarajú, Alegrete, Rio Grande do Sul, Brazil"
+			"address": "Rio Grande do Sul, Brazil"
 		},
 		"type": {
 			"validate_email": {
@@ -14,7 +14,7 @@
 			"reset_password": {
 				"subject": "🔒 Reset your password",
 				"title": "a password reset was requested on your behalf.",
-				"subtitle": "If you do not recognize this activity, please ignore this email. Otherwise, reset your password by clicking in the following link:"
+				"subtitle": "If you do not recognize this activity, <b>please ignore this email</b>. Otherwise, reset your password by clicking in the following link:"
 			}
 		}
 	}

@@ -16,7 +16,7 @@
 				"no-password": "Create a password for you account first"
 			},
 			"email-not-found":"Email not found",
-			"error-sending-email":"Erro no envio do email",
+			"error-sending-email":"An unknown error occurred when sending the email, please try again later",
 			"verifications": {
 				"invalid-token": "Invalid verification token",
 				"expired-token": "Verification token expired",
