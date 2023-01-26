@@ -1,11 +1,10 @@
 import { env } from '$env/dynamic/private';
 import { PrismaClient } from '@prisma/client';
-//@ts-expect-error npm does not have types for this import
-import SibApiV3Sdk from 'sib-api-v3-sdk';
+import { Configuration, SMTPApi } from './adapters/sendinblue/apiclient';
 
 const singletonsGlobal = global as typeof global & {
 	prisma?: PrismaClient;
-	sendInBlueApi?: any;
+	sendInBlueApi: SMTPApi;
 };
 
 export const prisma: PrismaClient =
@@ -14,15 +13,9 @@ export const prisma: PrismaClient =
 		log: env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error']
 	});
 
-const defaultClient = SibApiV3Sdk.ApiClient.instance;
-
-const apiKey = defaultClient.authentications['api-key'];
-apiKey.apiKey = env.SENDINBLUE_API_KEY;
-
-export const sendInBlueApi =
-	singletonsGlobal.sendInBlueApi || new SibApiV3Sdk.TransactionalEmailsApi();
-
-export const buildSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+export const sendInBlueApi: SMTPApi =
+	singletonsGlobal.sendInBlueApi ||
+	new SMTPApi(new Configuration({ apiKey: env.SENDINBLUE_API_KEY }));
 
 if (env.NODE_ENV !== 'production') {
 	singletonsGlobal.prisma = prisma;
