@@ -4,20 +4,9 @@ import { get } from 'svelte/store';
 import type { SendSmtpEmail } from '../adapters/sendinblue/apiclient';
 
 const getHtmlContent = (params: EmailParams): string => {
-	let buttonUrl = '';
-
-	switch (params.verificationType) {
-		case 'VALIDATE_EMAIL':
-			buttonUrl = `${params.frontendUrl}verify/email/${params.token}`;
-			break;
-		case 'RESET_PASSWORD':
-			buttonUrl = `${params.frontendUrl}verify/password/${params.token}`;
-			break;
-		default:
-			break;
-	}
-
-	if (!buttonUrl) throw new Error('Invalid verification type');
+	const buttonUrl = `${params.frontendUrl}verify/${params.verificationType.toLowerCase()}/${
+		params.token
+	}`;
 
 	return `
     <!DOCTYPE html>
@@ -25,9 +14,9 @@ const getHtmlContent = (params: EmailParams): string => {
       <body>
         <div>
           <p>${params.recipientName}, ${get(_)(
-		`emails.type.${params.verificationType.toLowerCase()}.title`
+		`emails.verify_type.${params.verificationType.toLowerCase()}.title`
 	)}</p>
-          <p>${get(_)(`emails.type.${params.verificationType.toLowerCase()}.subtitle`)}</p>
+          <p>${get(_)(`emails.verify_type.${params.verificationType.toLowerCase()}.subtitle`)}</p>
           <a style="margin-top: 4rem; margin-bottom: 4rem;" target="_blank" href="${buttonUrl}">
           ${buttonUrl}
           </a>

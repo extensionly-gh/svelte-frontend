@@ -1,14 +1,16 @@
 <script lang="ts">
-	import { signupSchema } from '$lib/schemas';
-	import { _ } from 'svelte-i18n';
-	import type { z } from 'zod';
-	import { createForm } from 'felte';
-	import { validateSchema } from '@felte/validator-zod';
+	import { page } from '$app/stores';
 	import { Button, TextInput } from '$lib/components';
 	import { PhoneInput } from '$lib/components/form';
+	import { toastInfo } from '$lib/components/toast';
+	import { signupSchema } from '$lib/schemas';
+	import { authDialog } from '$lib/stores';
 	import { trpc } from '$lib/trpc/client';
-	import { signIn } from '@auth/sveltekit/client';
 	import { handleErrorInClient } from '$lib/utils';
+	import { validateSchema } from '@felte/validator-zod';
+	import { createForm } from 'felte';
+	import { _ } from 'svelte-i18n';
+	import type { z } from 'zod';
 
 	let isPhoneValid: boolean = false;
 
@@ -18,11 +20,12 @@
 		onSubmit: async (values) => {
 			try {
 				await trpc().user.createUser.mutate(values);
-				await signIn('credentials', {
+				await trpc().user.sendVerificationEmail.mutate({
 					email: values.email,
-					password: values.password,
-					callbackUrl: '/?success=dialogs.auth.signup-success'
+					url: $page.url.origin
 				});
+				toastInfo($_('dialogs.auth.signup-success'), { initial: 0 });
+				authDialog.update(() => ({ isOpen: false }));
 			} catch (error) {
 				handleErrorInClient(error);
 			}

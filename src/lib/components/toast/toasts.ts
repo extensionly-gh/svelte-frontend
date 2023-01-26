@@ -23,10 +23,11 @@ export const toastWarning = (msg: string) =>
 		duration: getDuration(msg)
 	});
 
-export const toastInfo = (msg: string) =>
+export const toastInfo = (msg: string, options: ToastOptions = { initial: 1 }) =>
 	toast.push(generateHtml(InfoIcon, msg), {
 		classes: ['toast-info dark:toast-info-dark'],
-		duration: getDuration(msg)
+		duration: getDuration(msg),
+		initial: options.initial
 	});
 
 export const toastError = (msg: string) =>
@@ -34,3 +35,7 @@ export const toastError = (msg: string) =>
 		classes: ['toast-error dark:toast-error-dark'],
 		duration: getDuration(msg)
 	});
+
+interface ToastOptions {
+	initial: number;
+}

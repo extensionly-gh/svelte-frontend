@@ -5,13 +5,13 @@
 			"team": "Extensionly Team",
 			"address": "Rio Grande do Sul, Brazil"
 		},
-		"type": {
-			"validate_email": {
+		"verify_type": {
+			"email": {
 				"subject": "📧 Verify your email",
 				"title": "thanks for signing up for Extensionly! We're excited to have you as an early user.",
 				"subtitle": "Verify your email address by clicking on the following link:"
 			},
-			"reset_password": {
+			"password": {
 				"subject": "🔒 Reset your password",
 				"title": "a password reset was requested on your behalf.",
 				"subtitle": "If you do not recognize this activity, <b>please ignore this email</b>. Otherwise, reset your password by clicking in the following link:"

@@ -286,6 +286,47 @@ export const userRouter = router({
 			}
 		});
 	}),
+	sendVerificationEmail: publicProcedure
+		.input(
+			z.object({
+				email: z.string().email('validations.email.invalid'),
+				url: z.string()
+			})
+		)
+		.mutation(async ({ ctx, input }) => {
+			const user = await prisma.user.findUnique({
+				where: { email: input.email }
+			});
+
+			if (user) {
+				const verification = await appRouter.createCaller(ctx).user.createVerification({
+					type: 'VALIDATE_EMAIL',
+					email: input.email
+				});
+
+				const builtEmail = buildEmail({
+					type: 'email',
+					toEmail: input.email,
+					recipientName: user.name,
+					url: input.url,
+					token: verification.id
+				});
+
+				sendInBlueApi.sendTransacEmail(builtEmail).then(
+					function (data: any) {
+						console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+					},
+					function (error: any) {
+						throw new TRPCError({
+							message: `exceptions.users.error-sending-email`,
+							code: 'BAD_REQUEST'
+						});
+					}
+				);
+			} else {
+				return;
+			}
+		}),
 	sendForgotPasswordEmail: publicProcedure
 		.input(
 			z.object({
