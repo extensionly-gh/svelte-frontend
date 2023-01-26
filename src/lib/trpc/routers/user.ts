@@ -314,8 +314,7 @@ export const userRouter = router({
 			});
 
 			try {
-				console.log('email', email);
-				// await sendInBlueApi.sendTransacEmail({ sendSmtpEmail: email });
+				await sendInBlueApi.sendTransacEmail({ sendSmtpEmail: email });
 			} catch (error) {
 				console.log('error-sending-pw-recovery-email', error);
 				throw new TRPCError({
@@ -352,9 +351,7 @@ export const userRouter = router({
 			});
 
 			try {
-				console.log('email', email);
-
-				// await sendInBlueApi.sendTransacEmail({ sendSmtpEmail: email });
+				await sendInBlueApi.sendTransacEmail({ sendSmtpEmail: email });
 			} catch (error) {
 				console.log('error-sending-pw-recovery-email', error);
 				throw new TRPCError({
