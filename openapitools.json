@@ -1,0 +1,26 @@
+{
+	"$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+	"spaces": 2,
+	"generator-cli": {
+		"version": "6.2.0",
+		"useDocker": false,
+		"generators": {
+			"sendinblue": {
+				"generatorName": "typescript-fetch",
+				"output": "./src/lib/server/adapters/sendinblue/apiclient",
+				"globalProperty": "apis=SMTP,supportingFiles,models",
+				"inputSpec": "https://api.sendinblue.com/v3/swagger_definition.yml",
+				"additionalProperties": {
+					"apiPackage": "api",
+					"modelPackage": "model",
+					"withSeparateModelsAndApi": true,
+					"nullSafeAdditionalProps": true,
+					"supportsES6": true,
+					"useSingleRequestParameter": true,
+					"typescriptThreePlus": true,
+					"stringEnums": true
+				}
+			}
+		}
+	}
+}
