@@ -18,7 +18,9 @@
 	});
 
 	export let trigger: string | null = null;
+	export let triggerId: string = '';
 	export let items: {
+		id?: string;
 		text: string;
 		icon: any;
 		classes?: string;
@@ -31,7 +33,10 @@
 	<div use:popperRef>
 		<MenuButton>
 			{#if trigger !== null}
-				<Button variants={{ intent: 'ghost', case: 'normal', size: 'sm' }}>
+				<Button
+					data-testid={`menu-trigger-${triggerId}`}
+					variants={{ intent: 'ghost', case: 'normal', size: 'sm' }}
+				>
 					<p class="text-sm font-semibold truncate max-w-[7rem]">{trigger}</p>
 					<IconArrowDown width="20px" height="20px" />
 				</Button>
@@ -48,6 +53,7 @@
 						class="cursor-pointer transition-transform hover:scale-95 hover:bg-primary hover:text-primary-content rounded-md {item.classes}"
 					>
 						<Button
+							data-testid={`menu-item-${item.id ?? item.text}`}
 							class="p-2 items-center justify-center whitespace-nowrap font-semibold"
 							variants={{ intent: 'no-style' }}
 							to={item.to ?? ''}

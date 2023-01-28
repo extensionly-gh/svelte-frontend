@@ -93,20 +93,43 @@
 		<div class="flex gap-6">
 			<Menu
 				trigger={$_('terms.language')}
+				triggerId="language-switcher"
 				items={[
-					{ text: 'Português', icon: IconBrazil, action: () => handleSaveLocale('pt-BR') },
-					{ text: 'English', icon: IconUnitedStates, action: () => handleSaveLocale('en') }
+					{
+						text: 'Português',
+						icon: IconBrazil,
+						action: () => handleSaveLocale('pt-BR'),
+						id: 'language-pt'
+					},
+					{
+						text: 'English',
+						icon: IconUnitedStates,
+						action: () => handleSaveLocale('en'),
+						id: 'language-en'
+					}
 				]}
 			/>
 			<Menu
 				trigger={$_('terms.theme')}
+				triggerId="theme-switcher"
 				items={[
-					{ text: $_('terms.light'), icon: IconSun, action: () => handleSaveTheme('winter') },
-					{ text: $_('terms.dark'), icon: IconMoon, action: () => handleSaveTheme('night') },
+					{
+						text: $_('terms.light'),
+						icon: IconSun,
+						action: () => handleSaveTheme('winter'),
+						id: 'theme-light'
+					},
+					{
+						text: $_('terms.dark'),
+						icon: IconMoon,
+						action: () => handleSaveTheme('night'),
+						id: 'theme-dark'
+					},
 					{
 						text: $_('terms.system'),
 						icon: IconCircleHalf,
-						action: () => handleSaveTheme('system')
+						action: () => handleSaveTheme('system'),
+						id: 'theme-system'
 					}
 				]}
 			/>
