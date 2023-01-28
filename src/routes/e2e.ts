@@ -1,7 +1,7 @@
 import test, { expect, type Locator } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-	await page.goto('/');
+	await page.goto('/', { waitUntil: 'networkidle' });
 });
 
 test('dismisses cookie banner', async ({ page }) => {
@@ -77,23 +77,44 @@ test.describe('navbar', () => {
 		await page.getByTestId('nav-signin-btn').click();
 	});
 
-	test.only('signs in', async ({ page }) => {
+	test('signs in', async ({ page }) => {
 		await page.getByTestId('signin-email-input').fill('admin-dev@extensionly.app');
 		await page.getByTestId('signin-password-input').fill('StrongPassword1.');
 
-		const responsePromise = page.waitForResponse((resp) =>
-			resp.url().includes('/auth/callback/credentials')
-		);
-
 		await page.getByTestId('signin-submit-button').click();
 
-		try {
-			await (await responsePromise).json();
-		} catch (error) {
-			// success if the body is empty
-			return expect(1).toBe(1);
-		}
-		// fail
-		expect(1).toBe(2);
+		await page.getByTestId('menu-trigger-user-menu').click();
+	});
+
+	test('signs up and deletes account', async ({ page }) => {
+		await page.getByTestId('auth-dialog-context-btn').click();
+
+		await page.getByTestId('signup-name-input').fill('Signup Test');
+		await page.getByTestId('signup-email-input').fill('signup-test@extensionly.app');
+		await page.getByTestId('signup-phone-input').fill('+555199999996');
+		await page.getByTestId('signup-password-input').fill('StrongPassword1.');
+		await page.getByTestId('signup-cpassword-input').fill('StrongPassword1.');
+
+		await page.route('**/*', (route) => {
+			const headers = route.request().headers();
+			headers['x-send-email'] = 'false';
+			route.continue({ headers });
+		});
+
+		await page.getByTestId('signup-submit-button').click();
+		await page.getByRole('button', { name: '✕' }).click();
+
+		await page.getByTestId('nav-signin-btn').click();
+		await page.getByTestId('signin-email-input').fill('signup-test@extensionly.app');
+		await page.getByTestId('signin-password-input').fill('StrongPassword1.');
+		await page.getByTestId('signin-submit-button').click();
+
+		await page.getByTestId('menu-trigger-user-menu').click();
+		await page.getByTestId('menu-item-my-account').click();
+
+		await page.getByRole('button', { name: 'Delete' }).click();
+		await page.getByTestId('emailDelete-input').fill('signup-test@extensionly.app');
+		await page.getByRole('button', { name: 'Delete my account' }).click();
+		await page.getByRole('button', { name: '✕' }).click();
 	});
 });

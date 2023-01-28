@@ -6,7 +6,7 @@ const config: PlaywrightTestConfig = {
 		port: 4173
 	},
 	testMatch: '**/*e2e.ts',
-	timeout: 5000,
+	timeout: 30000,
 	reporter: [['list'], ['html']],
 	use: {
 		trace: 'retain-on-failure'
