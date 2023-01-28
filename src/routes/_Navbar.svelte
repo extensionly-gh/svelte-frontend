@@ -69,6 +69,7 @@
 			</Menu>
 		{:else}
 			<Button
+				data-testid="nav-signin-btn"
 				on:click={() => authDialog.update(() => ({ isOpen: true }))}
 				variants={{ animated: true }}
 			>

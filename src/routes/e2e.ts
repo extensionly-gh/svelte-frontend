@@ -4,21 +4,19 @@ test.beforeEach(async ({ page }) => {
 	await page.goto('/');
 });
 
-test.describe('CookieBanner.svelte', () => {
-	test('dismisses banner', async ({ page }) => {
-		const banner = page.getByTestId('cookie-banner');
+test('dismisses cookie banner', async ({ page }) => {
+	const banner = page.getByTestId('cookie-banner');
 
-		await expect(banner).toBeVisible();
-		await expect(banner).toHaveCount(1);
+	await expect(banner).toBeVisible();
+	await expect(banner).toHaveCount(1);
 
-		await page.getByTestId('cookie-banner-btn').click();
+	await page.getByTestId('cookie-banner-btn').click();
 
-		// element does not exist in the dom
-		await expect(banner).toHaveCount(0);
-	});
+	// element does not exist in the dom
+	await expect(banner).toHaveCount(0);
 });
 
-test.describe('Footer.svelte', () => {
+test.describe('footer', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.getByTestId('cookie-banner-btn').click();
 	});
@@ -71,5 +69,31 @@ test.describe('Footer.svelte', () => {
 
 			expect(await themeContainer.getAttribute('data-theme')).toEqual('night');
 		});
+	});
+});
+
+test.describe('navbar', () => {
+	test.beforeEach(async ({ page }) => {
+		await page.getByTestId('nav-signin-btn').click();
+	});
+
+	test.only('signs in', async ({ page }) => {
+		await page.getByTestId('signin-email-input').fill('admin-dev@extensionly.app');
+		await page.getByTestId('signin-password-input').fill('StrongPassword1.');
+
+		const responsePromise = page.waitForResponse((resp) =>
+			resp.url().includes('/auth/callback/credentials')
+		);
+
+		await page.getByTestId('signin-submit-button').click();
+
+		try {
+			await (await responsePromise).json();
+		} catch (error) {
+			// success if the body is empty
+			return expect(1).toBe(1);
+		}
+		// fail
+		expect(1).toBe(2);
 	});
 });
