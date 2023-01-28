@@ -5,13 +5,12 @@ const config: PlaywrightTestConfig = {
 		command: 'pnpm build && pnpm preview',
 		port: 4173
 	},
-	testMatch: '**/*e2e.ts',
+	testMatch: '**/*.e2e.ts',
 	timeout: 30000,
 	reporter: [['list'], ['html']],
 	use: {
 		trace: 'retain-on-failure'
-	},
-	fullyParallel: true
+	}
 };
 
 export default config;
