@@ -35,7 +35,12 @@
 		content="script-src https://accounts.google.com/gsi/client; frame-src https://accounts.google.com/gsi/; connect-src https://accounts.google.com/gsi/;"
 	/>
 </svelte:head>
-<div id="theme-container" data-theme={$theme} class="dark:bg-base-300/70">
+<div
+	id="theme-container"
+	data-testid="theme-container"
+	data-theme={$theme}
+	class="dark:bg-base-300/70"
+>
 	<AuthDialog />
 	<main class="lg:max-w-7xl flex m-auto flex-1 flex-col items-center justify-start w-[90%]">
 		<SvelteToast />
