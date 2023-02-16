@@ -84,35 +84,37 @@ model Project {
 }
 
 model Activity {
-  id              String            @id @default(uuid())
-  title           String
-  description     String
-  category        String?
-  location        String?
-  prerequisites   String?
-  startDate       DateTime
-  endDate         DateTime
-  enrollmentStart DateTime
-  enrollmentEnd   DateTime
-  contact         String?
-  faculty         String
-  targetAudience  TargetAudience
-  visibility      EventVisibility
-  status          ActivityStatus    @default(CREATED)
-  modality        Modality?         @default(REMOTE)
-  proponentId     String
-  projectId       String
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
-  UserEnrollments UserEnrollments[]
-  SubActivity     SubActivity[]
-  User            User              @relation(fields: [proponentId], references: [id])
-  Project         Project           @relation(fields: [projectId], references: [id])
+  id               String            @id @default(uuid())
+  title            String
+  description      String
+  shortDescription String
+  category         String?
+  location         String?
+  prerequisites    String?
+  startDate        DateTime
+  endDate          DateTime
+  enrollmentStart  DateTime
+  enrollmentEnd    DateTime
+  contact          String?
+  faculty          String
+  targetAudience   TargetAudience
+  visibility       EventVisibility
+  status           ActivityStatus    @default(CREATED)
+  modality         Modality?         @default(REMOTE)
+  proponentId      String
+  projectId        String
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  UserEnrollments  UserEnrollments[]
+  SubActivity      SubActivity[]
+  User             User              @relation(fields: [proponentId], references: [id])
+  Project          Project           @relation(fields: [projectId], references: [id])
 
   @@index([proponentId])
   @@index([projectId])
   @@fulltext([title])
   @@fulltext([description])
+  @@fulltext([shortDescription])
   @@fulltext([location])
   @@fulltext([title, description])
   @@fulltext([title, location])
