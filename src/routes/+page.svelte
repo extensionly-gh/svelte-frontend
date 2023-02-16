@@ -25,8 +25,7 @@
 					>{$_('r-home.signup-now')}</Button
 				>
 			{/if}
-			<!-- <Button variants={{ intent: 'secondary' }} to={'/activities'}> -->
-			<Button variants={{ intent: 'secondary' }} to={'/'}>
+			<Button variants={{ intent: 'secondary' }} to={'/activities'}>
 				{$_('r-home.browse-activities')}
 			</Button>
 		</div>
