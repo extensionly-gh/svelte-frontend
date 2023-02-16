@@ -1,0 +1,43 @@
+{
+  "a-default": {
+    "activity-finished": "Atividade terminada.",
+    "and-ends": "e termina",
+    "began": "Começou",
+    "begins": "Começa",
+    "buttons": {
+      "message-professor": "Falar com organizador",
+      "see-details": "Mais detalhes"
+    },
+    "details": {
+      "dates": {
+        "begin": "Começa em",
+        "end": "Termina em",
+        "enrollments": {
+          "close": "Fecham em",
+          "open": "Abrem em",
+          "title": "Inscrições"
+        },
+        "title": "Datas Importantes"
+      },
+      "enroll-btn": "Inscrever-se na atividade",
+      "instructor": "Instrutor",
+      "location": {
+        "maps-btn": "Ver no Google Maps",
+        "title": "Endereço da Localização"
+      },
+      "project": {
+        "related-activities": "Ver atividades relacionadas",
+        "title": "Projeto"
+      }
+    },
+    "enrollments": {
+      "are": "Inscrições estão",
+      "closed": "fechadas",
+      "open": "abertas",
+      "until": "até",
+      "will-open": "Inscrições abrirão"
+    },
+    "no-activities-found": "Nenhuma atividade encontrada. Por favor, atualize o filtro.",
+    "title": "Encontre atividades de extensão"
+    }
+}

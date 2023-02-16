@@ -1,0 +1,43 @@
+{
+  "a-default": {
+      "activity-finished": "Activity is finished.",
+      "and-ends": "and ends",
+      "began": "Began",
+      "begins": "Begins",
+      "buttons": {
+        "message-professor": "Message organizer",
+        "see-details": "See details"
+      },
+      "details": {
+        "dates": {
+          "begin": "Begins on",
+          "end": "Ends on",
+          "enrollments": {
+            "close": "Closes on",
+            "open": "Opens on",
+            "title": "Enrollments"
+          },
+          "title": "Important Dates"
+        },
+        "enroll-btn": "Enroll in this activity",
+        "instructor": "Instructor",
+        "location": {
+          "maps-btn": "See in Google Maps",
+          "title": "Location Address"
+        },
+        "project": {
+          "related-activities": "See related activities",
+          "title": "Project"
+        }
+      },
+      "enrollments": {
+        "are": "Enrollments are",
+        "closed": "closed",
+        "open": "open",
+        "until": "until",
+        "will-open": "Enrollments will open"
+      },
+      "no-activities-found": "No activities found. Please update the filter.",
+      "title": "Browse extension actions"
+    }
+}
