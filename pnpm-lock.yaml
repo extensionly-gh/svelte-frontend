@@ -27,6 +27,7 @@ specifiers:
   bcrypt: ^5.1.0
   class-variance-authority: ^0.4.0
   daisyui: ^2.46.1
+  date-fns: ^2.29.3
   eslint: ^8.28.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
@@ -54,6 +55,7 @@ specifiers:
 
 dependencies:
   bcrypt: 5.1.0
+  date-fns: 2.29.3
 
 devDependencies:
   '@auth/core': 0.2.5
@@ -1497,7 +1499,6 @@ packages:
   /date-fns/2.29.3:
     resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
     engines: {node: '>=0.11'}
-    dev: true
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}

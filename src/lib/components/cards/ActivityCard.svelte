@@ -1,0 +1,137 @@
+<script lang="ts">
+	import { DateFormats } from '$lib/utils';
+	import { getDateStatus } from '$lib/utils/activity.utils';
+	import type { Activity } from '@prisma/client';
+	import { formatRelative } from 'date-fns';
+	import { enUS, ptBR } from 'date-fns/locale';
+	import { DateTime } from 'luxon';
+	import { locale, _ } from 'svelte-i18n';
+	import IconVideoCamera from '~icons/heroicons-solid/video-camera';
+	import IconMapPin from '~icons/map/map-pin';
+	import { Avatar } from '..';
+	import Button from '../button/Button.svelte';
+	import Tag from '../tag/Tag.svelte';
+	import HighlightedSpan from '../text/HighlightedSpan.svelte';
+
+	export let activity: Activity & {
+		User: {
+			name: string;
+			image: string | null;
+		};
+		Project: {
+			name: string;
+		};
+	};
+
+	const isActivityFinished = DateTime.fromJSDate(activity.endDate).diffNow().milliseconds < 0;
+	const isActivityStartInThePast =
+		DateTime.fromJSDate(activity.startDate).diffNow().milliseconds < 0;
+
+	const dateStatus = getDateStatus({
+		end: activity.endDate,
+		start: activity.startDate
+	});
+	const enrollmentStatus = getDateStatus({
+		end: activity.enrollmentEnd,
+		start: activity.enrollmentStart
+	});
+
+	$: formatDate = (JSDate: Date) => {
+		const date = DateTime.fromJSDate(JSDate);
+		const now = DateTime.now();
+
+		if (date.diff(now, 'days').days >= 1) {
+			return date.setLocale($locale === 'pt-BR' ? 'pt-BR' : 'en').toLocaleString(DateFormats.long);
+		}
+
+		return formatRelative(date.toJSDate(), new Date(), {
+			locale: $locale === 'pt-BR' ? ptBR : enUS
+		});
+	};
+</script>
+
+<div class="bg-base-300 p-3 rounded-box shadow-md flex flex-col gap-2 max-w-sm">
+	<div class="flex gap-2 bg-base-200 rounded-box p-1 items-center pl-3">
+		<Avatar src={activity.User?.image || activity.User.name} size="sm" />
+		<div class="flex flex-col">
+			<span class="font-semibold text-lg line-clamp-3 max-w-[17rem]">{activity.title}</span>
+			<span class="text-sm max-w-[17rem] line-clamp-1">{activity.User.name}</span>
+		</div>
+	</div>
+	<div class="flex-wrap flex gap-2 text-sm font-semibold items-center my-2">
+		<!-- <Button intent="no-style" to={`${ProjectsRoute}/${activity.projectId}`}> -->
+		<a href="/">
+			<Tag variants={{ intent: 'project' }}>{activity.Project.name}</Tag>
+		</a>
+		{#if activity.modality === 'REMOTE'}
+			<Tag variants={{ intent: 'online' }}>
+				<IconVideoCamera class="w-5" />
+				<span>Online</span>
+			</Tag>
+		{/if}
+	</div>
+	<p class="line-clamp-3">{activity.shortDescription}</p>
+	<div class="flex gap-2 flex-col px-1 flex-1 justify-center my-3">
+		{#if isActivityFinished}
+			<p class="text-center">
+				<span class="font-semibold text-lg">{$_('a-default.activity-finished')}</span>
+			</p>
+		{:else}
+			<p class="text-center">
+				{#if isActivityStartInThePast}
+					{$_('a-default.began')}
+				{:else}
+					{$_('a-default.begins')}
+				{/if}
+				{' '}
+				<!-- TODO: add tooltip with full ISO date -->
+				<HighlightedSpan variants={{ dateStatus }}>{formatDate(activity.startDate)}</HighlightedSpan
+				>{' '}
+				{$_('a-default.and-ends')}{' '}
+				<HighlightedSpan variants={{ dateStatus }}>{formatDate(activity.endDate)}.</HighlightedSpan
+				>{' '}
+			</p>
+		{/if}
+		{#if enrollmentStatus === 'ENDED' && !isActivityFinished}
+			<p class="text-center text-sm">
+				{$_('a-default.enrollments.are')}{' '}
+				<HighlightedSpan variants={{ dateStatus: enrollmentStatus }}
+					>{$_('a-default.enrollments.closed')}.</HighlightedSpan
+				>
+			</p>
+		{/if}
+		{#if enrollmentStatus === 'NOT_STARTED' && !isActivityFinished}
+			<p class="text-center text-sm">
+				{$_('a-default.enrollments.will-open')}{' '}
+				<HighlightedSpan variants={{ dateStatus: enrollmentStatus }}>
+					{formatDate(activity.enrollmentStart)}.
+				</HighlightedSpan>
+			</p>
+		{/if}
+		{#if enrollmentStatus === 'OPEN' && !isActivityFinished}
+			<p class="text-center text-sm">
+				{$_('a-default.enrollments.are')}{' '}
+				<HighlightedSpan variants={{ dateStatus: enrollmentStatus }}>
+					{$_('a-default.enrollments.open')}
+					{$_('a-default.enrollments.until')}
+					{formatDate(activity.enrollmentEnd)}
+				</HighlightedSpan>
+			</p>
+		{/if}
+	</div>
+	{#if activity.location}
+		<div class="flex gap-1.5 items-center">
+			<IconMapPin class="flex-none text-blue-500 font-bold w-5" />
+			<p>{activity.location}</p>
+		</div>
+	{/if}
+	<div class="flex gap-2">
+		<Button variants={{ intent: 'ghost' }} class="w-full flex-shrink text-secondary">
+			{$_('a-default.buttons.message-professor')}
+		</Button>
+		<!-- <Button class="w-full flex-shrink" to={`${ActivitiesRoute}/${activity.id}`}> -->
+		<Button class="w-full flex-shrink" to="/">
+			{$_('a-default.buttons.see-details')}
+		</Button>
+	</div>
+</div>

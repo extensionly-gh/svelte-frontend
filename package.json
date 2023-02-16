@@ -74,7 +74,8 @@
 		"seed": "doppler run -- node --experimental-specifier-resolution=node --loader ts-node/esm prisma/seed.ts"
 	},
 	"dependencies": {
-		"bcrypt": "^5.1.0"
+		"bcrypt": "^5.1.0",
+		"date-fns": "^2.29.3"
 	},
 	"lint-staged": {
 		"*.{svelte,ts,html,css,json}": "pnpm run format:staged"
