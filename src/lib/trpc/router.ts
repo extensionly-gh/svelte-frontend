@@ -1,10 +1,11 @@
 import { router } from '$lib/trpc/t';
 import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
-import { userRouter, verificationRouter } from './routers';
+import { activityRouter, userRouter, verificationRouter } from './routers';
 
 export const appRouter = router({
 	user: userRouter,
-	verification: verificationRouter
+	verification: verificationRouter,
+	activity: activityRouter
 });
 
 export type AppRouter = typeof appRouter;
