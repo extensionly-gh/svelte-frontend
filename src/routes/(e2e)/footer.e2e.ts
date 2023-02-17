@@ -3,7 +3,6 @@ import test, { expect, type Locator } from '@playwright/test';
 test.describe('footer', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/', { waitUntil: 'networkidle' });
-		await page.getByTestId('cookie-banner-btn').click();
 	});
 
 	test('switches languages', async ({ page }) => {

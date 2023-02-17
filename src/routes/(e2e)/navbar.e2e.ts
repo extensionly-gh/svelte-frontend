@@ -37,7 +37,11 @@ test.describe('navbar', () => {
 
 		const mailinator = await context.newPage();
 		await mailinator.goto(mailinatorUrl + emailId);
-		await mailinator.getByRole('cell', { name: '📧' }).first().click();
+		await mailinator
+			.getByRole('row', { name: 'just now' })
+			.getByRole('cell', { name: '📧' })
+			.first()
+			.click();
 		await mailinator.getByRole('tab', { name: 'LINKS' }).click();
 		const link = await mailinator
 			.locator('xpath=//*[@id="pills-links-content"]/table/tbody/tr/td[1]')
@@ -60,7 +64,11 @@ test.describe('navbar', () => {
 
 		const mailinator = await context.newPage();
 		await mailinator.goto(mailinatorUrl + emailId);
-		await mailinator.getByRole('cell', { name: '🔒' }).first().click();
+		await mailinator
+			.getByRole('row', { name: 'just now' })
+			.getByRole('cell', { name: '🔒' })
+			.first()
+			.click();
 		await mailinator.getByRole('tab', { name: 'LINKS' }).click();
 		const link = await mailinator
 			.locator('xpath=//*[@id="pills-links-content"]/table/tbody/tr/td[1]')

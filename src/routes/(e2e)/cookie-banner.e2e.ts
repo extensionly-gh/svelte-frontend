@@ -1,5 +1,12 @@
 import test, { expect } from '@playwright/test';
 
+test.use({
+	storageState: {
+		cookies: [],
+		origins: []
+	}
+});
+
 test('dismisses cookie banner', async ({ page }) => {
 	await page.goto('/', { waitUntil: 'networkidle' });
 	const banner = page.getByTestId('cookie-banner');
