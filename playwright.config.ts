@@ -9,7 +9,8 @@ const config: PlaywrightTestConfig = {
 	timeout: 30000,
 	reporter: [['list'], ['html']],
 	use: {
-		trace: 'retain-on-failure'
+		trace: 'on',
+		video: 'on'
 	}
 };
 

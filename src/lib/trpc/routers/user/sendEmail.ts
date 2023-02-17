@@ -34,9 +34,7 @@ export const sendEmail = publicProcedure
 		});
 
 		try {
-			if (ctx.canSendEmail) {
-				await sendInBlueApi.sendTransacEmail({ sendSmtpEmail: email });
-			}
+			await sendInBlueApi.sendTransacEmail({ sendSmtpEmail: email });
 		} catch (error) {
 			console.log(
 				`error-sending-${verification.type.toLowerCase().replaceAll('_', '-')}-email`,

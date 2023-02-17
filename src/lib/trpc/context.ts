@@ -3,8 +3,7 @@ import type { inferAsyncReturnType } from '@trpc/server';
 
 export async function createContext(event: RequestEvent) {
 	return {
-		session: await event.locals.getSession(),
-		canSendEmail: !(event.request.headers.get('x-send-email') === 'false')
+		session: await event.locals.getSession()
 	};
 }
 

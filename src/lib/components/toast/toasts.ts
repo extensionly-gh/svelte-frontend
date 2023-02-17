@@ -2,7 +2,7 @@ import { toast } from '@zerodevx/svelte-toast';
 import { CheckmarkIcon, ExclamationIcon, InfoIcon, WarningIcon } from './icon-svgs';
 
 const generateHtml = (icon: string, msg: string) =>
-	`<div class="flex gap-2 items-center text-sm">${icon} ${msg}<div>`;
+	`<div data-testid="toast-body" class="flex gap-2 items-center text-sm">${icon} ${msg}<div>`;
 
 const getDuration = (msg: string) => {
 	// duration = 90 words/min = 1.8 words/sec * 1000 ms/sec
