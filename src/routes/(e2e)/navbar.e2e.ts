@@ -1,6 +1,9 @@
 import test, { expect } from '@playwright/test';
 
+const mailinatorUrl = 'https://www.mailinator.com/v4/public/inboxes.jsp?to=';
+
 test.use({
+	locale: 'en-US',
 	storageState: {
 		cookies: [],
 		origins: []
@@ -33,12 +36,8 @@ test.describe('navbar', () => {
 		);
 
 		const mailinator = await context.newPage();
-		await mailinator.goto('https://www.mailinator.com/v4/public/inboxes.jsp?to=' + emailId);
-		await mailinator.reload();
-		await mailinator
-			.getByRole('row', { name: '📧 Verify your email just now' })
-			.getByRole('cell', { name: '📧 Verify your email' })
-			.click();
+		await mailinator.goto(mailinatorUrl + emailId);
+		await mailinator.getByRole('cell', { name: '📧' }).first().click();
 		await mailinator.getByRole('tab', { name: 'LINKS' }).click();
 		const link = await mailinator
 			.locator('xpath=//*[@id="pills-links-content"]/table/tbody/tr/td[1]')
@@ -60,11 +59,8 @@ test.describe('navbar', () => {
 		);
 
 		const mailinator = await context.newPage();
-		await mailinator.goto('https://www.mailinator.com/v4/public/inboxes.jsp?to=' + emailId);
-		await mailinator
-			.getByRole('row', { name: '🔒 Reset your password just now' })
-			.getByRole('cell', { name: '🔒 Reset your password' })
-			.click();
+		await mailinator.goto(mailinatorUrl + emailId);
+		await mailinator.getByRole('cell', { name: '🔒' }).first().click();
 		await mailinator.getByRole('tab', { name: 'LINKS' }).click();
 		const link = await mailinator
 			.locator('xpath=//*[@id="pills-links-content"]/table/tbody/tr/td[1]')
