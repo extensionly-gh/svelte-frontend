@@ -31,7 +31,7 @@ async function main() {
 	await prisma.user.create({
 		data: {
 			id: normalUserId,
-			email: 'user-dev@extensionly.app',
+			email: 'extensionly-user-dev@mailinator.com',
 			name: 'Normal User',
 			password: await hashPassword('StrongPassword1.'),
 			phone: '+5551999999998',

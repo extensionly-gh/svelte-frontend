@@ -9,3 +9,4 @@ vite.config.ts.timestamp-*
 .vercel/*
 playwright-report/
 test-results/
+playwright-logged-in-state.json

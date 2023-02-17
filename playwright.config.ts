@@ -1,6 +1,7 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
+	globalSetup: './playwright-global-setup.ts',
 	webServer: {
 		command: 'pnpm build && pnpm preview',
 		port: 4173
@@ -10,7 +11,9 @@ const config: PlaywrightTestConfig = {
 	reporter: [['list'], ['html']],
 	use: {
 		trace: 'on',
-		video: 'on'
+		video: 'on',
+		storageState: 'playwright-logged-in-state.json',
+		locale: 'en-US'
 	}
 };
 

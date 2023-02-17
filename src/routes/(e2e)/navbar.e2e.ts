@@ -1,5 +1,12 @@
 import test, { expect } from '@playwright/test';
 
+test.use({
+	storageState: {
+		cookies: [],
+		origins: []
+	}
+});
+
 test.describe('navbar', () => {
 	const emailId = 'extensionly-signup-test';
 	const email = emailId + '@mailinator.com';
@@ -11,7 +18,7 @@ test.describe('navbar', () => {
 		await page.getByTestId('nav-signin-btn').click();
 	});
 
-	test('signs up', async ({ page }) => {
+	test('signs up and verifies email', async ({ page, context }) => {
 		await page.getByTestId('auth-dialog-context-btn').click();
 
 		await page.getByTestId('signup-name-input').fill('Signup Test');
@@ -24,9 +31,7 @@ test.describe('navbar', () => {
 		await expect(page.getByTestId('toast-body')).toHaveText(
 			'Check your e-mail inbox to complete the registration!'
 		);
-	});
 
-	test('verifies email', async ({ page, context }) => {
 		const mailinator = await context.newPage();
 		await mailinator.goto('https://www.mailinator.com/v4/public/inboxes.jsp?to=' + emailId);
 		await mailinator.reload();
@@ -40,7 +45,7 @@ test.describe('navbar', () => {
 			.innerText();
 		await mailinator.close();
 
-		await page.goto(link, { waitUntil: 'networkidle' });
+		await page.goto(link);
 		await expect(page.getByTestId('toast-body')).toHaveText(
 			'Email successfully validated, please proceed with your login!'
 		);
@@ -66,9 +71,9 @@ test.describe('navbar', () => {
 			.innerText();
 		await mailinator.close();
 
-		await page.goto(link, { waitUntil: 'networkidle' });
-		await page.getByTestId('newPwd-input').fill('#1Abcdef');
-		await page.getByTestId('confirmPwd-input').fill('#1Abcdef');
+		await page.goto(link);
+		await page.getByTestId('newPwd-input').fill(newPassword);
+		await page.getByTestId('confirmPwd-input').fill(newPassword);
 		await page.getByTestId('resetpw-submit-button').click();
 		await expect(page.getByTestId('toast-body')).toHaveText('Password updated successfully!');
 	});
@@ -82,18 +87,10 @@ test.describe('navbar', () => {
 		await expect(page.getByTestId('toast-body')).toHaveText('User not found');
 	});
 
-	test('signs in with correct password', async ({ page }) => {
+	test('signs in and deletes account', async ({ page }) => {
 		await page.getByTestId('signin-email-input').fill(email);
 		await page.getByTestId('signin-password-input').fill(newPassword);
 
-		await page.getByTestId('signin-submit-button').click();
-
-		await page.getByTestId('menu-trigger-user-menu').click();
-	});
-
-	test('deletes account', async ({ page }) => {
-		await page.getByTestId('signin-email-input').fill(email);
-		await page.getByTestId('signin-password-input').fill(newPassword);
 		await page.getByTestId('signin-submit-button').click();
 
 		await page.getByTestId('menu-trigger-user-menu').click();
