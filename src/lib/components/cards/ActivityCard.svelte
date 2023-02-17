@@ -3,7 +3,7 @@
 	import { getDateStatus } from '$lib/utils/activity.utils';
 	import type { Activity } from '@prisma/client';
 	import { formatRelative } from 'date-fns';
-	import { enUS, ptBR } from 'date-fns/esm/locale';
+	import { ptBR, enUS } from 'date-fns/locale/index.js';
 	import { DateTime } from 'luxon';
 	import { locale, _ } from 'svelte-i18n';
 	import IconVideoCamera from '~icons/heroicons-solid/video-camera';
