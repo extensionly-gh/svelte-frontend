@@ -86,6 +86,7 @@
 			</Button>
 			{#if context == 'signin'}
 				<Button
+					data-testid="auth-dialog-forgotpw-btn"
 					on:click={() => (context = 'forgotpw')}
 					variants={{ intent: 'text-base', size: 'sm' }}
 				>
