@@ -23,7 +23,7 @@
 	{#if filteredResults.length > 0}
 		<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-10 justify-center">
 			{#each filteredResults as activity}
-				<ActivityCard activity={{ ...activity }} />
+				<ActivityCard {activity} />
 			{/each}
 		</div>
 	{:else}
