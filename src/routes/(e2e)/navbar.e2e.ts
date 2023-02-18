@@ -26,7 +26,7 @@ test.describe('navbar', () => {
 
 		await page.getByTestId('signup-name-input').fill('Signup Test');
 		await page.getByTestId('signup-email-input').fill(email);
-		await page.getByTestId('signup-phone-input').fill('+555199999996');
+		await page.getByTestId('signup-phone-input').fill('+5551999999996');
 		await page.getByTestId('signup-password-input').fill(firstPassword);
 		await page.getByTestId('signup-cpassword-input').fill(firstPassword);
 

@@ -15,7 +15,7 @@
 	export let parsedTelInput: NormalizedTelNumber | null = null;
 	export let value: E164Number | null = '';
 
-	let selected: CountryCode;
+	let selected: CountryCode = 'BR';
 	let isOpen = false;
 
 	$: isValid = parsedTelInput?.isValid ?? false;
@@ -28,10 +28,6 @@
 			parsedTelInput = null;
 		}
 	}
-
-	onMount(async () => {
-		selected = ((await getCurrentCountry()) as CountryCode) || 'BR';
-	});
 </script>
 
 <label class="flex flex-col items-start gap-1 w-full" for={id + '-shell'}>
