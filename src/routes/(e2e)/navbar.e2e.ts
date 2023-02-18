@@ -37,11 +37,13 @@ test.describe('navbar', () => {
 
 		const mailinator = await context.newPage();
 		await mailinator.goto(mailinatorUrl + emailId);
-		await mailinator
-			.getByRole('row', { name: 'just now' })
-			.getByRole('cell', { name: '📧' })
-			.first()
-			.click();
+		const emailCell = mailinator.getByRole('cell', { name: '📧' });
+		let isVisible = await emailCell.isVisible();
+		while (!isVisible) {
+			await mailinator.reload({ waitUntil: 'networkidle' });
+			isVisible = await emailCell.isVisible();
+		}
+		await emailCell.click();
 		await mailinator.getByRole('tab', { name: 'LINKS' }).click();
 		const link = await mailinator
 			.locator('xpath=//*[@id="pills-links-content"]/table/tbody/tr/td[1]')
@@ -64,11 +66,13 @@ test.describe('navbar', () => {
 
 		const mailinator = await context.newPage();
 		await mailinator.goto(mailinatorUrl + emailId);
-		await mailinator
-			.getByRole('row', { name: 'just now' })
-			.getByRole('cell', { name: '🔒' })
-			.first()
-			.click();
+		const passwordResetCell = mailinator.getByRole('cell', { name: '🔒' });
+		let isVisible = await passwordResetCell.isVisible();
+		while (!isVisible) {
+			await mailinator.reload({ waitUntil: 'networkidle' });
+			isVisible = await passwordResetCell.isVisible();
+		}
+		await passwordResetCell.click();
 		await mailinator.getByRole('tab', { name: 'LINKS' }).click();
 		const link = await mailinator
 			.locator('xpath=//*[@id="pills-links-content"]/table/tbody/tr/td[1]')
@@ -103,5 +107,8 @@ test.describe('navbar', () => {
 		await page.getByRole('button', { name: 'Delete' }).click();
 		await page.getByTestId('emailDelete-input').fill(email);
 		await page.getByRole('button', { name: 'Delete my account' }).click();
+		await expect(page.getByTestId('toast-body')).toHaveText(
+			'Your account was deleted successfully.'
+		);
 	});
 });
