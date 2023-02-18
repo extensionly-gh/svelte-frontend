@@ -10,6 +10,7 @@ const config: PlaywrightTestConfig = {
 	timeout: 30000,
 	reporter: [['list'], ['html']],
 	use: {
+		baseURL: 'http://localhost:4173/',
 		trace: 'on',
 		video: 'on',
 		storageState: 'playwright-logged-in-state.json',
