@@ -89,7 +89,7 @@ jobs:
           mysql -e 'CREATE DATABASE test_db;' -uroot -proot
 
       - name: Push and seed Prisma schema
-        run: pnpm prisma:reset
+        run: pnpm prisma:ci
 
       - name: Run Playwright tests
         run: pnpm test:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
