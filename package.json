@@ -77,7 +77,7 @@
 	},
 	"type": "module",
 	"prisma": {
-		"seed": "doppler run -- node --experimental-specifier-resolution=node --loader ts-node/esm prisma/seed.ts"
+		"seed": "prisma/seed.sh"
 	},
 	"dependencies": {
 		"bcrypt": "^5.1.0"
