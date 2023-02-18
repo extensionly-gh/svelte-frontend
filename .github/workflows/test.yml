@@ -1,4 +1,12 @@
 name: pnpm test workflow
+env:
+  AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  SMTP_CONNECTION: ${{ secrets.SMTP_CONNECTION }}
+  GOOGLE_WEB_CLIENT_ID: ${{ secrets.GOOGLE_WEB_CLIENT_ID }}
+  GOOGLE_WEB_CLIENT_SECRET: ${{ secrets.GOOGLE_WEB_CLIENT_SECRET }}
+  SENDINBLUE_API_KEY: ${{ secrets.SENDINBLUE_API_KEY }}
+  DOPPLER_ENVIRONMENT: ${{ secrets.DOPPLER_ENVIRONMENT }}
 on:
   push:
    branches-ignore:
