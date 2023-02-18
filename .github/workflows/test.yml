@@ -2,7 +2,6 @@ name: pnpm test workflow
 env:
   AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
   DATABASE_URL: ${{ secrets.DATABASE_URL }}
-  SMTP_CONNECTION: ${{ secrets.SMTP_CONNECTION }}
   GOOGLE_WEB_CLIENT_ID: ${{ secrets.GOOGLE_WEB_CLIENT_ID }}
   GOOGLE_WEB_CLIENT_SECRET: ${{ secrets.GOOGLE_WEB_CLIENT_SECRET }}
   SENDINBLUE_API_KEY: ${{ secrets.SENDINBLUE_API_KEY }}
@@ -52,7 +51,6 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
       - run: npx playwright install-deps
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-
   test:
     name: 🧪 Test (${{ matrix.shard }}/${{ strategy.job-total }})
     needs: install
@@ -85,6 +83,13 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+      - name: Set up MySQL
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE test-db;' -uroot -proot
+
+      - name: Push and seed Prisma schema
+        run: pnpm prisma:reset
 
       - name: Run Playwright tests
         run: pnpm test:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
