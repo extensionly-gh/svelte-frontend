@@ -8,7 +8,7 @@ test.use({
 	}
 });
 
-test.only('update password', async ({ page }) => {
+test('update password', async ({ page }) => {
 	// Signin
 	await page.goto('/', { waitUntil: 'networkidle' });
 	await page.getByTestId('nav-signin-btn').click();
