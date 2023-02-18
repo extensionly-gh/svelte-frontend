@@ -8,7 +8,7 @@ test.use({
 	}
 });
 
-test.only('delete account', async ({ page }) => {
+test('delete account', async ({ page }) => {
 	const email = 'extensionly-delete-account@mailinator.com';
 	const password = 'StrongPassword1.';
 
