@@ -3,7 +3,7 @@ import type { PlaywrightTestConfig } from '@playwright/test';
 const config: PlaywrightTestConfig = {
 	globalSetup: './playwright-global-setup.ts',
 	webServer: {
-		command: 'pnpm build && pnpm preview',
+		command: process.env.CI ? 'pnpm build:ci && pnpm preview:ci' : 'pnpm build && pnpm preview',
 		port: 4173
 	},
 	testMatch: '**/*.e2e.ts',

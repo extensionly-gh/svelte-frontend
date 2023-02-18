@@ -9,7 +9,7 @@
 		"preview": "doppler run -- vite preview",
 		"preview:ci": "vite preview",
 		"test": "playwright test",
-		"test:ci": "playwright test -c playwright.config.ci.ts",
+		"test:ci": "CI=true playwright test",
 		"test:gen": "playwright codegen localhost:5173 --load-storage=playwright-logged-in-state.json",
 		"test:gen:logged-out": "playwright codegen localhost:5173",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
