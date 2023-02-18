@@ -21,7 +21,7 @@
 		"prisma:push": "doppler run -- prisma db push",
 		"prisma:reset": "doppler run -- prisma db push --force-reset && prisma db seed",
 		"prisma:ci": "prisma db push && prisma db seed",
-		"prepare": "husky install && prisma generate",
+		"prepare": "husky install && prisma generate && svelte-kit sync",
 		"generate-apis": "openapi-generator-cli generate"
 	},
 	"devDependencies": {
