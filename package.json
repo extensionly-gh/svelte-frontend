@@ -23,7 +23,7 @@
 		"prisma:ci": "prisma db push && prisma db seed",
 		"prepare": "husky install && prisma generate && svelte-kit sync",
 		"generate-apis": "openapi-generator-cli generate",
-		"docker:rm": "docker rm -f extensionly-playwright-test-db",
+		"docker:rm": "docker-compose down",
 		"test:db": "docker-compose up"
 	},
 	"devDependencies": {
