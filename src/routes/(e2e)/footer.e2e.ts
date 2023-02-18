@@ -41,7 +41,7 @@ test.describe('footer', () => {
 
 		test('to system', async ({ page }) => {
 			await page.emulateMedia({ colorScheme: 'dark' });
-			await page.goto('/');
+			await page.goto('/', { waitUntil: 'networkidle' });
 			expect(await themeContainer.getAttribute('data-theme')).toEqual('night');
 
 			await page.getByTestId('menu-trigger-theme-switcher').click();
