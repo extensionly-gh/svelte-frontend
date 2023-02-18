@@ -49,6 +49,7 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
       - run: npx playwright install-deps
         if: steps.playwright-cache.outputs.cache-hit != 'true'
+        
   test:
     name: 🧪 Test (${{ matrix.shard }}/${{ strategy.job-total }})
     needs: install
@@ -88,42 +89,3 @@ jobs:
         name: playwright-report-${{ matrix.shard }}_${{ strategy.job-total }}
         path: playwright-report/
         retention-days: 30
-  # build:
-  #   runs-on: ubuntu-20.04
-  #   strategy:
-  #     matrix:
-  #       node-version: [18]
-  #   steps:
-  #   - uses: actions/checkout@v3
-  #   - uses: pnpm/action-setup@v2
-  #     with:
-  #       version: 7
-  #   - name: Use Node.js ${{ matrix.node-version }}
-  #     uses: actions/setup-node@v3
-  #     with:
-  #       node-version: ${{ matrix.node-version }}
-  #       cache: 'pnpm'
-  #   - name: Get installed Playwright version
-  #     id: playwright-version
-  #     run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package.json').devDependencies['@playwright/test'].replaceAll('^', ''))")" >> $GITHUB_ENV
-  #   - name: Cache playwright binaries
-  #     uses: actions/cache@v3
-  #     id: playwright-cache
-  #     with:
-  #       path: |
-  #         ~/.cache/ms-playwright
-  #       key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
-  #   - name: Install dependencies
-  #     run: pnpm install
-  #   - run: npx playwright install --with-deps
-  #     if: steps.playwright-cache.outputs.cache-hit != 'true'
-  #   - run: npx playwright install-deps
-  #     if: steps.playwright-cache.outputs.cache-hit != 'true'
-  #   - name: Run Playwright tests
-  #     run: pnpm test:ci
-  #   - uses: actions/upload-artifact@v3
-  #     if: always()
-  #     with:
-  #       name: playwright-report
-  #       path: playwright-report/
-  #       retention-days: 30
