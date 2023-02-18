@@ -86,7 +86,7 @@ jobs:
       - name: Set up MySQL
         run: |
           sudo /etc/init.d/mysql start
-          mysql -e 'CREATE DATABASE test-db;' -uroot -proot
+          mysql -e 'CREATE DATABASE test_db;' -uroot -proot
 
       - name: Push and seed Prisma schema
         run: pnpm prisma:reset
