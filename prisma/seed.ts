@@ -46,6 +46,21 @@ async function main() {
 	});
 	await prisma.user.create({
 		data: {
+			email: 'extensionly-change-pw@mailinator.com',
+			name: 'Change Pw',
+			password: await hashPassword('StrongPassword1.'),
+			phone: '+5551999999995',
+			role: Role.USER,
+			Verification: {
+				create: {
+					type: VerificationType.VALIDATE_EMAIL,
+					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+				}
+			}
+		}
+	});
+	await prisma.user.create({
+		data: {
 			email: 'verified-dev@extensionly.app',
 			name: 'Verified User',
 			password: await hashPassword('StrongPassword1.'),
