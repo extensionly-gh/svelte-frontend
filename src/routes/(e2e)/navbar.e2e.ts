@@ -41,6 +41,7 @@ test.describe('navbar', () => {
 		let isVisible = await emailCell.isVisible();
 		while (!isVisible) {
 			await mailinator.reload({ waitUntil: 'networkidle' });
+			await mailinator.waitForTimeout(500);
 			isVisible = await emailCell.isVisible();
 		}
 		await emailCell.click();
@@ -70,6 +71,7 @@ test.describe('navbar', () => {
 		let isVisible = await passwordResetCell.isVisible();
 		while (!isVisible) {
 			await mailinator.reload({ waitUntil: 'networkidle' });
+			await mailinator.waitForTimeout(500);
 			isVisible = await passwordResetCell.isVisible();
 		}
 		await passwordResetCell.click();
