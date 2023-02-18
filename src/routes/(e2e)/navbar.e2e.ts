@@ -11,7 +11,7 @@ test.use({
 });
 
 test.describe('navbar', () => {
-	const emailId = 'extensionly-signup-test';
+	const emailId = 'extensionly-signup-test-' + Date.now();
 	const email = emailId + '@mailinator.com';
 	const firstPassword = 'StrongPassword1.';
 	const newPassword = '#1Abcdef';

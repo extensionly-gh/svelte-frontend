@@ -1,6 +1,6 @@
 import test, { expect } from '@playwright/test';
 
-test.only('update profile', async ({ page }) => {
+test('update profile', async ({ page }) => {
 	await page.goto('/account', { waitUntil: 'networkidle' });
 	await page.getByTestId('name-input').fill('Edited User');
 	// TODO: Update email, add checks e.g. email already in use by another user. Also, resend verification email.
