@@ -22,8 +22,10 @@ test.describe('navbar', () => {
 	});
 
 	test('signs up and verifies email', async ({ page, context }) => {
-		await page.getByTestId('auth-dialog-context-btn').click();
+		const mailinator = await context.newPage();
+		await mailinator.goto(mailinatorUrl + emailId);
 
+		await page.getByTestId('auth-dialog-context-btn').click();
 		await page.getByTestId('signup-name-input').fill('Signup Test');
 		await page.getByTestId('signup-email-input').fill(email);
 		await page.getByTestId('signup-phone-input').fill('+5551999999996');
@@ -35,16 +37,7 @@ test.describe('navbar', () => {
 			'Check your e-mail inbox to complete the registration!'
 		);
 
-		const mailinator = await context.newPage();
-		await mailinator.goto(mailinatorUrl + emailId);
-		const emailCell = mailinator.getByRole('cell', { name: '📧' });
-		let isVisible = await emailCell.isVisible();
-		while (!isVisible) {
-			await mailinator.reload({ waitUntil: 'networkidle' });
-			await mailinator.waitForTimeout(500);
-			isVisible = await emailCell.isVisible();
-		}
-		await emailCell.click();
+		await mailinator.getByRole('cell', { name: '📧' }).click();
 		await mailinator.getByRole('tab', { name: 'LINKS' }).click();
 		const link = await mailinator
 			.locator('xpath=//*[@id="pills-links-content"]/table/tbody/tr/td[1]')
@@ -58,6 +51,9 @@ test.describe('navbar', () => {
 	});
 
 	test('resets password', async ({ page, context }) => {
+		const mailinator = await context.newPage();
+		await mailinator.goto(mailinatorUrl + emailId);
+
 		await page.getByTestId('auth-dialog-forgotpw-btn').click();
 		await page.getByTestId('email-input').fill(email);
 		await page.getByTestId('forgotpw-submit-button').click();
@@ -65,16 +61,7 @@ test.describe('navbar', () => {
 			'Instructions to reset your password were sent successfully to your inbox!'
 		);
 
-		const mailinator = await context.newPage();
-		await mailinator.goto(mailinatorUrl + emailId);
-		const passwordResetCell = mailinator.getByRole('cell', { name: '🔒' });
-		let isVisible = await passwordResetCell.isVisible();
-		while (!isVisible) {
-			await mailinator.reload({ waitUntil: 'networkidle' });
-			await mailinator.waitForTimeout(500);
-			isVisible = await passwordResetCell.isVisible();
-		}
-		await passwordResetCell.click();
+		await mailinator.getByRole('cell', { name: '🔒' }).click();
 		await mailinator.getByRole('tab', { name: 'LINKS' }).click();
 		const link = await mailinator
 			.locator('xpath=//*[@id="pills-links-content"]/table/tbody/tr/td[1]')
