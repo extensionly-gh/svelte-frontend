@@ -23,9 +23,6 @@ test.describe('navbar', () => {
 	});
 
 	test('signs up and verifies email', async ({ page, context }) => {
-		const mailinator = await context.newPage();
-		await mailinator.goto(mailinatorUrl + emailId);
-
 		await page.getByTestId('auth-dialog-context-btn').click();
 		await page.getByTestId('signup-name-input').fill('Signup Test');
 		await page.getByTestId('signup-email-input').fill(email);
@@ -39,8 +36,8 @@ test.describe('navbar', () => {
 		);
 
 		await delay(1000);
-		await mailinator.reload({ waitUntil: 'networkidle' });
-
+		const mailinator = await context.newPage();
+		await mailinator.goto(mailinatorUrl + emailId);
 		await mailinator.getByRole('cell', { name: '📧' }).click();
 		await mailinator.getByRole('tab', { name: 'LINKS' }).click();
 		const link = await mailinator
@@ -55,9 +52,6 @@ test.describe('navbar', () => {
 	});
 
 	test('resets password', async ({ page, context }) => {
-		const mailinator = await context.newPage();
-		await mailinator.goto(mailinatorUrl + emailId);
-
 		await page.getByTestId('auth-dialog-forgotpw-btn').click();
 		await page.getByTestId('email-input').fill(email);
 		await page.getByTestId('forgotpw-submit-button').click();
@@ -66,8 +60,8 @@ test.describe('navbar', () => {
 		);
 
 		await delay(1000);
-		await mailinator.reload({ waitUntil: 'networkidle' });
-
+		const mailinator = await context.newPage();
+		await mailinator.goto(mailinatorUrl + emailId);
 		await mailinator.getByRole('cell', { name: '🔒' }).click();
 		await mailinator.getByRole('tab', { name: 'LINKS' }).click();
 		const link = await mailinator
