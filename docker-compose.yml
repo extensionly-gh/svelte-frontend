@@ -1,0 +1,11 @@
+# The containers that compose the project
+services:
+  db:
+    image: mysql
+    restart: always
+    container_name: extensionly-playwright-test-db
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: test_db
+      MYSQL_ROOT_PASSWORD: root

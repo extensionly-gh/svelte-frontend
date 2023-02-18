@@ -8,7 +8,7 @@
 		"build:ci": "vite build",
 		"preview": "doppler run -- vite preview",
 		"preview:ci": "vite preview",
-		"test": "playwright test",
+		"test": "pnpm prisma:reset && playwright test",
 		"test:ci": "CI=true playwright test",
 		"test:gen": "playwright codegen localhost:5173 --load-storage=playwright-logged-in-state.json",
 		"test:gen:logged-out": "playwright codegen localhost:5173",
@@ -22,7 +22,9 @@
 		"prisma:reset": "doppler run -- prisma db push --force-reset && prisma db seed",
 		"prisma:ci": "prisma db push && prisma db seed",
 		"prepare": "husky install && prisma generate && svelte-kit sync",
-		"generate-apis": "openapi-generator-cli generate"
+		"generate-apis": "openapi-generator-cli generate",
+		"docker:rm": "docker rm -f extensionly-playwright-test-db",
+		"test:db": "docker-compose up"
 	},
 	"devDependencies": {
 		"@auth/core": "^0.2.5",
