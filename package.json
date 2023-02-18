@@ -7,7 +7,7 @@
 		"build": "doppler run -- vite build",
 		"preview": "doppler run -- vite preview",
 		"test": "playwright test",
-		"test:gen": "playwright codegen localhost:5173",
+		"test:gen": "playwright codegen localhost:5173 --load-storage=playwright-logged-in-state.json",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",

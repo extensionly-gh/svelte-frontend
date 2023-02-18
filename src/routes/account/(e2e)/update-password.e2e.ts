@@ -6,6 +6,7 @@ test('update password', async ({ page }) => {
 	await page.getByTestId('newPwd-input').fill('#1Abcdef');
 	await page.getByTestId('confirmPwd-input').fill('#1Abcdef');
 	await page.getByTestId('updatepw-submit-button').click();
+
 	await expect(page.getByTestId('toast-body')).toHaveText('Password updated successfully!');
 });
 
