@@ -1,6 +1,7 @@
 import test, { expect } from '@playwright/test';
 
 const mailinatorUrl = 'https://www.mailinator.com/v4/public/inboxes.jsp?to=';
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test.use({
 	locale: 'en-US',
@@ -37,6 +38,9 @@ test.describe('navbar', () => {
 			'Check your e-mail inbox to complete the registration!'
 		);
 
+		await delay(1000);
+		await mailinator.reload({ waitUntil: 'networkidle' });
+
 		await mailinator.getByRole('cell', { name: '📧' }).click();
 		await mailinator.getByRole('tab', { name: 'LINKS' }).click();
 		const link = await mailinator
@@ -60,6 +64,9 @@ test.describe('navbar', () => {
 		await expect(page.getByTestId('toast-body')).toHaveText(
 			'Instructions to reset your password were sent successfully to your inbox!'
 		);
+
+		await delay(1000);
+		await mailinator.reload({ waitUntil: 'networkidle' });
 
 		await mailinator.getByRole('cell', { name: '🔒' }).click();
 		await mailinator.getByRole('tab', { name: 'LINKS' }).click();
