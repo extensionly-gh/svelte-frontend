@@ -8,6 +8,7 @@ test('update password', async ({ page }) => {
 	await page.getByTestId('updatepw-submit-button').click();
 
 	await expect(page.getByTestId('toast-body')).toHaveText('Password updated successfully!');
+	await page.getByRole('button', { name: '✕' }).click();
 
 	// Revert
 	await page.getByTestId('currentPwd-input').fill('#1Abcdef');
@@ -15,4 +16,5 @@ test('update password', async ({ page }) => {
 	await page.getByTestId('confirmPwd-input').fill('StrongPassword1.');
 	await page.getByTestId('updatepw-submit-button').click();
 	await expect(page.getByTestId('toast-body')).toHaveText('Password updated successfully!');
+	await page.getByRole('button', { name: '✕' }).click();
 });
