@@ -5,8 +5,13 @@
 	"scripts": {
 		"dev": "doppler run -- vite dev --open",
 		"build": "doppler run -- vite build",
+		"build:ci": "vite build",
 		"preview": "doppler run -- vite preview",
-		"test": "playwright test",
+		"preview:ci": "vite preview",
+		"test": "pnpm prisma:reset && playwright test",
+		"test:ci": "CI=true playwright test",
+		"test:gen": "playwright codegen localhost:5173 --load-storage=playwright-logged-in-state.json",
+		"test:gen:logged-out": "playwright codegen localhost:5173",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
@@ -15,8 +20,11 @@
 		"prisma:studio": "doppler run -- prisma studio",
 		"prisma:push": "doppler run -- prisma db push",
 		"prisma:reset": "doppler run -- prisma db push --force-reset && prisma db seed",
-		"prepare": "husky install && prisma generate",
-		"generate-apis": "openapi-generator-cli generate"
+		"prisma:ci": "prisma db push && prisma db seed",
+		"prepare": "husky install && prisma generate && svelte-kit sync",
+		"generate-apis": "openapi-generator-cli generate",
+		"docker:rm": "docker-compose down",
+		"test:db": "docker-compose up"
 	},
 	"devDependencies": {
 		"@auth/core": "^0.2.5",
@@ -71,7 +79,7 @@
 	},
 	"type": "module",
 	"prisma": {
-		"seed": "doppler run -- node --experimental-specifier-resolution=node --loader ts-node/esm prisma/seed.ts"
+		"seed": "prisma/seed.sh"
 	},
 	"dependencies": {
 		"bcrypt": "^5.1.0",
@@ -79,5 +87,9 @@
 	},
 	"lint-staged": {
 		"*.{svelte,ts,html,css,json}": "pnpm run format:staged"
+	},
+	"engines": {
+		"node": ">=18.0.0 <19.0.0",
+		"pnpm": ">=7.0.0 <8.0.0"
 	}
 }

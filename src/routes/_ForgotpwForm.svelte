@@ -38,6 +38,7 @@
 		type="email"
 	/>
 	<Button
+		data-testid="forgotpw-submit-button"
 		variants={{ intent: 'primary', width: 'full' }}
 		disabled={!$isValid}
 		type="submit"

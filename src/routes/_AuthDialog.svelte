@@ -77,11 +77,16 @@
 			<ForgotpwForm />
 		{/if}
 		<div class="flex flex-col gap-3 my-4 items-center justify-center">
-			<Button on:click={handleSwitchContext} variants={{ intent: 'text-base', size: 'sm' }}>
+			<Button
+				data-testid="auth-dialog-context-btn"
+				on:click={handleSwitchContext}
+				variants={{ intent: 'text-base', size: 'sm' }}
+			>
 				{$_(`dialogs.auth.content.${context}-btn`)}
 			</Button>
 			{#if context == 'signin'}
 				<Button
+					data-testid="auth-dialog-forgotpw-btn"
 					on:click={() => (context = 'forgotpw')}
 					variants={{ intent: 'text-base', size: 'sm' }}
 				>

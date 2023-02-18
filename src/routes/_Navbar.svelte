@@ -24,12 +24,13 @@
 	});
 
 	const userMenuItems = [
-		{ text: $_('terms.my-account'), icon: IconUser, to: '/account' },
+		{ text: $_('terms.my-account'), icon: IconUser, to: '/account', id: 'my-account' },
 		{
 			text: $_('terms.signout'),
 			classes: 'text-error',
 			action: signOut,
-			icon: IconSignOut
+			icon: IconSignOut,
+			id: 'signout'
 		}
 	];
 </script>
@@ -59,8 +60,12 @@
 	<div class={`gap-2 lg:w-52 items-end justify-end flex`} data-testid="nav-right-div">
 		{#if $page.data.session?.user}
 			<div class="hidden sm:flex bg-base-200 p-2 items-center rounded-md gap-2">
-				<Avatar src={$page.data.session.user?.image || $page.data.session.user?.name} size="sm" />
-				<Menu trigger={$page.data.session.user.name} items={userMenuItems} />
+				<Avatar
+					data-testid="user-avatar"
+					src={$page.data.session.user?.image || $page.data.session.user?.name}
+					size="sm"
+				/>
+				<Menu trigger={$page.data.session.user.name} triggerId="user-menu" items={userMenuItems} />
 			</div>
 			<Menu class="flex sm:hidden" items={userMenuItems}>
 				<Button slot="trigger" variants={{ intent: 'ghost' }}>
@@ -69,6 +74,7 @@
 			</Menu>
 		{:else}
 			<Button
+				data-testid="nav-signin-btn"
 				on:click={() => authDialog.update(() => ({ isOpen: true }))}
 				variants={{ animated: true }}
 			>
