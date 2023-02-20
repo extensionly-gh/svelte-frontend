@@ -46,12 +46,14 @@
 
 <form use:form class="flex flex-col w-full gap-4">
 	<TextInput
+		data-testid="signup-name-input"
 		error={$errors.name?.[0]}
 		id="name"
 		label={$_('dialogs.auth.name-label')}
 		placeholder={$_('dialogs.auth.name-placeholder')}
 	/>
 	<TextInput
+		data-testid="signup-email-input"
 		error={$errors.email?.[0]}
 		id="email"
 		label={$_('dialogs.auth.email-label')}
@@ -59,6 +61,7 @@
 		type="email"
 	/>
 	<PhoneInput
+		data-testid="signup-phone-input"
 		bind:isTouched={$touched.phone}
 		bind:isValid={isPhoneValid}
 		bind:parsedValue={$data.phone}
@@ -68,6 +71,7 @@
 		autocomplete="tel"
 	/>
 	<TextInput
+		data-testid="signup-password-input"
 		error={$errors.password?.[0]}
 		id="password"
 		label={$_('dialogs.auth.password-label')}
@@ -76,6 +80,7 @@
 		type="password"
 	/>
 	<TextInput
+		data-testid="signup-cpassword-input"
 		error={$errors.cpassword?.[0]}
 		id="cpassword"
 		label={$_('dialogs.auth.cpassword-label')}
@@ -84,6 +89,7 @@
 		type="password"
 	/>
 	<Button
+		data-testid="signup-submit-button"
 		variants={{ intent: 'primary', width: 'full' }}
 		isLoading={$isSubmitting}
 		disabled={!$isValid}

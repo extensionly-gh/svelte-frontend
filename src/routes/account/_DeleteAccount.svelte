@@ -24,7 +24,11 @@
 
 <SettingsCard variants={{ intent: 'danger' }} title={$_('r-acc.delete.title')}>
 	<Notice variants={{ intent: 'danger' }} text={$_('r-acc.delete.info-short')} />
-	<Button variants={{ width: 'short', intent: 'danger' }} on:click={() => (isOpen = true)}>
+	<Button
+		data-testid="delete-account-dialog-open-button"
+		variants={{ width: 'short', intent: 'danger' }}
+		on:click={() => (isOpen = true)}
+	>
 		{$_('terms.delete')}
 	</Button>
 </SettingsCard>
@@ -45,6 +49,7 @@
 		>
 			<TextInput id="emailDelete" label={$_('r-acc.delete.dialog.description')} />
 			<Button
+				data-testid="delete-account-dialog-confirm-button"
 				type="submit"
 				isLoading={$isSubmitting}
 				disabled={$data.emailDelete !== $page.data.session?.user.email}

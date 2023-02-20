@@ -55,6 +55,7 @@
 			autocomplete="new-password"
 		/>
 		<Button
+			data-testid="updatepw-submit-button"
 			disabled={!$isDirty}
 			variants={{ width: 'short' }}
 			isLoading={$isSubmitting}

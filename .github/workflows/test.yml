@@ -1,0 +1,102 @@
+name: pnpm test workflow
+env:
+  AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  GOOGLE_WEB_CLIENT_ID: ${{ secrets.GOOGLE_WEB_CLIENT_ID }}
+  GOOGLE_WEB_CLIENT_SECRET: ${{ secrets.GOOGLE_WEB_CLIENT_SECRET }}
+  SENDINBLUE_API_KEY: ${{ secrets.SENDINBLUE_API_KEY }}
+  DOPPLER_ENVIRONMENT: ${{ secrets.DOPPLER_ENVIRONMENT }}
+on:
+  push:
+    branches-ignore:
+      - main
+      - production
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  install:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    name: 📦 Install
+    strategy:
+      matrix:
+        node-version: [18]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package.json').devDependencies['@playwright/test'].replaceAll('^', ''))")" >> $GITHUB_ENV
+
+      - name: Cache playwright binaries
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - run: npx playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+  test:
+    name: 🧪 Test (${{ matrix.shard }}/${{ strategy.job-total }})
+    needs: install
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package.json').devDependencies['@playwright/test'].replaceAll('^', ''))")" >> $GITHUB_ENV
+
+      - name: Cache playwright binaries
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install
+      - name: Set up MySQL
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE test_db;' -uroot -proot
+
+      - name: Push and seed Prisma schema
+        run: pnpm prisma:ci
+
+      - name: Run Playwright tests
+        run: pnpm test:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report-${{ matrix.shard }}_${{ strategy.job-total }}
+          path: playwright-report/
+          retention-days: 30

@@ -14,7 +14,7 @@
 />
 <div class="flex w-full flex-col justify-center  mx-auto text-secondary/80">
 	<div class="flex flex-col justify-center items-center text-center rounded-sm">
-		<h1 class="text-5xl font-semibold leading-none sm:text-6xl">
+		<h1 data-testid="home-h1" class="text-5xl font-semibold leading-none sm:text-6xl">
 			{$_('r-home.title-1')} <br />
 			<span class="text-accent dark:brightness-75">{$_('r-home.title-2')}</span>
 		</h1>

@@ -29,6 +29,7 @@
 
 <form use:form class="flex flex-col w-full gap-4">
 	<TextInput
+		data-testid="signin-email-input"
 		error={$errors.email?.[0]}
 		id="email"
 		label={$_('dialogs.auth.email-label')}
@@ -36,12 +37,14 @@
 		type="email"
 	/>
 	<TextInput
+		data-testid="signin-password-input"
 		id="password"
 		label={$_('dialogs.auth.password-label')}
 		placeholder={$_('dialogs.auth.password-placeholder')}
 		type="password"
 	/>
 	<Button
+		data-testid="signin-submit-button"
 		variants={{ intent: 'primary', width: 'full' }}
 		disabled={!$isValid || $data.password == ''}
 		isLoading={$isSubmitting}

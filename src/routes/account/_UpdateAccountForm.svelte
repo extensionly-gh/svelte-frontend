@@ -56,6 +56,7 @@
 			<Notice text={$_('r-acc.details.info')} />
 		{/if}
 		<Button
+			data-testid="update-details-submit-button"
 			disabled={!$touched.phone && !$isDirty}
 			variants={{ width: 'short' }}
 			isLoading={$isSubmitting}

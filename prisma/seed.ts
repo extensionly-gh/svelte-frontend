@@ -31,13 +31,84 @@ async function main() {
 	await prisma.user.create({
 		data: {
 			id: normalUserId,
-			email: 'user-dev@extensionly.app',
+			email: 'extensionly-user-dev@mailinator.com',
 			name: 'Normal User',
 			password: await hashPassword('StrongPassword1.'),
 			phone: '+5551999999998',
 			role: Role.USER,
 			Verification: {
 				create: {
+					type: VerificationType.VALIDATE_EMAIL,
+					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+				}
+			}
+		}
+	});
+	await prisma.user.create({
+		data: {
+			email: 'extensionly-change-pw@mailinator.com',
+			name: 'Change Pw',
+			password: await hashPassword('StrongPassword1.'),
+			phone: '+5551999999995',
+			role: Role.USER,
+			Verification: {
+				create: {
+					type: VerificationType.VALIDATE_EMAIL,
+					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+				}
+			}
+		}
+	});
+	await prisma.user.create({
+		data: {
+			email: 'extensionly-signin@mailinator.com',
+			name: 'Signin Test',
+			password: await hashPassword('StrongPassword1.'),
+			phone: '+5551999999994',
+			role: Role.USER,
+			Verification: {
+				create: {
+					type: VerificationType.VALIDATE_EMAIL,
+					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+				}
+			}
+		}
+	});
+	await prisma.user.create({
+		data: {
+			email: 'extensionly-reset-pw@mailinator.com',
+			name: 'Reset Pw',
+			password: await hashPassword('StrongPassword1.'),
+			phone: '+5551999999993',
+			role: Role.USER,
+			Verification: {
+				create: {
+					id: 'm0ck3d-p4ssw0rd-r3s3t-t0k3n',
+					type: VerificationType.RESET_PASSWORD,
+					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+				}
+			}
+		}
+	});
+	await prisma.user.create({
+		data: {
+			email: 'extensionly-delete-account@mailinator.com',
+			name: 'Delete account',
+			password: await hashPassword('StrongPassword1.'),
+			phone: '+5551999999992',
+			role: Role.USER
+		}
+	});
+	await prisma.user.create({
+		data: {
+			email: 'extensionly-validate-email@mailinator.com',
+			name: 'Validate Email',
+			password: await hashPassword('StrongPassword1.'),
+			phone: '+5551999999991',
+			role: Role.USER,
+			Verification: {
+				create: {
+					id: 'm0ck3d-3m41l-v4lid4t10n-t0k3n',
 					type: VerificationType.VALIDATE_EMAIL,
 					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
 				}
