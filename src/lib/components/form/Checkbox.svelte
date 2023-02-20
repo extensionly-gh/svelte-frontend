@@ -9,6 +9,7 @@
 <div class={`form-control w-full ${$$props.class}`}>
 	<div class="w-full flex gap-2 items-center justify-center">
 		<input
+			{id}
 			name={id}
 			class="checkbox"
 			data-testid={`${id}-checkbox`}

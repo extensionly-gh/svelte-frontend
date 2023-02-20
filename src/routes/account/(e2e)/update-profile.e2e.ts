@@ -27,12 +27,5 @@ test.describe('update', () => {
 			'src',
 			'https://avatars.githubusercontent.com/u/47724710?v=4'
 		);
-
-		// Revert
-		await page.goto('/account', { waitUntil: 'networkidle' });
-		await page.getByTestId('name-input').fill('Normal User');
-		await page.getByTestId('image-input').fill('');
-		await page.getByTestId('update-details-submit-button').click();
-		await expect(page.getByTestId('toast-body')).toHaveText('Details updated successfully!');
 	});
 });

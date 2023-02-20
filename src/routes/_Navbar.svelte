@@ -13,14 +13,14 @@
 	import { signOut } from '@auth/sveltekit/client';
 	import { createForm } from 'felte';
 	import type { z } from 'zod';
-	import { searchSchema } from '$lib/schemas';
 	import { validateSchema } from '@felte/validator-zod';
+	import { searchBarSchema } from '$lib/schemas';
 
-	const { form, data } = createForm<z.infer<typeof searchSchema>>({
+	const { form, data } = createForm<z.infer<typeof searchBarSchema>>({
 		onSubmit: ({ search }) => {
 			search != '' ? goto(`/activities?query=${search}`) : goto(`/activities`);
 		},
-		validate: validateSchema(searchSchema)
+		validate: validateSchema(searchBarSchema)
 	});
 
 	const userMenuItems = [

@@ -25,14 +25,4 @@ test('update password', async ({ page }) => {
 	await page.getByTestId('updatepw-submit-button').click();
 
 	await expect(page.getByTestId('toast-body')).toHaveText('Password updated successfully!');
-
-	// Revert
-	await page.getByTestId('currentPwd-input').fill('#1Abcdef');
-	await page.getByTestId('newPwd-input').fill('StrongPassword1.');
-	await page.getByTestId('confirmPwd-input').fill('StrongPassword1.');
-	const updateResponse = page.waitForResponse((response) =>
-		response.url().includes('user.updatePassword')
-	);
-	await page.getByTestId('updatepw-submit-button').click();
-	await updateResponse;
 });

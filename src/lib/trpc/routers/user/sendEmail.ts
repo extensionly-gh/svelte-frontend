@@ -1,18 +1,12 @@
+import { sendVerificationEmailSchema } from '$lib/schemas';
 import { prisma, sendInBlueApi } from '$lib/server/singletons';
 import { buildEmail } from '$lib/server/utils/email.utils';
 import { appRouter } from '$lib/trpc/router';
 import { publicProcedure } from '$lib/trpc/t';
 import { TRPCError } from '@trpc/server';
-import { z } from 'zod';
 
 export const sendEmail = publicProcedure
-	.input(
-		z.object({
-			email: z.string().email('validations.email.invalid'),
-			url: z.string(),
-			type: z.enum(['VALIDATE_EMAIL', 'RESET_PASSWORD'])
-		})
-	)
+	.input(sendVerificationEmailSchema)
 	.mutation(async ({ ctx, input }) => {
 		const user = await prisma.user.findUnique({
 			where: { email: input.email }
