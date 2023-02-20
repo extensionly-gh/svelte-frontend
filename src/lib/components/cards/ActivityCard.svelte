@@ -3,7 +3,8 @@
 	import { getDateStatus } from '$lib/utils/activity.utils';
 	import type { Activity } from '@prisma/client';
 	import { formatRelative } from 'date-fns';
-	import { ptBR, enUS } from 'date-fns/locale/index.js';
+	/// <reference types="date-fns-workaround.d.ts" />
+	import { enUS, ptBR } from 'date-fns/locale/index.js';
 	import { DateTime } from 'luxon';
 	import { locale, _ } from 'svelte-i18n';
 	import IconVideoCamera from '~icons/heroicons-solid/video-camera';
@@ -51,12 +52,12 @@
 </script>
 
 <div class="bg-base-300 p-3 rounded-box shadow-md flex flex-col gap-2 max-w-sm">
-	<div class="flex gap-2 bg-base-200 rounded-box p-1 items-center pl-3">
-		<Avatar src={activity.User?.image || activity.User.name} size="sm" />
+	<div class="flex gap-2 bg-base-200 rounded-box p-1 items-center px-3 justify-between">
 		<div class="flex flex-col">
 			<span class="font-semibold text-lg line-clamp-3 max-w-[17rem]">{activity.title}</span>
 			<span class="text-sm max-w-[17rem] line-clamp-1">{activity.User.name}</span>
 		</div>
+		<Avatar src={activity.User?.image || activity.User.name} size="md" class="rounded-3xl" />
 	</div>
 	<div class="flex-wrap flex gap-2 text-sm font-semibold items-center my-2">
 		<!-- <Button intent="no-style" to={`${ProjectsRoute}/${activity.projectId}`}> -->
