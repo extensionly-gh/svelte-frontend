@@ -12,7 +12,7 @@
 	const isExternal = to ? !/^(\/|#)(.*)/g.test(to) : false;
 
 	const buttonStyles = cva(
-		'transition-all h-[2.5rem] min-h-[2.5rem] inline-flex items-center gap-1 text-sm',
+		'transition-all h-[2.5rem] min-h-[2.5rem] inline-flex items-center gap-1',
 		{
 			variants: {
 				intent: {
@@ -21,7 +21,7 @@
 					accent: 'btn btn-accent',
 					ghost: 'btn btn-ghost',
 					link: 'btn btn-link',
-					text: 'hover:opacity-70 text-neutral-content',
+					text: 'hover:opacity-75 transition-opacity font-bold text-xs h-[1rem] min-h-[1rem] whitespace-normal',
 					'text-base': 'hover:opacity-70 text-base-content',
 					'no-style': 'hover:scale-95',
 					danger: 'btn btn-error hover:bg-error/80 hover:border-error/80',

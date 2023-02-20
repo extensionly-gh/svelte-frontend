@@ -13,7 +13,5 @@ test('validate email successfully', async ({ page }) => {
 	const mockedToken = 'm0ck3d-3m41l-v4lid4t10n-t0k3n';
 
 	await page.goto('/verify/validate-email/' + mockedToken);
-	await expect(page.getByTestId('toast-body')).toHaveText(
-		'Email successfully validated, please proceed with your login!'
-	);
+	await expect(page.getByTestId('toast-body')).toHaveText('Email successfully validated!');
 });

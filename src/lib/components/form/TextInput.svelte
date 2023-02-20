@@ -49,7 +49,6 @@
 			maxlength="255"
 			class={inputStyles({ intent: !!error ? 'error' : variants.intent })}
 			data-testid={`${id}-input`}
-			{id}
 			name={id}
 			{type}
 			{...$$restProps}

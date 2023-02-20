@@ -22,6 +22,7 @@ test.describe('auth dialog', () => {
 		await page.getByTestId('signup-phone-input').fill('+5551999999996');
 		await page.getByTestId('signup-password-input').fill(password);
 		await page.getByTestId('signup-cpassword-input').fill(password);
+		await page.getByTestId('isTermsAccepted-checkbox').click();
 
 		await page.getByTestId('signup-submit-button').click();
 		await expect(page.getByTestId('toast-body')).toHaveText(

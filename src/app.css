@@ -77,7 +77,8 @@
 }
 
 *::-webkit-scrollbar-thumb {
-	background-color: hsl(var(--p));
+	background-color: hsl(var(--bc));
+	border-radius: 8px;
 }
 
 /* Nprogress */
