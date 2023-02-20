@@ -62,7 +62,8 @@
       "name-placeholder": "Your full name",
       "phone-placeholder": "Your phone number",
       "phone-label": "Phone number",
-      "signup-success": "Check your e-mail inbox to complete the registration!"
+      "signup-success": "Check your e-mail inbox to complete the registration!",
+      "accept-terms-label": "I have read and agree with the"
     }
   },
   "footer": {

@@ -62,7 +62,8 @@
       "name-placeholder": "Seu nome completo",
       "phone-placeholder": "Seu número de telefone",
       "phone-label": "Número de telefone",
-      "signup-success": "Verifique a caixa de entrada do seu e-mail para completar o cadastro!"
+      "signup-success": "Verifique a caixa de entrada do seu e-mail para completar o cadastro!",
+      "accept-terms-label": "Eu li e concordo com a"
     }
   },
   "footer": {

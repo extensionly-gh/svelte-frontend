@@ -11,7 +11,8 @@ const baseSignupSchema = z.object({
 	email,
 	phone: z.string(),
 	password,
-	cpassword: z.string()
+	cpassword: z.string(),
+	isTermsAccepted: z.literal(true)
 });
 
 export const signupSchema = baseSignupSchema.superRefine(({ cpassword, password }, ctx) => {

@@ -37,9 +37,11 @@
 					<IconX width="28px" height="28px" />
 				</button>
 			</div>
-			<DialogTitle class="text-lg font-semibold text-center mb-2">{title}</DialogTitle>
-			<DialogDescription class="text-center">{description}</DialogDescription>
-			<slot />
+			<div class="overflow-y-scroll max-h-[36rem]">
+				<DialogTitle class="text-lg font-semibold text-center mb-2">{title}</DialogTitle>
+				<DialogDescription class="text-center">{description}</DialogDescription>
+				<slot />
+			</div>
 		</div>
 	</div>
 </Dialog>

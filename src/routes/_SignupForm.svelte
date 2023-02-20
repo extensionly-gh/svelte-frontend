@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { Button, TextInput } from '$lib/components';
-	import { PhoneInput } from '$lib/components/form';
+	import { Checkbox, PhoneInput } from '$lib/components/form';
 	import { toastInfo } from '$lib/components/toast';
 	import { signupSchema } from '$lib/schemas';
 	import { authDialog } from '$lib/stores';
@@ -88,6 +88,18 @@
 		autocomplete="new-password"
 		type="password"
 	/>
+	<Checkbox id="isTermsAccepted" type="checkbox">
+		<label for="isTermsAccepted" class="text-xs text-center font-medium" slot="label">
+			{$_('dialogs.auth.accept-terms-label')}
+			<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/privacy">
+				{$_('terms.privacy-policy')}
+			</a>
+			{$_('dialogs.auth.terms-agreement.2')}
+			<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/terms">
+				{$_('terms.terms-and-conditions')}.
+			</a>
+		</label>
+	</Checkbox>
 	<Button
 		data-testid="signup-submit-button"
 		variants={{ intent: 'primary', width: 'full' }}
