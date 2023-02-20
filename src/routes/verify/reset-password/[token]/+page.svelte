@@ -24,9 +24,9 @@
 					confirmPwd
 				});
 				toastSuccess($_('r-acc.password.not-empty.success'));
-				goto('/');
+				goto('/', { replaceState: true });
 			} catch (error) {
-				handleErrorInClient(error);
+				handleErrorInClient(error, '/');
 			}
 		},
 		validate: validateSchema(formPasswordResetSchema)
