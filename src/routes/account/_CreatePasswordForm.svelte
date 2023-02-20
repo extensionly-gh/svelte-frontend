@@ -14,9 +14,9 @@
 	const { form, errors, isSubmitting, data, isDirty } = createForm<
 		z.infer<typeof passwordCreateSchema>
 	>({
-		onSubmit: async ({ newPwd }) => {
+		onSubmit: async (values) => {
 			try {
-				await trpc().user.createPassword.mutate(newPwd);
+				await trpc().user.createPassword.mutate(values);
 				toastSuccess($_(`r-acc.password.empty.success`));
 				await invalidateAll();
 			} catch (error) {

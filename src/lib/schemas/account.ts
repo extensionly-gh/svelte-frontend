@@ -1,32 +1,23 @@
 import { z } from 'zod';
-import { name, email, password } from './strings';
+import { baseZodObjects } from './strings';
 
 export const userUpdateSchema = z.object({
-	name,
-	email,
-	phone: z.string(),
-	image: z.string().url('zod.url.invalid').nullable().or(z.literal(''))
+	name: baseZodObjects.strings.default,
+	email: baseZodObjects.strings.email,
+	phone: baseZodObjects.strings.default,
+	image: baseZodObjects.strings.url.nullable().or(z.literal(''))
 });
 
 const basePasswordSchema = z.object({
-	currentPwd: z.string(),
-	newPwd: password,
-	confirmPwd: z.string()
+	currentPwd: baseZodObjects.strings.default,
+	newPwd: baseZodObjects.strings.password,
+	confirmPwd: baseZodObjects.strings.default
 });
 
 export const passwordResetSchema = z.object({
-	token: z.string(),
-	newPwd: password,
-	confirmPwd: z.string()
-});
-
-export const validateEmailSchema = z.object({
-	token: z.string()
-});
-
-export const validateVerificationTokenSchema = z.object({
-	type: z.enum(['VALIDATE_EMAIL', 'VALIDATE_PHONE', 'RESET_PASSWORD']),
-	token: z.string()
+	token: baseZodObjects.strings.default,
+	newPwd: baseZodObjects.strings.password,
+	confirmPwd: baseZodObjects.strings.default
 });
 
 export const passwordUpdateSchema = basePasswordSchema.superRefine(

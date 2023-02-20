@@ -1,11 +1,11 @@
-import { createUserSchema } from '$lib/schemas';
+import { signupSchema } from '$lib/schemas';
 import { prisma } from '$lib/server/singletons';
 import { hashPassword } from '$lib/server/utils';
 import { publicProcedure } from '$lib/trpc/t';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { TRPCError } from '@trpc/server';
 
-export const createUser = publicProcedure.input(createUserSchema).mutation(async ({ input }) => {
+export const createUser = publicProcedure.input(signupSchema).mutation(async ({ input }) => {
 	try {
 		await prisma.user.create({
 			data: {

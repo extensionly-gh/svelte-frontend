@@ -2,15 +2,10 @@ import { publicProcedure } from '$lib/trpc/t';
 import { prisma } from '$lib/server/singletons';
 import { TRPCError } from '@trpc/server';
 import { DateTime } from 'luxon';
-import { z } from 'zod';
+import { createVerificationSchema } from '$lib/schemas';
 
 export const createVerification = publicProcedure
-	.input(
-		z.object({
-			type: z.enum(['VALIDATE_EMAIL', 'VALIDATE_PHONE', 'RESET_PASSWORD']),
-			email: z.string().email('validations.email.invalid')
-		})
-	)
+	.input(createVerificationSchema)
 	.mutation(async ({ input }) => {
 		const user = await prisma.user.findUniqueOrThrow({
 			where: { email: input.email }
