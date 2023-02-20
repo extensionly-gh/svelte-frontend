@@ -92,6 +92,23 @@ async function main() {
 	});
 	await prisma.user.create({
 		data: {
+			email: 'extensionly-reset-pw-expired@mailinator.com',
+			name: 'Reset Pw Expired Token',
+			password: await hashPassword('StrongPassword1.'),
+			phone: '+5551999999990',
+			role: Role.USER,
+			Verification: {
+				create: {
+					id: 'm0ck3d-p4ssw0rd-r3s3t-t0k3n-3xp1r3d',
+					type: VerificationType.RESET_PASSWORD,
+					createdAt: DateTime.now().minus({ minutes: 15 }).toISO(),
+					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+				}
+			}
+		}
+	});
+	await prisma.user.create({
+		data: {
 			email: 'extensionly-delete-account@mailinator.com',
 			name: 'Delete account',
 			password: await hashPassword('StrongPassword1.'),
