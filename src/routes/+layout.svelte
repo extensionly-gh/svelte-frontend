@@ -10,6 +10,23 @@
 	import { onMount } from 'svelte';
 	import { toastError, toastSuccess } from '$lib/components/toast';
 	import { _ } from 'svelte-i18n';
+	import NProgress from 'nprogress';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
+
+	NProgress.configure({
+		easing: 'ease',
+		speed: 200,
+		minimum: 0.25,
+		trickleSpeed: 90
+	});
+
+	beforeNavigate(() => {
+		NProgress.start();
+	});
+
+	afterNavigate(() => {
+		NProgress.done();
+	});
 
 	onMount(() => {
 		const params = Object.fromEntries(new URLSearchParams(window.location.search));

@@ -20,6 +20,7 @@ specifiers:
   '@types/bcrypt': ^5.0.0
   '@types/luxon': ^3.2.0
   '@types/node': ^18.11.18
+  '@types/nprogress': ^0.2.0
   '@typescript-eslint/eslint-plugin': ^5.45.0
   '@typescript-eslint/parser': ^5.45.0
   '@zerodevx/svelte-toast': 1.0.0-rc.1
@@ -35,6 +36,7 @@ specifiers:
   husky: ^8.0.3
   lint-staged: ^13.1.0
   luxon: ^3.2.1
+  nprogress: ^0.2.0
   postcss: ^8.4.21
   prettier: ^2.8.0
   prettier-plugin-svelte: ^2.8.1
@@ -77,6 +79,7 @@ devDependencies:
   '@types/bcrypt': 5.0.0
   '@types/luxon': 3.2.0
   '@types/node': 18.11.18
+  '@types/nprogress': 0.2.0
   '@typescript-eslint/eslint-plugin': 5.48.1_3jon24igvnqaqexgwtxk6nkpse
   '@typescript-eslint/parser': 5.48.1_iukboom6ndih5an6iafl45j2fe
   '@zerodevx/svelte-toast': 1.0.0-rc.1
@@ -90,6 +93,7 @@ devDependencies:
   husky: 8.0.3
   lint-staged: 13.1.0
   luxon: 3.2.1
+  nprogress: 0.2.0
   postcss: 8.4.21
   prettier: 2.8.2
   prettier-plugin-svelte: 2.9.0_y74x4qymbshr6ujrzcfe2sydsa
@@ -832,6 +836,10 @@ packages:
 
   /@types/node/18.11.18:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
+    dev: true
+
+  /@types/nprogress/0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
     dev: true
 
   /@types/pug/2.0.6:
@@ -2688,6 +2696,10 @@ packages:
       console-control-strings: 1.1.0
       gauge: 3.0.2
       set-blocking: 2.0.0
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
+    dev: true
 
   /oauth4webapi/2.0.6:
     resolution: {integrity: sha512-smacvTzkfgWxXTTfjZeKeCwtiZ7/HIgM+PWcgTltAmEbfmJQRfl/nbWktA9tnzSjezvWNg9N96PJomuMi0zkxQ==}
