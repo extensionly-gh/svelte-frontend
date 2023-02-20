@@ -4,7 +4,7 @@ async function globalSetup(config: FullConfig) {
 	const { baseURL, storageState } = config.projects[0].use;
 
 	const browser = await chromium.launch();
-	const context = await browser.newContext();
+	const context = await browser.newContext({ locale: 'en-US' });
 	const page = await context.newPage();
 
 	try {
@@ -19,12 +19,12 @@ async function globalSetup(config: FullConfig) {
 		await page.getByTestId('menu-trigger-user-menu').click();
 		await context.storageState({ path: storageState as string });
 		await context.tracing.stop({
-			path: './playwright-report-1_8/setup-trace.zip'
+			path: './playwright-report-1_4/setup-trace.zip'
 		});
 		await browser.close();
 	} catch (error) {
 		await context.tracing.stop({
-			path: './playwright-report-1_8/failed-setup-trace.zip'
+			path: './playwright-report-1_4/failed-setup-trace.zip'
 		});
 		await browser.close();
 		throw error;
