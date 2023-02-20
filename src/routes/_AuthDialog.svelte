@@ -8,26 +8,19 @@
 	import { authDialog } from '$lib/stores';
 	import { openPopupWindow } from '$lib/utils';
 
-	let isOpen: boolean;
-	let context: 'signin' | 'signup' | 'forgotpw';
-
+	$: context = $authDialog.context ?? 'signin';
 	$: providerBtnString = context === 'signup' ? 'signup' : 'signin';
-
-	authDialog.subscribe((v) => {
-		isOpen = v.isOpen;
-		context = v.context ?? 'signin';
-	});
 
 	function handleSwitchContext() {
 		switch (context) {
 			case 'signin':
-				context = 'signup';
+				authDialog.update(() => ({ isOpen: true, context: 'signup' }));
 				break;
 			case 'signup':
-				context = 'signin';
+				authDialog.update(() => ({ isOpen: true, context: 'signin' }));
 				break;
 			case 'forgotpw':
-				context = 'signin';
+				authDialog.update(() => ({ isOpen: true, context: 'signin' }));
 				break;
 		}
 	}
@@ -41,38 +34,41 @@
 	size="xs"
 	description={$_(`dialogs.auth.description.${context}`)}
 	title={$_(`dialogs.auth.title.${context}`)}
-	bind:isOpen
+	isOpen={$authDialog.isOpen}
 	close={() => authDialog.update(() => ({ isOpen: false }))}
 >
 	<div class="px-2 flex justify-center items-center flex-col mt-4">
-		{#if context == 'signin'}
-			<Button
-				on:click={handleSigninWithGoogle}
-				variants={{ intent: 'provider', provider: 'google' }}
-			>
-				<IconGoogle width="18px" height="18px" />
-				<p class="flex-1">{$_(`terms.${providerBtnString}`)} {$_('terms.with')} Google</p>
-			</Button>
-			<p class="text-xs text-center font-medium mt-2">
-				{$_('dialogs.auth.terms-agreement.1')}
-				<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/privacy">
-					{$_('terms.privacy-policy')}
-				</a>
-				{$_('dialogs.auth.terms-agreement.2')}
-				<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/terms">
-					{$_('terms.terms-and-conditions')}.
-				</a>
-			</p>
-			<div class="relative flex py-4 items-center w-full">
-				<div class="flex-grow border-t border-base-content" />
-				<span class="flex-shrink mx-4 text-sm text-base-content"
-					>{$_('dialogs.auth.or-continue')}</span
+		{#if context == 'signin' || context == 'signup'}
+			<div class={`${context == 'signin' ? 'block' : 'hidden'}`}>
+				<Button
+					on:click={handleSigninWithGoogle}
+					variants={{ intent: 'provider', provider: 'google' }}
 				>
-				<div class="flex-grow border-t border-base-content" />
+					<IconGoogle width="18px" height="18px" />
+					<p class="flex-1">{$_(`terms.${providerBtnString}`)} {$_('terms.with')} Google</p>
+				</Button>
+				<p class="text-xs text-center font-medium mt-2">
+					{$_('dialogs.auth.terms-agreement.1')}
+					<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/privacy">
+						{$_('terms.privacy-policy')}
+					</a>
+					{$_('dialogs.auth.terms-agreement.2')}
+					<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/terms">
+						{$_('terms.terms-and-conditions')}.
+					</a>
+				</p>
+				<div class="relative flex py-4 items-center w-full">
+					<div class="flex-grow border-t border-base-content" />
+					<span class="flex-shrink mx-4 text-sm text-base-content"
+						>{$_('dialogs.auth.or-continue')}</span
+					>
+					<div class="flex-grow border-t border-base-content" />
+				</div>
+				<SigninForm />
 			</div>
-			<SigninForm />
-		{:else if context == 'signup'}
-			<SignupForm />
+			<div class={`${context == 'signup' ? 'block' : 'hidden'}`}>
+				<SignupForm />
+			</div>
 		{:else if context == 'forgotpw'}
 			<ForgotpwForm />
 		{/if}

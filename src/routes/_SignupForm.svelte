@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import { Button, TextInput } from '$lib/components';
 	import { Checkbox, PhoneInput } from '$lib/components/form';
 	import { toastInfo } from '$lib/components/toast';
@@ -42,6 +43,11 @@
 			}
 		]
 	});
+
+	const handleTermsClick = (document: 'privacy' | 'terms') => {
+		authDialog.update(() => ({ isOpen: false, context: 'signup' }));
+		goto(`/legal/${document}`);
+	};
 </script>
 
 <form use:form class="flex flex-col w-full gap-4">
@@ -91,13 +97,13 @@
 	<Checkbox id="isTermsAccepted" type="checkbox">
 		<label for="isTermsAccepted" class="text-xs text-center font-medium" slot="label">
 			{$_('dialogs.auth.accept-terms-label')}
-			<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/privacy">
+			<Button variants={{ intent: 'text' }} on:click={() => handleTermsClick('privacy')}>
 				{$_('terms.privacy-policy')}
-			</a>
+			</Button>
 			{$_('dialogs.auth.terms-agreement.2')}
-			<a class="hover:opacity-75 transition-opacity font-bold" href="/legal/terms">
+			<Button variants={{ intent: 'text' }} on:click={() => handleTermsClick('terms')}>
 				{$_('terms.terms-and-conditions')}.
-			</a>
+			</Button>
 		</label>
 	</Checkbox>
 	<Button
