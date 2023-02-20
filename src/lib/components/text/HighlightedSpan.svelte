@@ -12,7 +12,7 @@
 			dateStatus: {
 				[DateIs.Ended]: 'text-red-400 dark:text-red-500 font-semibold',
 				[DateIs.NotStarted]: 'text-blue-400 dark:text-blue-500 font-semibold',
-				[DateIs.Open]: 'text-green-400 dark:text-green-500'
+				[DateIs.Open]: 'text-green-500'
 			}
 		},
 		defaultVariants: {
