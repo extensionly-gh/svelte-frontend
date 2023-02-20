@@ -11,7 +11,7 @@
 				"title": "obrigado por se inscrever na Extensionly! Estamos felizes por tê-lo como um dos primeiros usuários.",
 				"subtitle": "Valide seu endereço de e-mail clicando no link a seguir:"
 			},
-			"verify-password": {
+			"reset-password": {
 				"subject": "🔒 Redefina sua senha",
 				"title": "uma requisição de redefinição de senha foi feita em seu nome.",
 				"subtitle": "Se você não reconhece esta atividade, <b>por favor, ignore este e-mail</b>. Caso contrário, redefina sua senha clicando no link a seguir:"
