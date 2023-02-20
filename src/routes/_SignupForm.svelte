@@ -95,7 +95,7 @@
 		type="password"
 	/>
 	<Checkbox id="isTermsAccepted" type="checkbox">
-		<label for="isTermsAccepted" class="text-xs text-center font-medium" slot="label">
+		<label for="isTermsAccepted" class="text-xs text-left font-medium" slot="label">
 			{$_('dialogs.auth.accept-terms-label')}
 			<Button variants={{ intent: 'text' }} on:click={() => handleTermsClick('privacy')}>
 				{$_('terms.privacy-policy')}
