@@ -28,20 +28,18 @@
 	<div
 		data-theme={$theme}
 		style="max-width: {sizes[size]};"
-		class={`fixed z-50 w-[95vw] px-12 md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-transparent flex flex-col text-base-content`}
+		class={`fixed z-50 w-[95vw] px-12 md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-transparent flex flex-col text-base-content py-8 h-full items-center justify-center`}
 	>
-		<div class="bg-base-300 p-4 rounded-lg">
+		<div class="bg-base-300 p-4 rounded-lg overflow-y-auto">
 			<div class="flex justify-between mb-4">
 				<div class="flex-1" />
 				<button on:click={() => close()} class="opacity-75  hover:opacity-100 transition-all">
 					<IconX width="28px" height="28px" />
 				</button>
 			</div>
-			<div class="overflow-y-scroll max-h-[36rem]">
-				<DialogTitle class="text-lg font-semibold text-center mb-2">{title}</DialogTitle>
-				<DialogDescription class="text-center">{description}</DialogDescription>
-				<slot />
-			</div>
+			<DialogTitle class="text-lg font-semibold text-center mb-2">{title}</DialogTitle>
+			<DialogDescription class="text-center">{description}</DialogDescription>
+			<slot />
 		</div>
 	</div>
 </Dialog>
