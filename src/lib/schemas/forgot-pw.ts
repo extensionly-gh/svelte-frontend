@@ -1,4 +1,4 @@
 import { z } from 'zod';
-import { baseZodObjects } from './strings';
+import { base } from './_base';
 
-export const forgotpwSchema = z.object({ email: baseZodObjects.strings.email });
+export const forgotpwSchema = z.object({ email: base.strings.email });

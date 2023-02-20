@@ -1,23 +1,23 @@
 import { z } from 'zod';
-import { baseZodObjects } from './strings';
+import { base } from './_base';
 
 export const userUpdateSchema = z.object({
-	name: baseZodObjects.strings.default,
-	email: baseZodObjects.strings.email,
-	phone: baseZodObjects.strings.default,
-	image: baseZodObjects.strings.url.nullable().or(z.literal(''))
+	name: base.strings.default,
+	email: base.strings.email,
+	phone: base.strings.default,
+	image: base.strings.url.nullable().or(z.literal(''))
 });
 
 const basePasswordSchema = z.object({
-	currentPwd: baseZodObjects.strings.default,
-	newPwd: baseZodObjects.strings.password,
-	confirmPwd: baseZodObjects.strings.default
+	currentPwd: base.strings.default,
+	newPwd: base.strings.password,
+	confirmPwd: base.strings.default
 });
 
 export const passwordResetSchema = z.object({
-	token: baseZodObjects.strings.default,
-	newPwd: baseZodObjects.strings.password,
-	confirmPwd: baseZodObjects.strings.default
+	token: base.strings.default,
+	newPwd: base.strings.password,
+	confirmPwd: base.strings.default
 });
 
 export const passwordUpdateSchema = basePasswordSchema.superRefine(

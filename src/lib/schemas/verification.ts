@@ -1,22 +1,22 @@
 import { z } from 'zod';
-import { baseZodObjects } from './strings';
+import { base } from './_base';
 
 export const createVerificationSchema = z.object({
-	type: baseZodObjects.enums.verificationType,
-	email: baseZodObjects.strings.email
+	type: base.enums.verificationType,
+	email: base.strings.email
 });
 
 export const validateVerificationTokenSchema = z.object({
-	type: baseZodObjects.enums.verificationType,
-	token: baseZodObjects.strings.default
+	type: base.enums.verificationType,
+	token: base.strings.default
 });
 
 export const validateEmailSchema = z.object({
-	token: baseZodObjects.strings.default
+	token: base.strings.default
 });
 
 export const sendVerificationEmailSchema = z.object({
-	type: baseZodObjects.enums.verificationType,
-	email: baseZodObjects.strings.email,
-	url: baseZodObjects.strings.default
+	type: base.enums.verificationType,
+	email: base.strings.email,
+	url: base.strings.default
 });

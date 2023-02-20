@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { baseZodObjects } from './strings';
+import { base } from './_base';
 
 export const signinSchema = z.object({
-	email: baseZodObjects.strings.email,
-	password: baseZodObjects.strings.default
+	email: base.strings.email,
+	password: base.strings.default
 });

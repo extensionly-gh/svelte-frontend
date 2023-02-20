@@ -1,12 +1,12 @@
 import { z } from 'zod';
-import { baseZodObjects } from './strings';
+import { base } from './_base';
 
 export const signupSchema = z
 	.object({
-		name: baseZodObjects.strings.default,
-		email: baseZodObjects.strings.email,
-		phone: baseZodObjects.strings.default,
-		password: baseZodObjects.strings.password,
+		name: base.strings.default,
+		email: base.strings.email,
+		phone: base.strings.default,
+		password: base.strings.password,
 		cpassword: z.string(),
 		isTermsAccepted: z.literal(true)
 	})
