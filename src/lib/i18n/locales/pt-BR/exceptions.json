@@ -1,53 +1,60 @@
 {
-	"exceptions": {
-		"status": {
-			"404": "Página não encontrada",
-			"500": "Erro interno do servidor"
-		},
-		"generic": "Algo deu errado, tente novamente mais tarde",
-		"missing-required-parameter-error": "Parâmetro obrigatório faltando: {key}",
-		"auth": {
-			"passwords-not-match": "Senha inválida"
-		},
-		"users": {
-			"email-already-in-use": "Este email ou número de telefone já está em uso",
-			"user-not-found": "Usuário não encontrado",
-			"password-not-set": "Entre com o seu provedor e defina uma senha nas configurações da sua conta primeiro",
-			"password": {
-				"incorrect-current": "A senha atual que você enviou está incorreta",
-				"no-password": "Define uma senha para a sua conta primeiro"
-			},
-			"email-not-found":"Email não encontrado",
-			"error-sending-email":"Um error desconhecido ocorreu ao enviar o email, por favor, tente novamente mais tarde",
-			"verifications": {
-				"invalid-token": "Token de verificação inválido",
-				"expired-token": "Token de verificação expirado",
-				"validate_email": {
-					"already-verified": "Email já foi verificado",
-					"cooldown-not-lifted": "Limitado a um email de verificação a cada 5 minutos"
-				},
-				"reset_password": {
-					"already-verified": "Email já foi verificado",
-					"cooldown-not-lifted": "Limitado a uma redefinição de senha a cada 5 minutos"
-				}
-			},
-			"unknown": {
-				"saving-user-profile": "Algo deu errado ao salvar seu perfil"
-			}
-		},
-		"activity": {
-			"activity-not-found": "Atividade não encontrada",
-			"missing-required-parameter-error": "Parâmetro obrigatório faltando: projectId"
-		},
-		"program": {
-			"program-not-found": "Programa não encontrado"
-		},
-		"project": {
-			"project-not-found": "Projeto não encontrado"
-		},
-		"subActivity": {
-			"subActivity-not-found": "Sub Atividade não encontrada",
-			"missing-required-parameter-error": "Parâmetro obrigatório faltando: activityId"
-		}
-	}
+  "exceptions": {
+    "status": {
+      "404": {
+        "title": "A página que você está procurando não existe.",
+        "message": "Você pode ter digitado errado o endereço ou a página pode ter mudado."
+      },
+      "500": {
+        "title": "Um erro desconhecido aconteceu.",
+        "message": "Por favor, tente novamente mais tarde."
+      }
+    },
+    "generic": "Algo deu errado, tente novamente mais tarde",
+    "missing-required-parameter-error": "Parâmetro obrigatório faltando: {key}",
+    "auth": {
+      "passwords-not-match": "Senha inválida"
+    },
+    "users": {
+      "email-already-in-use": "Este email ou número de telefone já está em uso",
+      "user-not-found": "Usuário não encontrado",
+      "password-not-set": "Entre com o seu provedor e defina uma senha nas configurações da sua conta primeiro",
+      "password": {
+        "incorrect-current": "A senha atual que você enviou está incorreta",
+        "no-password": "Define uma senha para a sua conta primeiro"
+      },
+      "email-not-found": "Email não encontrado",
+      "error-sending-email": "Um error desconhecido ocorreu ao enviar o email, por favor, tente novamente mais tarde",
+      "verifications": {
+        "invalid-token": "Token de verificação inválido",
+        "expired-token": "Token de verificação expirado",
+        "validate_email": {
+          "already-verified": "Email já foi verificado",
+          "cooldown-not-lifted": "Limitado a um email de verificação a cada 5 minutos"
+        },
+        "reset_password": {
+          "already-verified": "Email já foi verificado",
+          "cooldown-not-lifted": "Limitado a uma redefinição de senha a cada 5 minutos"
+        }
+      },
+      "unknown": {
+        "saving-user-profile": "Algo deu errado ao salvar seu perfil"
+      }
+    },
+    "activity": {
+      "activity-not-found": "Atividade não encontrada",
+      "missing-required-parameter-error": "Parâmetro obrigatório faltando: projectId"
+    },
+    "program": {
+      "program-not-found": "Programa não encontrado"
+    },
+    "project": {
+      "project-not-found": "Projeto não encontrado"
+    },
+    "subActivity": {
+      "subActivity-not-found": "Sub Atividade não encontrada",
+      "missing-required-parameter-error": "Parâmetro obrigatório faltando: activityId"
+    },
+    "go-back": "Voltar para a página inicial"
+  }
 }

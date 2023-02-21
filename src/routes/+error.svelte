@@ -1,16 +1,19 @@
 <script lang="ts">
 	import NotFound from '$lib/assets/exceptions/404.svg';
 	import NotFoundDark from '$lib/assets/exceptions/404-dark.svg';
+	import GenericError from '$lib/assets/exceptions/500.svg';
+	import GenericErrorDark from '$lib/assets/exceptions/500-dark.svg';
 	import { theme } from '$lib/stores';
-	import { locale, _ } from 'svelte-i18n';
+	import { _ } from 'svelte-i18n';
 	import { page } from '$app/stores';
+	import { Button } from '$lib/components';
 
 	$: resolveImageByStatusCode = (status: number) => {
 		switch (status) {
 			case 404:
 				return $theme === 'winter' ? NotFound : NotFoundDark;
 			default:
-				return NotFound;
+				return $theme === 'winter' ? GenericError : GenericErrorDark;
 		}
 	};
 </script>
@@ -22,7 +25,11 @@
 	src="/assets/home-gradient.svg"
 	width={100}
 />
-<div class="max-w-lg w-full">
-	<h1 class="text-3xl font-medium text-center mb-12">{$_('exceptions.status.' + $page.status)}</h1>
-	<img src={resolveImageByStatusCode($page.status)} alt="Not found" />
+<div class="max-w-3xl h-full flex items-center justify-center flex-col">
+	<h1 class="text-3xl font-medium text-center">
+		{$_(`exceptions.status.${$page.status}.title`)}
+	</h1>
+	<h3 class="text-md text-center my-4">{$_(`exceptions.status.${$page.status}.message`)}</h3>
+	<img class="max-w-md my-12" src={resolveImageByStatusCode($page.status)} alt="Error" />
+	<Button to="/" variants={{ intent: 'ghost' }}>{$_('exceptions.go-back')}</Button>
 </div>
