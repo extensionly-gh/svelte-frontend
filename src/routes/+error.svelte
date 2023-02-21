@@ -26,7 +26,7 @@
 	width={100}
 />
 <div class="max-w-3xl h-full flex items-center justify-center flex-col">
-	<h1 class="text-3xl font-medium text-center">
+	<h1 data-testid="error-fallback-title" class="text-3xl font-medium text-center">
 		{$_(`exceptions.status.${$page.status}.title`)}
 	</h1>
 	<h3 class="text-md text-center my-4">{$_(`exceptions.status.${$page.status}.message`)}</h3>
