@@ -1,8 +1,10 @@
 {
 	"exceptions": {
+		"status": {
+			"404": "Página não encontrada",
+			"500": "Erro interno do servidor"
+		},
 		"generic": "Algo deu errado, tente novamente mais tarde",
-		"internal-server-error": "Erro interno do servidor",
-		"bad-request-error": "Erro de solicitação inválida",
 		"missing-required-parameter-error": "Parâmetro obrigatório faltando: {key}",
 		"auth": {
 			"passwords-not-match": "Senha inválida"

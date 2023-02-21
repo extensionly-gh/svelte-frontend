@@ -54,7 +54,7 @@
 					>
 						<Button
 							data-testid={`menu-item-${item.id ?? item.text}`}
-							class="p-2 items-center justify-center whitespace-nowrap font-semibold"
+							class="p-2 items-center justify-center whitespace-nowrap font-semibold text-sm"
 							variants={{ intent: 'no-style' }}
 							to={item.to ?? ''}
 							on:click={() => {

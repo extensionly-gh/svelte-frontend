@@ -1,8 +1,10 @@
 {
 	"exceptions": {
+		"status": {
+			"404": "Page not found",
+			"500": "Internal server error"
+		},
 		"generic": "An error occurred, please try again later",
-		"internal-server-error": "Internal server error",
-		"bad-request-error": "Bad request error",
 		"auth": {
 			"passwords-not-match": "Invalid password"
 		},
