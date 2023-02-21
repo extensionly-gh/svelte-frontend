@@ -3,8 +3,8 @@
 	import { getDateStatus } from '$lib/utils/activity.utils';
 	import type { Activity } from '@prisma/client';
 	import { formatRelative } from 'date-fns';
-	/// <reference types="date-fns-workaround.d.ts" />
-	import { enUS, ptBR } from 'date-fns/locale/index.js';
+	import enUS from 'date-fns/locale/en-US/index.js';
+	import ptBR from 'date-fns/locale/pt-BR/index.js';
 	import { DateTime } from 'luxon';
 	import { locale, _ } from 'svelte-i18n';
 	import IconVideoCamera from '~icons/heroicons-solid/video-camera';

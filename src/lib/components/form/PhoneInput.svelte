@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '$lib/styles/flags.css';
 	import TelInput, { clickOutsideAction, getCurrentCountry } from 'svelte-tel-input';
-	import { onMount } from 'svelte';
 	import type { CountryCode, E164Number, NormalizedTelNumber } from 'svelte-tel-input/types';
 	import { _ } from 'svelte-i18n';
 	import PhoneCountryPicker from './PhoneCountryPicker.svelte';
