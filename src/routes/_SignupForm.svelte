@@ -97,13 +97,25 @@
 	<Checkbox id="isTermsAccepted" type="checkbox">
 		<label for="isTermsAccepted" class="text-xs text-left font-medium" slot="label">
 			{$_('dialogs.auth.accept-terms-label')}
-			<Button variants={{ intent: 'text' }} on:click={() => handleTermsClick('privacy')}>
+			<a
+				class="hover:opacity-75 transition-opacity font-bold text-xs h-[1rem] min-h-[1rem] whitespace-normal cursor-pointer"
+				on:click={(e) => {
+					e.preventDefault();
+					handleTermsClick('privacy');
+				}}
+			>
 				{$_('terms.privacy-policy')}
-			</Button>
+			</a>
 			{$_('dialogs.auth.terms-agreement.2')}
-			<Button variants={{ intent: 'text' }} on:click={() => handleTermsClick('terms')}>
+			<a
+				class="hover:opacity-75 transition-opacity font-bold text-xs h-[1rem] min-h-[1rem] whitespace-normal cursor-pointer"
+				on:click={(e) => {
+					e.preventDefault();
+					handleTermsClick('terms');
+				}}
+			>
 				{$_('terms.terms-and-conditions')}.
-			</Button>
+			</a>
 		</label>
 	</Checkbox>
 	<Button
