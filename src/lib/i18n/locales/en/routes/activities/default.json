@@ -37,7 +37,7 @@
       "until": "until",
       "will-open": "Enrollments will open"
     },
-    "no-activities-found": "We couldn't find any activities that match this search criteria. You may have to update the filter.",
+    "no-activities-found": "We couldn't find any activities that match this search criteria. You can try updating the filter.",
     "title": "Browse extension actions"
   }
 }
