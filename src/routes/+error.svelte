@@ -18,13 +18,6 @@
 	};
 </script>
 
-<img
-	alt=""
-	class="z-[5] pointer-events-none fixed w-full h-full"
-	height={100}
-	src="/assets/home-gradient.svg"
-	width={100}
-/>
 <div class="max-w-3xl h-full flex items-center justify-center flex-col">
 	<h1 data-testid="error-fallback-title" class="text-3xl font-medium text-center">
 		{$_(`exceptions.status.${$page.status}.title`)}

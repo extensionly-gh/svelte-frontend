@@ -85,6 +85,7 @@ model Project {
 
 model Activity {
   id               String            @id @default(uuid())
+  paginationId     Int               @unique @default(autoincrement())
   title            String
   description      String            @db.LongText
   shortDescription String            @db.MediumText
