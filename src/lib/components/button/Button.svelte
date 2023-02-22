@@ -11,7 +11,7 @@
 
 	const isExternal = to ? !/^(\/|#)(.*)/g.test(to) : false;
 
-	const buttonStyles = cva('transition-all inline-flex items-center gap-1', {
+	const buttonStyles = cva('transition-all flex items-center gap-1', {
 		variants: {
 			intent: {
 				primary: 'btn btn-primary',
@@ -19,7 +19,7 @@
 				accent: 'btn btn-accent',
 				ghost: 'btn btn-ghost',
 				link: 'btn btn-link',
-				text: 'hover:opacity-75 transition-opacity font-bold text-xs h-[1rem] min-h-[1rem] whitespace-normal',
+				text: 'hover:opacity-75 transition-opacity font-bold h-[1rem] min-h-[1rem] whitespace-normal',
 				'text-base': 'hover:opacity-70 text-base-content',
 				'no-style': 'hover:scale-95',
 				danger: 'btn btn-error hover:bg-error/80 hover:border-error/80',
@@ -55,7 +55,13 @@
 		defaultVariants: {
 			intent: 'primary',
 			size: 'md'
-		}
+		},
+		compoundVariants: [
+			{
+				intent: 'text',
+				size: 'sm'
+			}
+		]
 	});
 </script>
 

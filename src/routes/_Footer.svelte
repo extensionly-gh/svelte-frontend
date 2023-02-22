@@ -50,10 +50,10 @@
 >
 	<div class="flex items-start justify-around flex-col sm:flex-row gap-12 p-8">
 		<div class="flex flex-col justify-between h-36">
-			<Button variants={{ intent: 'no-style' }} to="/" class="text-3xl font-semibold"
-				>Extensionly</Button
-			>
-			<div class="flex-none flex-col gap-1 flex">
+			<Button variants={{ intent: 'no-style' }} to="/" class="text-3xl font-semibold">
+				Extensionly
+			</Button>
+			<div class="flex-none flex-col gap-1 flex px-2">
 				<Button variants={{ intent: 'text-base', size: 'sm' }} to={'/about'}>
 					{$_('footer.about-us')}
 				</Button>
