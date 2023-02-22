@@ -20,17 +20,6 @@
 		// Index out of bounds if no activities are found
 		cursor = activities[activities.length - 1].paginationId ?? 0;
 	} catch (e) {}
-
-	// $: searchActivities = activities.map((activity) => ({
-	// 	...activity,
-	// 	searchTerms:
-	// 		`${activity.title} ${activity.description} ${activity.faculty} ${activity.location} ${activity.prerequisites}`.replaceAll(
-	// 			'null',
-	// 			''
-	// 		)
-	// }));
-
-	// $: filteredResults = searchHandler(data.query, searchActivities);
 </script>
 
 <div>
