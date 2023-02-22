@@ -13,6 +13,7 @@
 	import NProgress from 'nprogress';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
+	import Gradient from '$lib/assets/images/home-gradient.svg';
 
 	NProgress.configure({
 		easing: 'ease',
@@ -73,7 +74,7 @@
 		class:opacity-25={$page.error?.message !== undefined || $page.route.id !== '/'}
 		class="z-[5] pointer-events-none fixed w-full h-full"
 		height={100}
-		src="./assets/home-gradient.svg"
+		src={Gradient}
 		width={100}
 	/>
 	<AuthDialog />
