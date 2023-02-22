@@ -20,6 +20,9 @@ export const getActivities = publicProcedure
 			OR: [
 				{ title: { search: `${input?.search ?? ''}*` } },
 				{ description: { search: `${input?.search ?? ''}*` } },
+				{ shortDescription: { search: `${input?.search ?? ''}*` } },
+				{ faculty: { search: `${input?.search ?? ''}*` } },
+				{ prerequisites: { search: `${input?.search ?? ''}*` } },
 				{ location: { search: `${input?.search ?? ''}*` } },
 				{ User: { name: { search: `${input?.search ?? ''}*` } } }
 			]
