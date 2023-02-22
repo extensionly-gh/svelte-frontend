@@ -86,8 +86,8 @@ model Project {
 model Activity {
   id               String            @id @default(uuid())
   title            String
-  description      String
-  shortDescription String
+  description      String            @db.LongText
+  shortDescription String            @db.MediumText
   category         String?
   location         String?
   prerequisites    String?
