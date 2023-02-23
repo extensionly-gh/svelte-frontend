@@ -1,10 +1,11 @@
 <script lang="ts">
+	import type { AppRouterOutput } from '$lib/trpc/router';
 	import { DateFormats } from '$lib/utils';
 	import { getDateStatus } from '$lib/utils/activity.utils';
 	import type { Activity } from '@prisma/client';
 	import { formatRelative } from 'date-fns';
-	/// <reference types="date-fns-workaround.d.ts" />
-	import { enUS, ptBR } from 'date-fns/locale/index.js';
+	import enUS from 'date-fns/locale/en-US/index.js';
+	import ptBR from 'date-fns/locale/pt-BR/index.js';
 	import { DateTime } from 'luxon';
 	import { locale, _ } from 'svelte-i18n';
 	import IconVideoCamera from '~icons/heroicons-solid/video-camera';
@@ -14,19 +15,10 @@
 	import Tag from '../tag/Tag.svelte';
 	import HighlightedSpan from '../text/HighlightedSpan.svelte';
 
-	export let activity: Activity & {
-		User: {
-			name: string;
-			image: string | null;
-		};
-		Project: {
-			name: string;
-		};
-	};
+	export let activity: AppRouterOutput['activity']['getActivities'][0];
 
-	const isActivityFinished = DateTime.fromJSDate(activity.endDate).diffNow().milliseconds < 0;
-	const isActivityStartInThePast =
-		DateTime.fromJSDate(activity.startDate).diffNow().milliseconds < 0;
+	const isActivityFinished = DateTime.fromISO(activity.endDate).diffNow().milliseconds < 0;
+	const isActivityStartInThePast = DateTime.fromISO(activity.startDate).diffNow().milliseconds < 0;
 
 	const dateStatus = getDateStatus({
 		end: activity.endDate,
@@ -37,8 +29,8 @@
 		start: activity.enrollmentStart
 	});
 
-	$: formatDate = (JSDate: Date) => {
-		const date = DateTime.fromJSDate(JSDate);
+	$: formatDate = (ISODate: string) => {
+		const date = DateTime.fromISO(ISODate);
 		const now = DateTime.now();
 
 		if (date.diff(now, 'days').days >= 1) {

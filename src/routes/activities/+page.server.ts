@@ -1,10 +1,10 @@
-import { createContext } from '$lib/trpc/context';
-import { appRouter } from '$lib/trpc/router';
+import { trpc } from '$lib/trpc/client';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
+	const query = event.url.searchParams.get('query') || '';
 	return {
-		activities: await appRouter.createCaller(await createContext(event)).activity.getActivities(),
-		query: event.url.searchParams.get('query') || ''
+		activities: trpc(event).activity.getActivities.query({ take: 6, search: query }),
+		query
 	};
 };

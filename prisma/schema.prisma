@@ -85,9 +85,10 @@ model Project {
 
 model Activity {
   id               String            @id @default(uuid())
+  paginationId     Int               @unique @default(autoincrement())
   title            String
-  description      String
-  shortDescription String
+  description      String            @db.LongText
+  shortDescription String            @db.MediumText
   category         String?
   location         String?
   prerequisites    String?
@@ -116,6 +117,8 @@ model Activity {
   @@fulltext([description])
   @@fulltext([shortDescription])
   @@fulltext([location])
+  @@fulltext([faculty])
+  @@fulltext([prerequisites])
   @@fulltext([title, description])
   @@fulltext([title, location])
   @@fulltext([location, description])

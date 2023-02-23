@@ -37,7 +37,7 @@
       "until": "até",
       "will-open": "Inscrições abrirão"
     },
-    "no-activities-found": "Nenhuma atividade encontrada. Por favor, atualize o filtro.",
+    "no-activities-found": "Não encontramos nenhuma atividade que corresponda a esse critério de pesquisa. Você pode tentar atualizar o filtro.",
     "title": "Encontre atividades de extensão"
-    }
+  }
 }

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import Button from '../button/Button.svelte';
-	import { normalizedCountries, clickOutsideAction, isSelected } from 'svelte-tel-input';
+	import { normalizedCountries, isSelected } from 'svelte-tel-input';
 	import type { CountryCode, CountrySelectEvents } from 'svelte-tel-input/types';
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	import IconLoading from '~icons/eos-icons/loading';
 
 	export let selected: CountryCode;

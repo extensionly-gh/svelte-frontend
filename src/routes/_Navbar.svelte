@@ -24,7 +24,7 @@
 </script>
 
 <div
-	class="navbar sticky flex justify-between top-2 shadow-md bg-base-300 m-2 rounded-box mb-20 z-10 gap-2"
+	class="navbar sticky flex justify-between top-2 shadow-md bg-base-300 m-2 rounded-box mb-20 z-10 gap-2 px-3"
 >
 	<div class="lg:w-52">
 		<Button to="/" variants={{ intent: 'ghost' }} data-testid="nav-home-btn">
@@ -60,8 +60,8 @@
 		{:else}
 			<Button
 				data-testid="nav-signin-btn"
+				class="hover:-translate-y-0.5"
 				on:click={() => authDialog.update(() => ({ isOpen: true }))}
-				variants={{ animated: true }}
 			>
 				{$_('terms.signin')}
 			</Button>

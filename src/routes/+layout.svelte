@@ -12,6 +12,8 @@
 	import { _ } from 'svelte-i18n';
 	import NProgress from 'nprogress';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { page } from '$app/stores';
+	import Gradient from '$lib/assets/images/home-gradient.svg';
 
 	NProgress.configure({
 		easing: 'ease',
@@ -67,6 +69,14 @@
 	data-theme={$theme}
 	class="dark:bg-base-300/70"
 >
+	<img
+		alt=""
+		class:opacity-25={$page.error?.message !== undefined || $page.route.id !== '/'}
+		class="z-[5] pointer-events-none fixed w-full h-full"
+		height={100}
+		src={Gradient}
+		width={100}
+	/>
 	<AuthDialog />
 	<main class="lg:max-w-7xl flex m-auto flex-1 flex-col items-center justify-start w-[90%]">
 		<SvelteToast />

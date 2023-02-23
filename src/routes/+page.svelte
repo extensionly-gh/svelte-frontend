@@ -5,13 +5,6 @@
 	import { page } from '$app/stores';
 </script>
 
-<img
-	alt=""
-	class="z-[5] pointer-events-none fixed w-full h-full"
-	height={100}
-	src="./assets/home-gradient.svg"
-	width={100}
-/>
 <div class="flex w-full flex-col justify-center  mx-auto text-secondary/80">
 	<div class="flex flex-col justify-center items-center text-center rounded-sm">
 		<h1 data-testid="home-h1" class="text-5xl font-semibold leading-none sm:text-6xl">
