@@ -23,7 +23,7 @@ export const sendEmail = publicProcedure
 			verificationType: verification.type,
 			recipientEmail: input.email,
 			recipientName: user.name,
-			frontendUrl: input.url,
+			frontendUrl: ctx.origin,
 			token: verification.id
 		});
 

@@ -11,12 +11,16 @@ export const checkVerificationByTokenSchema = z.object({
 	token: base.strings.default
 });
 
+export const checkVerificationByEmailSchema = z.object({
+	type: base.enums.verificationType,
+	email: base.strings.default
+});
+
 export const validateEmailSchema = z.object({
 	token: base.strings.default
 });
 
 export const sendVerificationEmailSchema = z.object({
 	type: base.enums.verificationType,
-	email: base.strings.email,
-	url: base.strings.default
+	email: base.strings.email
 });

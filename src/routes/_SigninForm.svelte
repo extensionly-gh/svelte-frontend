@@ -7,9 +7,27 @@
 	import { Button, TextInput } from '$lib/components';
 	import { signIn } from '@auth/sveltekit/client';
 	import { toastError } from '$lib/components/toast';
+	import { page } from '$app/stores';
+	import { trpc } from '$lib/trpc/client';
+	import { handleErrorInClient } from '$lib/utils';
 
 	const { form, data, errors, isValid, isSubmitting } = createForm<z.infer<typeof signinSchema>>({
 		onSubmit: async ({ email, password }) => {
+			let emailVerified = false;
+			try {
+				emailVerified = await trpc($page).verification.checkVerificationByEmail.query({
+					type: 'VALIDATE_EMAIL',
+					email
+				});
+
+				if (!emailVerified) {
+					return;
+				}
+			} catch (error) {
+				handleErrorInClient(error);
+				return;
+			}
+
 			const response = await signIn('credentials', {
 				email,
 				password,

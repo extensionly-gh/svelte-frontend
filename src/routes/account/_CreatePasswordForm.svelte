@@ -10,13 +10,14 @@
 	import { createForm } from 'felte';
 	import { _ } from 'svelte-i18n';
 	import type { z } from 'zod';
+	import { page } from '$app/stores';
 
 	const { form, errors, isSubmitting, data, isDirty } = createForm<
 		z.infer<typeof passwordCreateSchema>
 	>({
 		onSubmit: async (values) => {
 			try {
-				await trpc().user.createPassword.mutate(values);
+				await trpc($page).user.createPassword.mutate(values);
 				toastSuccess($_(`r-acc.password.empty.success`));
 				await invalidateAll();
 			} catch (error) {

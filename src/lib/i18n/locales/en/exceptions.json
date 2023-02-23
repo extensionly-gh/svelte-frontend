@@ -29,10 +29,13 @@
         "expired-token": "Verification token expired",
         "validate_email": {
           "already-verified": "Email is already verified",
-          "cooldown-not-lifted": "Limited to one verification email every 5 minutes"
+          "cooldown-not-lifted": "Limited to one verification email every 5 minutes",
+          "no-verifications": "This user has no validate email verifications associated with it",
+          "not-verified": "This account has not been verified yet, please check your email"
         },
         "reset_password": {
-          "cooldown-not-lifted": "Limited to one password reset request every 5 minutes"
+          "cooldown-not-lifted": "Limited to one password reset request every 5 minutes",
+          "no-verifications": "This user has no password reset verifications associated with it"
         }
       },
       "unknown": {

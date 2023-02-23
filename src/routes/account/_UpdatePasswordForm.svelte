@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Button, SettingsCard, TextInput } from '$lib/components';
-	import { Notice } from '$lib/components/notice';
 	import { toastSuccess } from '$lib/components/toast';
 	import { passwordUpdateSchema } from '$lib/schemas';
 	import { trpc } from '$lib/trpc/client';
@@ -9,13 +8,14 @@
 	import { createForm } from 'felte';
 	import { _ } from 'svelte-i18n';
 	import type { z } from 'zod';
+	import { page } from '$app/stores';
 
 	const { form, errors, isSubmitting, isDirty, reset } = createForm<
 		z.infer<typeof passwordUpdateSchema>
 	>({
 		onSubmit: async (values) => {
 			try {
-				await trpc().user.updatePassword.mutate(values);
+				await trpc($page).user.updatePassword.mutate(values);
 				toastSuccess($_(`r-acc.password.not-empty.success`));
 				reset();
 			} catch (error) {
