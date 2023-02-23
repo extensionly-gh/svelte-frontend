@@ -162,6 +162,23 @@ async function main() {
 			}
 		}
 	});
+	await prisma.user.create({
+		data: {
+			email: 'ext-resend-expired-email-token@mailinator.com',
+			name: 'Expired email token',
+			password: await hashPassword('StrongPassword1.'),
+			phone: '+5551999999989',
+			role: Role.USER,
+			Verification: {
+				create: {
+					id: 'm0ck3d-3m41l-v4lid4t10n-t0k3n-3xp1r3d',
+					type: VerificationType.VALIDATE_EMAIL,
+					liftCooldownAt: DateTime.now().toISO(),
+					createdAt: DateTime.now().minus({ minutes: 15 }).toISO()
+				}
+			}
+		}
+	});
 	await prisma.project.create({
 		data: {
 			id: projectSocialId,
