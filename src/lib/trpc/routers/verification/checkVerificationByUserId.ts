@@ -1,11 +1,11 @@
-import { validateVerificationTokenSchema } from '$lib/schemas';
+import { checkVerificationByTokenSchema } from '$lib/schemas';
 import { prisma } from '$lib/server/singletons';
 import { publicProcedure } from '$lib/trpc/t';
 import { TRPCError } from '@trpc/server';
 import { DateTime } from 'luxon';
 
-export const validateVerification = publicProcedure
-	.input(validateVerificationTokenSchema)
+export const checkVerificationByUserId = publicProcedure
+	.input(checkVerificationByTokenSchema)
 	.mutation(async ({ input }) => {
 		const verificationWithUser = await prisma.verification.findUnique({
 			include: {

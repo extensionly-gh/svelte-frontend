@@ -6,7 +6,7 @@ export const createVerificationSchema = z.object({
 	email: base.strings.email
 });
 
-export const validateVerificationTokenSchema = z.object({
+export const checkVerificationByTokenSchema = z.object({
 	type: base.enums.verificationType,
 	token: base.strings.default
 });

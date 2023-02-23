@@ -1,10 +1,10 @@
 import { router } from '$lib/trpc/t';
 import { createVerification } from './createVerification';
 import { getVerifications } from './getVerifications';
-import { validateVerification } from './validateVerification';
+import { checkVerificationByToken } from './checkVerificationByToken';
 
 export const verificationRouter = router({
 	createVerification,
 	getVerifications,
-	validateVerification
+	checkVerificationByToken
 });
