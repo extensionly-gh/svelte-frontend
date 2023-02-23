@@ -15,6 +15,6 @@ test.describe('reset-password', () => {
 
 		await page.goto('/verify/reset-password/' + mockedToken);
 
-		await expect(page.getByTestId('toast-body')).toHaveText('Verification token expired');
+		await expect(page.getByTestId('toast-body')).toHaveText('This verification token is expired');
 	});
 });

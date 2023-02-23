@@ -12,6 +12,12 @@ async function main() {
 	const projectSocialId = randomUUID();
 	const projectOnlineId = randomUUID();
 
+	const emailVerification = {
+		isVerified: true,
+		type: VerificationType.VALIDATE_EMAIL,
+		liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+	};
+
 	await prisma.user.create({
 		data: {
 			id: adminUserId,
@@ -22,8 +28,7 @@ async function main() {
 			role: Role.ADMIN,
 			Verification: {
 				create: {
-					type: VerificationType.VALIDATE_EMAIL,
-					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+					...emailVerification
 				}
 			}
 		}
@@ -38,8 +43,7 @@ async function main() {
 			role: Role.USER,
 			Verification: {
 				create: {
-					type: VerificationType.VALIDATE_EMAIL,
-					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+					...emailVerification
 				}
 			}
 		}
@@ -53,8 +57,7 @@ async function main() {
 			role: Role.USER,
 			Verification: {
 				create: {
-					type: VerificationType.VALIDATE_EMAIL,
-					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+					...emailVerification
 				}
 			}
 		}
@@ -68,8 +71,7 @@ async function main() {
 			role: Role.USER,
 			Verification: {
 				create: {
-					type: VerificationType.VALIDATE_EMAIL,
-					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+					...emailVerification
 				}
 			}
 		}
@@ -82,10 +84,17 @@ async function main() {
 			phone: '+5551999999993',
 			role: Role.USER,
 			Verification: {
-				create: {
-					id: 'm0ck3d-p4ssw0rd-r3s3t-t0k3n',
-					type: VerificationType.RESET_PASSWORD,
-					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+				createMany: {
+					data: [
+						{
+							id: 'm0ck3d-p4ssw0rd-r3s3t-t0k3n',
+							type: VerificationType.RESET_PASSWORD,
+							liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+						},
+						{
+							...emailVerification
+						}
+					]
 				}
 			}
 		}
@@ -113,7 +122,12 @@ async function main() {
 			name: 'Delete account',
 			password: await hashPassword('StrongPassword1.'),
 			phone: '+5551999999992',
-			role: Role.USER
+			role: Role.USER,
+			Verification: {
+				create: {
+					...emailVerification
+				}
+			}
 		}
 	});
 	await prisma.user.create({
@@ -126,8 +140,7 @@ async function main() {
 			Verification: {
 				create: {
 					id: 'm0ck3d-3m41l-v4lid4t10n-t0k3n',
-					type: VerificationType.VALIDATE_EMAIL,
-					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
+					...emailVerification
 				}
 			}
 		}
