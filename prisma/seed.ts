@@ -140,7 +140,8 @@ async function main() {
 			Verification: {
 				create: {
 					id: 'm0ck3d-3m41l-v4lid4t10n-t0k3n',
-					...emailVerification
+					type: VerificationType.VALIDATE_EMAIL,
+					liftCooldownAt: DateTime.now().plus({ minutes: 5 }).toISO()
 				}
 			}
 		}
