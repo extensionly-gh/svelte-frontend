@@ -119,10 +119,7 @@ model Activity {
   @@fulltext([location])
   @@fulltext([faculty])
   @@fulltext([prerequisites])
-  @@fulltext([title, description])
-  @@fulltext([title, location])
-  @@fulltext([location, description])
-  @@fulltext([title, location, description])
+  @@fulltext([title, description, shortDescription, location, faculty, prerequisites])
 }
 
 model SubActivity {

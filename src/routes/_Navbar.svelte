@@ -31,17 +31,20 @@
 			<IconHouse width="32px" height="32px" />
 		</Button>
 	</div>
-	<div class="flex-grow items-center justify-center text-lg gap-2 max-w-xs">
-		<Button
-			class="flex-grow"
-			id="search"
-			on:click={() => goto(`/activities`)}
-			disabled={$page.url.pathname == '/activities'}
-		>
-			<IconMagnifyingGlass width="24px" height="24px" />
-			{$_('terms.search')}
-		</Button>
-	</div>
+	{#if $page.url.pathname != '/activities'}
+		<div class="flex-grow items-center justify-center text-lg gap-2 max-w-xs">
+			<Button
+				class="flex-grow"
+				id="search"
+				on:click={() => goto(`/activities`)}
+				variants={{ intent: 'ghost' }}
+			>
+				<IconMagnifyingGlass width="24px" height="24px" />
+				{$_('terms.search')}
+			</Button>
+		</div>
+	{/if}
+
 	<div class={`gap-2 lg:w-52 items-end justify-end flex`} data-testid="nav-right-div">
 		{#if $page.data.session?.user}
 			<div class="hidden sm:flex bg-base-200 p-2 items-center rounded-md gap-2">
