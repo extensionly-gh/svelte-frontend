@@ -11,6 +11,13 @@ async function main() {
 	const defaultFaculty = 'Unipampa';
 	const projectSocialId = randomUUID();
 	const projectOnlineId = randomUUID();
+	let currentPhoneNumber = '+5551999999999';
+	const password = await hashPassword('#1Abcdef');
+
+	const getPhoneNumber = () => {
+		currentPhoneNumber = currentPhoneNumber.replace(/\d+$/, (n) => (parseInt(n) - 1).toString());
+		return currentPhoneNumber;
+	};
 
 	const emailVerification = {
 		isVerified: true,
@@ -21,10 +28,10 @@ async function main() {
 	await prisma.user.create({
 		data: {
 			id: adminUserId,
-			email: 'admin-dev@extensionly.app',
+			email: 'ext-user-admin@mailinator.com',
 			name: 'Admin',
-			password: await hashPassword('StrongPassword1.'),
-			phone: '+5551999999999',
+			password,
+			phone: getPhoneNumber(),
 			role: Role.ADMIN,
 			Verification: {
 				create: {
@@ -36,10 +43,10 @@ async function main() {
 	await prisma.user.create({
 		data: {
 			id: normalUserId,
-			email: 'extensionly-user-dev@mailinator.com',
+			email: 'ext-user-dev@mailinator.com',
 			name: 'Normal User',
-			password: await hashPassword('StrongPassword1.'),
-			phone: '+5551999999998',
+			password,
+			phone: getPhoneNumber(),
 			role: Role.USER,
 			Verification: {
 				create: {
@@ -50,10 +57,10 @@ async function main() {
 	});
 	await prisma.user.create({
 		data: {
-			email: 'extensionly-change-pw@mailinator.com',
+			email: 'ext-change-pw@mailinator.com',
 			name: 'Change Pw',
-			password: await hashPassword('StrongPassword1.'),
-			phone: '+5551999999995',
+			password,
+			phone: getPhoneNumber(),
 			role: Role.USER,
 			Verification: {
 				create: {
@@ -64,10 +71,10 @@ async function main() {
 	});
 	await prisma.user.create({
 		data: {
-			email: 'extensionly-signin@mailinator.com',
+			email: 'ext-signin@mailinator.com',
 			name: 'Signin Test',
-			password: await hashPassword('StrongPassword1.'),
-			phone: '+5551999999994',
+			password,
+			phone: getPhoneNumber(),
 			role: Role.USER,
 			Verification: {
 				create: {
@@ -78,10 +85,10 @@ async function main() {
 	});
 	await prisma.user.create({
 		data: {
-			email: 'extensionly-reset-pw@mailinator.com',
+			email: 'ext-reset-pw@mailinator.com',
 			name: 'Reset Pw',
-			password: await hashPassword('StrongPassword1.'),
-			phone: '+5551999999993',
+			password,
+			phone: getPhoneNumber(),
 			role: Role.USER,
 			Verification: {
 				createMany: {
@@ -101,10 +108,10 @@ async function main() {
 	});
 	await prisma.user.create({
 		data: {
-			email: 'extensionly-reset-pw-expired@mailinator.com',
+			email: 'ext-reset-pw-expired@mailinator.com',
 			name: 'Reset Pw Expired Token',
-			password: await hashPassword('StrongPassword1.'),
-			phone: '+5551999999990',
+			password,
+			phone: getPhoneNumber(),
 			role: Role.USER,
 			Verification: {
 				create: {
@@ -118,10 +125,10 @@ async function main() {
 	});
 	await prisma.user.create({
 		data: {
-			email: 'extensionly-delete-account@mailinator.com',
+			email: 'ext-delete-account@mailinator.com',
 			name: 'Delete account',
-			password: await hashPassword('StrongPassword1.'),
-			phone: '+5551999999992',
+			password,
+			phone: getPhoneNumber(),
 			role: Role.USER,
 			Verification: {
 				create: {
@@ -132,10 +139,10 @@ async function main() {
 	});
 	await prisma.user.create({
 		data: {
-			email: 'extensionly-validate-email@mailinator.com',
+			email: 'ext-validate-email@mailinator.com',
 			name: 'Validate Email',
-			password: await hashPassword('StrongPassword1.'),
-			phone: '+5551999999991',
+			password,
+			phone: getPhoneNumber(),
 			role: Role.USER,
 			Verification: {
 				create: {
@@ -148,10 +155,10 @@ async function main() {
 	});
 	await prisma.user.create({
 		data: {
-			email: 'verified-dev@extensionly.app',
+			email: 'ext-verified-dev@mailinator.com',
 			name: 'Verified User',
-			password: await hashPassword('StrongPassword1.'),
-			phone: '+5551999999997',
+			password,
+			phone: getPhoneNumber(),
 			role: Role.USER,
 			Verification: {
 				create: {
@@ -166,8 +173,8 @@ async function main() {
 		data: {
 			email: 'ext-resend-expired-email-token@mailinator.com',
 			name: 'Expired email token',
-			password: await hashPassword('StrongPassword1.'),
-			phone: '+5551999999989',
+			password,
+			phone: getPhoneNumber(),
 			role: Role.USER,
 			Verification: {
 				create: {
