@@ -8,7 +8,7 @@
 	import { dev } from '$app/environment';
 	import AuthDialog from './_AuthDialog.svelte';
 	import { onMount } from 'svelte';
-	import { toastError, toastSuccess } from '$lib/components/toast';
+	import { toastError, toastInfo, toastSuccess } from '$lib/components/toast';
 	import { _ } from 'svelte-i18n';
 	import NProgress from 'nprogress';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
@@ -33,14 +33,19 @@
 	onMount(() => {
 		const params = Object.fromEntries(new URLSearchParams(window.location.search));
 
-		if (Object.keys(params).length !== 0 && (params.error || params.success)) {
+		if (Object.keys(params).length !== 0 && (params.error || params.success || params.info)) {
 			if (params.error) {
 				toastError($_(params.error));
 			} else if (params.success) {
 				toastSuccess($_(params.success));
+			} else if (params.info) {
+				toastInfo($_(params.info));
 			}
+
 			delete params.error;
 			delete params.success;
+			delete params.info;
+
 			let paramsString = '?';
 
 			for (let key in params) {

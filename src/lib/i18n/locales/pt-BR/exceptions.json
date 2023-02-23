@@ -26,8 +26,8 @@
       "email-not-found": "Email não encontrado",
       "error-sending-email": "Um error desconhecido ocorreu ao enviar o email, por favor, tente novamente mais tarde",
       "verifications": {
-        "invalid-token": "Token de verificação inválido",
-        "expired-token": "Token de verificação expirado",
+        "invalid-token": "O token que você quer verificar é inválido",
+        "expired-token": "Este token de verificação está expirado",
         "validate_email": {
           "already-verified": "Email já foi verificado",
           "cooldown-not-lifted": "Limitado a um email de verificação a cada 5 minutos",

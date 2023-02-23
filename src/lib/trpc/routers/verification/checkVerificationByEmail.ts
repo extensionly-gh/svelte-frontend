@@ -1,12 +1,11 @@
 import { checkVerificationByEmailSchema } from '$lib/schemas';
 import { prisma } from '$lib/server/singletons';
-import { appRouter } from '$lib/trpc/router';
 import { publicProcedure } from '$lib/trpc/t';
 import { TRPCError } from '@trpc/server';
 
 export const checkVerificationByEmail = publicProcedure
 	.input(checkVerificationByEmailSchema)
-	.query(async ({ input, ctx }) => {
+	.query(async ({ input }) => {
 		const userVerifications = (
 			await prisma.user.findUnique({
 				select: {
@@ -32,11 +31,6 @@ export const checkVerificationByEmail = publicProcedure
 		if (verified.length > 0) {
 			return true;
 		}
-
-		await appRouter.createCaller(ctx).user.sendEmail({
-			type: input.type,
-			email: input.email
-		});
 
 		throw new TRPCError({
 			message: `exceptions.users.verifications.${input.type.toLowerCase()}.not-verified`,
