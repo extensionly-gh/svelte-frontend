@@ -19,23 +19,29 @@
 
 	export let data: PageData;
 
-	let activities = data.activities;
+	$: activities = data.activities;
 	let newActivities = [];
 	let cursor = 0;
 	let activitiesLoading = false;
+	let resetScroll = +new Date();
 
 	const { form, data: formData } = createForm<z.infer<typeof searchBarSchema>>({
-		onSubmit: ({ search }) => {
-			goto(`?query=${search}`);
-			console.log(search);
+		initialValues: {
+			search: data.query
+		},
+		onSubmit: async ({ search }) => {
+			resetScroll = +new Date();
+			await goto(`?query=${search}`, { keepFocus: true });
 		},
 		validate: validateSchema(searchBarSchema)
 	});
 
-	try {
+	$: try {
 		// Index out of bounds if no activities are found
-		cursor = activities[activities.length - 1].paginationId ?? 0;
-	} catch (e) {}
+		cursor = activities[activities.length - 1].paginationId;
+	} catch (e) {
+		cursor = 0;
+	}
 </script>
 
 <!-- <h1 class="text-4xl text-secondary font-semibold text-center mb-12">{$_('a-default.title')}</h1> -->
@@ -78,6 +84,7 @@
 		</div>
 		<InfiniteLoading
 			forceUseInfiniteWrapper
+			identifier={resetScroll}
 			on:infinite={async ({ detail }) => {
 				if (activities.length < 6) return;
 

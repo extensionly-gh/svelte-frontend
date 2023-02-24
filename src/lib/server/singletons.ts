@@ -10,7 +10,7 @@ const singletonsGlobal = global as typeof global & {
 export const prisma: PrismaClient =
 	singletonsGlobal.prisma ||
 	new PrismaClient({
-		log: env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error']
+		log: env.NODE_ENV === 'development' ? ['error', 'warn'] : ['error']
 	});
 
 export const sendInBlueApi: SMTPApi =
