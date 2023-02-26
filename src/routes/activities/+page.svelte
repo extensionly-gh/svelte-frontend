@@ -11,7 +11,7 @@
 	import { validateSchema } from '@felte/validator-zod';
 	import { createForm } from 'felte';
 	import { _ } from 'svelte-i18n';
-	import InfiniteLoading from 'svelte-infinite-loading';
+	import { inview } from 'svelte-inview/dist/index';
 	import type { z } from 'zod';
 	import IconBackspace from '~icons/ph/backspace';
 	import IconMagnifyingGlass from '~icons/ph/magnifying-glass';
@@ -23,14 +23,14 @@
 	let newActivities = [];
 	let cursor = 0;
 	let activitiesLoading = false;
-	let resetScroll = +new Date();
+	let hasMore = true;
 
 	const { form, data: formData } = createForm<z.infer<typeof searchBarSchema>>({
 		initialValues: {
 			search: data.query
 		},
 		onSubmit: async ({ search }) => {
-			resetScroll = +new Date();
+			hasMore = true;
 			await goto(`?query=${search}`, { keepFocus: true });
 		},
 		validate: validateSchema(searchBarSchema)
@@ -42,9 +42,36 @@
 	} catch (e) {
 		cursor = 0;
 	}
+
+	const handleChange = async () => {
+		if (activities.length < 6) {
+			hasMore = false;
+			return;
+		}
+
+		activitiesLoading = true;
+
+		newActivities = await trpc($page).activity.getActivities.query({
+			take: 6,
+			cursor,
+			search: data.query
+		});
+		console.log(hasMore);
+		if (newActivities.length === 0) {
+			hasMore = false;
+			console.log(hasMore);
+			activitiesLoading = false;
+			return;
+		}
+
+		activities = [...activities, ...newActivities];
+		cursor = newActivities[newActivities.length - 1].paginationId;
+
+		activitiesLoading = false;
+	};
 </script>
 
-<!-- <h1 class="text-4xl text-secondary font-semibold text-center mb-12">{$_('a-default.title')}</h1> -->
+<h1 class="text-4xl text-secondary font-semibold text-center mb-12">{$_('a-default.title')}</h1>
 <div class="flex flex-row justify-center items-center mb-20 w-full">
 	<form use:form class="flex flex-grow max-w-3xl">
 		<TextInput id="search" placeholder={$_('a-default.title')} variants={{ intent: 'searchBar' }}>
@@ -68,7 +95,6 @@
 	</form>
 </div>
 <div>
-	<h1 class="text-3xl font-medium text-center mb-4">{$_('a-default.title')}</h1>
 	{#if activities.length > 0}
 		<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-10 justify-center">
 			{#each activities as activity}
@@ -82,37 +108,15 @@
 				{/each}
 			{/if}
 		</div>
-		<InfiniteLoading
-			forceUseInfiniteWrapper
-			identifier={resetScroll}
-			on:infinite={async ({ detail }) => {
-				if (activities.length < 6) return;
-
-				activitiesLoading = true;
-
-				newActivities = await trpc($page).activity.getActivities.query({
-					take: 6,
-					cursor,
-					search: data.query
-				});
-
-				if (newActivities.length === 0) {
-					detail.complete();
-					activitiesLoading = false;
-					return;
-				}
-
-				activities = [...activities, ...newActivities];
-				cursor = newActivities[newActivities.length - 1].paginationId;
-
-				detail.loaded();
-				activitiesLoading = false;
-			}}
-		>
-			<div slot="spinner" />
-			<div slot="noResults" />
-			<div slot="noMore" />
-		</InfiniteLoading>
+		{#if !hasMore}
+			<div class="flex justify-center items-center flex-col mt-12">
+				<h1 data-testid="error-fallback-title" class="text-xl font-medium text-center">
+					{$_('a-default.no-more-results')}
+				</h1>
+			</div>
+		{:else}
+			<div use:inview={{}} on:change={handleChange} />
+		{/if}
 	{:else}
 		<div class="flex justify-center items-center flex-col">
 			<h3 class="text-md text-center">{$_('a-default.no-activities-found')}</h3>

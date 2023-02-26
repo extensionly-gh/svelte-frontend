@@ -38,6 +38,7 @@
       "will-open": "Inscrições abrirão"
     },
     "no-activities-found": "Não encontramos nenhuma atividade que corresponda a esse critério de pesquisa. Você pode tentar atualizar o filtro.",
-    "title": "Encontre atividades de extensão"
+    "title": "Encontre atividades de extensão",
+    "no-more-results": "Não existem mais resultados para a sua pesquisa."
   }
 }
