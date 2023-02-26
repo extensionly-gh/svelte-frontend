@@ -56,7 +56,7 @@
 			cursor,
 			search: data.query
 		});
-		console.log(hasMore);
+
 		if (newActivities.length === 0) {
 			hasMore = false;
 			console.log(hasMore);
@@ -115,7 +115,7 @@
 				</h1>
 			</div>
 		{:else}
-			<div use:inview={{}} on:change={handleChange} />
+			<div use:inview on:change={handleChange} />
 		{/if}
 	{:else}
 		<div class="flex justify-center items-center flex-col">
