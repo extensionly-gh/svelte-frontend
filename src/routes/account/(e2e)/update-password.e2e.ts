@@ -12,14 +12,14 @@ test('update password', async ({ page }) => {
 	// Signin
 	await page.goto('/', { waitUntil: 'networkidle' });
 	await page.getByTestId('nav-signin-btn').click();
-	await page.getByTestId('signin-email-input').fill('extensionly-change-pw@mailinator.com');
-	await page.getByTestId('signin-password-input').fill('StrongPassword1.');
+	await page.getByTestId('signin-email-input').fill('ext-change-pw@mailinator.com');
+	await page.getByTestId('signin-password-input').fill('#1Abcdef');
 	await page.getByTestId('signin-submit-button').click();
 
 	await page.getByTestId('menu-trigger-user-menu').click();
 	await page.getByTestId('menu-item-my-account').click();
 
-	await page.getByTestId('currentPwd-input').fill('StrongPassword1.');
+	await page.getByTestId('currentPwd-input').fill('#1Abcdef');
 	await page.getByTestId('newPwd-input').fill('#1Abcdef');
 	await page.getByTestId('confirmPwd-input').fill('#1Abcdef');
 	await page.getByTestId('updatepw-submit-button').click();

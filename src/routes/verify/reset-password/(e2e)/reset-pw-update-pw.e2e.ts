@@ -9,9 +9,9 @@ test.use({
 });
 
 test.describe('reset-password', () => {
-	const email = 'extensionly-reset-pw@mailinator.com';
-	const firstPassword = 'StrongPassword1.';
-	const newPassword = '#1Abcdef';
+	const email = 'ext-reset-pw@mailinator.com';
+	const firstPassword = '#1Abcdef';
+	const newPassword = 'StrongPassword1.';
 
 	test('send reset password form successfully', async ({ page }) => {
 		// Token is mocked for this user in the seed file

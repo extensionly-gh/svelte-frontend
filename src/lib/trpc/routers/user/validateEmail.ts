@@ -8,7 +8,7 @@ export const validateEmail = publicProcedure
 	.mutation(async ({ ctx, input }) => {
 		const verificationWithUser = await appRouter
 			.createCaller(ctx)
-			.verification.validateVerification({
+			.verification.checkVerificationByToken({
 				type: 'VALIDATE_EMAIL',
 				token: input.token
 			});

@@ -18,8 +18,8 @@ test.describe('update', () => {
 		await page.getByTestId('menu-trigger-user-menu').click();
 		await page.getByTestId('menu-item-signout').click();
 		await page.getByTestId('nav-signin-btn').click();
-		await page.getByTestId('signin-email-input').fill('extensionly-user-dev@mailinator.com');
-		await page.getByTestId('signin-password-input').fill('StrongPassword1.');
+		await page.getByTestId('signin-email-input').fill('ext-user-dev@mailinator.com');
+		await page.getByTestId('signin-password-input').fill('#1Abcdef');
 		await page.getByTestId('signin-submit-button').click();
 
 		await expect(page.getByTestId('menu-trigger-user-menu')).toHaveText('Edited User');

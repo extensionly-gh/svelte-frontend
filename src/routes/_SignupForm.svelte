@@ -20,10 +20,9 @@
 	>({
 		onSubmit: async (values) => {
 			try {
-				await trpc().user.createUser.mutate(values);
-				await trpc().user.sendEmail.mutate({
+				await trpc($page).user.createUser.mutate(values);
+				await trpc($page).user.sendEmail.mutate({
 					email: values.email,
-					url: $page.url.origin,
 					type: 'VALIDATE_EMAIL'
 				});
 				toastInfo($_('dialogs.auth.signup-success'), { initial: 0 });

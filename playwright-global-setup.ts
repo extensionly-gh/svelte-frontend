@@ -13,8 +13,8 @@ async function globalSetup(config: FullConfig) {
 		await page.goto(baseURL!);
 		await page.getByTestId('cookie-banner-btn').click();
 		await page.getByTestId('nav-signin-btn').click();
-		await page.getByTestId('signin-email-input').fill('extensionly-user-dev@mailinator.com');
-		await page.getByTestId('signin-password-input').fill('StrongPassword1.');
+		await page.getByTestId('signin-email-input').fill('ext-user-dev@mailinator.com');
+		await page.getByTestId('signin-password-input').fill('#1Abcdef');
 		await page.getByTestId('signin-submit-button').click();
 		await page.getByTestId('menu-trigger-user-menu').click();
 		await context.storageState({ path: storageState as string });

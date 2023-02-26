@@ -1,5 +1,6 @@
 {
   "v-email":{
-    "email-validated":"Email validado com sucesso!"
+    "email-validated":"Email validado com sucesso!",
+    "sent-new-email": "Um novo e-mail foi enviado para o seu endereço de e-mail. Verifique sua caixa de entrada e clique no novo link para validar sua conta."
   }
 }

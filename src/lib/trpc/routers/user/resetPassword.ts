@@ -9,7 +9,7 @@ export const resetPassword = publicProcedure
 	.mutation(async ({ ctx, input }) => {
 		const verificationWithUser = await appRouter
 			.createCaller(ctx)
-			.verification.validateVerification({
+			.verification.checkVerificationByToken({
 				type: 'RESET_PASSWORD',
 				token: input.token
 			});

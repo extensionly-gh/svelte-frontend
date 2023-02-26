@@ -7,7 +7,7 @@ export const load: PageServerLoad = async (event) => {
 	try {
 		await appRouter
 			.createCaller(await createContext(event))
-			.verification.validateVerification({ type: 'RESET_PASSWORD', token: event.params.token });
+			.verification.checkVerificationByToken({ type: 'RESET_PASSWORD', token: event.params.token });
 	} catch (error) {
 		handleErrorInServer(error);
 	}

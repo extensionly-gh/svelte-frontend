@@ -9,8 +9,8 @@ test.use({
 });
 
 test('delete account', async ({ page }) => {
-	const email = 'extensionly-delete-account@mailinator.com';
-	const password = 'StrongPassword1.';
+	const email = 'ext-delete-account@mailinator.com';
+	const password = '#1Abcdef';
 
 	await page.goto('/', { waitUntil: 'networkidle' });
 	await page.getByTestId('nav-signin-btn').click();

@@ -9,7 +9,10 @@ export const createUser = publicProcedure.input(signupSchema).mutation(async ({ 
 	try {
 		await prisma.user.create({
 			data: {
-				...input,
+				name: input.name,
+				email: input.email,
+				phone: input.phone,
+				isTermsAccepted: input.isTermsAccepted,
 				password: await hashPassword(input.password)
 			}
 		});
@@ -23,5 +26,6 @@ export const createUser = publicProcedure.input(signupSchema).mutation(async ({ 
 				});
 			}
 		}
+		throw error;
 	}
 });

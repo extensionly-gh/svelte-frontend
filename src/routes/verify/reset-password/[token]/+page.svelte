@@ -10,6 +10,7 @@
 	import { _ } from 'svelte-i18n';
 	import type { z } from 'zod';
 	import type { PageData } from './$types';
+	import { page } from '$app/stores';
 
 	export let data: PageData;
 
@@ -18,7 +19,7 @@
 	>({
 		onSubmit: async ({ newPwd, confirmPwd }) => {
 			try {
-				await trpc().user.resetPassword.mutate({
+				await trpc($page).user.resetPassword.mutate({
 					token: data.token,
 					newPwd,
 					confirmPwd
