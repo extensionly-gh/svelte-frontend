@@ -21,9 +21,14 @@ export const getActivities = publicProcedure
 				{ title: { search: `${input?.search ?? ''}*` } },
 				{ description: { search: `${input?.search ?? ''}*` } },
 				{ shortDescription: { search: `${input?.search ?? ''}*` } },
-				{ faculty: { search: `${input?.search ?? ''}*` } },
 				{ prerequisites: { search: `${input?.search ?? ''}*` } },
 				{ location: { search: `${input?.search ?? ''}*` } },
+				{
+					Faculty: {
+						name: { search: `${input?.search ?? ''}*` },
+						acronym: { search: `${input?.search ?? ''}*` }
+					}
+				},
 				{ User: { name: { search: `${input?.search ?? ''}*` } } }
 			]
 		};
@@ -50,6 +55,13 @@ export const getActivities = publicProcedure
 				Project: {
 					select: {
 						name: true
+					}
+				},
+				Faculty: {
+					select: {
+						acronym: true,
+						name: true,
+						state: true
 					}
 				}
 			}

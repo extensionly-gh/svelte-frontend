@@ -61,26 +61,31 @@ model UserEnrollments {
 model Program {
   id         String          @id @unique @default(uuid())
   name       String
-  faculty    String
+  facultyId  String
   createdAt  DateTime        @default(now())
   updatedAt  DateTime        @updatedAt
   visibility EventVisibility @default(PUBLIC)
+  Faculty    Faculty         @relation(fields: [facultyId], references: [id])
   Project    Project[]
+
+  @@index([facultyId])
 }
 
 model Project {
   id                      String          @id @unique @default(uuid())
   name                    String
   programId               String?
-  faculty                 String
   acceptStudentsProposals Boolean
+  facultyId               String
   createdAt               DateTime        @default(now())
   updatedAt               DateTime        @updatedAt
   visibility              EventVisibility @default(PUBLIC)
+  Faculty                 Faculty         @relation(fields: [facultyId], references: [id])
   Activity                Activity[]
   Program                 Program?        @relation(fields: [programId], references: [id])
 
   @@index([programId])
+  @@index([facultyId])
 }
 
 model Activity {
@@ -97,29 +102,30 @@ model Activity {
   enrollmentStart  DateTime
   enrollmentEnd    DateTime
   contact          String?
-  faculty          String
   targetAudience   TargetAudience
   visibility       EventVisibility
   status           ActivityStatus    @default(CREATED)
   modality         Modality?         @default(REMOTE)
   proponentId      String
   projectId        String
+  facultyId        String
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
   UserEnrollments  UserEnrollments[]
   SubActivity      SubActivity[]
+  Faculty          Faculty           @relation(fields: [facultyId], references: [id])
   User             User              @relation(fields: [proponentId], references: [id])
   Project          Project           @relation(fields: [projectId], references: [id])
 
   @@index([proponentId])
   @@index([projectId])
+  @@index([facultyId])
   @@fulltext([title])
   @@fulltext([description])
   @@fulltext([shortDescription])
   @@fulltext([location])
-  @@fulltext([faculty])
   @@fulltext([prerequisites])
-  @@fulltext([title, description, shortDescription, location, faculty, prerequisites])
+  @@fulltext([title, description, shortDescription, location, prerequisites])
 }
 
 model SubActivity {
@@ -152,6 +158,50 @@ model UserInstructor {
 
   @@index([userId])
   @@index([subActivityId])
+}
+
+model Faculty {
+  id       String       @id @unique @default(uuid())
+  name     String
+  acronym  String
+  state    StateAcronym
+  Program  Program[]
+  Project  Project[]
+  Activity Activity[]
+
+  @@fulltext([name])
+  @@fulltext([acronym])
+  @@fulltext([name, acronym])
+}
+
+enum StateAcronym {
+  AC
+  AL
+  AP
+  AM
+  BA
+  CE
+  ES
+  GO
+  MA
+  MT
+  MS
+  MG
+  PA
+  PB
+  PR
+  PE
+  PI
+  RJ
+  RN
+  RS
+  RO
+  RR
+  SC
+  SP
+  SE
+  TO
+  DF
 }
 
 enum Role {
