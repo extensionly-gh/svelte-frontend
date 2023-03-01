@@ -10,9 +10,11 @@
 	import { trpc } from '$lib/trpc/client';
 	import { validateSchema } from '@felte/validator-zod';
 	import { createForm } from 'felte';
+	import { onMount } from 'svelte';
 	import { _ } from 'svelte-i18n';
 	import { inview } from 'svelte-inview/dist/index';
 	import type { z } from 'zod';
+	import IconArrowUpBold from '~icons/ph/arrow-up-bold';
 	import IconBackspace from '~icons/ph/backspace';
 	import IconMagnifyingGlass from '~icons/ph/magnifying-glass';
 	import type { PageData } from './$types';
@@ -25,15 +27,21 @@
 	let activitiesLoading = false;
 	let hasMore = true;
 
-	const { form, data: formData } = createForm<z.infer<typeof searchBarSchema>>({
-		initialValues: {
-			search: data.query
-		},
+	const {
+		form,
+		data: formData,
+		setFields
+	} = createForm<z.infer<typeof searchBarSchema>>({
 		onSubmit: async ({ search }) => {
 			hasMore = true;
 			await goto(`?query=${search}`, { keepFocus: true });
 		},
 		validate: validateSchema(searchBarSchema)
+	});
+
+	onMount(() => {
+		hasMore = true;
+		setFields('search', $page.url.searchParams.get('query') || '');
 	});
 
 	$: try {
@@ -43,8 +51,12 @@
 		cursor = 0;
 	}
 
+	const goTop = () => {
+		document.body.scrollIntoView();
+	};
+
 	const handleChange = async () => {
-		if (activities.length < 6) {
+		if (activities.length < 6 || !hasMore) {
 			hasMore = false;
 			return;
 		}
@@ -59,7 +71,6 @@
 
 		if (newActivities.length === 0) {
 			hasMore = false;
-			console.log(hasMore);
 			activitiesLoading = false;
 			return;
 		}
@@ -71,6 +82,15 @@
 	};
 </script>
 
+{#if activities.length > 0}
+	<div class="relative z-50">
+		<div class="fixed bottom-6 right-6  h-10 w-10 lg:h-16 lg:w-16">
+			<Button variants={{ intent: 'secondary', anchor: true }} on:click={goTop}>
+				<IconArrowUpBold width="24px" height="24px" />
+			</Button>
+		</div>
+	</div>
+{/if}
 <h1 class="text-4xl text-secondary font-semibold text-center mb-12">{$_('a-default.title')}</h1>
 <div class="flex flex-row justify-center items-center mb-20 w-full">
 	<form use:form class="flex flex-grow max-w-3xl">
@@ -78,13 +98,14 @@
 			<div slot="left" class="flex items-center">
 				<IconMagnifyingGlass class="" width="24px" height="24px" />
 			</div>
-			<div slot="right">
-				{#if data.query !== ''}
+			<div slot="right" class="flex items-center">
+				{#if $formData.search !== ''}
 					<Button
 						type="reset"
-						variants={{ intent: 'ghost', width: 'icon' }}
-						on:click={() => {
-							goto('/activities');
+						variants={{ intent: 'ghost' }}
+						on:click={async () => {
+							hasMore = true;
+							await goto('/activities');
 						}}
 					>
 						<IconBackspace width="24px" height="24px" />
@@ -114,9 +135,8 @@
 					{$_('a-default.no-more-results')}
 				</h1>
 			</div>
-		{:else}
-			<div use:inview on:change={handleChange} />
 		{/if}
+		<div use:inview on:change={handleChange} />
 	{:else}
 		<div class="flex justify-center items-center flex-col">
 			<h3 class="text-md text-center">{$_('a-default.no-activities-found')}</h3>

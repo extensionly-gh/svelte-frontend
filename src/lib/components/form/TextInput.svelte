@@ -29,7 +29,7 @@
 					darker: 'bg-gray-200 dark:bg-gray-900',
 					error: 'border-error border-2',
 					searchBar:
-						'border bg-gray-200 dark:bg-gray-900 focus:border-base-content/40 rounded-3xl pl-5 	placeholder:text-lg text-lg h-[3rem]'
+						'border bg-base-300 focus:border-base-content/40 rounded-3xl pl-5	placeholder:text-lg text-lg h-[3rem]'
 				}
 			},
 			defaultVariants: {
@@ -53,6 +53,7 @@
 			class={inputStyles({ intent: !!error ? 'error' : variants.intent })}
 			data-testid={`${id}-input`}
 			name={id}
+			on:input
 			{type}
 			{...$$restProps}
 		/>

@@ -39,6 +39,9 @@
 			icon: {
 				true: 'text-accent hover:bg-accent/20 btn-circle'
 			},
+			anchor: {
+				true: 'rounded-full w-full h-full'
+			},
 			isLoading: {
 				true: 'flex gap-2'
 			},

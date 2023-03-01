@@ -9,7 +9,7 @@
 			variants: {
 				intent: {
 					primary: 'border-accent text-accent dark:brightness-75 line-clamp-1',
-					online: 'border-transparent bg-red-700 text-red-100',
+					modality: 'border-transparent bg-red-700 text-red-100',
 					project: 'border-transparent bg-secondary text-secondary-content line-clamp-1'
 				}
 			},
