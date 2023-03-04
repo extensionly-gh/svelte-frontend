@@ -39,7 +39,7 @@
 				on:click={() => goto(`/activities`)}
 				variants={{ intent: 'ghost' }}
 			>
-				<IconMagnifyingGlass width="24px" height="24px" />
+				<IconMagnifyingGlass width="20px" height="20px" />
 				{$_('terms.search')}
 			</Button>
 		</div>
