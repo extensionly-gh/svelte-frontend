@@ -20,6 +20,9 @@
     },
     "phone": {
       "invalid": "O número de telefone parece inválido"
+    },
+    "select": {
+      "invalid": "A seleção parece inválida"
     }
   }
 }

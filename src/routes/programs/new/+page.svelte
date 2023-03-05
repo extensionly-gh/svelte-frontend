@@ -1,9 +1,11 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { Button, SettingsCard, TextInput } from '$lib/components';
 	import { Select, SelectOption, TextArea } from '$lib/components/form';
 	import { createProgramSchema } from '$lib/schemas/programs';
+	import { trpc } from '$lib/trpc/client';
 	import { validateSchema } from '@felte/validator-zod';
-	import { ListboxOption } from '@rgossiaux/svelte-headlessui';
+	import type { Faculty } from '@prisma/client';
 	import { createForm } from 'felte';
 	import { _ } from 'svelte-i18n';
 	import type { z } from 'zod';
@@ -23,25 +25,18 @@
 		validate: validateSchema(createProgramSchema)
 	});
 
-	const faculties = [
-		{
-			id: 1,
-			name: 'FA - Faculty of Arts'
-		},
-		{
-			id: 2,
-			name: 'FS - Faculty of Science'
-		},
-		{
-			id: 3,
-			name: 'FE - Faculty of Engineering'
-		}
-	];
+	let faculties: Faculty[] = [];
 
-	let selectedFaculty = faculties[0].id;
+	let selectedFaculty = faculties[0]?.id;
 
-	$: $data.facultyId = selectedFaculty.toString();
-	$: facultySelectButtonText = faculties.find((f) => f.id === selectedFaculty)?.name || '';
+	$: $data.facultyId = selectedFaculty?.toString();
+	$: facultySelectButtonText =
+		faculties.find((f) => f.id === selectedFaculty)?.name || $_('p-new.form.faculty-button');
+
+	const fetchFaculties = async () => {
+		faculties = await trpc($page).faculty.getFaculties.query();
+	};
+	let fetchFacultiesPromise: Promise<void> | undefined;
 </script>
 
 <h1 class="text-4xl text-secondary font-semibold text-center mb-12">{$_('p-new.title')}</h1>
@@ -64,12 +59,23 @@
 		bind:selected={selectedFaculty}
 		buttonText={facultySelectButtonText}
 		error={$errors.facultyId?.[0]}
+		on:click={() => (fetchFacultiesPromise ??= fetchFaculties())}
 	>
-		{#each faculties as faculty (faculty.id)}
-			<SelectOption value={faculty.id}>
-				{faculty.name}
-			</SelectOption>
-		{/each}
+		{#await fetchFacultiesPromise}
+			{#each Array(10) as _}
+				<SelectOption skeleton />
+			{/each}
+		{:then value}
+			{#each faculties as faculty (faculty.id)}
+				<SelectOption value={faculty.id}>
+					{faculty.acronym + ' - ' + faculty.name}
+				</SelectOption>
+			{/each}
+		{:catch error}
+			<span class="px-2">
+				{$_('p-new-form.faculty-fetch-error')}
+			</span>
+		{/await}
 	</Select>
 	<Button variants={{ intent: 'primary', width: 'full' }} type="submit" isLoading={$isSubmitting}>
 		{$_('terms.submit')}

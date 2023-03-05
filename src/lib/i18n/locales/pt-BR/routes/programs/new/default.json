@@ -6,7 +6,11 @@
       "title-placeholder": "Título do novo programa",
       "description-label": "Descrição",
       "description-placeholder": "Descrição do novo programa",
-      "faculty-label": "Universidade atrelada ao programa"
+      "faculty-label": "Universidade atrelada ao programa",
+      "faculty-button": "Selecione uma universidade"
     }
+  },
+  "p-new-form": {
+    "faculty-fetch-error": "Erro ao buscar universidades."
   }
 }

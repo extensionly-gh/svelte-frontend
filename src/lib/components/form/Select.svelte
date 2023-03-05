@@ -17,7 +17,7 @@
 		{
 			variants: {
 				intent: {
-					primary: 'border bg-base-200 focus:border-base-content/40'
+					primary: 'border bg-base-200 border-transparent'
 				}
 			},
 			defaultVariants: { intent: 'primary' }
@@ -30,8 +30,8 @@
 		<span class="label-text cursor-default">{label}</span>
 	{/if}
 	<Listbox value={selected} let:open on:change={(e) => (selected = e.detail)}>
-		<ListboxButton class={`${selectStyle(variants)}`}
-			>{buttonText}
+		<ListboxButton on:click class={`${selectStyle(variants)}`}>
+			{buttonText}
 			{#if open}
 				<IconCaretDoubleUp />
 			{:else}
@@ -39,7 +39,7 @@
 			{/if}
 		</ListboxButton>
 		<ListboxOptions
-			class="text-sm py-1 shadow-sm max-h-60 overflow-auto bg-base-200 rounded-md mt-1 border"
+			class="text-sm py-1 shadow-sm max-h-60 overflow-auto bg-base-200 rounded-md mt-1"
 		>
 			<slot />
 		</ListboxOptions>
