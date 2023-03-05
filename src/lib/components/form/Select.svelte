@@ -58,9 +58,12 @@
 		</Listbox>
 		{#if Boolean(info)}
 			<Popover placement="right">
-				<Button slot="button" variants={{ intent: 'ghost' }}>
-					<IconInfo width="22px" height="22px" />
-				</Button>
+				<IconInfo
+					class="text-info-content dark:text-info"
+					slot="button"
+					width="22px"
+					height="22px"
+				/>
 				<div class="text-sm m-2 w-full text-center shadow-md p-2 bg-base-200 rounded-md">
 					{$_(info)}
 				</div>

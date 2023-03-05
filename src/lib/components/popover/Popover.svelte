@@ -25,8 +25,8 @@
 	});
 </script>
 
-<Popover class="relative">
-	<PopoverButton use={[popperRef]}>
+<Popover class="relative items-center flex justify-center">
+	<PopoverButton class="hover:scale-125 transition-all" use={[popperRef]}>
 		<slot name="button" />
 	</PopoverButton>
 
