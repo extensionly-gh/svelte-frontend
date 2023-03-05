@@ -13,7 +13,7 @@
 </script>
 
 <h1 class="text-4xl text-secondary font-semibold text-center mb-12">{$_('p-new.title')}</h1>
-<form use:form class="flex flex-col w-full max-w-xl gap-4">
+<form use:form class="flex bg-base-300 p-4 rounded-md flex-col w-full max-w-xl gap-4">
 	<TextInput
 		error={$errors.title?.[0]}
 		id="title"
