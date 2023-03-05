@@ -5,7 +5,8 @@
       "title-label": "Título",
       "title-placeholder": "Título do novo programa",
       "description-label": "Descrição",
-      "description-placeholder": "Descrição do novo programa"
+      "description-placeholder": "Descrição do novo programa",
+      "faculty-label": "Universidade atrelada ao programa"
     }
   }
 }
