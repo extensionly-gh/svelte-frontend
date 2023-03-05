@@ -14,7 +14,7 @@
 		<span class="font-semibold">
 			<slot />
 		</span>
-		<IconCheck width="24px" height="24px" class="float-right" />
+		<IconCheck width="22px" height="22px" class="float-right" />
 	{:else}
 		<slot />
 	{/if}
