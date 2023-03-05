@@ -7,7 +7,8 @@
       "description-label": "Descrição",
       "description-placeholder": "Descrição do novo programa",
       "faculty-label": "Universidade atrelada ao programa",
-      "faculty-button": "Selecione uma universidade"
+      "faculty-button": "Selecione uma universidade",
+      "faculty-info": "Se sua universidade não se encontra na lista, nos envie um email em: suporte@extensionly.app"
     }
   },
   "p-new-form": {

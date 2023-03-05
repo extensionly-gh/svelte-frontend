@@ -60,6 +60,7 @@
 		buttonText={facultySelectButtonText}
 		error={$errors.facultyId?.[0]}
 		on:click={() => (fetchFacultiesPromise ??= fetchFaculties())}
+		info={$_('p-new.form.faculty-info')}
 	>
 		{#await fetchFacultiesPromise}
 			{#each Array(10) as _}
@@ -76,6 +77,10 @@
 				{$_('p-new-form.faculty-fetch-error')}
 			</span>
 		{/await}
+	</Select>
+	<Select id="visibility" label={$_('p-new.form.visibility-label')} error={$errors.visibility?.[0]}>
+		<SelectOption value="PUBLIC">{$_('p-new.form.visibility-public')}</SelectOption>
+		<SelectOption value="PRIVATE">{$_('p-new.form.visibility-private')}</SelectOption>
 	</Select>
 	<Button variants={{ intent: 'primary', width: 'full' }} type="submit" isLoading={$isSubmitting}>
 		{$_('terms.submit')}
