@@ -60,7 +60,7 @@ model UserEnrollments {
 
 model Program {
   id          String          @id @unique @default(uuid())
-  name        String
+  title       String
   description String          @db.LongText
   facultyId   String
   createdAt   DateTime        @default(now())

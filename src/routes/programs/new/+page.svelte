@@ -2,25 +2,31 @@
 	import { page } from '$app/stores';
 	import { Button, SettingsCard, TextInput } from '$lib/components';
 	import { Select, SelectOption, TextArea } from '$lib/components/form';
+	import { toastSuccess } from '$lib/components/toast';
 	import { createProgramSchema } from '$lib/schemas/programs';
 	import { trpc } from '$lib/trpc/client';
+	import { handleErrorInClient } from '$lib/utils';
 	import { validateSchema } from '@felte/validator-zod';
-	import type { Faculty } from '@prisma/client';
+	import type { EventVisibility, Faculty } from '@prisma/client';
 	import { createForm } from 'felte';
 	import { _ } from 'svelte-i18n';
 	import type { z } from 'zod';
 
-	const { form, errors, isValid, isSubmitting, data } = createForm<
+	const { form, errors, isSubmitting, data, resetField } = createForm<
 		z.infer<typeof createProgramSchema>
 	>({
 		initialValues: {
-			title: 'Meu novo programa',
-			description: 'Descrição do meu novo programa',
-			facultyId: '',
 			visibility: 'PUBLIC'
 		},
-		onSubmit: (values) => {
-			console.log('values', values);
+		onSubmit: async (values) => {
+			try {
+				await trpc($page).program.createProgram.mutate(values);
+				toastSuccess($_('p-new.toast.success'));
+				resetField('title');
+				resetField('description');
+			} catch (error) {
+				handleErrorInClient(error);
+			}
 		},
 		validate: validateSchema(createProgramSchema)
 	});
@@ -28,7 +34,9 @@
 	let faculties: Faculty[] = [];
 
 	let selectedFaculty = faculties[0]?.id;
+	let selectedVisibility: EventVisibility = 'PUBLIC';
 
+	$: $data.visibility = selectedVisibility;
 	$: $data.facultyId = selectedFaculty?.toString();
 	$: facultySelectButtonText =
 		faculties.find((f) => f.id === selectedFaculty)?.name || $_('p-new.form.faculty-button');
@@ -78,7 +86,14 @@
 			</span>
 		{/await}
 	</Select>
-	<Select id="visibility" label={$_('p-new.form.visibility-label')} error={$errors.visibility?.[0]}>
+	<Select
+		id="visibility"
+		label={$_('p-new.form.visibility-label')}
+		error={$errors.visibility?.[0]}
+		info={$_('p-new.form.visibility-info')}
+		bind:selected={selectedVisibility}
+		buttonText={$_('p-new.form.visibility-' + selectedVisibility.toLowerCase())}
+	>
 		<SelectOption value="PUBLIC">{$_('p-new.form.visibility-public')}</SelectOption>
 		<SelectOption value="PRIVATE">{$_('p-new.form.visibility-private')}</SelectOption>
 	</Select>

@@ -8,7 +8,6 @@ const prisma = new PrismaClient();
 async function main() {
 	const adminUserId = randomUUID();
 	const normalUserId = randomUUID();
-	const defaultFaculty = 'Unipampa';
 	const projectSocialId = randomUUID();
 	const projectOnlineId = randomUUID();
 	let currentPhoneNumber = '+5551999999999';

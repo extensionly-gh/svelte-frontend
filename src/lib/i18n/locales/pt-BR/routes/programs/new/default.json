@@ -8,7 +8,14 @@
       "description-placeholder": "Descrição do novo programa",
       "faculty-label": "Universidade atrelada ao programa",
       "faculty-button": "Selecione uma universidade",
-      "faculty-info": "Se sua universidade não se encontra na lista, nos envie um email em: suporte@extensionly.app"
+      "faculty-info": "Se sua universidade não se encontra na lista, nos envie um email em: suporte@extensionly.app",
+      "visibility-label": "Visibilidade do programa",
+      "visibility-public": "Pública",
+      "visibility-private": "Privada",
+      "visibility-info": "Na visibilidade pública, as inscrições de atividades relacionadas ao programa são abertas à todas as pessoas. Na privada, apenas à pessoas da mesma universidade."
+    },
+    "toast": {
+      "success": "Programa criado com sucesso!"
     }
   },
   "p-new-form": {

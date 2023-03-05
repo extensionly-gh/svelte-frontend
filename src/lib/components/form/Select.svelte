@@ -2,8 +2,8 @@
 	import { cva, type VariantProps } from 'class-variance-authority';
 	import { _ } from 'svelte-i18n';
 	import { Listbox, ListboxButton, ListboxOptions } from '@rgossiaux/svelte-headlessui';
-	import IconCaretDoubleDown from '~icons/ph/caret-double-down';
-	import IconCaretDoubleUp from '~icons/ph/caret-double-up';
+	import IconCaretDown from '~icons/ph/caret-down';
+	import IconCaretUp from '~icons/ph/caret-up';
 	import IconInfo from '~icons/ph/info';
 	import Button from '../button/Button.svelte';
 	import Popover from '../popover';
@@ -21,7 +21,8 @@
 		{
 			variants: {
 				intent: {
-					primary: 'border bg-base-200 border-transparent'
+					primary: 'border bg-base-200 border-transparent',
+					error: 'border-2 border-error bg-base-200'
 				}
 			},
 			defaultVariants: { intent: 'primary' }
@@ -35,12 +36,18 @@
 	{/if}
 	<div class="flex gap-2">
 		<Listbox class="w-full" value={selected} let:open on:change={(e) => (selected = e.detail)}>
-			<ListboxButton on:click class={`${selectStyle(variants)}`}>
+			<ListboxButton
+				on:click
+				class={`${selectStyle({
+					...variants,
+					intent: Boolean(error) ? 'error' : variants.intent
+				})}`}
+			>
 				{buttonText}
 				{#if open}
-					<IconCaretDoubleUp />
+					<IconCaretUp />
 				{:else}
-					<IconCaretDoubleDown />
+					<IconCaretDown />
 				{/if}
 			</ListboxButton>
 			<ListboxOptions
@@ -54,7 +61,7 @@
 				<Button slot="button" variants={{ intent: 'ghost' }}>
 					<IconInfo width="22px" height="22px" />
 				</Button>
-				<div class="text-sm m-2 max-w-xs text-center shadow-md p-2 bg-base-200 rounded-md">
+				<div class="text-sm m-2 w-full text-center shadow-md p-2 bg-base-200 rounded-md">
 					{$_(info)}
 				</div>
 			</Popover>
