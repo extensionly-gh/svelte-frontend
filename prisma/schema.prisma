@@ -59,14 +59,15 @@ model UserEnrollments {
 }
 
 model Program {
-  id         String          @id @unique @default(uuid())
-  name       String
-  facultyId  String
-  createdAt  DateTime        @default(now())
-  updatedAt  DateTime        @updatedAt
-  visibility EventVisibility @default(PUBLIC)
-  Faculty    Faculty         @relation(fields: [facultyId], references: [id])
-  Project    Project[]
+  id          String          @id @unique @default(uuid())
+  name        String
+  description String          @db.LongText
+  facultyId   String
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  visibility  EventVisibility @default(PUBLIC)
+  Faculty     Faculty         @relation(fields: [facultyId], references: [id])
+  Project     Project[]
 
   @@index([facultyId])
 }

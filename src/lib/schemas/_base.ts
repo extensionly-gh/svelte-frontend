@@ -5,10 +5,12 @@ const stringLarge = z.string().min(1, 'zod.string.min').max(1000, 'zod.string.ma
 
 export const base = {
 	enums: {
+		visibilityType: z.enum(['PUBLIC', 'PRIVATE']),
 		verificationType: z.enum(['VALIDATE_EMAIL', 'VALIDATE_PHONE', 'RESET_PASSWORD'])
 	},
 	strings: {
 		default: stringDefault,
+		large: stringLarge,
 		email: stringDefault.email('zod.email.invalid'),
 		password: z
 			.string()

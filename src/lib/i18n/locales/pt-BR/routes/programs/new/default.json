@@ -1,0 +1,11 @@
+{
+  "p-new": {
+    "title": "Crie um novo programa de extensão",
+    "form": {
+      "title-label": "Título",
+      "title-placeholder": "Título do novo programa",
+      "description-label": "Descrição",
+      "description-placeholder": "Descrição do novo programa"
+    }
+  }
+}

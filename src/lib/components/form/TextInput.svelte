@@ -20,7 +20,7 @@
 		type = isPasswordHidden ? 'text' : 'password';
 	}
 
-	const inputStyles = cva(
+	export const inputStyles = cva(
 		'focus:outline-none input p-2 h-[2.5rem] rounded-md placeholder:text-base-content/40 placeholder:text-sm w-full text-sm',
 		{
 			variants: {
