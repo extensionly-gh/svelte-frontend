@@ -97,7 +97,12 @@
 		<SelectOption value="PUBLIC">{$_('p-new.form.visibility-public')}</SelectOption>
 		<SelectOption value="PRIVATE">{$_('p-new.form.visibility-private')}</SelectOption>
 	</Select>
-	<Button variants={{ intent: 'primary', width: 'full' }} type="submit" isLoading={$isSubmitting}>
+	<Button
+		data-testid="submit-btn"
+		variants={{ intent: 'primary', width: 'full' }}
+		type="submit"
+		isLoading={$isSubmitting}
+	>
 		{$_('terms.submit')}
 	</Button>
 </form>

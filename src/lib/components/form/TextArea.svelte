@@ -16,6 +16,7 @@
 		<label class="label-text" for={id}>{label}</label>
 	{/if}
 	<textarea
+		data-testid={`${id}-textarea`}
 		{placeholder}
 		class={`w-full ${inputStyles({
 			intent: !!error ? 'error' : variants.intent,

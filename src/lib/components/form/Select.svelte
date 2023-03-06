@@ -37,6 +37,7 @@
 	<div class="flex gap-2">
 		<Listbox class="w-full" value={selected} let:open on:change={(e) => (selected = e.detail)}>
 			<ListboxButton
+				data-testid={`select-${id}-btn`}
 				on:click
 				class={`${selectStyle({
 					...variants,
