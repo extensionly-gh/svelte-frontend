@@ -17,7 +17,8 @@ test.describe('reset-password', () => {
 		// Token is mocked for this user in the seed file
 		const mockedToken = 'm0ck3d-p4ssw0rd-r3s3t-t0k3n';
 
-		await page.goto('/verify/reset-password/' + mockedToken);
+		await page.goto('/verify/reset-password/' + mockedToken, { waitUntil: 'networkidle' });
+
 		await page.getByTestId('newPwd-input').fill(newPassword);
 		await page.getByTestId('confirmPwd-input').fill(newPassword);
 		await page.getByTestId('resetpw-submit-button').click();

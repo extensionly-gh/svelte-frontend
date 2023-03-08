@@ -9,7 +9,8 @@ test.use({
 });
 
 test('fails to create program user not logged in', async ({ page }) => {
-	await page.goto('/programs/new');
+	await page.goto('/programs/new', { waitUntil: 'networkidle' });
+
 	await page.getByTestId('title-input').fill('My new program');
 	await page.getByTestId('description-textarea').fill('My new programs description');
 	await page.getByTestId('select-facultyId-btn').click();
