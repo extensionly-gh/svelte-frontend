@@ -10,7 +10,7 @@ specifiers:
   '@popperjs/core': ^2.11.6
   '@prisma/client': 4.11.0
   '@rgossiaux/svelte-headlessui': ^1.0.2
-  '@sveltejs/adapter-auto': ^1.0.3
+  '@sveltejs/adapter-auto': ^2.0.0
   '@sveltejs/adapter-node': ^1.2.0
   '@sveltejs/adapter-vercel': ^1.0.6
   '@sveltejs/kit': 1.11.0
@@ -74,7 +74,7 @@ devDependencies:
   '@popperjs/core': 2.11.6
   '@prisma/client': 4.11.0_prisma@4.11.0
   '@rgossiaux/svelte-headlessui': 1.0.2_svelte@3.55.1
-  '@sveltejs/adapter-auto': 1.0.3_@sveltejs+kit@1.11.0
+  '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.11.0
   '@sveltejs/adapter-node': 1.2.0_@sveltejs+kit@1.11.0
   '@sveltejs/adapter-vercel': 1.0.6_@sveltejs+kit@1.11.0
   '@sveltejs/kit': 1.11.0_svelte@3.55.1+vite@4.1.4
@@ -791,8 +791,8 @@ packages:
       rollup: 3.17.2
     dev: true
 
-  /@sveltejs/adapter-auto/1.0.3_@sveltejs+kit@1.11.0:
-    resolution: {integrity: sha1-G+F2ynQA+srLd68SLGz79pYJcG4=}
+  /@sveltejs/adapter-auto/2.0.0_@sveltejs+kit@1.11.0:
+    resolution: {integrity: sha512-b+gkHFZgD771kgV3aO4avHFd7y1zhmMYy9i6xOK7m/rwmwaRO8gnF5zBc0Rgca80B2PMU1bKNxyBTHA14OzUAQ==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
@@ -2354,7 +2354,7 @@ packages:
     dev: true
 
   /import-meta-resolve/2.2.1:
-    resolution: {integrity: sha1-gP3t28FdfzmSw3QlAj/7Ssp8tYM=}
+    resolution: {integrity: sha512-C6lLL7EJPY44kBvA80gq4uMsVFw5x3oSKfuMl1cuZ2RkI5+UJqQXgn+6hlUew0y4ig7Ypt4CObAAIzU53Nfpuw==}
     dev: true
 
   /imurmurhash/0.1.4:
