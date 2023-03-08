@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@auth/core': ^0.2.5
-  '@auth/sveltekit': ^0.1.12
+  '@auth/sveltekit': ^0.3.0
   '@felte/validator-zod': ^1.0.13
   '@iconify/json': ^2.2.25
   '@openapitools/openapi-generator-cli': ^2.5.2
@@ -66,7 +66,7 @@ dependencies:
 
 devDependencies:
   '@auth/core': 0.2.5
-  '@auth/sveltekit': 0.1.12_exf4tefbq3msfml2leeazdfklu
+  '@auth/sveltekit': 0.3.0_exf4tefbq3msfml2leeazdfklu
   '@felte/validator-zod': 1.0.13_zod@3.20.6
   '@iconify/json': 2.2.25
   '@openapitools/openapi-generator-cli': 2.5.2
@@ -151,13 +151,29 @@ packages:
       preact-render-to-string: 5.2.3_preact@10.11.3
     dev: true
 
-  /@auth/sveltekit/0.1.12_exf4tefbq3msfml2leeazdfklu:
-    resolution: {integrity: sha1-n31FmlvA/NUK/njWS1edHwwn5s0=}
+  /@auth/core/0.5.1:
+    resolution: {integrity: sha512-t9z8F7dkuVceKWBmMy1fd2t6H+vfRju/YJ1lm+6RnJ7pNEvX5qMR874wg0+cYbWvyZazLi8fFK/FA6I3D5sSkA==}
+    peerDependencies:
+      nodemailer: ^6.8.0
+    peerDependenciesMeta:
+      nodemailer:
+        optional: true
+    dependencies:
+      '@panva/hkdf': 1.0.4
+      cookie: 0.5.0
+      jose: 4.12.0
+      oauth4webapi: 2.1.0
+      preact: 10.11.3
+      preact-render-to-string: 5.2.3_preact@10.11.3
+    dev: true
+
+  /@auth/sveltekit/0.3.0_exf4tefbq3msfml2leeazdfklu:
+    resolution: {integrity: sha512-J9uwaKadzPaQMYec9CYpa9WAjV5EIMEhj4vTuJH6HTp2FJOOJQB5t19WqWv9rYzBVm2rBTPPplQXPI5UKOvg4Q==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
       svelte: ^3.54.0
     dependencies:
-      '@auth/core': 0.2.5
+      '@auth/core': 0.5.1
       '@sveltejs/kit': 1.11.0_svelte@3.55.1+vite@4.1.4
       svelte: 3.55.1
     transitivePeerDependencies:
