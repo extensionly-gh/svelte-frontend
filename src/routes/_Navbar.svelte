@@ -10,6 +10,7 @@
 	import IconMagnifyingGlass from '~icons/ph/magnifying-glass';
 	import IconSignOut from '~icons/ph/sign-out';
 	import IconUser from '~icons/ph/user';
+	import IconNewspaperBold from '~icons/ph/newspaper-bold';
 
 	const userMenuItems = [
 		{ text: $_('terms.my-account'), icon: IconUser, to: '/account', id: 'my-account' },
@@ -26,9 +27,13 @@
 <div
 	class="navbar sticky flex justify-between top-2 shadow-md bg-base-300 m-2 rounded-box mb-20 z-10 gap-2 px-3"
 >
-	<div class="lg:w-52">
+	<div class="lg:w-52 flex gap-1">
 		<Button to="/" variants={{ intent: 'ghost' }} data-testid="nav-home-btn">
 			<IconHouse width="32px" height="32px" />
+		</Button>
+		<Button to="/programs" variants={{ intent: 'ghost' }} data-testid="nav-home-btn">
+			<IconNewspaperBold width="24px" height="24px" />
+			<span class="hidden md:block">{$_('terms.programs')}</span>
 		</Button>
 	</div>
 	{#if $page.url.pathname != '/activities'}
