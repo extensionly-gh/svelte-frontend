@@ -37,7 +37,6 @@
 		"@popperjs/core": "^2.11.6",
 		"@prisma/client": "4.11.0",
 		"@rgossiaux/svelte-headlessui": "^1.0.2",
-		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-node": "^1.2.0",
 		"@sveltejs/adapter-vercel": "^2.0.0",
 		"@sveltejs/kit": "1.11.0",
@@ -54,8 +53,10 @@
 		"@typescript-eslint/parser": "^5.53.0",
 		"@zerodevx/svelte-toast": "1.0.0-rc.2",
 		"autoprefixer": "^10.4.13",
+		"bcrypt": "^5.1.0",
 		"class-variance-authority": "^0.4.0",
 		"daisyui": "^2.50.2",
+		"date-fns": "^2.29.3",
 		"eslint": "^8.34.0",
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -88,10 +89,6 @@
 	"type": "module",
 	"prisma": {
 		"seed": "prisma/seed.sh"
-	},
-	"dependencies": {
-		"bcrypt": "^5.1.0",
-		"date-fns": "^2.29.3"
 	},
 	"lint-staged": {
 		"*.{svelte,ts,html,css,json}": "pnpm run format:staged"
