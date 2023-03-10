@@ -2,7 +2,7 @@ import { signupSchema } from '$lib/schemas';
 import { prisma } from '$lib/server/singletons';
 import { hashPassword } from '$lib/server/utils';
 import { publicProcedure } from '$lib/trpc/t';
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { TRPCError } from '@trpc/server';
 
 export const createUser = publicProcedure.input(signupSchema).mutation(async ({ input }) => {
