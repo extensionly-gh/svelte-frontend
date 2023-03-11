@@ -3,7 +3,7 @@
 	import { Button, SettingsCard, TextInput } from '$lib/components';
 	import { Select, SelectOption, TextArea } from '$lib/components/form';
 	import { toastSuccess } from '$lib/components/toast';
-	import { createProgramSchema } from '$lib/schemas/programs';
+	import { createProgramSchema } from '$lib/schemas';
 	import { trpc } from '$lib/trpc/client';
 	import { handleErrorInClient } from '$lib/utils';
 	import { validateSchema } from '@felte/validator-zod';
@@ -15,9 +15,6 @@
 	const { form, errors, isSubmitting, data, resetField } = createForm<
 		z.infer<typeof createProgramSchema>
 	>({
-		initialValues: {
-			visibility: 'PUBLIC'
-		},
 		onSubmit: async (values) => {
 			try {
 				await trpc($page).program.createProgram.mutate(values);

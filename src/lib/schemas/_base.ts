@@ -5,8 +5,17 @@ const stringLarge = z.string().min(1, 'zod.string.min').max(1000, 'zod.string.ma
 
 export const base = {
 	enums: {
-		visibilityType: z.enum(['PUBLIC', 'PRIVATE']),
+		visibilityType: z.enum(['PUBLIC', 'PRIVATE']).default('PUBLIC'),
 		verificationType: z.enum(['VALIDATE_EMAIL', 'VALIDATE_PHONE', 'RESET_PASSWORD'])
+	},
+	booleans: {
+		default: z.boolean().default(false)
+	},
+	selects: {
+		default: z
+			.string({ required_error: 'zod.select.invalid' })
+			.min(1, 'zod.select.invalid')
+			.max(255, 'zod.select.invalid')
 	},
 	strings: {
 		default: stringDefault,
