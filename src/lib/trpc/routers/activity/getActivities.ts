@@ -54,7 +54,7 @@ export const getActivities = publicProcedure
 				},
 				Project: {
 					select: {
-						name: true
+						title: true
 					}
 				},
 				Faculty: {
