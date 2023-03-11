@@ -125,7 +125,7 @@
 	{#if !useProgramFaculty}
 		<Select
 			id="facultyId"
-			label={$_('p-new.form.faculty-label')}
+			label={$_('proj-new.form.faculty-label')}
 			bind:selected={selectedFaculty}
 			buttonText={faculties.find((f) => f.id === selectedFaculty)?.name ||
 				$_('p-new.form.faculty-button')}
@@ -137,7 +137,7 @@
 				{#each Array(10) as _}
 					<SelectOption skeleton />
 				{/each}
-			{:then value}
+			{:then}
 				{#each faculties as faculty (faculty.id)}
 					<SelectOption value={faculty.id}>
 						{faculty.acronym + ' - ' + faculty.name}
