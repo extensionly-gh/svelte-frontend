@@ -6,7 +6,7 @@
       "description-placeholder": "Descrição do novo projeto",
       "program-label": "Programa atrelado a este projeto",
       "program-button": "Selecione um programa de extensão",
-      "program-fetch-error": "Erro ao carregar os programas.",
+      "program-fetch-error": "Algo deu errado ao carregar os programas. Por favor, tente novamente mais tarde.",
       "use-program-faculty": "Selecionar a mesma universidade do programa",
       "use-program-visibility": "Selecionar a mesma visibilidade do programa",
       "accept-students-proposals": "Permitir que alunos proponham novas atividades de extensão para este projeto",

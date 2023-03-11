@@ -12,7 +12,7 @@
       "visibility-label": "Aceitar inscrições de",
       "visibility-public": "Todas as pessoas",
       "visibility-private": "Apenas pessoas com vínculo com a universidade",
-      "faculty-fetch-error": "Erro ao buscar universidades."
+      "faculty-fetch-error": "Algo deu errado ao buscar universidades. Por favor, tente novamente mais tarde."
     },
     "toast": {
       "success": "Programa criado com sucesso!"
