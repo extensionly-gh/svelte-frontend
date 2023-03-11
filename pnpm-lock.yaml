@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@auth/core': ^0.2.5
+  '@auth/core': ^0.5.0
   '@auth/sveltekit': ^0.3.0
   '@felte/validator-zod': ^1.0.13
   '@iconify/json': ^2.2.25
@@ -60,7 +60,7 @@ specifiers:
   zod: ^3.20.6
 
 devDependencies:
-  '@auth/core': 0.2.5
+  '@auth/core': 0.5.1
   '@auth/sveltekit': 0.3.0_exf4tefbq3msfml2leeazdfklu
   '@felte/validator-zod': 1.0.13_zod@3.20.6
   '@iconify/json': 2.2.25
@@ -129,22 +129,6 @@ packages:
 
   /@antfu/utils/0.7.2:
     resolution: {integrity: sha1-O7bzemsYgFb+ni82O2qnNe1l18o=}
-    dev: true
-
-  /@auth/core/0.2.5:
-    resolution: {integrity: sha1-Qf7O+TqeRDcOmgDHR1Hco5kQ0ew=}
-    peerDependencies:
-      nodemailer: 6.8.0
-    peerDependenciesMeta:
-      nodemailer:
-        optional: true
-    dependencies:
-      '@panva/hkdf': 1.0.4
-      cookie: 0.5.0
-      jose: 4.12.0
-      oauth4webapi: 2.1.0
-      preact: 10.11.3
-      preact-render-to-string: 5.2.3_preact@10.11.3
     dev: true
 
   /@auth/core/0.5.1:
@@ -663,7 +647,7 @@ packages:
     dev: true
 
   /@panva/hkdf/1.0.4:
-    resolution: {integrity: sha1-TgK7JIQC/2xcAk4jpoQ44rDmnWc=}
+    resolution: {integrity: sha512-003xWiCuvePbLaPHT+CRuaV4GlyCAVm6XYSbBZDHoWZGn1mNkVKFaDbGJjjxmEFvizUwlCoM6O18FCBMMky2zQ==}
     dev: true
 
   /@playwright/test/1.31.0:
@@ -2526,7 +2510,7 @@ packages:
     dev: true
 
   /jose/4.12.0:
-    resolution: {integrity: sha1-fwDNL4JJm5FiPNQTt7Uof9UmUe0=}
+    resolution: {integrity: sha512-wW1u3cK81b+SFcHjGC8zw87yuyUweEFe0UJirrXEw1NasW00eF7sZjeG3SLBGz001ozxQ46Y9sofDvhBmWFtXQ==}
     dev: true
 
   /js-sdsl/4.3.0:
@@ -2921,7 +2905,7 @@ packages:
     dev: true
 
   /oauth4webapi/2.1.0:
-    resolution: {integrity: sha1-H1LF7RqLL+R0O+hlgWVEKJBd2TI=}
+    resolution: {integrity: sha512-0YjXQA3viCby/So8rja4sBrdLMTTyzuQTzotMTT6uAgqmqanrpt8eBfLLaugUZaMZSzt3IdjJdGadr5YTC+Cww==}
     dev: true
 
   /object-assign/4.1.1:
@@ -3170,7 +3154,7 @@ packages:
     dev: true
 
   /preact-render-to-string/5.2.3_preact@10.11.3:
-    resolution: {integrity: sha1-I9Fzdhgq9yCxBg1aQJmEPH/pL+Q=}
+    resolution: {integrity: sha512-aPDxUn5o3GhWdtJtW0svRC2SS/l8D9MAgo2+AWml+BhDImb27ALf04Q2d+AHqUUOc6RdSXFIBVa2gxzgMKgtZA==}
     peerDependencies:
       preact: '>=10'
     dependencies:
@@ -3179,7 +3163,7 @@ packages:
     dev: true
 
   /preact/10.11.3:
-    resolution: {integrity: sha1-in5LoZ05ksSIsHha/MD4qhPHjRk=}
+    resolution: {integrity: sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==}
     dev: true
 
   /prelude-ls/1.2.1:
@@ -3204,7 +3188,7 @@ packages:
     dev: true
 
   /pretty-format/3.8.0:
-    resolution: {integrity: sha1-v77VbV6ad2ZF9LH/eqGjrE+jw4U=}
+    resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
     dev: true
 
   /prisma/4.11.0:
