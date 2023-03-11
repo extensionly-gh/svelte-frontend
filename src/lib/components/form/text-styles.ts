@@ -9,7 +9,7 @@ export const inputStyles = cva(
 				darker: 'bg-gray-200 dark:bg-gray-900',
 				error: 'border-error border-2 bg-base-200',
 				searchBar:
-					'border bg-gray-200 dark:bg-gray-900 focus:border-base-content/40 rounded-3xl pl-5 	placeholder:text-lg text-lg h-[3rem]'
+					'border bg-base-200 shadow-md focus:border-base-content/40 rounded-3xl pl-5 placeholder:text-lg placeholder:font-medium placeholder:text-base-content/50 text-lg h-[3rem]'
 			},
 			height: {
 				default: 'h-[2.5rem]',

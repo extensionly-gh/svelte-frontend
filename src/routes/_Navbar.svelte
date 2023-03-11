@@ -36,7 +36,7 @@
 			<span class="hidden md:block">{$_('terms.programs')}</span>
 		</Button>
 	</div>
-	{#if $page.url.pathname != '/activities'}
+	{#if $page.url.pathname !== '/activities'}
 		<div class="flex-grow items-center justify-center text-lg gap-2 max-w-xs">
 			<Button
 				class="flex-grow"
