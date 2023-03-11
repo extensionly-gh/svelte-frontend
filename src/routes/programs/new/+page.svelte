@@ -79,7 +79,7 @@
 			{/each}
 		{:catch error}
 			<span class="px-2">
-				{$_('p-new-form.faculty-fetch-error')}
+				{$_('p-new.form.faculty-fetch-error')}
 			</span>
 		{/await}
 	</Select>

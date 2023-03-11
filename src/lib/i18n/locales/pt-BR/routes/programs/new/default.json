@@ -12,13 +12,11 @@
       "visibility-label": "Visibilidade do programa",
       "visibility-public": "Pública",
       "visibility-private": "Privada",
-      "visibility-info": "Na visibilidade pública, as inscrições de atividades relacionadas ao programa são abertas à todas as pessoas. Na privada, apenas à pessoas da mesma universidade."
+      "visibility-info": "Na visibilidade pública, as inscrições de atividades relacionadas ao programa são abertas à todas as pessoas. Na privada, apenas à pessoas da mesma universidade.",
+      "faculty-fetch-error": "Erro ao buscar universidades."
     },
     "toast": {
       "success": "Programa criado com sucesso!"
     }
-  },
-  "p-new-form": {
-    "faculty-fetch-error": "Erro ao buscar universidades."
   }
 }
