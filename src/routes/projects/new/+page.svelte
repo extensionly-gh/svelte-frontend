@@ -30,14 +30,17 @@
 	});
 
 	// Programs select
-	let programs: AppRouterOutput['program']['getProgramsForSelect'] = [];
-	let selectedProgram = programs[0]?.id;
+	let programs: AppRouterOutput['program']['getProgramsForSelect'] = [
+		{ id: '-1', title: $_('proj-new.form.program-none'), facultyId: '', visibility: 'PUBLIC' }
+	];
+	let selectedProgram = programs[1]?.id;
 	let fetchProgramsPromise: Promise<void> | undefined;
+	$: bindToProgram = selectedProgram !== '-1';
 
 	$: $data.programId = selectedProgram;
 
 	const fetchPrograms = async () => {
-		programs = await trpc($page).program.getProgramsForSelect.query();
+		programs = [...programs, ...(await trpc($page).program.getProgramsForSelect.query())];
 	};
 
 	// Faculties select
@@ -55,7 +58,7 @@
 	// Checkboxes
 	let useProgramFaculty = true;
 	$: {
-		if (useProgramFaculty) {
+		if (useProgramFaculty && bindToProgram) {
 			$data.facultyId = programs.find((p) => p.id === selectedProgram)?.facultyId || '';
 		} else {
 			$data.facultyId = selectedFaculty;
@@ -63,7 +66,7 @@
 	}
 	let useProgramVisibility = true;
 	$: {
-		if (useProgramVisibility) {
+		if (useProgramVisibility && bindToProgram) {
 			$data.visibility = programs.find((p) => p.id === selectedProgram)?.visibility || 'PUBLIC';
 		} else {
 			$data.visibility = selectedVisibility;
@@ -111,18 +114,20 @@
 		{/await}
 	</Select>
 
-	<label for="useProgramFaculty" class="text-sm flex items-center gap-2">
-		<input
-			id="useProgramFaculty"
-			data-testid="use-program-faculty"
-			type="checkbox"
-			class="checkbox"
-			bind:checked={useProgramFaculty}
-		/>
-		{$_('proj-new.form.use-program-faculty')}
-	</label>
+	{#if bindToProgram}
+		<label for="useProgramFaculty" class="text-sm flex items-center gap-2">
+			<input
+				id="useProgramFaculty"
+				data-testid="use-program-faculty"
+				type="checkbox"
+				class="checkbox"
+				bind:checked={useProgramFaculty}
+			/>
+			{$_('proj-new.form.use-program-faculty')}
+		</label>
+	{/if}
 
-	{#if !useProgramFaculty}
+	{#if !useProgramFaculty || !bindToProgram}
 		<Select
 			id="facultyId"
 			label={$_('proj-new.form.faculty-label')}
@@ -151,18 +156,20 @@
 		</Select>
 	{/if}
 
-	<label for="useProgramVisibility" class="text-sm flex items-center gap-2">
-		<input
-			id="useProgramVisibility"
-			data-testid="use-program-visibility"
-			type="checkbox"
-			class="checkbox"
-			bind:checked={useProgramVisibility}
-		/>
-		{$_('proj-new.form.use-program-visibility')}
-	</label>
+	{#if bindToProgram}
+		<label for="useProgramVisibility" class="text-sm flex items-center gap-2">
+			<input
+				id="useProgramVisibility"
+				data-testid="use-program-visibility"
+				type="checkbox"
+				class="checkbox"
+				bind:checked={useProgramVisibility}
+			/>
+			{$_('proj-new.form.use-program-visibility')}
+		</label>
+	{/if}
 
-	{#if !useProgramVisibility}
+	{#if !useProgramVisibility || !bindToProgram}
 		<Select
 			id="visibility"
 			label={$_('p-new.form.visibility-label')}

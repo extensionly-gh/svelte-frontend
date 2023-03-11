@@ -11,7 +11,8 @@
       "use-program-visibility": "Selecionar a mesma visibilidade do programa",
       "accept-students-proposals": "Permitir que alunos proponham novas atividades de extensão para este projeto",
       "visibility-label": "Visibilidade do projeto",
-      "faculty-label": "Universidade atrelada ao projeto"
+      "faculty-label": "Universidade atrelada ao projeto",
+      "program-none": "Não atrelar a nenhum programa"
     },
     "toast": {
       "success": "Projeto criado com sucesso!"
