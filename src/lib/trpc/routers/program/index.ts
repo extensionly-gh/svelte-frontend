@@ -1,8 +1,8 @@
 import { router } from '$lib/trpc/t';
 import { createProgram } from './createProgram';
-
-export * from './createProgram';
+import { getProgramsForSelect } from './getProgramsForSelect';
 
 export const programRouter = router({
-	createProgram: createProgram
+	createProgram: createProgram,
+	getProgramsForSelect: getProgramsForSelect
 });
