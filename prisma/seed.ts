@@ -745,9 +745,10 @@ async function main() {
 	await prisma.project.create({
 		data: {
 			id: projectSocialId,
+			description: 'Projeto de ajuda social e ambiental na cidade de Alegrete',
 			acceptStudentsProposals: false,
 			facultyId: facultyUnipampa.id,
-			name: 'Ajuda ambiental e social na cidade de Alegrete'
+			title: 'Ajuda ambiental e social na cidade de Alegrete'
 		}
 	});
 	await prisma.activity.create({
@@ -869,7 +870,8 @@ async function main() {
 			id: projectOnlineId,
 			acceptStudentsProposals: true,
 			facultyId: facultyUnipampa.id,
-			name: 'Workshops online sobre Engenharia de Software'
+			title: 'Workshops online sobre Engenharia de Software',
+			description: 'Workshops online sobre Engenharia de Software'
 		}
 	});
 	for (let i = 0; i < 20; i++) {

@@ -9,10 +9,9 @@
       "faculty-label": "Universidade atrelada ao programa",
       "faculty-button": "Selecione uma universidade",
       "faculty-info": "Se sua universidade não se encontra na lista, nos envie um email em: suporte@extensionly.app",
-      "visibility-label": "Visibilidade do programa",
-      "visibility-public": "Pública",
-      "visibility-private": "Privada",
-      "visibility-info": "Na visibilidade pública, as inscrições de atividades relacionadas ao programa são abertas à todas as pessoas. Na privada, apenas à pessoas da mesma universidade.",
+      "visibility-label": "Aceitar inscrições de",
+      "visibility-public": "Todas as pessoas",
+      "visibility-private": "Apenas pessoas com vínculo com a universidade",
       "faculty-fetch-error": "Erro ao buscar universidades."
     },
     "toast": {

@@ -74,13 +74,14 @@ model Program {
 
 model Project {
   id                      String          @id @unique @default(uuid())
-  name                    String
+  title                   String
+  description             String          @db.LongText
   programId               String?
   acceptStudentsProposals Boolean
   facultyId               String
+  visibility              EventVisibility @default(PUBLIC)
   createdAt               DateTime        @default(now())
   updatedAt               DateTime        @updatedAt
-  visibility              EventVisibility @default(PUBLIC)
   Faculty                 Faculty         @relation(fields: [facultyId], references: [id])
   Activity                Activity[]
   Program                 Program?        @relation(fields: [programId], references: [id])

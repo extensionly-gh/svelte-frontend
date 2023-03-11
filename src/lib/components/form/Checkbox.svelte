@@ -7,7 +7,7 @@
 </script>
 
 <div class={`form-control w-full ${$$props.class}`}>
-	<div class="w-full flex gap-2 items-center justify-center">
+	<div class="w-full flex gap-2 items-center">
 		<input
 			{id}
 			name={id}

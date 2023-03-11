@@ -30,7 +30,9 @@
     "search-word": "Procurar",
     "a": "A",
     "submit": "Enviar",
-    "programs": "Programas"
+    "programs": "Programas",
+    "projects": "Projetos",
+    "activities": "Atividades"
   },
   "dialogs": {
     "auth": {

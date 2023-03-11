@@ -7,5 +7,5 @@ export const createProjectSchema = z.object({
 	programId: base.selects.default,
 	facultyId: base.selects.default,
 	visibility: base.enums.visibilityType,
-	acceptStudentProposals: base.booleans.default
+	acceptStudentsProposals: base.booleans.default
 });

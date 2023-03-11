@@ -4,6 +4,7 @@ import {
 	activityRouter,
 	facultyRouter,
 	programRouter,
+	projectRouter,
 	userRouter,
 	verificationRouter
 } from './routers';
@@ -13,7 +14,8 @@ export const appRouter = router({
 	verification: verificationRouter,
 	activity: activityRouter,
 	faculty: facultyRouter,
-	program: programRouter
+	program: programRouter,
+	project: projectRouter
 });
 
 export type AppRouter = typeof appRouter;

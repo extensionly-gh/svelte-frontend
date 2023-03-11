@@ -13,7 +13,7 @@ export const base = {
 	},
 	selects: {
 		default: z
-			.string({ required_error: 'zod.select.invalid' })
+			.string({ required_error: 'zod.select.invalid', invalid_type_error: 'zod.select.invalid' })
 			.min(1, 'zod.select.invalid')
 			.max(255, 'zod.select.invalid')
 	},

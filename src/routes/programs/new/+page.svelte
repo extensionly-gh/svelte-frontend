@@ -87,7 +87,6 @@
 		id="visibility"
 		label={$_('p-new.form.visibility-label')}
 		error={$errors.visibility?.[0]}
-		info={$_('p-new.form.visibility-info')}
 		bind:selected={selectedVisibility}
 		buttonText={$_('p-new.form.visibility-' + selectedVisibility.toLowerCase())}
 	>
