@@ -9,7 +9,8 @@
       "uppercase": "Deve ter ao menos uma letra maiúscula",
       "lowercase": "Deve ter ao menos uma letra minúscula",
       "numeric": "Deve ter ao menos um número",
-      "symbol": "Deve ter ao menos um símbolo"
+      "symbol": "Deve ter ao menos um símbolo",
+      "required": "Campo obrigatório"
     },
     "email": {
       "invalid": "O endereço de e-mail parece inválido"

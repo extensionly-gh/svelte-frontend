@@ -1,7 +1,10 @@
 import { z } from 'zod';
 
-const stringDefault = z.string().min(1, 'zod.string.min').max(255, 'zod.string.max');
-const stringLarge = z.string().min(1, 'zod.string.min').max(1000, 'zod.string.max');
+const stringDefault = z
+	.string({ required_error: 'zod.string.required', invalid_type_error: 'zod.string.required' })
+	.min(1, 'zod.string.required')
+	.max(255, 'zod.string.max');
+const stringLarge = z.string().min(1, 'zod.string.required').max(1000, 'zod.string.max');
 
 export const base = {
 	enums: {
