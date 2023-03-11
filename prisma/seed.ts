@@ -1,17 +1,17 @@
 import { PrismaClient, Role, StateAcronym, TargetAudience, VerificationType } from '@prisma/client';
-import { randomUUID } from 'crypto';
 import { DateTime } from 'luxon';
 import { hashPassword } from '../src/lib/server/utils';
 
 const prisma = new PrismaClient();
 
 async function main() {
-	const adminUserId = randomUUID();
-	const normalUserId = randomUUID();
-	const projectSocialId = randomUUID();
-	const projectOnlineId = randomUUID();
+	const adminUserId = 'TEST-adminUserId';
+	const normalUserId = 'TEST-normalUserId';
+	const projectSocialId = 'TEST-projectSocialId';
+	const projectOnlineId = 'TEST-projectOnlineId';
 	let currentPhoneNumber = '+5551999999999';
 	const password = await hashPassword('#1Abcdef');
+	const programId = 'TEST-programId';
 
 	const getPhoneNumber = () => {
 		currentPhoneNumber = currentPhoneNumber.replace(/\d+$/, (n) => (parseInt(n) - 1).toString());
@@ -895,6 +895,14 @@ async function main() {
 			}
 		});
 	}
+	await prisma.program.create({
+		data: {
+			id: programId,
+			title: 'Programa de Extensão em Engenharia de Software',
+			description: 'Programa de Extensão em Engenharia de Software',
+			facultyId: facultyUnipampa.id
+		}
+	});
 }
 
 main()

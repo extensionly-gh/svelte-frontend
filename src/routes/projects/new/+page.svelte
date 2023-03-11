@@ -114,6 +114,7 @@
 	<label for="useProgramFaculty" class="text-sm flex items-center gap-2">
 		<input
 			id="useProgramFaculty"
+			data-testid="use-program-faculty"
 			type="checkbox"
 			class="checkbox"
 			bind:checked={useProgramFaculty}
@@ -153,6 +154,7 @@
 	<label for="useProgramVisibility" class="text-sm flex items-center gap-2">
 		<input
 			id="useProgramVisibility"
+			data-testid="use-program-visibility"
 			type="checkbox"
 			class="checkbox"
 			bind:checked={useProgramVisibility}
@@ -176,6 +178,7 @@
 	<label for="acceptStudentsProposals" class="text-sm flex items-center gap-2">
 		<input
 			id="acceptStudentsProposals"
+			data-testid="accept-students-proposals"
 			type="checkbox"
 			class="checkbox"
 			bind:checked={$data.acceptStudentsProposals}
