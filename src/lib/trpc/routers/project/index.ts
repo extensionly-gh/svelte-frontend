@@ -1,6 +1,6 @@
 import { router } from '$lib/trpc/t';
-import { createProgram } from './createProject';
+import { createProject } from './createProject';
 
 export const projectRouter = router({
-	createProgram: createProgram
+	createProject: createProject
 });

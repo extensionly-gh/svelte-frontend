@@ -3,7 +3,7 @@ import { prisma } from '$lib/server/singletons';
 import { authProcedure } from '$lib/trpc/t';
 import type { Prisma } from '@prisma/client';
 
-export const createProgram = authProcedure
+export const createProject = authProcedure
 	.input(createProjectSchema)
 	.mutation(async ({ input }) => {
 		const data: Prisma.ProjectCreateInput = {

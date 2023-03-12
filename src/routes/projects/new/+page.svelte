@@ -18,7 +18,7 @@
 	>({
 		onSubmit: async (values) => {
 			try {
-				await trpc($page).project.createProgram.mutate(values);
+				await trpc($page).project.createProject.mutate(values);
 				toastSuccess($_('proj-new.toast.success'));
 				resetField('title');
 				resetField('description');
