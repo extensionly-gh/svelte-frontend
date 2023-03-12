@@ -1,0 +1,21 @@
+{
+  "proj-new": {
+    "title": "Crie um novo projeto de extensão",
+    "form": {
+      "title-placeholder": "Título do novo projeto",
+      "description-placeholder": "Descrição do novo projeto",
+      "program-label": "Programa atrelado a este projeto",
+      "program-button": "Selecione um programa de extensão",
+      "program-fetch-error": "Algo deu errado ao carregar os programas. Por favor, tente novamente mais tarde.",
+      "use-program-faculty": "Selecionar a mesma universidade do programa",
+      "use-program-visibility": "Selecionar a mesma visibilidade do programa",
+      "accept-students-proposals": "Permitir que alunos proponham novas atividades de extensão para este projeto",
+      "visibility-label": "Visibilidade do projeto",
+      "faculty-label": "Universidade atrelada ao projeto",
+      "program-none": "Não atrelar a nenhum programa"
+    },
+    "toast": {
+      "success": "Projeto criado com sucesso!"
+    }
+  }
+}

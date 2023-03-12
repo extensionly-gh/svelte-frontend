@@ -7,7 +7,7 @@ const generateHtml = (icon: string, msg: string) =>
 const getDuration = (msg: string) => {
 	// duration = 90 words/min = 1.8 words/sec * 1000 ms/sec
 	const words = msg.split(' ').length;
-	const duration = (words * 1000) / 1.5;
+	const duration = (words * 1000) / 1.3;
 	return duration;
 };
 

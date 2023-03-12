@@ -1,0 +1,14 @@
+{
+  "a-new": {
+    "title": "Crie uma nova atividade de extensão",
+    "form": {
+      "title-placeholder": "Título da atividade",
+      "description-placeholder": "Uma descrição elaborada da atividade sendo proposta. Até 1000 caracteres.",
+      "shortDescription-label": "Descrição breve",
+      "shortDescription-placeholder": "Uma ou duas frases no máximo."
+    },
+    "toast": {
+      "success": "Atividade criada com sucesso!"
+    }
+  }
+}

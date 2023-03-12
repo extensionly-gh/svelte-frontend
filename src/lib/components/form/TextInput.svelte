@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { cva, type VariantProps } from 'class-variance-authority';
+	import type { VariantProps } from 'class-variance-authority';
 	import { _ } from 'svelte-i18n';
 	import Button from '../button/Button.svelte';
 	import IconEyeClosed from '~icons/ph/eye-closed';
 	import IconEyeOpened from '~icons/ph/eye';
+	import { inputStyles } from './text-styles';
 
 	export let variants: VariantProps<typeof inputStyles> = {};
 	export let label: string = '';
@@ -19,24 +20,6 @@
 	function togglePassword() {
 		type = isPasswordHidden ? 'text' : 'password';
 	}
-
-	const inputStyles = cva(
-		'focus:outline-none input p-2 h-[2.5rem] rounded-md placeholder:text-base-content/40 placeholder:text-sm w-full text-sm',
-		{
-			variants: {
-				intent: {
-					primary: 'border bg-base-200 focus:border-base-content/40',
-					darker: 'bg-gray-200 dark:bg-gray-900',
-					error: 'border-error border-2',
-					searchBar:
-						'border bg-gray-200 dark:bg-gray-900 focus:border-base-content/40 rounded-3xl pl-5 	placeholder:text-lg text-lg h-[3rem]'
-				}
-			},
-			defaultVariants: {
-				intent: 'primary'
-			}
-		}
-	);
 </script>
 
 <div class={`flex flex-col items-start gap-1 w-full ${$$props.class}`}>
@@ -68,7 +51,7 @@
 		<slot name="right" />
 	</div>
 	{#if !!error}
-		<span class="text-error font-bold text-xs mb-2 h-2" data-testid={`${id}-error`}>
+		<span class="text-error font-medium text-xs mb-2 h-2" data-testid={`${id}-error`}>
 			{$_(error)}
 		</span>
 	{/if}

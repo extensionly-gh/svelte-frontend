@@ -28,7 +28,11 @@
     "save": "Salvar",
     "delete": "Excluir",
     "search-word": "Procurar",
-    "a": "A"
+    "a": "A",
+    "submit": "Enviar",
+    "programs": "Programas",
+    "projects": "Projetos",
+    "activities": "Atividades"
   },
   "dialogs": {
     "auth": {

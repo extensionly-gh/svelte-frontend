@@ -28,7 +28,8 @@
     "save": "Save",
     "delete": "Delete",
     "search-word": "Search",
-    "a": "The"
+    "a": "The",
+    "submit": "Submit"
   },
   "dialogs": {
     "auth": {

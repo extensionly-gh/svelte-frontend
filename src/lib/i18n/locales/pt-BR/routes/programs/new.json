@@ -1,0 +1,21 @@
+{
+  "p-new": {
+    "title": "Crie um novo programa de extensão",
+    "form": {
+      "title-label": "Título",
+      "title-placeholder": "Título do novo programa",
+      "description-label": "Descrição",
+      "description-placeholder": "Descrição do novo programa",
+      "faculty-label": "Universidade atrelada ao programa",
+      "faculty-button": "Selecione uma universidade",
+      "faculty-info": "Se sua universidade não se encontra na lista, nos envie um email em: suporte@extensionly.app",
+      "visibility-label": "Aceitar inscrições de",
+      "visibility-public": "Todas as pessoas",
+      "visibility-private": "Apenas pessoas com vínculo com a universidade",
+      "faculty-fetch-error": "Algo deu errado ao buscar universidades. Por favor, tente novamente mais tarde."
+    },
+    "toast": {
+      "success": "Programa criado com sucesso!"
+    }
+  }
+}

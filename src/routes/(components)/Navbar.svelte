@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { Avatar, Button, Menu } from '$lib/components';
 	import { authDialog } from '$lib/stores';
@@ -26,24 +25,24 @@
 <div
 	class="navbar sticky flex justify-between top-2 shadow-md bg-base-300 m-2 rounded-box mb-20 z-10 gap-2 px-3"
 >
-	<div class="lg:w-52">
+	<div class="lg:w-52 flex gap-1">
 		<Button to="/" variants={{ intent: 'ghost' }} data-testid="nav-home-btn">
 			<IconHouse width="32px" height="32px" />
 		</Button>
 	</div>
-	{#if $page.url.pathname != '/activities'}
-		<div class="flex-grow items-center justify-center text-lg gap-2 max-w-xs">
-			<Button
-				class="flex-grow"
-				id="search"
-				on:click={() => goto(`/activities`)}
-				variants={{ intent: 'ghost' }}
-			>
-				<IconMagnifyingGlass width="24px" height="24px" />
-				{$_('terms.search')}
-			</Button>
-		</div>
-	{/if}
+
+	<div class="flex items-center justify-center gap-2">
+		<IconMagnifyingGlass width="20px" height="20px" />
+		<Button to="/programs" variants={{ intent: 'ghost' }}>
+			<span>{$_('terms.programs')}</span>
+		</Button>
+		<Button to="/projects" variants={{ intent: 'ghost' }}>
+			<span>{$_('terms.projects')}</span>
+		</Button>
+		<Button to="/activities" variants={{ intent: 'ghost' }}>
+			{$_('terms.activities')}
+		</Button>
+	</div>
 
 	<div class={`gap-2 lg:w-52 items-end justify-end flex`} data-testid="nav-right-div">
 		{#if $page.data.session?.user}

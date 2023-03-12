@@ -1,14 +1,28 @@
 import { z } from 'zod';
 
-const stringDefault = z.string().min(1, 'zod.string.min').max(255, 'zod.string.max');
-const stringLarge = z.string().min(1, 'zod.string.min').max(1000, 'zod.string.max');
+const stringDefault = z
+	.string({ required_error: 'zod.string.required', invalid_type_error: 'zod.string.required' })
+	.min(1, 'zod.string.required')
+	.max(255, 'zod.string.max');
+const stringLarge = z.string().min(1, 'zod.string.required').max(1000, 'zod.string.max');
 
 export const base = {
 	enums: {
+		visibilityType: z.enum(['PUBLIC', 'PRIVATE']).default('PUBLIC'),
 		verificationType: z.enum(['VALIDATE_EMAIL', 'VALIDATE_PHONE', 'RESET_PASSWORD'])
+	},
+	booleans: {
+		default: z.boolean().default(false)
+	},
+	selects: {
+		default: z
+			.string({ required_error: 'zod.select.invalid', invalid_type_error: 'zod.select.invalid' })
+			.min(1, 'zod.select.invalid')
+			.max(255, 'zod.select.invalid')
 	},
 	strings: {
 		default: stringDefault,
+		large: stringLarge,
 		email: stringDefault.email('zod.email.invalid'),
 		password: z
 			.string()

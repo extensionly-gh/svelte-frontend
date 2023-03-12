@@ -54,7 +54,7 @@
 	<div class="flex-wrap flex gap-2 text-sm font-semibold items-center my-2">
 		<!-- <Button intent="no-style" to={`${ProjectsRoute}/${activity.projectId}`}> -->
 		<a href="/">
-			<Tag variants={{ intent: 'project' }}>{activity.Project.name}</Tag>
+			<Tag variants={{ intent: 'project' }}>{activity.Project.title}</Tag>
 		</a>
 		{#if activity.modality === 'REMOTE'}
 			<Tag variants={{ intent: 'online' }}>

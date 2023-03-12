@@ -16,6 +16,8 @@
 	import IconBackspace from '~icons/ph/backspace';
 	import IconMagnifyingGlass from '~icons/ph/magnifying-glass';
 	import type { PageData } from './$types';
+	import PhPlusBold from '~icons/ph/plus-bold';
+	import { Heading } from '$lib/components/text';
 
 	export let data: PageData;
 
@@ -71,9 +73,9 @@
 	};
 </script>
 
-<h1 class="text-4xl text-secondary font-semibold text-center mb-12">{$_('a-default.title')}</h1>
-<div class="flex flex-row justify-center items-center mb-20 w-full">
-	<form use:form class="flex flex-grow max-w-3xl">
+<Heading>{$_('a-default.title')}</Heading>
+<div class="flex flex-row justify-center items-center mb-20 w-full gap-8">
+	<form use:form class="flex flex-grow max-w-xl">
 		<TextInput id="search" placeholder={$_('a-default.title')} variants={{ intent: 'searchBar' }}>
 			<div slot="left" class="flex items-center">
 				<IconMagnifyingGlass class="" width="24px" height="24px" />
@@ -93,6 +95,10 @@
 			</div>
 		</TextInput>
 	</form>
+	<Button to="/activities/new" variants={{ intent: 'accent' }}>
+		<PhPlusBold width="20px" height="20px" />
+		{$_('a-default.create-activity')}
+	</Button>
 </div>
 <div>
 	{#if activities.length > 0}
