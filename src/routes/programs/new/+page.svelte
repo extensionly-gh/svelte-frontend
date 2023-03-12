@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { Button, SettingsCard, TextInput } from '$lib/components';
 	import { Select, SelectOption, TextArea } from '$lib/components/form';
+	import { Heading } from '$lib/components/text';
 	import { toastSuccess } from '$lib/components/toast';
 	import { createProgramSchema } from '$lib/schemas';
 	import { trpc } from '$lib/trpc/client';
@@ -44,7 +45,7 @@
 	let fetchFacultiesPromise: Promise<void> | undefined;
 </script>
 
-<h1 class="text-4xl text-secondary font-semibold text-center mb-12">{$_('p-new.title')}</h1>
+<Heading>{$_('p-new.title')}</Heading>
 <form use:form class="flex bg-base-300 p-4 rounded-md flex-col w-full max-w-xl gap-4">
 	<TextInput
 		error={$errors.title?.[0]}

@@ -17,6 +17,7 @@
 	import IconMagnifyingGlass from '~icons/ph/magnifying-glass';
 	import type { PageData } from './$types';
 	import PhPlusBold from '~icons/ph/plus-bold';
+	import { Heading } from '$lib/components/text';
 
 	export let data: PageData;
 
@@ -72,7 +73,7 @@
 	};
 </script>
 
-<h1 class="text-4xl text-secondary font-semibold text-center mb-12">{$_('a-default.title')}</h1>
+<Heading>{$_('a-default.title')}</Heading>
 <div class="flex flex-row justify-center items-center mb-20 w-full gap-8">
 	<form use:form class="flex flex-grow max-w-xl">
 		<TextInput id="search" placeholder={$_('a-default.title')} variants={{ intent: 'searchBar' }}>
