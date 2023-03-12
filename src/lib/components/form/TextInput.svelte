@@ -51,7 +51,7 @@
 		<slot name="right" />
 	</div>
 	{#if !!error}
-		<span class="text-error font-bold text-xs mb-2 h-2" data-testid={`${id}-error`}>
+		<span class="text-error font-medium text-xs mb-2 h-2" data-testid={`${id}-error`}>
 			{$_(error)}
 		</span>
 	{/if}

@@ -7,7 +7,7 @@ export const inputStyles = cva(
 			intent: {
 				primary: 'border bg-base-200 focus:border-base-content/40',
 				darker: 'bg-gray-200 dark:bg-gray-900',
-				error: 'border-error border-2 bg-base-200',
+				error: 'border-error border bg-base-200',
 				searchBar:
 					'border bg-base-200 shadow-md focus:border-base-content/40 rounded-3xl pl-5 placeholder:text-lg placeholder:font-medium placeholder:text-base-content/50 text-lg h-[3rem]'
 			},
