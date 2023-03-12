@@ -1,12 +1,12 @@
 <script>
 	import '../app.css';
-	import CookieBanner from './_CookieBanner.svelte';
-	import Navbar from './_Navbar.svelte';
+	import CookieBanner from './(components)/CookieBanner.svelte';
+	import Navbar from './(components)/Navbar.svelte';
 	import { SvelteToast } from '@zerodevx/svelte-toast';
-	import Footer from './_Footer.svelte';
+	import Footer from './(components)/Footer.svelte';
 	import { theme } from '$lib/stores';
 	import { dev } from '$app/environment';
-	import AuthDialog from './_AuthDialog.svelte';
+	import AuthDialog from './(components)/AuthDialog.svelte';
 	import { onMount } from 'svelte';
 	import { toastError, toastInfo, toastSuccess } from '$lib/components/toast';
 	import { _ } from 'svelte-i18n';
@@ -63,10 +63,10 @@
 	{#if dev}
 		<meta name="referrer" content="no-referrer-when-downgrade" />
 	{/if}
-	<meta
+	<!-- <meta
 		httpequiv="Content-Security-Policy"
 		content="script-src https://accounts.google.com/gsi/client; frame-src https://accounts.google.com/gsi/; connect-src https://accounts.google.com/gsi/;"
-	/>
+	/> -->
 </svelte:head>
 <div
 	id="theme-container"

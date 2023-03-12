@@ -2,9 +2,9 @@
 	import { Button, Dialog } from '$lib/components';
 	import { _ } from 'svelte-i18n';
 	import IconGoogle from '~icons/logos/google-icon';
-	import SigninForm from './_SigninForm.svelte';
-	import SignupForm from './_SignupForm.svelte';
-	import ForgotpwForm from './_ForgotpwForm.svelte';
+	import SigninForm from './SigninForm.svelte';
+	import SignupForm from './SignupForm.svelte';
+	import ForgotpwForm from './ForgotpwForm.svelte';
 	import { authDialog } from '$lib/stores';
 	import { openPopupWindow } from '$lib/utils';
 
